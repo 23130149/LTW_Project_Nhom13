@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7bb972e4-dbc9-465c-a748-a6b1f7f5ec1c" name="Changes" comment="" />
+    <list default="true" id="7bb972e4-dbc9-465c-a748-a6b1f7f5ec1c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/login/Register/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/Register/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/Register/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/Register/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +56,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "disable.download.node.interpreter.editor.notification": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Dangky/Dangnhap",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -89,7 +92,7 @@
       <workItem from="1761840618141" duration="165000" />
       <workItem from="1761840792085" duration="12000" />
       <workItem from="1762069047791" duration="464000" />
-      <workItem from="1762069666292" duration="453000" />
+      <workItem from="1762069666292" duration="83000" />
     </task>
     <servers />
   </component>

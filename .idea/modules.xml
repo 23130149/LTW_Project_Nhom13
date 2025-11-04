@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/LTW_Project_Nhom13.iml" filepath="$PROJECT_DIR$/.idea/LTW_Project_Nhom13.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/login/LogIn.iml" filepath="$PROJECT_DIR$/login/LogIn.iml" />
+>>>>>>> 1156c853212206fe50cdecf9098e40f81b78f769
     </modules>
   </component>
 </project>

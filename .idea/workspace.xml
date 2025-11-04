@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bb972e4-dbc9-465c-a748-a6b1f7f5ec1c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Header/Header.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Header/js.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Header/style.css" beforeDir="false" />
@@ -16,6 +17,8 @@
       <change beforePath="$PROJECT_DIR$/login/SignIn/style.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/trangchu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangchu/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trangchu/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangchu/style.css" afterDir="false" />
+=======
+>>>>>>> 1156c853212206fe50cdecf9098e40f81b78f769
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+<<<<<<< HEAD
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "disable.download.node.interpreter.editor.notification": "true",
@@ -71,14 +75,22 @@
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/LTW_Project_Nhom13",
+=======
+    "disable.download.node.interpreter.editor.notification": "true",
+    "git-widget-placeholder": "khanh",
+>>>>>>> 1156c853212206fe50cdecf9098e40f81b78f769
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+<<<<<<< HEAD
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "to.speed.mode.migration.done": "true",
+=======
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+>>>>>>> 1156c853212206fe50cdecf9098e40f81b78f769
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -91,8 +103,12 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+<<<<<<< HEAD
         <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
         <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+=======
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+>>>>>>> 1156c853212206fe50cdecf9098e40f81b78f769
       </set>
     </attachedChunks>
   </component>
@@ -108,8 +124,12 @@
       <workItem from="1761840618141" duration="165000" />
       <workItem from="1761840792085" duration="12000" />
       <workItem from="1762069047791" duration="464000" />
+<<<<<<< HEAD
       <workItem from="1762069666292" duration="453000" />
       <workItem from="1762250280247" duration="927000" />
+=======
+      <workItem from="1762069666292" duration="83000" />
+>>>>>>> 1156c853212206fe50cdecf9098e40f81b78f769
     </task>
     <servers />
   </component>

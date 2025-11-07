@@ -10,36 +10,42 @@
 </head>
 <body>
   <header class="header">
-    <div class="header-container">
+    <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
                 <a href="#">Handmade House</a>
             </div>
-
-    <nav class="nav__links" >
-        <ul>
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Sản phẩm</a></li>
-            <li><a href="#">Về chúng tôi</a></li>
-            <li><a href="#">Liên hệ</a></li>
-        </ul>
-    </nav>
-      <div class="icons" >
-          <button class="icon-btn" id="heartBtn">
-            <i class='bx  bx-heart'    ></i>
-          </button>
-          <button class="icon-btn" id="searchBtn">
-            <i class='bx  bx-search'    ></i>
-          </button>
-          <button class="icon-btn" id="cartBtn">
-            <i class='bx  bx-cart'    ></i>
-          </button>
-          <button class="icon-btn" id="userBtn">
-            <i class='bx  bx-user'    ></i>
-          </button>
+            <form class="search-form" action="#" method="GET">
+                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..." aria-label="Tìm kiếm sản phẩm">
+                <button type="submit" class="search-btn">
+                    <i class="bx bx-search-alt-2"></i>
+                </button>
+            </form>
+            <div class="icons" >
+                <button class="icon-btn" id="heartBtn">
+                    <i class='bx  bx-heart'    ></i>
+                </button>
+                <button class="icon-btn" id="cartBtn">
+                    <i class='bx  bx-cart'    ></i>
+                </button>
+                <button class="icon-btn" id="userBtn">
+                    <i class='bx  bx-user'    ></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="search-bar-section header-bottom-nav">
+        <div class="container nav-only-container">
+            <nav class="nav__links" >
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Sản phẩm</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </nav>
         </div>
       </div>
-    </div>
   </header>
 
   <section class="section__container" id="home">
@@ -270,13 +276,27 @@
                       </div>
                   </div>
               </li>
-              <li>
-                  <div class="product-item"></div>
-              </li>
-              <li>
-                  <div class="product-item"></div>
-              </li>
           </ul>
+      </div>
+  </section>
+  <section class="story-section">
+      <div class="container">
+            <div class="story-header">
+                <h2 class="story-heading-main">Về chúng tôi</h2>
+                <p class="story-subtitle">Câu chuyện của chúng tôi bắt đầu từ niềm đam mê thủ công</p>
+            </div>
+            <div class="story-content">
+                <div class="story-text-container">
+                    <h3 class="story-title">Thủ công cho Gen Z</h3>
+                    <p>Handmade House chính thức ra đời năm 2025 với mục tiêu duy nhất là biến nghệ thuật thủ công truyền thống thành những món đồ mới mẻ, độc đáo, thể hiện cá tính riêng của giới trẻ hiện nay. Chúng tôi tin rằng phong cách không nên là hàng loạt, mà phải là duy nhất.</p>
+                    <p>Chúng tôi hoạt động như một studio sáng tạo, nơi đội ngũ thiết kế trẻ tuổi làm việc trực tiếp với hơn 3 nghệ nhân để liên tục cập nhật các xu hướng TikTok, Instagram, và Facebook mới nhất. Sự kết hợp giữa kỹ thuật thủ công lâu đời và thẩm mỹ hiện đại tạo ra những sản phẩm vừa chất lượng, vừa "viral".</p>
+                    <p>Tại Handmade House, bạn không chỉ mua một phụ kiện; bạn đang mua một món đồ thể hiện cá tính. Từ móc khóa cá nhân hóa, túi xách đan lát theo mùa, đến nến thơm được custom (tùy chỉnh) mùi hương độc quyền – mỗi món đồ đều phản ánh sự tự do và sáng tạo của người sở hữu.</p>
+                    <p>Hãy cùng chúng tôi phá vỡ ranh giới giữa truyền thống và hiện đại. Ủng hộ Handmade House là cách bạn tham gia vào cộng đồng yêu thích sự độc đáo, trân trọng giá trị bền vững, và luôn dẫn đầu các xu hướng phong cách.</p>
+                </div>
+                <div class="story-image-container">
+                <img src="https://i.pinimg.com/736x/25/26/13/2526135b0ee31195600ccfa88e2ed474.jpg" alt="Nhân viên đang làm việc" class="story-image-main">
+                </div>
+            </div>
       </div>
   </section>
 <footer class="footer">

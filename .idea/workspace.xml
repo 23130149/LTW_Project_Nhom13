@@ -92,6 +92,17 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="LTW_Project_Nhom13" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="LTW_Project_Nhom13" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -115,7 +126,8 @@
       <workItem from="1762069047791" duration="464000" />
       <workItem from="1762069666292" duration="453000" />
       <workItem from="1762422955795" duration="812000" />
-      <workItem from="1762424116850" duration="21546000" />
+      <workItem from="1762424116850" duration="21666000" />
+      <workItem from="1762500841077" duration="8956000" />
     </task>
     <servers />
   </component>

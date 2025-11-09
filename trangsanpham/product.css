@@ -282,8 +282,6 @@ ul, li{
     font-size: 14px;
     color: #2C2C2C;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     padding-right: 30px;
     background: white;
     cursor: pointer;

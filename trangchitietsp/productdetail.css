@@ -169,6 +169,215 @@ ul, li{
 .nav__links a:active {
     color: #38ef7d;
 }
+.page-title{
+    padding: 30px 0;
+    border-top: 1px solid #eeeeee;
+}
+.page-title-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-main-title{
+    font-size: 32px;
+    font-weight: 700;
+    color: #2C2C2C;
+    margin: 0;
+    padding-left: 15px;
+}
+.breadcrumb{
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+}
+.breadcrumb a{
+    color: #888;
+    transition: color 0.2s;
+}
+.breadcrumb a:hover{
+    color: #11998e;
+}
+.breadcrumb i{
+    font-size: 14px;
+    margin: 0 5px;
+}
+.breadcrumb span{
+    color: #2C2C2C;
+    font-weight: 600;
+}
+.breadcrumb span:last-child{
+    color: #38ef7d;
+    font-weight: 600;
+}
+.product-detail-page{
+    padding: 40px 0;
+    margin-top: 40px;
+    padding-bottom: 60px;
+}
+.product-detail-content{
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.product-image{
+    flex: 0 0 40%;
+}
+.main-image{
+    margin-bottom: 20px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.product-info{
+    flex: 0 0 60%;
+}
+.product-title{
+    font-size: 40px;
+    font-weight: 700;
+    color: #11998e;
+}
+.product-rating{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.product-rating .stars i{
+    color: #ffc107;
+}
+.price{
+    font-size: 35px;
+    font-weight: 700;
+    color: hotpink;
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+.product-des h2{
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-left: 3px solid #38ef7d;
+    padding-left: 10px;
+}
+.purchase-box{
+    padding: 20px 0;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    margin-bottom: 20px;
+}
+.quantity-input-box{
+    display: inline-flex;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 45px;
+    margin-right: 20px;
+}
+.quantity-input {
+    width: 60px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    outline: none;
+}
+.quantity-arrows{
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #cccccc;
+}
+.quantity-arrows button{
+    background: #f8f8f8;
+    border: none;
+    height: 50%;
+    color: #666666;
+    transition: background 0.2s;
+}
+.quantity-arrows button:hover{
+    background: #eeeeee;
+}
+.action-buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.btn{
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 40px;
+    border: none;
+    transition: background-color 0.3s;
+}
+.btn-add-to-cart{
+    background: #FF5E62;
+    color: #ffffff;
+    flex-grow: 1;
+}
+.btn-add-to-cart:hover{
+    background-color: #11998e;
+}
+.btn-icon-action{
+    background: #eeeeee;
+    color: #555555;
+    padding: 12px;
+    font-size: 21px;
+    line-height: 1;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-icon-action:hover{
+    background-color: pink;
+    color: #ffffff;
+}
+.btn-buy-now{
+    width: 100%;
+    background-color: #38ef7d;
+    color: #ffffff;
+    margin-top: 15px;
+    border-radius: 40px;
+}
+.btn-buy-now:hover{
+    background-color: #38ef7d;
+}
+.product-meta{
+    font-size: 15px;
+    color: gray;
+}
+.product-meta strong{
+    font-weight: 600;
+    margin-right: 5px;
+}
+.share-links{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.share-links strong{
+    font-weight: 600;
+    color: gray;
+}
+.share-links a{
+    font-size: 24px;
+    color: black;
+}
 .footer{
     background: linear-gradient(to right, #11998e, #38ef7d);
     color: white;

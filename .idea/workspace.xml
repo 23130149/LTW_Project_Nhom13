@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a984b75-ba61-4d85-8fd2-cfaee6e79e14" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/About us/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/About us/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/About us/Index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangsanpham/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangsanpham/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/andanffasd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/h --force origin phu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchu/LTW/LTW.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/untitled.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +34,12 @@
     &quot;assignee&quot;: &quot;23130149&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/23130149/LTW_Project_Nhom13.git",
-    "accountId": "89013973-7867-4bdd-9917-acc42f7fec08"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/23130149/LTW_Project_Nhom13.git&quot;,
+    &quot;accountId&quot;: &quot;89013973-7867-4bdd-9917-acc42f7fec08&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -60,7 +62,7 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "disable.download.node.interpreter.editor.notification": "true",
-    "git-widget-placeholder": "quan",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",

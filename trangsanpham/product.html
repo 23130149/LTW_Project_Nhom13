@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Về Chúng Tôi - Handmade House</title>
-
+    <title>Handmade Shop</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../About us/Style.css">
-
-
+    <link rel="stylesheet" href="product.css">
 </head>
 <body>
-
 <header class="header">
     <div class="header-top-container">
         <div class="header-content">
@@ -51,43 +47,163 @@
         </div>
     </div>
 </header>
-<main class="about-us-container">
-    <h1>Về Chúng Tôi</h1>
-
-    <p>Chào mừng đến với Handmade House! Chúng tôi tin rằng mỗi sản phẩm thủ công không chỉ là một vật dụng... (v.v.)</p>
-
-    <nav class="page-nav">
-        <a href="#cau-chuyen">Câu chuyện thương hiệu</a>
-        <a href="#nghe-nhan">Nghệ nhân</a>
-        <a href="#quy-trinh">Quy trình sản xuất</a>
-        <a href="#tuyen-dung">Tuyển dụng</a>
-    </nav>
-
-    <section id="cau-chuyen" class="about-section">
-        <h2>Câu chuyện thương hiệu</h2>
-        <p><strong>[Nội dung mẫu]</strong>...</p>
-    </section>
-
-    <section id="nghe-nhan" class="about-section">
-        <h2>Nghệ nhân</h2>
-        <p><strong>[Nội dung mẫu]</strong>...</p>
-    </section>
-
-    <section id="quy-trinh" class="about-section">
-        <h2>Quy trình sản xuất</h2>
-        <p><strong>[Nội dung mẫu]</strong>...</p>
-        <ol>
-            <li>Bước 1: Lên ý tưởng và thiết kế.</li>
-            <li>Bước 2: Lựa chọn nguyên liệu.</li>
-            <li>Bước 3: Chế tác thủ công.</li>
-            <li>Bước 4: Kiểm tra và hoàn thiện.</li>
-        </ol>
-    </section>
-
-    <section id="tuyen-dung" class="about-section">
-        <h2>Tuyển dụng</h2>
-        <p><strong>[Nội dung mẫu]</strong>...</p>
-    </section>
+<main class="main-content">
+    <div class="container">
+        <div class="page-meta">
+            <h1 class="page-title-main">Sản phẩm</h1>
+            <div class="breadcrumb">
+                <a href="#">Trang chủ</a>
+                <a href="#"><i class="bx bx-chevron-right"></i></a>
+                <span>Sản phẩm</span>
+            </div>
+        </div>
+        <div class="product-page-layout">
+            <div class="product-listing-area">
+                <div class="sort-stats-bar">
+                    <div class="product-stats">
+                        Hiển thị 8/200 sản phẩm
+                    </div>
+                    <div class="sort-options">
+                        <div class="custom-select-wrapper">
+                            <select class="sort-options-select">
+                                <option value="default">Sắp xếp mặc định</option>
+                                <option value="price-asc">Giá tăng dần</option>
+                                <option value="price-desc">Giá giảm dần</option>
+                            </select>
+                            <i class="dropdown-arrow bx bx-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Móc khóa</a>
+                            <a href="" class="product-name">Móc khóa lá cờ Việt Nam</a>
+                            <div class="product-price">15.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Vòng tay</a>
+                            <a href="" class="product-name">Vòng tay "Sweet Purple"</a>
+                            <div class="product-price">40.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/736x/30/34/a8/3034a8897defe35658b250d8b534256f.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Nến thơm</a>
+                            <a href="" class="product-name">Nên thơm xương rồng</a>
+                            <div class="product-price">150.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/736x/ca/45/21/ca4521034acf002c3ea9eb9f7cb8688c.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Túi xách</a>
+                            <a href="" class="product-name">Túi hoa Tulip</a>
+                            <div class="product-price">120.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/736x/ce/77/33/ce773365b462d26647bf2d497b43eb82.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Ốp lưng</a>
+                            <a href="" class="product-name">Ốp lưng điện thoại Anime</a>
+                            <div class="product-price">89.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/736x/28/39/aa/2839aae1280d8cc5f44fcff4a2a3f979.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Kẹp tóc</a>
+                            <a href="" class="product-name">Kẹp tóc hoa dâu tây nhí</a>
+                            <div class="product-price">30.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/427/928/products/scrapbook-vintage-remember-2.jpg?v=1716011142893" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Sổ trang trí</a>
+                            <a href="" class="product-name">Sổ trang trí REMEMBER</a>
+                            <div class="product-price">200.000đ</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="https://i.pinimg.com/736x/82/a0/3f/82a03fc266a5b7d02c2e0d85fda1cce9.jpg" alt="Tên sản phẩm">
+                            </a>
+                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Đồ trang trí nhà</a>
+                            <a href="" class="product-name">Đèn chùm bằng hoa tươi rực rỡ</a>
+                            <div class="product-price">599.000đ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <span class="current-page">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#"><i class="bx bx-chevron-right"></i></a>
+                </div>
+            </div>
+            <aside class="sidebar-filters">
+                <div class="filter-group category-filter">
+                    <h4 class="filter-group-title">Danh mục</h4>
+                    <ul>
+                        <li><a href="#">Móc khóa(25)</a></li>
+                        <li><a href="#">Vòng tay(25)</a></li>
+                        <li><a href="#">Nến thơm(25)</a></li>
+                        <li><a href="#">Túi xách(25)</a></li>
+                        <li><a href="#">Ốp lưng(25)</a></li>
+                        <li><a href="#">Kẹp tóc(25)</a></li>
+                        <li><a href="#">Sổ trang trí(25)</a></li>
+                        <li><a href="#">Đồ trang trí nhà(25)</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
 </main>
 <footer class="footer">
     <div class="container">

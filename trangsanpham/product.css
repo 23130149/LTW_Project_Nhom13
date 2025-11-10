@@ -346,6 +346,7 @@ ul, li{
     left: 0;
     right: 0;
     color: white;
+    background: linear-gradient(to right, #11998e, #38ef7d);
     text-align: center;
     padding: 10px;
     font-weight: 600;

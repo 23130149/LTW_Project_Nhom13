@@ -1,3 +1,7 @@
+/* =========================================================
+   PHẦN 1: TOÀN BỘ CSS TỪ TRANG CHỦ CỦA BẠN
+   (HEADER, FOOTER, SẢN PHẨM, DANH MỤC...)
+========================================================= */
 *{
     margin: 0;
     padding: 0;
@@ -365,7 +369,7 @@ button{
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to right, #11998e, #38ef7d);
+    background: rgba(255, 94, 98, 0.95);
     color: white;
     text-align: center;
     padding: 12px;
@@ -575,4 +579,233 @@ button{
     padding-top: 10px;
 }
 
+/* =========================================================
+   PHẦN 2: CSS CHO TRANG "VỀ CHÚNG TÔI" (ĐÃ DỌN DẸP)
+========================================================= */
 
+/* Dùng .about-us-container để không đụng chạm
+   đến .container gốc của bạn */
+main.about-us-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto; /* Tự động căn giữa */
+    padding-top: 150px; /* 120px (header) + 30px (đệm) */
+    padding-bottom: 80px; /* Tạo khoảng trống với footer */
+}
+
+.about-us-container h1 {
+    font-size: 2.5rem;
+    color: #11998e; /* Lấy màu chủ đạo của bạn */
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.about-us-container > p {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Các khu vực nội dung (Section) */
+.about-section {
+    margin-bottom: 40px;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #38ef7d; /* Lấy màu phụ */
+    padding-bottom: 10px;
+}
+
+.about-section p,
+.about-section li {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.about-section ol {
+    padding-left: 20px;
+}
+.about-section a {
+    color: #11998e;
+    font-weight: 600;
+}
+.about-section a:hover {
+    color: #38ef7d;
+}
+
+
+/* =========================================================
+   PHẦN 3: CSS CHO TRANG "TÀI KHOẢN CỦA TÔI"
+   (Bản sạch, không lặp)
+========================================================= */
+
+/* Hộp thông tin người dùng */
+.account-info {
+    text-align: center;
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.account-info i {
+    font-size: 60px;
+    color: #11998e; /* Màu chủ đạo */
+    margin-bottom: 15px;
+    display: block;
+}
+
+.account-info h3 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.account-info p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Menu chức năng */
+.account-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden; /* Để bo góc hoạt động */
+}
+
+.account-menu li {
+    border-bottom: 1px solid #eee;
+}
+.account-menu li:last-child {
+    border-bottom: none;
+}
+
+.account-menu a {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.account-menu a:hover {
+    background-color: #f9f9ff;
+    color: #11998e; /* Màu chủ đạo */
+}
+
+.account-menu a i {
+    font-size: 24px;
+    margin-right: 20px;
+    width: 30px;
+    text-align: center;
+    color: #38ef7d; /* Màu phụ */
+}
+
+/* === CSS CHO PHẦN THÊM MỚI === */
+.recent-orders-box {
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.recent-orders-box h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #38ef7d;
+    padding-bottom: 10px;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.orders-table th, .orders-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.orders-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.orders-table td {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.orders-table td .status-delivered {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.orders-table td .status-processing {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+.view-all-orders {
+    display: inline-block;
+    text-decoration: none;
+    color: #11998e;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.view-all-orders:hover {
+    color: #38ef7d;
+}
+/* === KẾT THÚC CSS PHẦN THÊM MỚI === */
+
+
+/* Nút đăng xuất */
+.btn-logout {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #FF5E62; /* Màu đỏ cho đăng xuất */
+    color: white;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-logout:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(255, 94, 98, 0.2);
+    transform: translateY(-2px);
+}

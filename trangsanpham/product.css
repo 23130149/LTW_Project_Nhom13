@@ -173,17 +173,24 @@ ul, li{
     padding-bottom: 40px;
 }
 .page-meta{
-    padding: 20px 0 10px;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 .page-title-main{
     font-size: 32px;
     font-weight: 700;
     color: #2C2C2C;
-    margin-bottom: 5px;
+    margin: 0;
+    padding-left: 15px;
 }
 .breadcrumb{
     font-size: 14px;
     color: #888;
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
 }
 .breadcrumb a{
     color: #888;
@@ -221,7 +228,6 @@ ul, li{
     margin-bottom: 30px;
     padding: 0;
     border: 1px solid #eee;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 }
@@ -276,8 +282,6 @@ ul, li{
     font-size: 14px;
     color: #2C2C2C;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     padding-right: 30px;
     background: white;
     cursor: pointer;
@@ -341,8 +345,8 @@ ul, li{
     bottom: 0;
     left: 0;
     right: 0;
-    background: #FF5E62;
     color: white;
+    background: linear-gradient(to right, #11998e, #38ef7d);
     text-align: center;
     padding: 10px;
     font-weight: 600;

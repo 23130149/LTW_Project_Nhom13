@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangchitietsp/productdetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangchitietsp/productdetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchu/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangchu/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangsanpham/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangsanpham/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +17,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="35GoUiU87YMEdtWVH11PvRWq3xy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,7 +33,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "phu",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",

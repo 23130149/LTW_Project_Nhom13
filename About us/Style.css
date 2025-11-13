@@ -1,3 +1,7 @@
+/* =========================================================
+   PHẦN 1: TOÀN BỘ CSS TỪ TRANG CHỦ CỦA BẠN
+   (HEADER, FOOTER, SẢN PHẨM, DANH MỤC...)
+========================================================= */
 *{
     margin: 0;
     padding: 0;
@@ -365,7 +369,7 @@ button{
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to right, #11998e, #38ef7d);
+    background: rgba(255, 94, 98, 0.95);
     color: white;
     text-align: center;
     padding: 12px;
@@ -576,3 +580,83 @@ button{
 }
 
 
+/* =========================================================
+   PHẦN 2: CSS CHO NỘI DUNG "VỀ CHÚNG TÔI" (ĐÃ DỌN DẸP)
+========================================================= */
+
+/* Dùng .about-us-container để không đụng chạm
+   đến .container gốc của bạn */
+main.about-us-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto; /* Tự động căn giữa */
+
+    /* QUAN TRỌNG:
+       Tạo khoảng trống ở trên để không bị Header che
+       Header của bạn cao ~120px
+    */
+    padding-top: 150px; /* 120px (header) + 30px (đệm) */
+    padding-bottom: 80px; /* Tạo khoảng trống với footer */
+}
+
+.about-us-container h1 {
+    font-size: 2.5rem;
+    color: #11998e; /* Lấy màu chủ đạo của bạn */
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Dùng "> p" để chỉ áp dụng cho
+   đoạn <p> mô tả ngay dưới <h1>
+*/
+.about-us-container > p {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CÁC ĐOẠN CSS CHO .page-nav ĐÃ ĐƯỢC XOÁ HOÀN TOÀN */
+
+
+/* Các khu vực nội dung (Section) */
+.about-section {
+    /* Khoảng cách giữa các mục (Câu chuyện, Nghệ nhân...) */
+    margin-bottom: 40px;
+    /* Các thuộc tính padding-top và margin-top
+       dùng để nhảy link neo đã được xoá
+       vì thanh nav không còn nữa.
+    */
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #38ef7d; /* Lấy màu phụ */
+    padding-bottom: 10px;
+}
+
+.about-section p,
+.about-section li {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.about-section ol {
+    padding-left: 20px;
+}
+.about-section a {
+    color: #11998e;
+    font-weight: 600;
+}
+.about-section a:hover {
+    color: #38ef7d;
+}

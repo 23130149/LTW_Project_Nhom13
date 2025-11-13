@@ -2,6 +2,14 @@
    PHẦN 1: TOÀN BỘ CSS TỪ TRANG CHỦ CỦA BẠN
    (HEADER, FOOTER, SẢN PHẨM, DANH MỤC...)
 ========================================================= */
+
+.brand-story-image {
+    width: 100%;           /* Ảnh rộng toàn phần */
+    max-width: 600px;      /* Giới hạn kích thước */
+    display: block;
+    margin: 20px auto;     /* Canh giữa */
+    border-radius: 10px;   /* Bo góc */
+}
 *{
     margin: 0;
     padding: 0;

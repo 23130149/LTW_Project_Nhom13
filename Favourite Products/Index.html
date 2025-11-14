@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Giỏ Hàng</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Favourite Products</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../Header and Footer/Styles.css">
+
 
 </head>
 <body>
@@ -47,66 +51,83 @@
         </div>
     </div>
 </header>
-<section class="cart-page">
-    <div class="cart-header">
-        <h1><i class='bx bx-cart'></i> Giỏ Hàng Của Bạn</h1>
-    </div>
 
-    <div class="cart-container">
-        <div class="cart-items">
-            <div class="cart-item">
-                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Móc Khóa Lá Cờ Việt Nam">
+<section class="favourite-section">
+    <h2>Sản phẩm yêu thích</h2>
 
-                <div class="product-info">
-                    <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
-                    <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
-                </div>
+    <div class="product-list">
 
-                <div class="qty-price">
-                    <div class="qty-control">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div class="product-price">15.000đ</div>
-                </div>
-
-                <i class='bx bx-trash'></i>
+        <div class="product-item">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="móc khoá">
+                <span class="heart">❤️</span>
             </div>
+            <div class="product-info">
 
-            <div class="cart-item">
-                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Nến Thơm Xương Rồng">
+                <p class="product-category">Móc khóa</p>
 
-                <div class="product-info">
-                    <div class="product-name">Nến Thơm Xương Rồng</div>
-                    <div class="product-descr">Một chậu nến thơm đáng iu</div>
+                <h3>Móc khoá lá cờ Việt Nam</h3>
+                <p class="price">15.000₫</p>
+                <div class="product-actions">
+                    <button class="btn btn-cart">Thêm vào giỏ</button>
+                    <button class="btn btn-buy">Mua ngay</button>
                 </div>
-
-                <div class="qty-price">
-                    <div class="qty-control">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div class="product-price">150.000đ</div>
-                </div>
-
-                <i class='bx bx-trash'></i>
             </div>
         </div>
 
-        <div class="cart-total">
-            <h3>Đơn Hàng Của Bạn</h3>
-            <div class="line"><span>Tổng tiền</span><span>165.000đ</span></div>
-            <div class="line"><span>Phí vận chuyển</span><span>Miễn phí</span></div>
-            <div class="line"><span>Giảm giá:</span><span>0đ</span></div>
-            <div class="voucher">
-                <input type="text" placeholder="Nhập mã giảm giá">
-                <button>Áp dụng</button>
+        <div class="product-item">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/30/34/a8/3034a8897defe35658b250d8b534256f.jpg" alt="Nến thơm">
+                <span class="heart">❤️</span>
             </div>
-            <button class="checkout-btn" type="submit">Tiến hành thanh toán</button>
+            <div class="product-info">
+
+                <p class="product-category">Nến thơm</p>
+
+                <h3>Nến thơm xương rồng</h3>
+                <p class="price">150.000₫</p>
+                <div class="product-actions">
+                    <button class="btn btn-cart">Thêm vào giỏ</button>
+                    <button class="btn btn-buy">Mua ngay</button>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <div class="product-item">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/ca/45/21/ca4521034acf002c3ea9eb9f7cb8688c.jpg" alt="Túi hoa">
+                <span class="heart">❤️</span>
+            </div>
+            <div class="product-info">
+
+                <p class="product-category">Túi xách</p>
+
+                <h3>Túi hoa Tulip</h3>
+                <p class="price">240.000₫</p>
+                <div class="product-actions">
+                    <button class="btn btn-cart">Thêm vào giỏ</button>
+                    <button class="btn btn-buy">Mua ngay</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-item">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/736x/82/a0/3f/82a03fc266a5b7d02c2e0d85fda1cce9.jpg" alt="Đèn chùm">
+                <span class="heart">❤️</span>
+            </div>
+            <div class="product-info">
+
+                <p class="product-category">Đèn trang trí</p>
+
+                <h3>Đèn chùm hoa tươi rực rỡ</h3>
+                <p class="price">599.000₫</p>
+                <div class="product-actions">
+                    <button class="btn btn-cart">Thêm vào giỏ</button>
+                    <button class="btn btn-buy">Mua ngay</button>
+                </div>
+            </div>
+        </div>
 </section>
 <footer class="footer">
     <div class="container">
@@ -156,6 +177,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>

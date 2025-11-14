@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Contact/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contact/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Cart/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Favourite Products/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Favourite Products/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My Account/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/My Account/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cart/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Favourite Products/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Favourite Products/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Header and Footer/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Header and Footer/Styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My Account/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/My Account/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/Payment/payment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangchitietsp/productdetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangchu/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangsanpham/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangsanpham/product.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

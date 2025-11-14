@@ -2,11 +2,12 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Giỏ Hàng</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tài khoản của tôi - Handmade House</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Header and Footer/Styles.css">
-
+    <link rel="stylesheet" href="../css/account.css">
 </head>
 <body>
 <header class="header">
@@ -25,7 +26,7 @@
                 <button class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'    ></i>
                 </button>
-                <button class="icon-btn" id="cartBtn">
+                <button class="icon-btn" id="cartBtn" >
                     <i class='bx  bx-cart'    ></i>
                 </button>
                 <button class="icon-btn" id="userBtn">
@@ -38,76 +39,90 @@
         <div class="container nav-only-container">
             <nav class="nav__links" >
                 <ul>
-                    <li><a href="../trangchu/index.html">Trang chủ</a></li>
-                    <li><a href="../trangsanpham/product.html">Sản phẩm</a></li>
-                    <li><a href="../Blog/Index.html">Blog</a></li>
-                    <li><a href="../Contact/index.html">Liên hệ</a></li>
+                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
+                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
+                    <li><a href="../html/blog.html">Blog</a></li>
+                    <li><a href="../html/contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 </header>
-<section class="cart-page">
-    <div class="cart-header">
-        <h1><i class='bx bx-cart'></i> Giỏ Hàng Của Bạn</h1>
+<main class="about-us-container"> <h1>Tài khoản của tôi</h1>
+
+    <div class="account-info">
+        <i class='bx bxs-user-circle'></i>
+        <h3>23130258@st.hcmuaf.edu.vn</h3>
+        <p>Xin chào, Quan!</p>
     </div>
 
-    <div class="cart-container">
-        <div class="cart-items">
-            <div class="cart-item">
-                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Móc Khóa Lá Cờ Việt Nam">
+    <ul class="account-menu">
+        <li>
+            <a href="#">
+                <i class='bx bx-receipt'></i>
+                <span>Lịch sử đơn hàng</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-edit-alt'></i>
+                <span>Thông tin cá nhân</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-lock-alt'></i>
+                <span>Đổi mật khẩu</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-map'></i>
+                <span>Sổ địa chỉ</span>
+            </a>
+        </li>
+    </ul>
 
-                <div class="product-info">
-                    <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
-                    <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
-                </div>
-
-                <div class="qty-price">
-                    <div class="qty-control">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div class="product-price">15.000đ</div>
-                </div>
-
-                <i class='bx bx-trash'></i>
-            </div>
-
-            <div class="cart-item">
-                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Nến Thơm Xương Rồng">
-
-                <div class="product-info">
-                    <div class="product-name">Nến Thơm Xương Rồng</div>
-                    <div class="product-descr">Một chậu nến thơm đáng iu</div>
-                </div>
-
-                <div class="qty-price">
-                    <div class="qty-control">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div class="product-price">150.000đ</div>
-                </div>
-
-                <i class='bx bx-trash'></i>
-            </div>
-        </div>
-
-        <div class="cart-total">
-            <h3>Đơn Hàng Của Bạn</h3>
-            <div class="line"><span>Tổng tiền</span><span>165.000đ</span></div>
-            <div class="line"><span>Phí vận chuyển</span><span>Miễn phí</span></div>
-            <div class="line"><span>Giảm giá:</span><span>0đ</span></div>
-            <div class="voucher">
-                <input type="text" placeholder="Nhập mã giảm giá">
-                <button>Áp dụng</button>
-            </div>
-            <button class="checkout-btn" type="submit">Tiến hành thanh toán</button>
-        </div>
+    <div class="recent-orders-box">
+        <h2>Đơn hàng gần đây</h2>
+        <table class="orders-table">
+            <thead>
+            <tr>
+                <th>Mã đơn</th>
+                <th>Ngày đặt</th>
+                <th>Sản phẩm</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>#1205</td>
+                <td>05/11/2025</td>
+                <td>Nến thơm xương rồng (x1)</td>
+                <td>150.000đ</td>
+                <td><span class="status-delivered">Đã giao</span></td>
+            </tr>
+            <tr>
+                <td>#1201</td>
+                <td>01/11/2025</td>
+                <td>Túi hoa Tulip (x2)</td>
+                <td>240.000đ</td>
+                <td><span class="status-delivered">Đã giao</span></td>
+            </tr>
+            <tr>
+                <td>#1208</td>
+                <td>08/11/2025</td>
+                <td>Móc khóa lá cờ (x3)</td>
+                <td>45.000đ</td>
+                <td><span class="status-processing">Đang xử lý</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="#" class="view-all-orders">Xem tất cả đơn hàng &rarr;</a>
     </div>
-</section>
+    <a href="../html/dangnhap.html" class="btn-logout">Đăng xuất</a>
+</main>
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -122,12 +137,12 @@
             </div>
 
             <div class="footer-column">
-                <h3 class="footer-title">Blog</h3>
+                <h3 class="footer-title">Về chúng tôi</h3>
                 <ul class="footer-links">
                     <li> <a href="#">Câu chuyện thương hiệu</a></li>
-                    <li> <a href="#"> Giá trị & Triết lý thương hiệu</a></li>
+                    <li> <a href="#">Nghệ nhân</a></li>
                     <li> <a href="#">Quy trình sản xuất</a></li>
-                    <li> <a href="#">Cam kết & Định hướng bền vững</a></li>
+                    <li> <a href="#">Tuyển dụng</a></li>
                 </ul>
             </div>
 
@@ -156,6 +171,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>

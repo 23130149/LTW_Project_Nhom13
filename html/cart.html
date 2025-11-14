@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thanh Toán</title>
+    <title>Giỏ Hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="payment.css">
+    <link rel="stylesheet" href="../css/cart.css">
     <link rel="stylesheet" href="../Header and Footer/Styles.css">
 
 </head>
@@ -13,7 +13,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="#">Handmade House</a>
+                <a href="../html/trangchu.html">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..." aria-label="Tìm kiếm sản phẩm">
@@ -22,15 +22,15 @@
                 </button>
             </form>
             <div class="icons" >
-                <button class="icon-btn" id="heartBtn">
-                    <i class='bx  bx-heart'    ></i>
-                </button>
-                <button class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'    ></i>
-                </button>
-                <button class="icon-btn" id="userBtn">
-                    <i class='bx  bx-user'    ></i>
-                </button>
+                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
+                    <i class='bx  bx-heart'></i>
+                </a>
+                <a  href="../html/cart.html" class="icon-btn" id="cartBtn">
+                    <i class='bx  bx-cart'></i>
+                </a>
+                <a href="../html/account.html" class="icon-btn" id="userBtn">
+                    <i class='bx  bx-user'></i>
+                </a>
             </div>
         </div>
     </div>
@@ -38,54 +38,76 @@
         <div class="container nav-only-container">
             <nav class="nav__links" >
                 <ul>
-                    <li><a href="../trangchu/index.html">Trang chủ</a></li>
-                    <li><a href="../trangsanpham/product.html">Sản phẩm</a></li>
-                    <li><a href="../Blog/Index.html">Blog</a></li>
-                    <li><a href="../Contact/index.html">Liên hệ</a></li>
+                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
+                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
+                    <li><a href="../html/blog.html">Blog</a></li>
+                    <li><a href="../html/contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 </header>
-<main class="checkout-container">
-    <section class="shipping-info">
-        <h2>📍 Địa Chỉ Nhận Hàng</h2>
-        <p><strong>Lê Khanh</strong> (+84) 964 429 619</p>
-        <p>Hẻm 962 Đường Bùi Hữu Nghĩa, Phường Hóa An, Thành Phố Biên Hòa, Đồng Nai</p>
-        <a href="#" class="change-btn">Thay đổi</a>
-    </section>
+<section class="cart-page">
+    <div class="cart-header">
+        <h1><i class='bx bx-cart'></i> Giỏ Hàng Của Bạn</h1>
+    </div>
 
-    <section class="product-list">
-        <h2>Sản phẩm</h2>
-        <div class="product-item">
-            <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Móc khóa hình lá cờ">
-            <div class="product-detail">
-                <p class="product-name">Móc khóa hình lá cờ</p>
-                <p class="product-type">Phân loại: Lên, Vừa</p>
+    <div class="cart-container">
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Móc Khóa Lá Cờ Việt Nam">
+
+                <div class="product-info">
+                    <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
+                    <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
+                </div>
+
+                <div class="qty-price">
+                    <div class="qty-control">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <div class="product-price">15.000đ</div>
+                </div>
+
+                <i class='bx bx-trash'></i>
             </div>
-            <p class="product-price">45.000₫</p>
-            <p class="product-qty">x3</p>
-            <p class="product-total">45.000₫</p>
-        </div>
-    </section>
 
-    <section class="summary">
-        <div class="summary-row">
-            <span>Tổng tiền hàng</span>
-            <span>45.000₫</span>
-        </div>
-        <div class="summary-row">
-            <span>Phí vận chuyển</span>
-            <span>15.000₫</span>
-        </div>
-        <div class="summary-row total">
-            <span>Tổng thanh toán</span>
-            <span class="highlight">60.000₫</span>
-        </div>
-        <button class="checkout-btn">Đặt hàng</button>
-    </section>
-</main>
+            <div class="cart-item">
+                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Nến Thơm Xương Rồng">
 
+                <div class="product-info">
+                    <div class="product-name">Nến Thơm Xương Rồng</div>
+                    <div class="product-descr">Một chậu nến thơm đáng iu</div>
+                </div>
+
+                <div class="qty-price">
+                    <div class="qty-control">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <div class="product-price">150.000đ</div>
+                </div>
+
+                <i class='bx bx-trash'></i>
+            </div>
+        </div>
+
+        <div class="cart-total">
+            <h3>Đơn Hàng Của Bạn</h3>
+            <div class="line"><span>Tổng tiền</span><span>165.000đ</span></div>
+            <div class="line"><span>Phí vận chuyển</span><span>Miễn phí</span></div>
+            <div class="line"><span>Giảm giá:</span><span>0đ</span></div>
+            <div class="voucher">
+                <input type="text" placeholder="Nhập mã giảm giá">
+                <button>Áp dụng</button>
+            </div>
+            <button class="checkout-btn" type="submit">Tiến hành thanh toán</button>
+        </div>
+    </div>
+</section>
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -134,5 +156,6 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>

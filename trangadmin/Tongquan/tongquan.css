@@ -373,7 +373,7 @@ a{
     background: white;
     border-radius: 12px;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 .order-table-container{
@@ -473,7 +473,7 @@ a{
 .view-all-btn{
     background: linear-gradient(to right, #11998e, #38ef7d);
     color: white;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 8px;
 }
 .view-all-btn:hover{
     transform: translateY(-2px);

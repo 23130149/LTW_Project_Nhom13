@@ -31,14 +31,14 @@ ul, li{
 
 .cart-page {
     width: 90%;
-    max-width: 1200px;
-
+   width: auto;
+    padding-bottom: 5vh;
 }
 .cart-header{
     font-size: 26px;
     font-weight: 700;
     color: #2C2C2C;
-    margin-bottom: 5px;
+    margin-left: 8vh;
 }
 .cart-header h1 {
     font-size: 26px;
@@ -49,6 +49,7 @@ ul, li{
     font-size: 34px;
     margin-right: 6px;
     vertical-align: -4px;
+    color:  #f2c14e;
 }
 
 .cart-container {
@@ -60,6 +61,8 @@ ul, li{
 
 .cart-items {
     flex: 3;
+    margin-left: 15vh;
+
 }
 
 .cart-total {
@@ -71,6 +74,8 @@ ul, li{
     height: fit-content;
     position: sticky;
     top: 20px;
+    margin-right: 40px;
+    border: 1px solid rgba(28, 28, 28, 0.48);
 
 }
 
@@ -83,6 +88,8 @@ ul, li{
     border-radius: 12px;
     margin-bottom: 15px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(28, 28, 28, 0.48);
+
 }
 
 .cart-item img {
@@ -171,7 +178,42 @@ ul, li{
     justify-content: space-between;
     margin: 10px 0;
 }
+.voucher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
 
+.voucher input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.voucher input:focus {
+    border-color: #f27a1a;
+    box-shadow: 0 0 4px rgba(242, 122, 26, 0.4);
+    outline: none;
+}
+
+.voucher button {
+    padding: 10px 16px;
+    background: #f27a1a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.voucher button:hover {
+    background: linear-gradient(#11998e, #38ef7d);
+}
 .checkout-btn {
     width: 100%;
     background: #f27a1a;

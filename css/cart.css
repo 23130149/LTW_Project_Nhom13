@@ -183,18 +183,19 @@
 .voucher button:hover {
     background: linear-gradient(#11998e, #38ef7d);
 }
-.checkout-btn {
+.checkout-button {
     width: 100%;
+    display: inline-block;
     background: #f27a1a;
     color: white;
-    padding: 12px;
+    text-align: center;
+    padding: 15px 30px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 15px;
 }
-
-.checkout-btn:hover {
+.checkout-button:hover {
     background: linear-gradient(#11998e, #38ef7d);
 }

@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Giỏ Hàng</title>
-    <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Header and Footer/Styles.css">
+    <link rel="stylesheet" href="../css/cart.css">
 
 </head>
 <body>
@@ -13,7 +15,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="#">Handmade House</a>
+                <a href="../html/trangchu.html">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..." aria-label="Tìm kiếm sản phẩm">
@@ -22,15 +24,15 @@
                 </button>
             </form>
             <div class="icons" >
-                <button class="icon-btn" id="heartBtn">
-                    <i class='bx  bx-heart'    ></i>
-                </button>
-                <button class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'    ></i>
-                </button>
-                <button class="icon-btn" id="userBtn">
-                    <i class='bx  bx-user'    ></i>
-                </button>
+                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
+                    <i class='bx  bx-heart'></i>
+                </a>
+                <a  href="../html/cart.html" class="icon-btn" id="cartBtn">
+                    <i class='bx  bx-cart'></i>
+                </a>
+                <a href="../html/account.html" class="icon-btn" id="userBtn">
+                    <i class='bx  bx-user'></i>
+                </a>
             </div>
         </div>
     </div>
@@ -38,10 +40,10 @@
         <div class="container nav-only-container">
             <nav class="nav__links" >
                 <ul>
-                    <li><a href="../trangchu/index.html">Trang chủ</a></li>
-                    <li><a href="../trangsanpham/product.html">Sản phẩm</a></li>
-                    <li><a href="../Blog/Index.html">Blog</a></li>
-                    <li><a href="../Contact/index.html">Liên hệ</a></li>
+                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
+                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
+                    <li><a href="../html/blog.html">Blog</a></li>
+                    <li><a href="../html/contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
@@ -104,7 +106,9 @@
                 <input type="text" placeholder="Nhập mã giảm giá">
                 <button>Áp dụng</button>
             </div>
-            <button class="checkout-btn" type="submit">Tiến hành thanh toán</button>
+            <a href="../html/payment.html" class="checkout-button">
+                Tiến hành thanh toán
+            </a>
         </div>
     </div>
 </section>

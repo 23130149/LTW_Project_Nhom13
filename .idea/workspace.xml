@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Contact/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contact/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cart/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Favourite Products/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Favourite Products/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Header and Footer/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Header and Footer/Styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My Account/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/My Account/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/Payment/payment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangchitietsp/productdetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangchu/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangsanpham/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangsanpham/product.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +43,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/23130149/LTW_Project_Nhom13.git&quot;,
-    &quot;accountId&quot;: &quot;07b6ce7b-2f59-433e-a5e1-034ab0966969&quot;
+    &quot;accountId&quot;: &quot;89013973-7867-4bdd-9917-acc42f7fec08&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -43,32 +54,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;khanh&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "khanh",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -83,21 +95,7 @@
       <workItem from="1762773321474" duration="2852000" />
       <workItem from="1762783723165" duration="1425000" />
       <workItem from="1763091999688" duration="987000" />
-      <workItem from="1763202007081" duration="1456000" />
-      <workItem from="1763214650793" duration="606000" />
-      <workItem from="1763455684821" duration="974000" />
-      <workItem from="1763720083691" duration="69000" />
-      <workItem from="1763733000404" duration="2363000" />
     </task>
-    <task id="LOCAL-00001">
-      <option name="closed" value="true" />
-      <created>1763192503713</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1763192503713</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,27 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    scroll-behavior: smooth;
-}
-body{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    color: black;
-    overflow-x: hidden;
-    background: white;
-}
-a{
-    text-decoration: none;
-}
-button{
-    font-family: inherit;
-    cursor: pointer;
-}
-
 .container{
     max-width: 1200px;
     margin: 0 auto;
@@ -40,7 +16,7 @@ main.about-us-container {
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
-    padding-top: 150px;
+    padding-top: 60px;
     padding-bottom: 80px;
 }
 

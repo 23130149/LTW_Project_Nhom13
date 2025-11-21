@@ -1,38 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    scroll-behavior: smooth;
-}
-body{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    color: black;
-    overflow-x: hidden;
-    background: white;
-}
-a{
-    text-decoration: none;
-}
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-button{
-    font-family: inherit;
-    cursor: pointer;
-}
 .section__container {
     position: relative;
     width: 100%;
     height: calc(90vh);
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
-    margin-top: 120px
+    margin-top: 60px;
 }
 .slide-active {
     position: relative;
@@ -46,7 +18,6 @@ button{
     justify-content: center;
     text-align: center;
 }
-
 .slide-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -66,7 +37,7 @@ button{
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 .section-subtitle {
     font-size: 18px;
@@ -294,7 +265,7 @@ button{
     font-size: 44px;
     font-weight: 800;
     color: #11998e;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-transform: none;
     letter-spacing: 1px;
     text-align: center;
@@ -302,7 +273,7 @@ button{
 .story-subtitle{
     font-size: 18px;
     color: #888;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .story-content{
     display: flex;

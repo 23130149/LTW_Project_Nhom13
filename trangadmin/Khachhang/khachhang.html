@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="khachhang.css">
+</head>
+<body>
+<aside class="sliderbar">
+    <div class="slidebar-header">
+        <h2 class="logo">Handmade House</h2>
+    </div>
+    <nav class="slidebar-nav">
+        <ul>
+            <li><a href="../Tongquan/tongquan.html"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="../Sanpham/qlsanpham.html"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li><a href="../Donhang/donhang.html"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
+            <li class="active"><a href="../Khachhang/khachhang.html"><i class="bx bx-group"></i>Khách hàng</a></li>
+        </ul>
+    </nav>
+    <div class="logout">
+        <a href="../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
+    </div>
+</aside>
+<main class="main-content">
+    <header class="header">
+        <button class="menu-toggle" onclick="toggleSidebar"><i class="bx bx-menu"></i></button>
+        <h2>Khách hàng</h2>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm...">
+            <button><i class="bx bx-search"></i></button>
+        </div>
+        <div class="user-info">
+            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <div class="profile-admin">
+                <span class="admin-avatar">L</span>
+                <div class="user-details">
+                    <span class="user-name">Phan Đình Long</span>
+                    <span class="user-role">Quản trị viên</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="table-card">
+        <div class="card-header">
+            <h3 class="card-title">Quản lý khách hàng</h3>
+            <div class="table-actions">
+                <button class="btn view-all-btn">Thêm khách hàng</button>
+            </div>
+        </div>
+    </div>
+    <div class="order-table-container">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Khách hàng</th>
+                <th>Liên hệ</th>
+                <th>Số đơn</th>
+                <th>Tổng chi tiêu</th>
+                <th>Ngày tham gia</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="customer-info">
+                        <span class="customer-avatar">P</span>
+                        Nguyễn Thanh Phú
+                    </td>
+                    <td>0944912685</td>
+                    <td>28</td>
+                    <td>15.000.000đ</td>
+                    <td>28/12/2024</td>
+                    <td>
+                        <i class="bx bx-show-alt action-icon"></i>
+                        <i class='bx bx-history'></i>
+                        <i class="bx bx-trash action-icon"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="customer-info">
+                        <span class="customer-avatar">K</span>
+                        Lê Viết Khanh
+                    </td>
+                    <td>098573125</td>
+                    <td>14</td>
+                    <td>3.000.000đ</td>
+                    <td>30/4/2025</td>
+                    <td>
+                        <i class="bx bx-show-alt action-icon"></i>
+                        <i class='bx bx-history'></i>
+                        <i class="bx bx-trash action-icon"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="customer-info">
+                        <span class="customer-avatar">Q</span>
+                        Trần Hoàng Quân
+                    </td>
+                    <td>038757486</td>
+                    <td>20</td>
+                    <td>9.300.000đ</td>
+                    <td>12/1/2025</td>
+                    <td>
+                        <i class="bx bx-show-alt action-icon"></i>
+                        <i class='bx bx-history'></i>
+                        <i class="bx bx-trash action-icon"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="customer-info">
+                        <span class="customer-avatar">Đ</span>
+                        Nguyễn Lê Tiến Đạt
+                    </td>
+                    <td>0268565975</td>
+                    <td>3</td>
+                    <td>1.050.000đ</td>
+                    <td>2/10/2025</td>
+                    <td>
+                        <i class="bx bx-show-alt action-icon"></i>
+                        <i class='bx bx-history'></i>
+                        <i class="bx bx-trash action-icon"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="customer-info">
+                        <span class="customer-avatar">B</span>
+                        Nguyễn Huy Bảo
+                    </td>
+                    <td>095838756</td>
+                    <td>10</td>
+                    <td>2.500.000đ</td>
+                    <td>12/8/2025</td>
+                    <td>
+                        <i class="bx bx-show-alt action-icon"></i>
+                        <i class='bx bx-history'></i>
+                        <i class="bx bx-trash action-icon"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

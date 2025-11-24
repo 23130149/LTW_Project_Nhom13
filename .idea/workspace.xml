@@ -4,7 +4,62 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="" />
+    <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/css/account.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/blog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/cart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/chitietsp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/contact.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/dangky.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/dangnhap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/favourite.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/sanpham.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/trangchu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/blog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/chitietsp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/dangky.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/dangnhap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/favourite.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/payment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/sanpham.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/trangchu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Donhang/donhang.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contact/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contact/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Favourite Products/Index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Favourite Products/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/My Account/Index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment/payment.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment/payment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/Register/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/Register/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/SignIn/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/SignIn/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/admin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchu/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchu/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangchu/trangchu.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangsanpham/product.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangsanpham/product.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +74,13 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -33,6 +94,9 @@
     &quot;accountId&quot;: &quot;89013973-7867-4bdd-9917-acc42f7fec08&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -41,28 +105,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;quan&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "khanh",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -81,11 +145,22 @@
       <workItem from="1762745812647" duration="4462000" />
       <workItem from="1762773321474" duration="2852000" />
       <workItem from="1762783723165" duration="1425000" />
-      <workItem from="1763091999688" duration="652000" />
+      <workItem from="1763091999688" duration="987000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

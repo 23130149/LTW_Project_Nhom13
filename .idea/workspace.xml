@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Favourite Products/Index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Favourite Products/Style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/contact.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/favourite.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/favourite.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/payment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/trangchu.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/trangchu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Donhang/donhang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Merging phu",
+    "git-widget-placeholder": "phu",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
@@ -69,6 +69,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -76,8 +80,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.13" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.13" />
       </set>
     </attachedChunks>
   </component>
@@ -92,6 +96,12 @@
       <workItem from="1762773321474" duration="2852000" />
       <workItem from="1762783723165" duration="1425000" />
       <workItem from="1763091999688" duration="987000" />
+      <workItem from="1763836215475" duration="304000" />
+      <workItem from="1763837118622" duration="1393000" />
+      <workItem from="1764336474926" duration="47000" />
+      <workItem from="1765466781718" duration="1282000" />
+      <workItem from="1765469244543" duration="27000" />
+      <workItem from="1765597585812" duration="6903000" />
     </task>
     <servers />
   </component>

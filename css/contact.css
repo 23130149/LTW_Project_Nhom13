@@ -89,14 +89,7 @@
     border-radius: 8px;
 }
 
-.row {
-    display: flex;
-    gap: 20px;
-}
 
-.col {
-    flex: 1;
-}
 
 button {
     background: #000;

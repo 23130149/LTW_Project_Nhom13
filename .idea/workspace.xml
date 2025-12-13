@@ -5,60 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/account.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/blog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/cart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/chitietsp.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/contact.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/dangky.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/dangnhap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/favourite.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/sanpham.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/trangchu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/blog.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/chitietsp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/dangky.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/dangnhap.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/favourite.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/payment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/sanpham.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/trangchu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Donhang/donhang.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/Index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/Style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contact/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contact/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Favourite Products/Index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Favourite Products/Style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/My Account/Index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Payment/payment.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Payment/payment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/Register/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/Register/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/SignIn/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/SignIn/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/admin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchitietsp/productdetail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchu/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchu/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangchu/trangchu.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangsanpham/product.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangsanpham/product.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +60,6 @@
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "khanh",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",

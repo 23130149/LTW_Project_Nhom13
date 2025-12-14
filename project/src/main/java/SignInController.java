@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "SignIn", value = "/SignIn")
-public class SignIn extends HttpServlet {
+public class SignInController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

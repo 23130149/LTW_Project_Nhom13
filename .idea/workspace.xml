@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/project/src/main/java/SignIn.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/project/target/classes/SignIn.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/SignIn.jsp" afterDir="false" />
@@ -23,7 +22,6 @@
       <change beforePath="$PROJECT_DIR$/project/src/main/webapp/SignIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/SignIn.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" afterDir="false" />
-=======
 >>>>>>> d75e83017614551efd7d37b832c9799fa9ee96ca
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +63,6 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -276,7 +273,6 @@
       <workItem from="1762773321474" duration="2852000" />
       <workItem from="1762783723165" duration="1425000" />
       <workItem from="1763091999688" duration="987000" />
-<<<<<<< HEAD
       <workItem from="1765608446796" duration="766000" />
       <workItem from="1765609232714" duration="531000" />
       <workItem from="1765610009294" duration="3626000" />
@@ -317,7 +313,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-<<<<<<< HEAD
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cmd" />
   </component>

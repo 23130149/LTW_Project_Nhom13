@@ -233,23 +233,19 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding: 15px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: white;
+    padding: 15px 20px;
+    border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid #f1f1f1;
 }
 .search-customer-box {
     display: flex;
     align-items: center;
+    background: #f4f6fa;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px 10px;
-    background: #fff;
-    flex-grow: 1;
-    max-width: none;
-    height: 40px;
+    border-radius: 8px;
+    padding: 8px 15px;
+    width: 350px;
 }
 .search-customer-box i {
     color: #666;
@@ -263,18 +259,17 @@ a{
     background: transparent;
 }
 .filter-button-icon {
-    background: #fff;
-    color: #333;
+    height: 42px;
+    background: white;
     border: 1px solid #ddd;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 8px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
-    height: 40px;
     display: flex;
     align-items: center;
-    flex-shrink: 0;
-    transition: all 0.2s;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 15px;
 }
 .filter-button-icon:hover {
     background: #f0f0f0;
@@ -285,6 +280,7 @@ a{
 }
 .add-customer-btn {
     background: linear-gradient(to right, #11998e, #38ef7d);
+    height: 42px;
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -298,10 +294,7 @@ a{
     transition: background 0.2s;
 }
 .add-customer-btn:hover {
-    background: #ef387d;
-}
-.add-customer-btn i {
-    margin-right: 5px;
+    background: #11998e;
 }
 .order-table-container{
     overflow-x: auto;

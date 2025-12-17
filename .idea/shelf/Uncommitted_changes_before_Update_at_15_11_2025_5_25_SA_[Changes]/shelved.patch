@@ -1,0 +1,299 @@
+Index: html/payment.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Thanh Toán</title>\r\n    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>\r\n    <link rel=\"stylesheet\" href=\"../css/payment.css\">\r\n    <link rel=\"stylesheet\" href=\"../Header and Footer/Styles.css\">\r\n</head>\r\n<body>\r\n<header class=\"header\">\r\n    <div class=\"header-top-container\">\r\n        <div class=\"header-content\">\r\n            <div class=\"logo\">\r\n                <a href=\"../html/trangchu.html\">Handmade House</a>\r\n            </div>\r\n            <form class=\"search-form\" action=\"#\" method=\"GET\">\r\n                <input type=\"text\" class=\"search-input\" placeholder=\"Tìm kiếm bất cứ thứ gì...\" aria-label=\"Tìm kiếm sản phẩm\">\r\n                <button type=\"submit\" class=\"search-btn\">\r\n                    <i class=\"bx bx-search-alt-2\"></i>\r\n                </button>\r\n            </form>\r\n            <div class=\"icons\" >\r\n                <a href=\"../html/favourite.html\" class=\"icon-btn\" id=\"heartBtn\">\r\n                    <i class='bx  bx-heart'></i>\r\n                </a>\r\n                <a  href=\"../html/cart.html\" class=\"icon-btn\" id=\"cartBtn\">\r\n                    <i class='bx  bx-cart'></i>\r\n                </a>\r\n                <a href=\"../html/account.html\" class=\"icon-btn\" id=\"userBtn\">\r\n                    <i class='bx  bx-user'></i>\r\n                </a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"search-bar-section header-bottom-nav\">\r\n        <div class=\"container nav-only-container\">\r\n            <nav class=\"nav__links\" >\r\n                <ul>\r\n                    <li><a href=\"../html/trangchu.html\">Trang chủ</a></li>\r\n                    <li><a href=\"../html/sanpham.html\">Sản phẩm</a></li>\r\n                    <li><a href=\"../html/blog.html\">Blog</a></li>\r\n                    <li><a href=\"../html/contact.html\">Liên hệ</a></li>\r\n                </ul>\r\n            </nav>\r\n        </div>\r\n    </div>\r\n</header>\r\n<main class=\"checkout-container\">\r\n    <section class=\"shipping-info\">\r\n        <h2>\uD83D\uDCCD Địa Chỉ Nhận Hàng</h2>\r\n        <p><strong>Lê Khanh</strong> (+84) 964 429 619</p>\r\n        <p>Hẻm 962 Đường Bùi Hữu Nghĩa, Phường Hóa An, Thành Phố Biên Hòa, Đồng Nai</p>\r\n        <a href=\"#\" class=\"change-btn\">Thay đổi</a>\r\n    </section>\r\n\r\n    <section class=\"product-list\">\r\n        <h2>Sản phẩm</h2>\r\n        <div class=\"product-item\">\r\n            <img src=\"https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg\" alt=\"Móc khóa hình lá cờ\">\r\n            <div class=\"product-detail\">\r\n                <p class=\"product-name\">Móc khóa hình lá cờ</p>\r\n                <p class=\"product-type\">Phân loại: Lên, Vừa</p>\r\n            </div>\r\n            <p class=\"product-price\">45.000₫</p>\r\n            <p class=\"product-qty\">x3</p>\r\n            <p class=\"product-total\">45.000₫</p>\r\n        </div>\r\n    </section>\r\n\r\n    <section class=\"summary\">\r\n        <div class=\"summary-row\">\r\n            <span>Tổng tiền hàng</span>\r\n            <span>45.000₫</span>\r\n        </div>\r\n        <div class=\"summary-row\">\r\n            <span>Phí vận chuyển</span>\r\n            <span>15.000₫</span>\r\n        </div>\r\n        <div class=\"summary-row total\">\r\n            <span>Tổng thanh toán</span>\r\n            <span class=\"highlight\">60.000₫</span>\r\n        </div>\r\n        <button class=\"checkout-btn\">Đặt hàng</button>\r\n    </section>\r\n</main>\r\n\r\n<footer class=\"footer\">\r\n    <div class=\"container\">\r\n        <div class=\"footer-content\">\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-logo\">Handmade House</h3>\r\n                <p class=\"footer-desc\">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật và thủ công.</p>\r\n                <div class=\"social-links\">\r\n                    <a href=\"#\"><i class=\"bx bxl-facebook\"></i></a>\r\n                    <a href=\"#\"><i class=\"bx bxl-instagram\"></i></a>\r\n                    <a href=\"#\"><i class=\"bx bxl-tiktok\"></i></a>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Blog</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li> <a href=\"#\">Câu chuyện thương hiệu</a></li>\r\n                    <li> <a href=\"#\"> Giá trị & Triết lý thương hiệu</a></li>\r\n                    <li> <a href=\"#\">Quy trình sản xuất</a></li>\r\n                    <li> <a href=\"#\">Cam kết & Định hướng bền vững</a></li>\r\n                </ul>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Hỗ trợ</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li> <a href=\"#\">Chính sách đổi trả</a></li>\r\n                    <li> <a href=\"#\">Hướng dẫn đặt hàng</a></li>\r\n                    <li> <a href=\"#\">Phương thức thanh toán</a></li>\r\n                    <li> <a href=\"#\">Câu hỏi thường gặp</a></li>\r\n                </ul>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Liên hệ</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li>\uD83D\uDCCD Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</li>\r\n                    <li>\uD83D\uDCDE 0944912685</li>\r\n                    <li>\uD83D\uDCE7 handmadehouse23@handmade.vn</li>\r\n                    <li>\uD83D\uDD50 T2 - CN: 8:00 - 17:00</li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"footer-bottom\">\r\n            <p>@2025 Handmade. Tất cả quyền được bảo lưu.</p>\r\n        </div>\r\n    </div>\r\n</footer>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/html/payment.html b/html/payment.html
+--- a/html/payment.html	(revision 46499479f89280a04484acbb38f3918d5f8d0e2d)
++++ b/html/payment.html	(date 1763158751481)
+@@ -117,7 +117,6 @@
+                     <li> <a href="#">Câu hỏi thường gặp</a></li>
+                 </ul>
+             </div>
+-
+             <div class="footer-column">
+                 <h3 class="footer-title">Liên hệ</h3>
+                 <ul class="footer-links">
+Index: css/payment.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/css/payment.css b/css/payment.css
+--- a/css/payment.css	(revision 46499479f89280a04484acbb38f3918d5f8d0e2d)
++++ b/css/payment.css	(date 1763158719510)
+@@ -1,0 +1,120 @@
++* {
++    box-sizing: border-box;
++    margin: 0;
++    padding: 0;
++}
++html{
++    scroll-behavior: smooth;
++}
++body {
++    font-family: 'Poppins', sans-serif;
++    background: #fdfbfb;
++    color: #333;
++    padding-top: 150px;
++}
++a{
++    text-decoration: none;
++}
++button{
++    font-family: inherit;
++    cursor: pointer;
++}
++.checkout-container {
++    max-width: 900px;
++    margin: 0 auto 60px;
++    background: white;
++    border-radius: 12px;
++    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
++    padding: 30px;
++}
++
++.shipping-info {
++    border-bottom: 1px solid #eee;
++    margin-bottom: 20px;
++    padding-bottom: 15px;
++}
++.shipping-info h2 {
++    color: #11998e;
++    font-size: 18px;
++    margin-bottom: 8px;
++}
++.shipping-info .change-btn {
++    display: inline-block;
++    color: #38ef7d;
++    text-decoration: none;
++    font-weight: 600;
++    margin-top: 6px;
++}
++.shipping-info .change-btn:hover {
++    text-decoration: underline;
++}
++
++.product-list h2 {
++    margin-bottom: 15px;
++    color: #11998e;
++    font-size: 18px;
++}
++.product-item {
++    display: grid;
++    grid-template-columns: 80px 1fr 100px 50px 100px;
++    align-items: center;
++    gap: 10px;
++    border-bottom: 1px solid #eee;
++    padding: 15px 0;
++}
++.product-item img {
++    width: 80px;
++    height: 80px;
++    border-radius: 8px;
++    object-fit: cover;
++}
++.product-detail {
++    display: flex;
++    flex-direction: column;
++    gap: 4px;
++}
++.product-name {
++    font-weight: 600;
++}
++.product-type {
++    font-size: 14px;
++    color: #777;
++}
++.product-price, .product-qty, .product-total {
++    text-align: center;
++}
++
++.summary {
++    margin-top: 25px;
++    border-top: 1px solid #eee;
++    padding-top: 20px;
++}
++.summary-row {
++    display: flex;
++    justify-content: space-between;
++    margin: 8px 0;
++}
++.summary-row.total {
++    font-weight: 700;
++    font-size: 18px;
++}
++.summary-row .highlight {
++    color: #11998e;
++}
++.checkout-btn {
++    width: 100%;
++    margin-top: 20px;
++    background: linear-gradient(to right, #11998e, #38ef7d);
++    color: white;
++    border: none;
++    border-radius: 8px;
++    padding: 12px 0;
++    font-size: 16px;
++    font-weight: 600;
++    cursor: pointer;
++    transition: 0.3s;
++}
++.checkout-btn:hover {
++    transform: translateY(-2px);
++    background: linear-gradient(to right, #38ef7d, #11998e);
++}
+\ No newline at end of file
+Index: html/account.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"vi\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Tài khoản của tôi - Handmade House</title>\r\n    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>\r\n    <link rel=\"preconnect\" href=\"https://unsplash.com\">\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"../Header and Footer/Styles.css\">\r\n    <link rel=\"stylesheet\" href=\"../css/account.css\">\r\n</head>\r\n<body>\r\n<header class=\"header\">\r\n    <div class=\"header-top-container\">\r\n        <div class=\"header-content\">\r\n            <div class=\"logo\">\r\n                <a href=\"#\">Handmade House</a>\r\n            </div>\r\n            <form class=\"search-form\" action=\"#\" method=\"GET\">\r\n                <input type=\"text\" class=\"search-input\" placeholder=\"Tìm kiếm bất cứ thứ gì...\" aria-label=\"Tìm kiếm sản phẩm\">\r\n                <button type=\"submit\" class=\"search-btn\">\r\n                    <i class=\"bx bx-search-alt-2\"></i>\r\n                </button>\r\n            </form>\r\n            <div class=\"icons\" >\r\n                <button class=\"icon-btn\" id=\"heartBtn\">\r\n                    <i class='bx  bx-heart'    ></i>\r\n                </button>\r\n                <button class=\"icon-btn\" id=\"cartBtn\" >\r\n                    <i class='bx  bx-cart'    ></i>\r\n                </button>\r\n                <button class=\"icon-btn\" id=\"userBtn\">\r\n                    <i class='bx  bx-user'    ></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"search-bar-section header-bottom-nav\">\r\n        <div class=\"container nav-only-container\">\r\n            <nav class=\"nav__links\" >\r\n                <ul>\r\n                    <li><a href=\"../html/trangchu.html\">Trang chủ</a></li>\r\n                    <li><a href=\"../html/sanpham.html\">Sản phẩm</a></li>\r\n                    <li><a href=\"../html/blog.html\">Blog</a></li>\r\n                    <li><a href=\"../html/contact.html\">Liên hệ</a></li>\r\n                </ul>\r\n            </nav>\r\n        </div>\r\n    </div>\r\n</header>\r\n<main class=\"about-us-container\"> <h1>Tài khoản của tôi</h1>\r\n\r\n    <div class=\"account-info\">\r\n        <i class='bx bxs-user-circle'></i>\r\n        <h3>23130258@st.hcmuaf.edu.vn</h3>\r\n        <p>Xin chào, Quan!</p>\r\n    </div>\r\n\r\n    <ul class=\"account-menu\">\r\n        <li>\r\n            <a href=\"#\">\r\n                <i class='bx bx-receipt'></i>\r\n                <span>Lịch sử đơn hàng</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">\r\n                <i class='bx bx-edit-alt'></i>\r\n                <span>Thông tin cá nhân</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">\r\n                <i class='bx bx-lock-alt'></i>\r\n                <span>Đổi mật khẩu</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">\r\n                <i class='bx bx-map'></i>\r\n                <span>Sổ địa chỉ</span>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n\r\n    <div class=\"recent-orders-box\">\r\n        <h2>Đơn hàng gần đây</h2>\r\n        <table class=\"orders-table\">\r\n            <thead>\r\n            <tr>\r\n                <th>Mã đơn</th>\r\n                <th>Ngày đặt</th>\r\n                <th>Sản phẩm</th>\r\n                <th>Tổng tiền</th>\r\n                <th>Trạng thái</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr>\r\n                <td>#1205</td>\r\n                <td>05/11/2025</td>\r\n                <td>Nến thơm xương rồng (x1)</td>\r\n                <td>150.000đ</td>\r\n                <td><span class=\"status-delivered\">Đã giao</span></td>\r\n            </tr>\r\n            <tr>\r\n                <td>#1201</td>\r\n                <td>01/11/2025</td>\r\n                <td>Túi hoa Tulip (x2)</td>\r\n                <td>240.000đ</td>\r\n                <td><span class=\"status-delivered\">Đã giao</span></td>\r\n            </tr>\r\n            <tr>\r\n                <td>#1208</td>\r\n                <td>08/11/2025</td>\r\n                <td>Móc khóa lá cờ (x3)</td>\r\n                <td>45.000đ</td>\r\n                <td><span class=\"status-processing\">Đang xử lý</span></td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n        <a href=\"#\" class=\"view-all-orders\">Xem tất cả đơn hàng &rarr;</a>\r\n    </div>\r\n    <a href=\"../html/dangnhap.html\" class=\"btn-logout\">Đăng xuất</a>\r\n</main>\r\n<footer class=\"footer\">\r\n    <div class=\"container\">\r\n        <div class=\"footer-content\">\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-logo\">Handmade House</h3>\r\n                <p class=\"footer-desc\">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật và thủ công.</p>\r\n                <div class=\"social-links\">\r\n                    <a href=\"#\"><i class=\"bx bxl-facebook\"></i></a>\r\n                    <a href=\"#\"><i class=\"bx bxl-instagram\"></i></a>\r\n                    <a href=\"#\"><i class=\"bx bxl-tiktok\"></i></a>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Về chúng tôi</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li> <a href=\"#\">Câu chuyện thương hiệu</a></li>\r\n                    <li> <a href=\"#\">Nghệ nhân</a></li>\r\n                    <li> <a href=\"#\">Quy trình sản xuất</a></li>\r\n                    <li> <a href=\"#\">Tuyển dụng</a></li>\r\n                </ul>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Hỗ trợ</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li> <a href=\"#\">Chính sách đổi trả</a></li>\r\n                    <li> <a href=\"#\">Hướng dẫn đặt hàng</a></li>\r\n                    <li> <a href=\"#\">Phương thức thanh toán</a></li>\r\n                    <li> <a href=\"#\">Câu hỏi thường gặp</a></li>\r\n                </ul>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Liên hệ</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li>\uD83D\uDCCD Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</li>\r\n                    <li>\uD83D\uDCDE 0944912685</li>\r\n                    <li>\uD83D\uDCE7 handmadehouse23@handmade.vn</li>\r\n                    <li>\uD83D\uDD50 T2 - CN: 8:00 - 17:00</li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"footer-bottom\">\r\n            <p>@2025 Handmade. Tất cả quyền được bảo lưu.</p>\r\n        </div>\r\n    </div>\r\n</footer>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/html/account.html b/html/account.html
+--- a/html/account.html	(revision 46499479f89280a04484acbb38f3918d5f8d0e2d)
++++ b/html/account.html	(date 1763158812200)
+@@ -23,15 +23,15 @@
+                 </button>
+             </form>
+             <div class="icons" >
+-                <button class="icon-btn" id="heartBtn">
+-                    <i class='bx  bx-heart'    ></i>
+-                </button>
+-                <button class="icon-btn" id="cartBtn" >
+-                    <i class='bx  bx-cart'    ></i>
+-                </button>
+-                <button class="icon-btn" id="userBtn">
+-                    <i class='bx  bx-user'    ></i>
+-                </button>
++                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
++                    <i class='bx  bx-heart'></i>
++                </a>
++                <a  href="../html/cart.html" class="icon-btn" id="cartBtn">
++                    <i class='bx  bx-cart'></i>
++                </a>
++                <a href="../html/account.html" class="icon-btn" id="userBtn">
++                    <i class='bx  bx-user'></i>
++                </a>
+             </div>
+         </div>
+     </div>
+Index: html/cart.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"vi\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Giỏ Hàng</title>\r\n    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>\r\n    <link rel=\"stylesheet\" href=\"../css/cart.css\">\r\n    <link rel=\"stylesheet\" href=\"../Header and Footer/Styles.css\">\r\n\r\n</head>\r\n<body>\r\n<header class=\"header\">\r\n    <div class=\"header-top-container\">\r\n        <div class=\"header-content\">\r\n            <div class=\"logo\">\r\n                <a href=\"../html/trangchu.html\">Handmade House</a>\r\n            </div>\r\n            <form class=\"search-form\" action=\"#\" method=\"GET\">\r\n                <input type=\"text\" class=\"search-input\" placeholder=\"Tìm kiếm bất cứ thứ gì...\" aria-label=\"Tìm kiếm sản phẩm\">\r\n                <button type=\"submit\" class=\"search-btn\">\r\n                    <i class=\"bx bx-search-alt-2\"></i>\r\n                </button>\r\n            </form>\r\n            <div class=\"icons\" >\r\n                <a href=\"../html/favourite.html\" class=\"icon-btn\" id=\"heartBtn\">\r\n                    <i class='bx  bx-heart'></i>\r\n                </a>\r\n                <a  href=\"../html/cart.html\" class=\"icon-btn\" id=\"cartBtn\">\r\n                    <i class='bx  bx-cart'></i>\r\n                </a>\r\n                <a href=\"../html/account.html\" class=\"icon-btn\" id=\"userBtn\">\r\n                    <i class='bx  bx-user'></i>\r\n                </a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"search-bar-section header-bottom-nav\">\r\n        <div class=\"container nav-only-container\">\r\n            <nav class=\"nav__links\" >\r\n                <ul>\r\n                    <li><a href=\"../html/trangchu.html\">Trang chủ</a></li>\r\n                    <li><a href=\"../html/sanpham.html\">Sản phẩm</a></li>\r\n                    <li><a href=\"../html/blog.html\">Blog</a></li>\r\n                    <li><a href=\"../html/contact.html\">Liên hệ</a></li>\r\n                </ul>\r\n            </nav>\r\n        </div>\r\n    </div>\r\n</header>\r\n<section class=\"cart-page\">\r\n    <div class=\"cart-header\">\r\n        <h1><i class='bx bx-cart'></i> Giỏ Hàng Của Bạn</h1>\r\n    </div>\r\n\r\n    <div class=\"cart-container\">\r\n        <div class=\"cart-items\">\r\n            <div class=\"cart-item\">\r\n                <img src=\"https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg\" alt=\"Móc Khóa Lá Cờ Việt Nam\">\r\n\r\n                <div class=\"product-info\">\r\n                    <div class=\"product-name\">Móc Khóa Lá Cờ Việt Nam</div>\r\n                    <div class=\"product-descr\">Chiếc móc len tự hào và yêu nước</div>\r\n                </div>\r\n\r\n                <div class=\"qty-price\">\r\n                    <div class=\"qty-control\">\r\n                        <button>-</button>\r\n                        <span>1</span>\r\n                        <button>+</button>\r\n                    </div>\r\n                    <div class=\"product-price\">15.000đ</div>\r\n                </div>\r\n\r\n                <i class='bx bx-trash'></i>\r\n            </div>\r\n\r\n            <div class=\"cart-item\">\r\n                <img src=\"https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg\" alt=\"Nến Thơm Xương Rồng\">\r\n\r\n                <div class=\"product-info\">\r\n                    <div class=\"product-name\">Nến Thơm Xương Rồng</div>\r\n                    <div class=\"product-descr\">Một chậu nến thơm đáng iu</div>\r\n                </div>\r\n\r\n                <div class=\"qty-price\">\r\n                    <div class=\"qty-control\">\r\n                        <button>-</button>\r\n                        <span>1</span>\r\n                        <button>+</button>\r\n                    </div>\r\n                    <div class=\"product-price\">150.000đ</div>\r\n                </div>\r\n\r\n                <i class='bx bx-trash'></i>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"cart-total\">\r\n            <h3>Đơn Hàng Của Bạn</h3>\r\n            <div class=\"line\"><span>Tổng tiền</span><span>165.000đ</span></div>\r\n            <div class=\"line\"><span>Phí vận chuyển</span><span>Miễn phí</span></div>\r\n            <div class=\"line\"><span>Giảm giá:</span><span>0đ</span></div>\r\n            <div class=\"voucher\">\r\n                <input type=\"text\" placeholder=\"Nhập mã giảm giá\">\r\n                <button>Áp dụng</button>\r\n            </div>\r\n            <button class=\"checkout-btn\" type=\"submit\">Tiến hành thanh toán</button>\r\n        </div>\r\n    </div>\r\n</section>\r\n<footer class=\"footer\">\r\n    <div class=\"container\">\r\n        <div class=\"footer-content\">\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-logo\">Handmade House</h3>\r\n                <p class=\"footer-desc\">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật và thủ công.</p>\r\n                <div class=\"social-links\">\r\n                    <a href=\"#\"><i class=\"bx bxl-facebook\"></i></a>\r\n                    <a href=\"#\"><i class=\"bx bxl-instagram\"></i></a>\r\n                    <a href=\"#\"><i class=\"bx bxl-tiktok\"></i></a>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Blog</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li> <a href=\"#\">Câu chuyện thương hiệu</a></li>\r\n                    <li> <a href=\"#\"> Giá trị & Triết lý thương hiệu</a></li>\r\n                    <li> <a href=\"#\">Quy trình sản xuất</a></li>\r\n                    <li> <a href=\"#\">Cam kết & Định hướng bền vững</a></li>\r\n                </ul>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Hỗ trợ</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li> <a href=\"#\">Chính sách đổi trả</a></li>\r\n                    <li> <a href=\"#\">Hướng dẫn đặt hàng</a></li>\r\n                    <li> <a href=\"#\">Phương thức thanh toán</a></li>\r\n                    <li> <a href=\"#\">Câu hỏi thường gặp</a></li>\r\n                </ul>\r\n            </div>\r\n\r\n            <div class=\"footer-column\">\r\n                <h3 class=\"footer-title\">Liên hệ</h3>\r\n                <ul class=\"footer-links\">\r\n                    <li>\uD83D\uDCCD Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</li>\r\n                    <li>\uD83D\uDCDE 0944912685</li>\r\n                    <li>\uD83D\uDCE7 handmadehouse23@handmade.vn</li>\r\n                    <li>\uD83D\uDD50 T2 - CN: 8:00 - 17:00</li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"footer-bottom\">\r\n            <p>@2025 Handmade. Tất cả quyền được bảo lưu.</p>\r\n        </div>\r\n    </div>\r\n</footer>\r\n\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/html/cart.html b/html/cart.html
+--- a/html/cart.html	(revision 46499479f89280a04484acbb38f3918d5f8d0e2d)
++++ b/html/cart.html	(date 1763159056584)
+@@ -104,7 +104,7 @@
+                 <input type="text" placeholder="Nhập mã giảm giá">
+                 <button>Áp dụng</button>
+             </div>
+-            <button class="checkout-btn" type="submit">Tiến hành thanh toán</button>
++            <button class="checkout-btn" type="submit"><a href="../html/payment.html"></a>Tiến hành thanh toán</button>
+         </div>
+     </div>
+ </section>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e594d094-e637-4761-8e2e-b739081103d2\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"CSS File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;23130149&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/23130149/LTW_Project_Nhom13.git&quot;,\r\n    &quot;accountId&quot;: &quot;89013973-7867-4bdd-9917-acc42f7fec08&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"35GoUiU87YMEdtWVH11PvRWq3xy\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1\": \"true\",\r\n    \"com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1\": \"true\",\r\n    \"git-widget-placeholder\": \"phu\",\r\n    \"junie.onboarding.icon.badge.shown\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"to.speed.mode.migration.done\": \"true\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e594d094-e637-4761-8e2e-b739081103d2\" name=\"Changes\" comment=\"\" />\r\n      <created>1762745806047</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1762745806047</updated>\r\n      <workItem from=\"1762745812647\" duration=\"4462000\" />\r\n      <workItem from=\"1762773321474\" duration=\"2852000\" />\r\n      <workItem from=\"1762783723165\" duration=\"1425000\" />\r\n      <workItem from=\"1763091999688\" duration=\"987000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 46499479f89280a04484acbb38f3918d5f8d0e2d)
++++ b/.idea/workspace.xml	(date 1763158935989)
+@@ -4,35 +4,20 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="" />
++    <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/payment.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/html/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/account.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/html/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/payment.html" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="HTML File" />
+-        <option value="CSS File" />
+-      </list>
+-    </option>
+-  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;23130149&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/23130149/LTW_Project_Nhom13.git&quot;,
+-    &quot;accountId&quot;: &quot;89013973-7867-4bdd-9917-acc42f7fec08&quot;
+-  }
+-}</component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 4
+ }</component>
+@@ -43,22 +28,19 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+-    "DefaultHtmlFileTemplate": "HTML File",
+     "ModuleVcsDetector.initialDetectionPerformed": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+     "RunOnceActivity.git.unshallow": "true",
+     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+-    "git-widget-placeholder": "phu",
++    "git-widget-placeholder": "Merging phu",
+     "junie.onboarding.icon.badge.shown": "true",
+     "kotlin-language-version-configured": "true",
+-    "list.type.of.created.stylesheet": "CSS",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+     "to.speed.mode.migration.done": "true",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -66,8 +48,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
++        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
++        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -79,9 +61,6 @@
+       <option name="presentableId" value="Default" />
+       <updated>1762745806047</updated>
+       <workItem from="1762745812647" duration="4462000" />
+-      <workItem from="1762773321474" duration="2852000" />
+-      <workItem from="1762783723165" duration="1425000" />
+-      <workItem from="1763091999688" duration="987000" />
+     </task>
+     <servers />
+   </component>

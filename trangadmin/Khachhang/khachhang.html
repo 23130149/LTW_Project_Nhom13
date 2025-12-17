@@ -161,5 +161,43 @@
             </table>
         </div>
     </main>
+    <div id="customerModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Chi Tiết Khách Hàng</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div id="customerDetailBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="addCustomerModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Thêm Khách Hàng Mới</h3>
+                <span class="close-add-modal">&times;</span>
+            </div>
+            <form id="addCustomerForm">
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="newCustName" required>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" id="newCustPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Loại khách hàng</label>
+                    <select id="newCustType">
+                        <option value="type-moi">Mới</option>
+                        <option value="type-thuongxuyen">Thường xuyên</option>
+                        <option value="type-vip">Vip</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-save">Lưu khách hàng</button>
+            </form>
+        </div>
+    </div>
+    <script src="khachhang.js"></script>
     </body>
     </html>

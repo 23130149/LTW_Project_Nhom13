@@ -44,16 +44,23 @@ a{
 .slidebar-nav ul{
     list-style: none;
 }
+.slidebar-nav li {
+    margin-bottom: 1px;
+    position: relative;
+}
 .slidebar-nav li a{
     display: flex;
     align-items: center;
     padding: 12px 20px;
     transition: background-color 0.3s;
-    position: relative;
+    width: 100%;
+    height: 100%;
+    color: white;
 }
 .slidebar-nav i{
     margin-right: 15px;
     font-size: 21px;
+    min-width: 25px;
 }
 .slidebar-nav li.active{
     background-color: #ffffff;
@@ -85,7 +92,7 @@ a{
 .main-content{
     flex-grow: 1;
     margin-left: 250px;
-    padding: 100px 30px 30px;
+    padding: 0 30px 30px;
 }
 .header{
     background: white;
@@ -373,4 +380,68 @@ a{
 }
 .action-icon:hover{
     background: #edf2f7;
+}
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+.modal-content {
+    background: #fff;
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+.btn-save {
+    width: 100%;
+    padding: 10px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+.toast {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    animation: slideIn 0.3s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }

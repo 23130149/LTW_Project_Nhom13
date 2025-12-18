@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="project:war" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="0fb408e2-2fb2-4a6e-8535-b74d0d323717" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/trangadmin/Caidat/caidat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Donhang/donhang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.js" afterDir="false" />
+    <list default="true" id="46ee0364-c0e7-4222-8a92-33bc24ce9a73" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Caidat/caidat.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Caidat/caidat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Donhang/donhang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Donhang/donhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.css" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" afterDir="false" />
-    <list default="true" id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" beforeDir="false" afterPath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,19 +20,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-
+        <option value="Servlet" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-
-
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
@@ -62,55 +42,15 @@
     &quot;accountId&quot;: &quot;89013973-7867-4bdd-9917-acc42f7fec08&quot;
   }
 }</component>
-
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
   <component name="ProjectColorInfo">{
-
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="36xjKN1zDWqi5XFLKw2I8etd9En" />
-
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="35GoUiU87YMEdtWVH11PvRWq3xy" />
-
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
   </component>
-
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "phu",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/LTW_Project_Nhom13",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.13" />
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.13" />
-
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -118,54 +58,153 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+&lt;
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Merging phu&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\TH-LTW\LogIn\demo\src\main\web" />
+      <recent name="D:\TH-LTW\LogIn\demo\src\main\webapp" />
+      <recent name="D:\TH-LTW\LogIn\demo\src\main" />
+      <recent name="D:\TH-LTW\LogIn\demo\web" />
+      <recent name="D:\TH-LTW\LogIn\demo\src\main\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationStatuses">
       <map>
         <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
           <value>
             <map>
-              <entry key="Tomcat 10" value="STOPPED" />
+              <entry key="Tomcat" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
-
-      </set>
-    </attachedChunks>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="demo" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.502" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="project:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/project_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="e5ee5e98-bf8a-46ca-9598-642cd6414a2c" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="56427" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="demo:war" />
+          <artifact name="demo:war exploded" />
+          <artifact name="project:war" />
+        </option>
+      </method>
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-
-      <changelist id="0fb408e2-2fb2-4a6e-8535-b74d0d323717" name="Changes" comment="" />
-      <created>1765955070250</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1765955070250</updated>
-      <workItem from="1765955083871" duration="132000" />
-      <workItem from="1765955310110" duration="8626000" />
-
       <changelist id="e594d094-e637-4761-8e2e-b739081103d2" name="Changes" comment="" />
       <created>1762745806047</created>
       <option name="number" value="Default" />
@@ -175,11 +214,55 @@
       <workItem from="1762773321474" duration="2852000" />
       <workItem from="1762783723165" duration="1425000" />
       <workItem from="1763091999688" duration="987000" />
-
+      <workItem from="1765608446796" duration="766000" />
+      <workItem from="1765609232714" duration="531000" />
+      <workItem from="1765610009294" duration="3626000" />
+      <workItem from="1765613663212" duration="2544000" />
+      <workItem from="1765680660571" duration="6339000" />
+      <workItem from="1765690393046" duration="401000" />
+      <workItem from="1765690820876" duration="97000" />
+      <workItem from="1765691002395" duration="1325000" />
+      <workItem from="1765692347553" duration="82000" />
+      <workItem from="1765692440164" duration="136000" />
+      <workItem from="1765692595627" duration="331000" />
+      <workItem from="1765692944156" duration="209000" />
+      <workItem from="1765693266662" duration="66000" />
+      <workItem from="1765693417579" duration="251000" />
+      <workItem from="1765693684019" duration="116000" />
+      <workItem from="1765693811861" duration="337000" />
+      <workItem from="1765694166665" duration="115000" />
+      <workItem from="1765694298811" duration="83000" />
+      <workItem from="1765694390555" duration="152000" />
+      <workItem from="1765694551082" duration="735000" />
+      <workItem from="1765696190831" duration="234000" />
+      <workItem from="1765696448576" duration="355000" />
+      <workItem from="1765696814956" duration="67000" />
+      <workItem from="1765696910172" duration="163000" />
+      <workItem from="1765697092963" duration="143000" />
+      <workItem from="1765697248128" duration="71000" />
+      <workItem from="1765697346034" duration="255000" />
+      <workItem from="1765697624551" duration="539000" />
+      <workItem from="1765698252277" duration="1150000" />
+      <workItem from="1765699417813" duration="12000" />
+      <workItem from="1765719018422" duration="525000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.cmd" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

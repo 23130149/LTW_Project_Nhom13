@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Admin - Quản lý sản phẩm</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="qlsanpham.css">
 </head>
@@ -18,6 +18,7 @@
                 <li><a href="../Donhang/donhang.html"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
                 <li><a href="../Khachhang/khachhang.html"><i class="bx bx-group"></i>Khách hàng</a></li>
                 <li><a href="../Danhgia/danhgia.html"><i class="bx bx-star"></i>Đánh giá</a></li>
+                <li><a href="../Caidat/caidat.html"><i class="bx bx-cog"></i>Cài đặt</a></li>
             </ul>
         </nav>
         <div class="logout">
@@ -26,7 +27,6 @@
     </aside>
     <main class="main-content">
         <header class="header">
-            <button class="menu-toggle" onclick="toggleSidebar"><i class="bx bx-menu"></i></button>
             <h2>Sản phẩm</h2>
             <div class="search-box">
                 <input type="text" placeholder="Tìm kiếm...">
@@ -77,18 +77,13 @@
                 </div>
             </div>
         </div>
-        <div class="table-card">
-            <div class="card-header">
-                <h3 class="card-title">Quản lý sản phẩm</h3>
-                <div class="table-actions">
-                    <select class="chart-filter">
-                        <option>Tất cả</option>
-                        <option>Còn hàng</option>
-                        <option>Hết hàng</option>
-                    </select>
-                    <button class="btn view-all-btn">Thêm sản phẩm</button>
-                </div>
+        <div class="search-filter-row">
+            <div class="search-review-box">
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
             </div>
+            <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
+            <button class="view-all-btn"><i class="bx bx-plus"></i>Thêm sản phẩm</button>
         </div>
         <div class="order-table-container">
             <table class="data-table">
@@ -98,8 +93,8 @@
                     <th>Tên sản phẩm</th>
                     <th>Giá bán</th>
                     <th>Tồn kho</th>
+                    <th>Đã bán</th>
                     <th>Trạng thái</th>
-                    <th>Ngày đặt</th>
                     <th>Thao tác</th>
                 </tr>
                 </thead>
@@ -108,12 +103,12 @@
                     <td>#DH001</td>
                     <td>Ốp lưng điện thoại</td>
                     <td>89.000đ</td>
-                    <td>150</td>
+                    <td>18</td>
+                    <td>29  </td>
                     <td><span class="status status-completed">Còn hàng</span></td>
-                    <td>15/10/2025</td>
                     <td>
-                        <i class="bx bx-pencil action-icon"></i>
-                        <i class="bx bx-trash action-icon"></i>
+                       <button class="action-icon"><i class="bx bx-pencil"></i></button>
+                        <button class="action-icon"><i class="bx bx-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -121,52 +116,77 @@
                     <td>Móc khóa lá cờ Việt Nam</td>
                     <td>15.000đ</td>
                     <td>0</td>
+                    <td>41</td>
                     <td><span class="status status-pending">Hết hàng</span></td>
-                    <td>2/9/2025</td>
                     <td>
-                        <i class="bx bx-pencil action-icon"></i>
-                        <i class="bx bx-trash action-icon"></i>
+                        <button class="action-icon"><i class="bx bx-pencil"></i></button>
+                        <button class="action-icon"><i class="bx bx-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>#DH003</td>
                     <td>Nến thơm xương rồng</td>
                     <td>150.000đ</td>
-                    <td>120</td>
+                    <td>18</td>
+                    <td>29</td>
                     <td><span class="status status-completed">Còn hàng</span></td>
-                    <td>17/9/2025</td>
                     <td>
-                        <i class="bx bx-pencil action-icon"></i>
-                        <i class="bx bx-trash action-icon"></i>
+                        <button class="action-icon"><i class="bx bx-pencil"></i></button>
+                        <button class="action-icon"><i class="bx bx-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>#DH004</td>
                     <td>Kẹp tóc hoa dâu tây nhí</td>
                     <td>30.000đ</td>
-                    <td>80</td>
+                    <td>10</td>
+                    <td>41</td>
                     <td><span class="status status-completed">Còn hàng</span></td>
-                    <td>10/10/2025</td>
                     <td>
-                        <i class="bx bx-pencil action-icon"></i>
-                        <i class="bx bx-trash action-icon"></i>
+                        <button class="action-icon"><i class="bx bx-pencil"></i></button>
+                        <button class="action-icon"><i class="bx bx-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>#DH005</td>
                     <td>Túi hoa Tulip</td>
                     <td>120.000đ</td>
+                    <td>5</td>
                     <td>30</td>
-                    <td><span class="status status-pending">Hết hàng</span></td>
-                    <td>12/11/2025</td>
+                    <td><span class="status status-warning">Sắp hết</span></td>
                     <td>
-                        <i class="bx bx-pencil action-icon"></i>
-                        <i class="bx bx-trash action-icon"></i>
+                        <button class="action-icon"><i class="bx bx-pencil"></i></button>
+                        <button class="action-icon"><i class="bx bx-trash"></i></button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </main>
+    <div id="toast-container"></div>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modalTitle">Thông tin sản phẩm</h3>
+            <form id="productForm">
+                <div class="form-group">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" id="prodName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Giá bán</label>
+                        <input type="text" id="prodPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tồn kho</label>
+                        <input type="number" id="prodStock" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-save">Lưu dữ liệu</button>
+            </form>
+        </div>
+</div>
+<script src="qlsanpham.js"></script>
 </body>
 </html>

@@ -1,2 +1,4 @@
-git rm -r --cached target
-.idea/workspace.xml
+.idea/
+target/
+*.class
+*.war

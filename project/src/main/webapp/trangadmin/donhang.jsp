@@ -1,10 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/trangadmin/Donhang/donhang.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý đơn hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="donhang.css">
 </head>
 <body>
 <aside class="sliderbar">
@@ -23,7 +25,7 @@
         </ul>
     </nav>
     <div class="logout">
-        <a href="../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
+        <a href="../../../../../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
     </div>
 </aside>
 <main class="main-content">
@@ -59,7 +61,7 @@
         <div class="action-group">
             <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
             <button class="view-all-btn"><i class="bx bx-download"></i>In hóa đơn</button>
-            </div>
+        </div>
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -140,19 +142,19 @@
         </table>
     </div>
 </main>
-    <div id="toast-container"></div>
+<div id="toast-container"></div>
 
-    <div id="orderDetailModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h3>Chi Tiết Hóa Đơn</h3>
-            <hr>
-            <div id="orderDetailBody"></div>
-            <div class="modal-footer">
-                <button onclick="window.print()" class="btn-print">In hóa đơn</button>
-            </div>
+<div id="orderDetailModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Chi Tiết Hóa Đơn</h3>
+        <hr>
+        <div id="orderDetailBody"></div>
+        <div class="modal-footer">
+            <button onclick="window.print()" class="btn-print">In hóa đơn</button>
         </div>
     </div>
-<script src="donhang.js"></script>
+</div>
+<script src="${pageContext.request.contextPath}/trangadmin/Donhang/donhang.js"></script>
 </body>
 </html>

@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/dangky.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
   <meta charset="UTF-8">
   <title>Đăng Ký</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

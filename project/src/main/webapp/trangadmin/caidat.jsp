@@ -1,10 +1,13 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/trangadmin/Caidat/caidat.css">
     <meta charset="UTF-8">
     <title>Admin - Cài đặt</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="caidat.css">
 </head>
 <body>
 <aside class="sliderbar">
@@ -22,7 +25,7 @@
         </ul>
     </nav>
     <div class="logout">
-        <a href="../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
+        <a href="../../../../../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
     </div>
 </aside>
 <main class="main-content">
@@ -135,11 +138,11 @@
             <div class="button-row">
                 <button class="btn-password">Đổi mật khẩu</button>
             </div>
-         </section>
+        </section>
     </div>
 </main>
 
-<script src="caidat.js"></script>
+<script src="${pageContext.request.contextPath}/trangadmin/Caidat/caidat.js"></script>
 
 </body>
 </html>

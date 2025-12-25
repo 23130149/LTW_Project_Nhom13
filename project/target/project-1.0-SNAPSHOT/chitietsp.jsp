@@ -4,6 +4,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/chitietsp.css">
+    <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
     <title>Chi tiết sản phẩm</title>

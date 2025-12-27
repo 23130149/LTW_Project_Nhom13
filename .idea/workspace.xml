@@ -10,16 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f262c208-a5db-4d27-a8e4-7b814ada05a2" name="Changes" comment="Merge branch 'main' of https://github.com/23130149/LTW_Project_Nhom13 into login&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/project/src/main/controller/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/controller/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/controller/SignInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/webapp/Register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/Register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/HelloServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/HelloServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/webapp/SignIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/SignIn.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/classes/SignInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/SignInController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/HelloServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/HelloServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/SignInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/SignInController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +32,8 @@
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="Servlet" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>

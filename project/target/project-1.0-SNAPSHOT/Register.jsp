@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <title>Đăng Ký</title>
@@ -23,7 +23,9 @@
 <div class="wrapper">
 
   <!-- FORM ĐĂNG KÝ -->
-  <form action="RegisterController" method="post" id="registerForm">
+  <form action="${pageContext.request.contextPath}/Register"
+        method="post" id="registerForm">
+
     <h1>Đăng Ký</h1>
 
     <div class="input-box">
@@ -46,14 +48,15 @@
       <p id="passwordMsg" class="msg"></p>
 
       <div class="input-field">
-        <input type="password" placeholder="Xác Nhận Mật Khẩu"
+        <input type="password"
+               placeholder="Xác Nhận Mật Khẩu"
                name="confirmPassword" required>
         <i class='bx bx-lock'></i>
       </div>
       <p id="confirmMsg" class="msg"></p>
     </div>
 
-    <!-- CHECKBOX ĐIỀU KHOẢN -->
+    <!-- CHECKBOX -->
     <div class="term">
       <label>
         <input type="checkbox" id="agree" required>
@@ -64,12 +67,13 @@
     <button type="submit" class="btn">Đăng Ký</button>
   </form>
 
-  <!-- BOX ĐĂNG KÝ THÀNH CÔNG -->
+  <!-- ĐĂNG KÝ THÀNH CÔNG -->
   <div id="successMessage"
        style="display:none; text-align:center; padding:20px 0;">
     <h1>Đăng ký thành công!</h1>
     <p style="margin:20px 0;">Vui lòng Đăng Nhập để tiếp tục.</p>
-    <a href="SignIn.jsp" class="btn"
+    <a href="${pageContext.request.contextPath}/Signin.jsp"
+       class="btn"
        style="text-decoration:none; display:inline-block;
                   line-height:45px; width:100%;">
       Đăng Nhập
@@ -99,10 +103,11 @@
       el.style.color = ok ? "green" : "red";
     }
 
-    // Họ tên: viết hoa chữ cái đầu mỗi từ
+    // Họ tên viết hoa chữ cái đầu
     fullName.addEventListener("input", () => {
       const regex = /^([A-ZÀ-Ỹ][a-zà-ỹ]+)(\s[A-ZÀ-Ỹ][a-zà-ỹ]+)*$/;
-      showMsg(nameMsg,
+      showMsg(
+              nameMsg,
               "Viết hoa chữ cái đầu mỗi từ (VD: Trần Hoàng Quân)",
               regex.test(fullName.value.trim())
       );
@@ -110,7 +115,8 @@
 
     // Email Gmail
     email.addEventListener("input", () => {
-      showMsg(emailMsg,
+      showMsg(
+              emailMsg,
               "Email phải kết thúc bằng @gmail.com",
               email.value.endsWith("@gmail.com")
       );
@@ -126,7 +132,8 @@
               /[^A-Za-z0-9]/.test(v) &&
               v.length >= 8;
 
-      showMsg(passwordMsg,
+      showMsg(
+              passwordMsg,
               "Ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt",
               ok
       );
@@ -134,7 +141,8 @@
 
     // Confirm password
     confirmPassword.addEventListener("input", () => {
-      showMsg(confirmMsg,
+      showMsg(
+              confirmMsg,
               "Mật khẩu xác nhận phải trùng khớp",
               confirmPassword.value === password.value &&
               confirmPassword.value !== ""
@@ -143,6 +151,7 @@
 
     // Submit
     form.addEventListener("submit", function (e) {
+
       if (
               nameMsg.style.color !== "green" ||
               emailMsg.style.color !== "green" ||
@@ -154,8 +163,7 @@
         return;
       }
 
-      // demo frontend thành công
-      e.preventDefault();
+      // demo frontend thành công (KHÔNG chặn servlet)
       form.style.display = "none";
       successMessage.style.display = "block";
     });

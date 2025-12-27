@@ -1,2 +1,9 @@
-git rm -r --cached target
-.idea/workspace.xml
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Logs
+*.log

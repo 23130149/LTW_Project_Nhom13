@@ -2,148 +2,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/dangky.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
   <meta charset="UTF-8">
   <title>Đăng Ký</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/css/dangky.css">
+  <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
   <style>
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #11998e, #38ef7d);
-    }
-
-    .wrapper{
-      width: 420px;
-      background:white;
-      border: 2px solid rgba(0,0,0,1);
-      color:black;
-      border-radius: 10px;
-      padding: 30px 40px;
-    }
-
-    .wrapper h1{
-      text-align: center;
-      font-size: 30px;
-      color: black;
-      margin-bottom: 25px;
-    }
-
-    .wrapper .input-box .input-field{
-      width: 100%;
-      height: 50px;
-      margin: 15px 0;
-      position: relative;
-    }
-
-    .input-box input{
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      outline: none;
-      border: 2px solid rgba(0,0,0,1);
-      border-radius: 40px;
-      color: black;
-      padding: 0 25px 0 20px;
-    }
-    .input-box input::placeholder{
-      color: black;
-    }
-    .input-box i   {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 20px;
-    }
-    .wrapper .term {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14.5px;
-      margin: 4px 0 15px;
-    }
-    .term label input{
-      accent-color: Black;
-      margin-right: 3px;
-    }
-    .term a{
-      text-decoration: none;
-      color: Black;
-    }
-    .wrapper .btn{
-      width: 100%;
-      height: 45px;
-      background: linear-gradient(135deg, #11998e, #38ef7d);
-      border: none;
-      outline: none;
-      border-radius: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-      font-size: 20px;
-      color: white;
-      font-weight: 600;
+    .msg {
+      font-size: 13px;
+      margin: 4px 10px;
     }
   </style>
 </head>
+
 <body>
 <div class="wrapper">
+
+  <!-- FORM ĐĂNG KÝ -->
   <form action="RegisterController" method="post" id="registerForm">
     <h1>Đăng Ký</h1>
+
     <div class="input-box">
       <div class="input-field">
         <input type="text" placeholder="Họ Tên" name="fullName" required>
         <i class='bx bx-user'></i>
       </div>
+      <p id="nameMsg" class="msg"></p>
+
       <div class="input-field">
         <input type="email" placeholder="Email" name="email" required>
         <i class='bx bx-envelope-alt'></i>
       </div>
+      <p id="emailMsg" class="msg"></p>
+
       <div class="input-field">
         <input type="password" placeholder="Mật khẩu" name="password" required>
         <i class='bx bx-lock'></i>
       </div>
+      <p id="passwordMsg" class="msg"></p>
+
       <div class="input-field">
-        <input type="password" placeholder="Xác Nhận Mật Khẩu" name="confirmPassword" required>
+        <input type="password" placeholder="Xác Nhận Mật Khẩu"
+               name="confirmPassword" required>
         <i class='bx bx-lock'></i>
       </div>
+      <p id="confirmMsg" class="msg"></p>
     </div>
+
+    <!-- CHECKBOX ĐIỀU KHOẢN -->
     <div class="term">
-      <label><input type="checkbox" required> Tôi đồng ý với điều khoản và điều kiện trong thỏa thuận</label>
+      <label>
+        <input type="checkbox" id="agree" required>
+        Tôi đồng ý với điều khoản và điều kiện trong thỏa thuận
+      </label>
     </div>
+
     <button type="submit" class="btn">Đăng Ký</button>
   </form>
 
-  <div id="successMessage" style="display: none; text-align: center; padding: 20px 0;">
+  <!-- BOX ĐĂNG KÝ THÀNH CÔNG -->
+  <div id="successMessage"
+       style="display:none; text-align:center; padding:20px 0;">
     <h1>Đăng ký thành công!</h1>
-    <p style="margin: 20px 0;">Vui lòng Đăng Nhập để tiếp tục.</p>
-    <a href="SignIn.jsp" class="btn" style="text-decoration: none; display: inline-block; line-height: 45px; width: 100%;">Đăng Nhập</a>
+    <p style="margin:20px 0;">Vui lòng Đăng Nhập để tiếp tục.</p>
+    <a href="SignIn.jsp" class="btn"
+       style="text-decoration:none; display:inline-block;
+                  line-height:45px; width:100%;">
+      Đăng Nhập
+    </a>
   </div>
+
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const registerForm = document.getElementById('registerForm');
-    const successMessage = document.getElementById('successMessage');
+  document.addEventListener("DOMContentLoaded", function () {
 
-    registerForm.addEventListener('submit', function(event) {
-      event.preventDefault();
+    const form = document.getElementById("registerForm");
+    const successMessage = document.getElementById("successMessage");
 
-      registerForm.style.display = 'none';
+    const fullName = form.fullName;
+    const email = form.email;
+    const password = form.password;
+    const confirmPassword = form.confirmPassword;
 
-      successMessage.style.display = 'block';
+    const nameMsg = document.getElementById("nameMsg");
+    const emailMsg = document.getElementById("emailMsg");
+    const passwordMsg = document.getElementById("passwordMsg");
+    const confirmMsg = document.getElementById("confirmMsg");
+
+    function showMsg(el, msg, ok) {
+      el.innerHTML = (ok ? "✔ " : "❌ ") + msg;
+      el.style.color = ok ? "green" : "red";
+    }
+
+    // Họ tên: viết hoa chữ cái đầu mỗi từ
+    fullName.addEventListener("input", () => {
+      const regex = /^([A-ZÀ-Ỹ][a-zà-ỹ]+)(\s[A-ZÀ-Ỹ][a-zà-ỹ]+)*$/;
+      showMsg(nameMsg,
+              "Viết hoa chữ cái đầu mỗi từ (VD: Trần Hoàng Quân)",
+              regex.test(fullName.value.trim())
+      );
+    });
+
+    // Email Gmail
+    email.addEventListener("input", () => {
+      showMsg(emailMsg,
+              "Email phải kết thúc bằng @gmail.com",
+              email.value.endsWith("@gmail.com")
+      );
+    });
+
+    // Password
+    password.addEventListener("input", () => {
+      const v = password.value;
+      const ok =
+              /[A-Z]/.test(v) &&
+              /[a-z]/.test(v) &&
+              /\d/.test(v) &&
+              /[^A-Za-z0-9]/.test(v) &&
+              v.length >= 8;
+
+      showMsg(passwordMsg,
+              "Ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt",
+              ok
+      );
+    });
+
+    // Confirm password
+    confirmPassword.addEventListener("input", () => {
+      showMsg(confirmMsg,
+              "Mật khẩu xác nhận phải trùng khớp",
+              confirmPassword.value === password.value &&
+              confirmPassword.value !== ""
+      );
+    });
+
+    // Submit
+    form.addEventListener("submit", function (e) {
+      if (
+              nameMsg.style.color !== "green" ||
+              emailMsg.style.color !== "green" ||
+              passwordMsg.style.color !== "green" ||
+              confirmMsg.style.color !== "green"
+      ) {
+        e.preventDefault();
+        alert("Vui lòng nhập đúng thông tin!");
+        return;
+      }
+
+      // demo frontend thành công
+      e.preventDefault();
+      form.style.display = "none";
+      successMessage.style.display = "block";
     });
   });
 </script>
+
 </body>
 </html>

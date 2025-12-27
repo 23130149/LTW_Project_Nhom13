@@ -3,17 +3,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/trangchu.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
     <title>Handmade Shop</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="../">
+<style> .section__container {
+    position: relative;
+    width: 100%;
+    height: calc(90vh);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 60px;
+}
+.slide-active {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.slide-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+.slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 40px;
+    max-width: 900px;
+}
+.section-title {
+    font-size: 72px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 100px;
+}
+.section-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 35px;
+}
+.btn-view-more {
+    display: inline-block;
+    background: linear-gradient(90deg, #11998e, #38ef7d);
+    color: white;
+    text-decoration: none;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+}
+.btn-view-more:hover {
+    opacity: 0.95;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(232, 93, 53, 0.12);
+}
+.categories{
+    padding: 30px 0 80px 0;
+    background: white;
+    text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 28px;
+}
+.categories .heading h3{
+    font-size: 26px;
+    color: #11998e;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: none;
+}
+.categories .heading p{
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 40px;
+}
+.category-list{
+    display: flex;
+    padding: 0 40px;
+    gap: 25px;
+    justify-content: flex-start;
+    align-items: stretch;
+    max-width: none;
+    margin: 0;
+}
+.category-item{
+    width: 200px;
+    height: auto;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    flex: 1 1 200px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.category-item img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+}
+.category-overlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    color: white;
+    text-align: left;
+}
+.category-overlay h4{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.category-overlay span{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.category-item:hover img{
+    transform: scale(1.08);
+}
+.category-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+.products{
+    padding-top: 40px;
+}
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.heading h3{
+    font-size: 28px;
+    font-weight: 700;
+    color: #11998e;
+    position: relative;
+    text-transform: none;
+}
+.products .heading h3::after{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #38ef7d;
+    margin: 10px auto 0;
+    border-radius: 3px;
+}
+.products ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+.product-item{
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.product-item:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.product-top{
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.product-thumb img{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.product-item:hover .product-thumb img {
+    transform: scale(1.05);
+}
+.add-to-cart-btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    z-index: 10;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.product-top:hover .add-to-cart-btn {
+    transform: translateY(0);
+    opacity: 1;
+}
+.add-to-cart-btn i{
+    margin-right: 6px;
+}
+.product-info{
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.product-cat{
+    display: block;
+    font-size: 14px;
+    color: #888;
+    text-decoration: none;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+.product-name{
+    color: #333;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.3;
+}
+.product-name:hover{
+    color: aqua;
+}
+.product-price{
+    font-weight: 700;
+    color: #FF5E62;
+    font-size: 16px;
+    margin-top: auto;
+}
+.story-section{
+    padding: 100px 0;
+    background-color: white;
+}
+.story-header{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.story-heading-main{
+    font-size: 44px;
+    font-weight: 800;
+    color: #11998e;
+    margin-bottom: 20px;
+    text-transform: none;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.story-subtitle{
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 20px;
+}
+.story-content{
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    padding-top: 40px;
+}
+.story-text-container{
+    flex: 1;
+    max-width: 50%;
+}
+.story-title{
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    position: relative;
+}
+.story-title::after{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #11998e, #38ef7d);
+    margin-top: 10px;
+    border-radius: 3px;
+}
+.story-text-container p{
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 18px;
+}
+.story-text-container p strong{
+    font-weight: 700;
+    color: #11998e;
+}
+.story-image-container{
+    flex: 1;
+    max-width: 50%;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+.story-image-main{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}</style>
 </head>
 <body>
 <header class="header">

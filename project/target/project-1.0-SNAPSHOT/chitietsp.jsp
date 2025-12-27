@@ -4,8 +4,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/chitietsp.css">
-    <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
     <title>Chi tiết sản phẩm</title>
@@ -17,7 +15,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/trangchu.jsp">Handmade House</a>
+                <a href="../html/trangchu.html">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..." aria-label="Tìm kiếm sản phẩm">

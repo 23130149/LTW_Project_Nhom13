@@ -4,8 +4,6 @@
 <html lang="vi">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/cart.css">
-    <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
     <title>Giỏ Hàng</title>

@@ -4,8 +4,6 @@
 <html lang="vi">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/account.css">
-    <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
     <title>Tài khoản của tôi - Handmade House</title>

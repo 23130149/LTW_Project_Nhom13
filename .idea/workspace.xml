@@ -10,105 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f262c208-a5db-4d27-a8e4-7b814ada05a2" name="Changes" comment="Merge branch 'main' of https://github.com/23130149/LTW_Project_Nhom13 into login&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/.idea/IntelliLang.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/tomcat10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_11_2025_12_00_SA_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_11_2025_12_00_SA_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_11_2025_12_00_SA__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_11_2025_5_25_SA_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_11_2025_5_25_SA__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/.ai/mcp/mcp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/controller/productController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/dao/ProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/java/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/model/product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/account.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/blog.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/cart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/chitietsp.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/contact.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/favourite.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/payment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/sanpham.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Caidat/caidat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Caidat/caidat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Caidat/caidat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Danhgia/danhgia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Donhang/donhang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Khachhang/khachhang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Sanpham/qlsanpham.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Tongquan/tongquan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/caidat.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/danhgia.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/donhang.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/khachhang.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/qlsanpham.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/tongquan.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangchu.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/classes/HelloServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/classes/SignInController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Header_Footer/Styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/HelloServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/SignInController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/account.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/blog.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/cart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/chitietsp.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/contact.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/account.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/blog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/cart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/chitietsp.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/contact.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/dangky.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/dangnhap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/favourite.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/payment.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/sanpham.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/css/trangchu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/favourite.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/payment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/sanpham.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/trangchu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Header and Footer/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/Header_Footer/Styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/blog.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/blog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/chitietsp.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/chitietsp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/dangky.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/dangky.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/dangnhap.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/dangnhap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/favourite.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/favourite.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/payment.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/sanpham.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/sanpham.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/trangchu.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/css/trangchu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/controller/SignInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/webapp/Register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/Register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/webapp/SignIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/SignIn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Danhgia/danhgia.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Danhgia/danhgia.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Donhang/donhang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Donhang/donhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Khachhang/khachhang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Khachhang/khachhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Sanpham/qlsanpham.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Sanpham/qlsanpham.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Tongquan/tongquan.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Tongquan/tongquan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/HelloServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/HelloServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/SignInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/SignInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/HelloServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/HelloServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/SignInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/WEB-INF/classes/SignInController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +155,7 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
-    <configuration name="Tomcat 10" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.502" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 10" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.50" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="project:war">

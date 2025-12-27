@@ -1,13 +1,17 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/contact.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
     <title>Liên Hệ</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Header and Footer/Styles.css">
-    <link rel="stylesheet" href="../css/contact.css">
 </head>
 <body>
 <header class="header">

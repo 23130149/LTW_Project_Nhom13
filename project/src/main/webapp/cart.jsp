@@ -1,13 +1,20 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/cart.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
-    <title>Liên Hệ</title>
+    <title>Giỏ Hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Header and Footer/Styles.css">
-    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/cart.css">
+
 </head>
 <body>
 <header class="header">
@@ -48,92 +55,69 @@
         </div>
     </div>
 </header>
-
-<section class="banner">
-    <div class="banner-content">
-        <h2>Liên Hệ Với Chúng Tôi</h2>
-        <p>Chúng tôi rất mong được nghe từ bạn! Hãy chia sẻ ý tưởng, câu hỏi hoặc đơn giản là một lời chào thân thiện.</p>
-    </div>
-</section>
-
-<section class="info-section">
-    <div class="info-card">
-        <i class='bx bx-map'></i>
-        <h3>Địa chỉ</h3>
-        <p>789 Linh Trung, Thủ Đức, TP.HCM</p>
+<section class="cart-page">
+    <div class="cart-header">
+        <h1><i class='bx bx-cart'></i> Giỏ Hàng Của Bạn</h1>
     </div>
 
-    <div class="info-card">
-        <i class='bx bx-envelope'></i>
-        <h3>Email</h3>
-        <p>hello@handmadehouse.vn</p>
-    </div>
+    <div class="cart-container">
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Móc Khóa Lá Cờ Việt Nam">
 
-    <div class="info-card">
-        <i class='bx bx-phone'></i>
-        <h3>Điện thoại</h3>
-        <p>0123 456 789</p>
-    </div>
-
-    <div class="info-card">
-        <i class='bx bx-time'></i>
-        <h3>Giờ làm việc</h3>
-        <p>8:00 – 20:00 (Thứ 2 - Chủ Nhật)</p>
-    </div>
-</section>
-
-<section class="contact-container">
-
-    <div class="contact-form">
-        <h2>Gửi Tin Nhắn</h2>
-        <p>Điền thông tin vào form dưới đây, chúng tôi sẽ phản hồi trong vòng 24 giờ.</p>
-
-        <form>
-            <label>Họ và tên *</label>
-            <input type="text" placeholder="Nhập họ tên của bạn">
-
-            <div class="row">
-                <div class="col">
-                    <label>Email *</label>
-                    <input type="email" placeholder="example@email.com">
+                <div class="product-info">
+                    <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
+                    <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
                 </div>
 
-                <div class="col">
-                    <label>Số điện thoại</label>
-                    <input type="text" placeholder="0123 456 789">
+                <div class="qty-price">
+                    <div class="qty-control">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <div class="product-price">15.000đ</div>
                 </div>
+
+                <i class='bx bx-trash'></i>
             </div>
 
-            <label>Tiêu đề *</label>
-            <input type="text" placeholder="Bạn muốn hỏi về điều gì?">
+            <div class="cart-item">
+                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Nến Thơm Xương Rồng">
 
-            <label>Nội dung tin nhắn *</label>
-            <textarea placeholder="Chia sẻ suy nghĩ của bạn với chúng tôi..."></textarea>
+                <div class="product-info">
+                    <div class="product-name">Nến Thơm Xương Rồng</div>
+                    <div class="product-descr">Một chậu nến thơm đáng iu</div>
+                </div>
 
-            <button type="submit">Gửi tin nhắn</button>
-        </form>
-    </div>
+                <div class="qty-price">
+                    <div class="qty-control">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <div class="product-price">150.000đ</div>
+                </div>
 
-    <div class="sidebar">
-
-        <div class="side-box">
-            <h3>🐤 Đặt Hàng Custom</h3>
-            <p>Bạn có ý tưởng riêng cho sản phẩm handmade? Chúng tôi nhận đặt hàng custom theo yêu cầu của bạn!</p>
-            <p>Liên hệ với chúng tôi để được tư vấn chi tiết về thiết kế, chất liệu và thời gian thực hiện.</p>
+                <i class='bx bx-trash'></i>
+            </div>
         </div>
 
-        <div class="side-box">
-            <h3>❤️ Ưu Đãi Đặc Biệt</h3>
-            <p>Nhận ngay mã giảm giá 10% cho lần mua hàng đầu tiên khi đăng ký nhận bản tin của chúng tôi.</p>
-            <p>Nhập email của bạn trong form liên hệ và ghi chú "Đăng ký nhận tin".</p>
+        <div class="cart-total">
+            <h3>Đơn Hàng Của Bạn</h3>
+            <div class="line"><span>Tổng tiền</span><span>165.000đ</span></div>
+            <div class="line"><span>Phí vận chuyển</span><span>Miễn phí</span></div>
+            <div class="line"><span>Giảm giá:</span><span>0đ</span></div>
+            <div class="voucher">
+                <input type="text" placeholder="Nhập mã giảm giá">
+                <button>Áp dụng</button>
+            </div>
+            <a href="../html/payment.html" class="checkout-button">
+                Tiến hành thanh toán
+            </a>
         </div>
-
     </div>
 </section>
-
-
-
-
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -182,10 +166,6 @@
         </div>
     </div>
 </footer>
-
-
-
-
 
 </body>
 </html>

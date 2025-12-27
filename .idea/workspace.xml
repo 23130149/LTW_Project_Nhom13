@@ -10,50 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f262c208-a5db-4d27-a8e4-7b814ada05a2" name="Changes" comment="Merge branch 'main' of https://github.com/23130149/LTW_Project_Nhom13 into login&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/project/project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/controller/productController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/dao/ProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/java/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/model/product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/caidat.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/danhgia.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/donhang.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/khachhang.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/qlsanpham.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/tongquan.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/controller/SignInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/Register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/SignIn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/blog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/blog.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/chitietsp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/chitietsp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/favourite.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/favourite.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/payment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/payment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/sanpham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/sanpham.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/trangchu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/project-1.0-SNAPSHOT/trangchu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Caidat/caidat.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Caidat/caidat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Caidat/caidat.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Caidat/caidat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Caidat/caidat.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Caidat/caidat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Danhgia/danhgia.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Danhgia/danhgia.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Danhgia/danhgia.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Danhgia/danhgia.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Donhang/donhang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Donhang/donhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Donhang/donhang.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Donhang/donhang.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Khachhang/khachhang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Khachhang/khachhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Khachhang/khachhang.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Khachhang/khachhang.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Sanpham/qlsanpham.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Sanpham/qlsanpham.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Sanpham/qlsanpham.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Sanpham/qlsanpham.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Tongquan/tongquan.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Tongquan/tongquan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trangadmin/Tongquan/tongquan.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/webapp/trangadmin/Tongquan/tongquan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +40,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/23130149/LTW_Project_Nhom13",
-    "accountId": "e0d9cffe-423d-4a2b-af5d-ea3e3e173b9d"
+    "accountId": "c0c92e93-aedb-4ec1-bbcf-7267c395c934"
   }
 }]]></component>
   <component name="LogFilters">
@@ -109,32 +66,32 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.executor": "Run",
-    "Tomcat Server.Tomcat.executor": "Run",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "phu",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/TH-LTW/LogIn",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.20689656",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;phu&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/TH-LTW/LogIn&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.20689656&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\LTW_Project_Nhom13\project\src\main\webapp\trangadmin" />
@@ -154,6 +111,7 @@
           <value>
             <map>
               <entry key="Tomcat 10" value="STOPPED" />
+              <entry key="Tomcat 10.1.502" value="STOPPED" />
             </map>
           </value>
         </entry>

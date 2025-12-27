@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <% if (request.getAttribute("error") != null) { %>
+    <p style="color:red; text-align:center;">
+        <%= request.getAttribute("error") %>
+    </p>
+    <% } %>
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/dangnhap.css">
     <link rel="stylesheet"

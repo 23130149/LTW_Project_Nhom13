@@ -1,4 +1,9 @@
+# IntelliJ IDEA
 .idea/
+*.iml
+
+# Maven
 target/
-*.class
-*.war
+
+# Logs
+*.log

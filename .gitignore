@@ -1,10 +1,14 @@
-# IntelliJ
+# IntelliJ IDEA
 .idea/
 *.iml
 
-# Maven
+# Java / Maven / Gradle
 target/
-
-# Compiled files
 *.class
-*.war
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

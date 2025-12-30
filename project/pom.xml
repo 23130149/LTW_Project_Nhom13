@@ -36,23 +36,6 @@
         <version>${junit.version}</version>
         <scope>test</scope>
       </dependency>
-      <dependency>
-          <groupId>jakarta.servlet.jsp.jstl</groupId>
-          <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-          <version>3.0.0</version>
-      </dependency>
-      <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
-      <dependency>
-          <groupId>org.glassfish.web</groupId>
-          <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-          <version>3.0.1</version>
-      </dependency>
-      <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
-      <dependency>
-          <groupId>org.glassfish.web</groupId>
-          <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-          <version>3.0.1</version>
-      </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
       <dependency>
@@ -60,6 +43,7 @@
           <artifactId>jakarta.servlet.jsp.jstl</artifactId>
           <version>3.0.1</version>
       </dependency>
+
 
       <!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
       <dependency>
@@ -81,21 +65,13 @@
           <artifactId>mysql-connector-j</artifactId>
           <version>9.0.0</version>
       </dependency>
-      <dependency>
-          <groupId>org.jdbi</groupId>
-          <artifactId>jdbi3-core</artifactId>
-          <version>3.49.5</version> <!-- Phiên bản mới nhất 2025 -->
-      </dependency>
-      <dependency>
-          <groupId>org.jdbi</groupId>
-          <artifactId>jdbi3-sqlobject</artifactId>
-          <version>3.49.5</version>
-      </dependency>
 
-      </dependency>
 
 
   </dependencies>
+
+
+
 
   <build>
     <plugins>

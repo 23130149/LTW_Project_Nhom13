@@ -1,17 +1,15 @@
-import org.jdbi.v3.core.Handle;
+package dao;
+
+import dao.BaseDao;
+import model.Product;
 import org.jdbi.v3.core.Jdbi;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class ProductDao {
+public class ProductDao extends BaseDao {
 
     public List<Product> getListProduct() {
-        Jdbi jdbi = DBConnection.getJdbi();
-        if (jdbi == null) {
-            throw new RuntimeException("JDBI NULL - KET NOI DB THAT BAI");
-        }
+
         String sql = "select * from products";
 
         List<Product> products = jdbi.withHandle(handle -> {

@@ -1,6 +1,6 @@
-import java.util.Date;
+package model;
 
-public class product {
+public class Product {
     Integer product_id;
     Integer category_id;
     String product_name;

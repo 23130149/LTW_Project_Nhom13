@@ -1,6 +1,10 @@
+package controller;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.Product;
+import service.ProductService;
 
 import java.io.IOException;
 

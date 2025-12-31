@@ -13,10 +13,10 @@ public class ProductDetailController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    int productId = 0;
-    ProductService ps = new ProductService();
-    Product productDetail = ps.getProductById(productId);
-    request.getRequestDispatcher("chitietsp.jsp").forward(request, response);
+        int productId = 0;
+        ProductService ps = new ProductService();
+        Product productDetail = ps.getProductById(productId);
+        request.getRequestDispatcher("chitietsp.jsp").forward(request, response);
     }
 
     @Override

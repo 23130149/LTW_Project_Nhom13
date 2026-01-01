@@ -7,10 +7,12 @@ import java.sql.SQLException;
 
 public class BaseDao {
     private Jdbi jdbi;
+
     public Jdbi getJdbi() {
         if (jdbi == null) makeConnect();
         return jdbi;
     }
+
     private void makeConnect() {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setURL("jdbc:mysql://" + DBProperties.getDbHost() + ":" + DBProperties.getDbPort() + "/" + DBProperties.getDbName());
@@ -27,7 +29,7 @@ public class BaseDao {
         jdbi = Jdbi.create(dataSource);
 
     }
- //   public static void main(String[] args) {
+    //   public static void main(String[] args) {
 //        BaseDao baseDao = new BaseDao();
 //        Jdbi jdbi = baseDao.getJdbi();
 //        List<Product> products = jdbi.withHandle(h -> {

@@ -18,7 +18,7 @@ public class SignInController extends HttpServlet {
 
         HttpSession session = request.getSession();
         String regEmail = (String) session.getAttribute("regEmail");
-        String regPass  = (String) session.getAttribute("regPass");
+        String regPass = (String) session.getAttribute("regPass");
 
         if (email.equals(regEmail) && pass.equals(regPass)) {
             response.sendRedirect("jsp/home.jsp");

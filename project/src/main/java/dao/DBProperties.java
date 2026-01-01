@@ -35,7 +35,7 @@ public class DBProperties {
         return prop.getProperty("db.dbName");
     }
 
-    public static String getDbOption(){
+    public static String getDbOption() {
         return prop.getProperty("db.dbOption");
     }
 

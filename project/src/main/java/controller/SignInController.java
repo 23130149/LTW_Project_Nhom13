@@ -1,30 +1,43 @@
 package controller;
 
-import jakarta.servlet.*;
+import dao.UserDao;
+import model.User;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "SignIn", value = "/SignIn")
+@WebServlet("/SignIn")
 public class SignInController extends HttpServlet {
+
+    private UserDao userDao;
+
+    @Override
+    public void init() {
+        userDao = new UserDao();
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
+        String password = request.getParameter("pass");
 
-        HttpSession session = request.getSession();
-        String regEmail = (String) session.getAttribute("regEmail");
-        String regPass = (String) session.getAttribute("regPass");
+        User user = userDao.login(email, password);
 
-        if (email.equals(regEmail) && pass.equals(regPass)) {
-            response.sendRedirect("jsp/home.jsp");
+        if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+
+            // login thành công → trang chủ
+            response.sendRedirect(request.getContextPath() + "/trangchu.jsp");
         } else {
             request.setAttribute("error", "Sai email hoặc mật khẩu");
-            request.getRequestDispatcher("webapp/signin.jsp").forward(request, response);
+            request.getRequestDispatcher("/SignIn.jsp")
+                    .forward(request, response);
         }
     }
 }

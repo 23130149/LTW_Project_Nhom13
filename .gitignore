@@ -1,5 +1,11 @@
+# IntelliJ IDEA
 .idea/
 *.iml
+out/
+
+# Maven / Gradle
 target/
+
+# Java build
 *.class
 *.war

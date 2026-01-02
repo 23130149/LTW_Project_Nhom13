@@ -1,5 +1,5 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,30 +12,29 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/sanpham.css">
-    <link rel="stylesheet" href="../Header and Footer/Styles.css">
 </head>
 <body>
 <header class="header">
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="../html/trangchu.html">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/trangchu.jsp">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
-                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..." aria-label="Tìm kiếm sản phẩm">
+                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
+                       aria-label="Tìm kiếm sản phẩm">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
-            <div class="icons" >
-                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
+            <div class="icons">
+                <a href="${pageContext.request.contextPath}/favourite.jsp" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a  href="../html/cart.html" class="icon-btn" id="cartBtn">
+                <a href="${pageContext.request.contextPath}/cart.jsp" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
-                <a href="../html/account.html" class="icon-btn" id="userBtn">
+                <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
                 </a>
             </div>
@@ -43,12 +42,12 @@
     </div>
     <div class="search-bar-section header-bottom-nav">
         <div class="container nav-only-container">
-            <nav class="nav__links" >
+            <nav class="nav__links">
                 <ul>
-                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
-                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
-                    <li><a href="../html/blog.html">Blog</a></li>
-                    <li><a href="../html/contact.html">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/trangchu.jsp">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,7 +58,7 @@
         <div class="page-meta">
             <h1 class="page-title-main">Sản phẩm</h1>
             <div class="breadcrumb">
-                <a href="../html/trangchu.html">Trang chủ</a>
+                <a href="#">Trang chủ</a>
                 <a href="#"><i class="bx bx-chevron-right"></i></a>
                 <span>Sản phẩm</span>
             </div>
@@ -68,7 +67,7 @@
             <div class="product-listing-area">
                 <div class="sort-stats-bar">
                     <div class="product-stats">
-                        Hiển thị 8/200 sản phẩm
+                        Hiển thị ${list.size()} sản phẩm
                     </div>
                     <div class="sort-options">
                         <div class="custom-select-wrapper">
@@ -82,116 +81,42 @@
                     </div>
                 </div>
                 <div class="product-grid">
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="../html/chitietsp.html" class="product-thumb">
-                                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                    <c:forEach items="${list}" var="p">
+                        <div class="product-item">
+                            <div class="product-top">
+                                <a href="${pageContext.request.contextPath}/chitietsp.jsp?id=${p.product_id}"
+                                   class="product-thumb">
+                                    <img src="${p.image_url}" alt="${p.product_name}">
+                                </a>
+                                <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                            </div>
+                            <div class="product-info">
+                                <a href="#" class="product-cat">Mã loại: ${p.category_id}</a>
+                                <a href="#" class="product-name">${p.product_name}</a>
+                                <div class="product-price">${p.product_price}</div>
+                            </div>
                         </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Móc khóa</a>
-                            <a href="" class="product-name">Móc khóa lá cờ Việt Nam</a>
-                            <div class="product-price">15.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Vòng tay</a>
-                            <a href="" class="product-name">Vòng tay "Sweet Purple"</a>
-                            <div class="product-price">40.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://i.pinimg.com/736x/30/34/a8/3034a8897defe35658b250d8b534256f.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Nến thơm</a>
-                            <a href="" class="product-name">Nên thơm xương rồng</a>
-                            <div class="product-price">150.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://i.pinimg.com/736x/ca/45/21/ca4521034acf002c3ea9eb9f7cb8688c.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Túi xách</a>
-                            <a href="" class="product-name">Túi hoa Tulip</a>
-                            <div class="product-price">120.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://i.pinimg.com/736x/ce/77/33/ce773365b462d26647bf2d497b43eb82.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Ốp lưng</a>
-                            <a href="" class="product-name">Ốp lưng điện thoại Anime</a>
-                            <div class="product-price">89.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://i.pinimg.com/736x/28/39/aa/2839aae1280d8cc5f44fcff4a2a3f979.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Kẹp tóc</a>
-                            <a href="" class="product-name">Kẹp tóc hoa dâu tây nhí</a>
-                            <div class="product-price">30.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/427/928/products/scrapbook-vintage-remember-2.jpg?v=1716011142893" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sổ trang trí</a>
-                            <a href="" class="product-name">Sổ trang trí REMEMBER</a>
-                            <div class="product-price">200.000đ</div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="https://i.pinimg.com/736x/82/a0/3f/82a03fc266a5b7d02c2e0d85fda1cce9.jpg" alt="Tên sản phẩm">
-                            </a>
-                            <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Đồ trang trí nhà</a>
-                            <a href="" class="product-name">Đèn chùm bằng hoa tươi rực rỡ</a>
-                            <div class="product-price">599.000đ</div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
                 <div class="pagination">
-                    <span class="current-page">1</span>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="bx bx-chevron-right"></i></a>
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <c:choose>
+                            <c:when test="${i == currentPage}">
+                                <span class="current-page">${i}</span>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${pageContext.request.contextPath}/product?page=${i}">
+                                        ${i}
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="${pageContext.request.contextPath}/product?page=${currentPage + 1}">
+                            <i class="bx bx-chevron-right"></i>
+                        </a>
+                    </c:if>
                 </div>
             </div>
             <aside class="sidebar-filters">
@@ -217,7 +142,8 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3 class="footer-logo">Handmade House</h3>
-                <p class="footer-desc">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật và thủ công.</p>
+                <p class="footer-desc">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật
+                    và thủ công.</p>
                 <div class="social-links">
                     <a href="#"><i class="bx bxl-facebook"></i></a>
                     <a href="#"><i class="bx bxl-instagram"></i></a>
@@ -227,20 +153,20 @@
             <div class="footer-column">
                 <h3 class="footer-title">Blog</h3>
                 <ul class="footer-links">
-                    <li> <a href="#">Câu chuyện thương hiệu</a></li>
-                    <li> <a href="#"> Giá trị & Triết lý thương hiệu</a></li>
-                    <li> <a href="#">Quy trình sản xuất</a></li>
-                    <li> <a href="#">Cam kết & Định hướng bền vững</a></li>
+                    <li><a href="#">Câu chuyện thương hiệu</a></li>
+                    <li><a href="#"> Giá trị & Triết lý thương hiệu</a></li>
+                    <li><a href="#">Quy trình sản xuất</a></li>
+                    <li><a href="#">Cam kết & Định hướng bền vững</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
                 <h3 class="footer-title">Hỗ trợ</h3>
                 <ul class="footer-links">
-                    <li> <a href="#">Chính sách đổi trả</a></li>
-                    <li> <a href="#">Hướng dẫn đặt hàng</a></li>
-                    <li> <a href="#">Phương thức thanh toán</a></li>
-                    <li> <a href="#">Câu hỏi thường gặp</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hướng dẫn đặt hàng</a></li>
+                    <li><a href="#">Phương thức thanh toán</a></li>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
                 </ul>
             </div>
 
@@ -259,5 +185,7 @@
         </div>
     </div>
 </footer>
+<script src="${pageContext.request.contextPath}/js/sanpham.js"></script>
+
 </body>
 </html>

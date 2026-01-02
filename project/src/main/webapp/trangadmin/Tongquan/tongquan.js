@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navItems = document.querySelectorAll('.slidebar-nav ul li');
     navItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             navItems.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
         });
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tableRows = document.querySelectorAll('.data-table tbody tr');
 
     if (searchInput) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase().trim();
             tableRows.forEach(row => {
                 const text = row.innerText.toLowerCase();
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bars = document.querySelectorAll('.bar-chart');
 
     if (chartFilter) {
-        chartFilter.addEventListener('change', function() {
+        chartFilter.addEventListener('change', function () {
             bars.forEach(bar => {
                 const randomHeight = Math.floor(Math.random() * 70) + 20;
                 bar.style.height = randomHeight + '%';
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".close-btn");
 
     document.querySelectorAll('.action-icon').forEach(icon => {
-        icon.addEventListener('click', function() {
+        icon.addEventListener('click', function () {
             const row = this.closest('tr');
             const cells = row.querySelectorAll('td');
 

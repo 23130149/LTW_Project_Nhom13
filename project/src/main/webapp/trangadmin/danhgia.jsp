@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,27 +77,37 @@
             <h3>Phân bố đánh giá</h3>
             <div class="rating-bar-item">
                 <span class="rating-star-label">5<i class="bx bxs-star"></i></span>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 75%;"></div></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                </div>
                 <span class="rating-count">150 đánh giá</span>
             </div>
             <div class="rating-bar-item">
                 <span class="rating-star-label">4<i class="bx bxs-star"></i></span>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 15%;"></div></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 15%;"></div>
+                </div>
                 <span class="rating-count"> 50 đánh giá</span>
             </div>
             <div class="rating-bar-item">
                 <span class="rating-star-label">3<i class="bx bxs-star"></i></span>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 7%;"></div></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 7%;"></div>
+                </div>
                 <span class="rating-count">25 đánh giá</span>
             </div>
             <div class="rating-bar-item">
                 <span class="rating-star-label">2<i class="bx bxs-star"></i></span>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 2%;"></div></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 2%;"></div>
+                </div>
                 <span class="rating-count">10 đánh giá</span>
             </div>
             <div class="rating-bar-item">
                 <span class="rating-star-label">1<i class="bx bxs-star"></i></span>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 1%;"></div></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 1%;"></div>
+                </div>
                 <span class="rating-count">5 đánh giá</span>
             </div>
         </div>
@@ -146,7 +155,8 @@
                     <p class="review-text">Móc khóa dễ thương, chắc chắn lần sau tui sẽ mua tiếp.</p>
                     <div class="shop-response">
                         <p class="response-title"><i class="bx bx-reply"></i> Phản hồi từ shop:</p>
-                        <p class="response-text">Cảm ơn bạn đã ủng hộ shop! Chúc bạn sử dụng sản phẩm vui vẻ ạ <i class="bx bxs-heart"></i></p>
+                        <p class="response-text">Cảm ơn bạn đã ủng hộ shop! Chúc bạn sử dụng sản phẩm vui vẻ ạ <i
+                                class="bx bxs-heart"></i></p>
                     </div>
                     <div class="review-utility-container">
                         <span class="review-utility">
@@ -212,7 +222,8 @@
                     </div>
                     <p class="review-product">Kẹp tóc hoa dâu tulip</p>
                     <span class="review-item-date">10/12/2025</span>
-                    <p class="review-text">Sản phẩm rất đẹp. Tuy nhiên giao hơi lâu so với dự kiến. Nhưng nhìn chung vẫn ok.</p>
+                    <p class="review-text">Sản phẩm rất đẹp. Tuy nhiên giao hơi lâu so với dự kiến. Nhưng nhìn chung vẫn
+                        ok.</p>
                     <div class="review-utility-container">
                         <span class="review-utility">
                             <i class="bx bx-like"></i> Hữu ích (12)
@@ -248,7 +259,8 @@
                     <p class="review-text">Sản phẩm rất tốt, chắc chắn sẽ mua tiếp.</p>
                     <div class="shop-response">
                         <p class="response-title"><i class="bx bx-reply"></i> Phản hồi từ shop:</p>
-                        <p class="response-text">Cảm ơn bạn đã ủng hộ shop! Chúc bạn sử dụng sản phẩm vui vẻ ạ <i class="bx bxs-heart"></i></p>
+                        <p class="response-text">Cảm ơn bạn đã ủng hộ shop! Chúc bạn sử dụng sản phẩm vui vẻ ạ <i
+                                class="bx bxs-heart"></i></p>
                     </div>
                     <div class="review-utility-container">
                         <span class="review-utility">

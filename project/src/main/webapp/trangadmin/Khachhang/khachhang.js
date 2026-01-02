@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function attachViewEvents() {
         $$('.action-icon').forEach(icon => {
-            icon.onclick = function() {
+            icon.onclick = function () {
                 const row = this.closest('tr');
 
                 const name = row.cells[0].innerText.trim();
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mainSearch = $('.search-customer-box input');
     if (mainSearch) {
-        mainSearch.oninput = function() {
+        mainSearch.oninput = function () {
             const val = this.value.toLowerCase();
             $$('.data-table tbody tr').forEach(row => {
                 const text = row.innerText.toLowerCase();

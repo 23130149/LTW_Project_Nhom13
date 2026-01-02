@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +106,7 @@
                 <td>Ốp lưng điện thoại</td>
                 <td>89.000đ</td>
                 <td>18</td>
-                <td>29  </td>
+                <td>29</td>
                 <td><span class="status status-completed">Còn hàng</span></td>
                 <td>
                     <button class="action-icon"><i class="bx bx-pencil"></i></button>

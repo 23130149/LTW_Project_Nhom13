@@ -3,9 +3,23 @@
 *.iml
 out/
 
+<<<<<<< HEAD
+# Java / Maven / Gradle
+=======
 # Maven / Gradle
+>>>>>>> feature/login-signup
 target/
+*.class
 
+<<<<<<< HEAD
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+=======
 # Java build
 *.class
 *.war
+>>>>>>> feature/login-signup

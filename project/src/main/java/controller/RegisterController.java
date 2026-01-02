@@ -1,9 +1,7 @@
-<<<<<<< Updated upstream:project/src/main/controller/RegisterController.java
-=======
+
 package controller;
 import model.User;
 import dao.UserDao;
->>>>>>> Stashed changes:project/src/main/java/controller/RegisterController.java
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

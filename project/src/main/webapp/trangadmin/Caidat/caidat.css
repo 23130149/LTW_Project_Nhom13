@@ -1,9 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     display: flex;
     font-family: "Poppins", sans-serif;
     background: #f4f6fa;
@@ -11,11 +12,13 @@ body{
     line-height: 1.6;
     min-height: 100vh;
 }
-a{
+
+a {
     text-decoration: none;
     color: inherit;
 }
-.sliderbar{
+
+.sliderbar {
     width: 250px;
     background: linear-gradient(to bottom, #11998e, #38ef7d);
     color: white;
@@ -27,24 +30,29 @@ a{
     top: 0;
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
 }
-.slidebar-header{
+
+.slidebar-header {
     padding: 0 20px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.logo{
+
+.logo {
     font-size: 24px;
     font-weight: 700;
     color: pink;
 }
-.slidebar-nav{
+
+.slidebar-nav {
     flex-grow: 1;
     padding: 16px 0;
     overflow-y: auto;
 }
-.slidebar-nav ul{
+
+.slidebar-nav ul {
     list-style: none;
 }
-.slidebar-nav li a{
+
+.slidebar-nav li a {
     display: flex;
     align-items: center;
     padding: 12px 20px;
@@ -52,44 +60,51 @@ a{
     position: relative;
     color: white;
 }
-.slidebar-nav i{
+
+.slidebar-nav i {
     margin-right: 15px;
     font-size: 21px;
 }
 
-.slidebar-nav li.active{
+.slidebar-nav li.active {
     background-color: #ffffff;
     border-radius: 0 9999px 9999px 0;
     margin-right: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.slidebar-nav li.active a{
+
+.slidebar-nav li.active a {
     color: #11998e;
     font-weight: bold;
 }
-.slidebar-nav li.active a i{
+
+.slidebar-nav li.active a i {
     color: #11998e;
 }
-.slidebar-nav li.active a::before{
+
+.slidebar-nav li.active a::before {
     display: none;
 }
 
-.logout{
+.logout {
     padding: 20px;
     margin-top: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-.logout a{
+
+.logout a {
     display: flex;
     align-items: center;
     color: white;
 }
-.main-content{
+
+.main-content {
     flex-grow: 1;
     margin-left: 250px;
     padding: 100px 30px 30px;
 }
-.header{
+
+.header {
     background: white;
     padding: 16px 32px;
     display: flex;
@@ -102,11 +117,13 @@ a{
     right: 0;
     z-index: 100;
 }
-.header h2{
+
+.header h2 {
     font-size: 29px;
     font-weight: 600;
 }
-.search-box{
+
+.search-box {
     display: flex;
     align-items: center;
     background: #f4f6fa;
@@ -117,32 +134,37 @@ a{
     flex-grow: 0.5;
     max-width: 450px;
 }
-.search-box input{
+
+.search-box input {
     border: none;
     outline: none;
     padding: 5px 10px;
     flex-grow: 1;
     background: transparent;
 }
-.search-box button{
+
+.search-box button {
     background: none;
     border: none;
     color: #666666;
     cursor: pointer;
     font-size: 16px;
 }
-.user-info{
+
+.user-info {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-.notification-badge{
+
+.notification-badge {
     position: relative;
     font-size: 24px;
     color: #666666;
     cursor: pointer;
 }
-.notification-badge::after{
+
+.notification-badge::after {
     content: '3';
     position: absolute;
     top: -5px;
@@ -154,7 +176,8 @@ a{
     font-size: 11px;
     font-weight: bold;
 }
-.profile-admin{
+
+.profile-admin {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -163,7 +186,8 @@ a{
     border-radius: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-.admin-avatar{
+
+.admin-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -175,21 +199,25 @@ a{
     font-weight: bold;
     font-size: 18px;
 }
-.profile-admin > div{
+
+.profile-admin > div {
     display: flex;
     flex-direction: column;
     line-height: 1.2;
 }
-.user-name{
+
+.user-name {
     font-weight: bold;
     font-size: 15px;
 }
-.user-role{
+
+.user-role {
     font-size: 13px;
     color: #666666;
     display: block;
     margin: 0;
 }
+
 .setting-container {
     max-width: 1100px;
 }
@@ -199,7 +227,7 @@ a{
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .settings-card h3 {
@@ -213,6 +241,7 @@ a{
 .settings-card h3 i {
     color: #38ef7d;
 }
+
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -222,12 +251,14 @@ a{
 .full-width {
     grid-column: span 2;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 500;
 }
+
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -243,11 +274,13 @@ a{
 .form-group input:focus {
     border-color: #38ef7d;
 }
+
 .card-footer, .button-row {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
 }
+
 .btn-save {
     background: linear-gradient(to right, #11998e, #38ef7d);
     color: white;
@@ -261,9 +294,11 @@ a{
     gap: 8px;
     transition: 0.3s;
 }
+
 .btn-save:hover {
     background: #11998e;
 }
+
 .btn-password {
     background: #333;
     color: white;
@@ -272,6 +307,7 @@ a{
     border-radius: 8px;
     cursor: pointer;
 }
+
 .switch-item {
     display: flex;
     justify-content: space-between;
@@ -279,27 +315,33 @@ a{
     padding: 15px 0;
     border-bottom: 1px solid #f1f1f1;
 }
+
 .switch-item:last-child {
     border-bottom: none;
 }
+
 .info strong {
     font-size: 15px;
 }
+
 .info p {
     font-size: 13px;
     color: #777;
 }
+
 .toggle {
     position: relative;
     display: inline-block;
     width: 44px;
     height: 22px;
 }
+
 .toggle input {
     opacity: 0;
     width: 0;
     height: 0;
 }
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -315,18 +357,23 @@ a{
 .slider:before {
     position: absolute;
     content: "";
-    height: 16px; width: 16px;
-    left: 3px; bottom: 3px;
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
     transition: .4s;
     border-radius: 50%;
 }
+
 input:checked + .slider {
     background-color: #38ef7d;
 }
+
 input:checked + .slider:before {
     transform: translateX(22px);
 }
+
 .color-options {
     display: flex;
     gap: 15px;
@@ -345,18 +392,23 @@ input:checked + .slider:before {
     border-color: #333;
     transform: scale(1.1);
 }
+
 .c1 {
     background: linear-gradient(to right, #11998e, #38ef7d);
 }
+
 .c2 {
     background: #0984e3;
 }
+
 .c3 {
     background: #e17055;
 }
+
 .c4 {
     background: #7f00ff;
 }
+
 .btn-password {
     background: linear-gradient(to right, #11998e, #38ef7d);
     color: white;
@@ -367,14 +419,17 @@ input:checked + .slider:before {
     cursor: pointer;
     transition: background 0.3s ease;
 }
+
 .btn-password:hover {
     background: #11998e;
 }
+
 .button-row {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
 }
+
 .form-input {
     width: 100%;
     padding: 12px;
@@ -383,6 +438,7 @@ input:checked + .slider:before {
     background: #fcfcfc;
     outline: none;
 }
+
 .form-input:focus {
     border-color: #7f00ff;
 }

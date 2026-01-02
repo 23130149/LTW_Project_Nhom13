@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -24,16 +23,17 @@
                 <a href="../html/trangchu.html">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
-                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..." aria-label="Tìm kiếm sản phẩm">
+                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
+                       aria-label="Tìm kiếm sản phẩm">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
-            <div class="icons" >
+            <div class="icons">
                 <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a  href="../html/cart.html" class="icon-btn" id="cartBtn">
+                <a href="../html/cart.html" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
                 <a href="../html/account.html" class="icon-btn" id="userBtn">
@@ -44,7 +44,7 @@
     </div>
     <div class="search-bar-section header-bottom-nav">
         <div class="container nav-only-container">
-            <nav class="nav__links" >
+            <nav class="nav__links">
                 <ul>
                     <li><a href="../html/trangchu.html">Trang chủ</a></li>
                     <li><a href="../html/sanpham.html">Sản phẩm</a></li>
@@ -63,7 +63,8 @@
     <div class="cart-container">
         <div class="cart-items">
             <div class="cart-item">
-                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg" alt="Móc Khóa Lá Cờ Việt Nam">
+                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg"
+                     alt="Móc Khóa Lá Cờ Việt Nam">
 
                 <div class="product-info">
                     <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
@@ -83,7 +84,8 @@
             </div>
 
             <div class="cart-item">
-                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg" alt="Nến Thơm Xương Rồng">
+                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg"
+                     alt="Nến Thơm Xương Rồng">
 
                 <div class="product-info">
                     <div class="product-name">Nến Thơm Xương Rồng</div>
@@ -123,7 +125,8 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3 class="footer-logo">Handmade House</h3>
-                <p class="footer-desc">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật và thủ công.</p>
+                <p class="footer-desc">Chào mừng đến với Handmade House, ngôi nhà nhỏ của những tâm hồn yêu nghệ thuật
+                    và thủ công.</p>
                 <div class="social-links">
                     <a href="#"><i class="bx bxl-facebook"></i></a>
                     <a href="#"><i class="bx bxl-instagram"></i></a>
@@ -134,20 +137,20 @@
             <div class="footer-column">
                 <h3 class="footer-title">Blog</h3>
                 <ul class="footer-links">
-                    <li> <a href="#">Câu chuyện thương hiệu</a></li>
-                    <li> <a href="#"> Giá trị & Triết lý thương hiệu</a></li>
-                    <li> <a href="#">Quy trình sản xuất</a></li>
-                    <li> <a href="#">Cam kết & Định hướng bền vững</a></li>
+                    <li><a href="#">Câu chuyện thương hiệu</a></li>
+                    <li><a href="#"> Giá trị & Triết lý thương hiệu</a></li>
+                    <li><a href="#">Quy trình sản xuất</a></li>
+                    <li><a href="#">Cam kết & Định hướng bền vững</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
                 <h3 class="footer-title">Hỗ trợ</h3>
                 <ul class="footer-links">
-                    <li> <a href="#">Chính sách đổi trả</a></li>
-                    <li> <a href="#">Hướng dẫn đặt hàng</a></li>
-                    <li> <a href="#">Phương thức thanh toán</a></li>
-                    <li> <a href="#">Câu hỏi thường gặp</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hướng dẫn đặt hàng</a></li>
+                    <li><a href="#">Phương thức thanh toán</a></li>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
                 </ul>
             </div>
 

@@ -162,10 +162,6 @@
         alert("Vui lòng nhập đúng thông tin!");
         return;
       }
-
-      // demo frontend thành công (KHÔNG chặn servlet)
-      form.style.display = "none";
-      successMessage.style.display = "block";
     });
   });
 </script>

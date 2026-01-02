@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,126 +14,140 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-<style> *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #11998e, #38ef7d); ;
-}
-.wrapper{
-    width: 420px;
-    background:white;
-    border: 2px solid rgb(0,0,0,1);
-    color:black;
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-.wrapper h1{
-    text-align: center;
-    font-size: 30px;
-    color: black;
-}
-.wrapper .input-box{
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-    position: relative;
-}
-.input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    outline: none;
-    border: 2px solid rgb(0,0,0,1);
-    border-radius: 40px;
-    color: black;
-    padding: 20px 45px 20px 20px;
-}
-.input-box input::placeholder{
-    color: black;
-}
-.input-box i   {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-.wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
+    <style> * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
-}
-.remember-forgot label input{
-    accent-color: Black;
-    margin-right: 3px;
-}
-.remember-forgot a{
-    text-decoration: none;
-    color: Black;
-}
-.remember-forgot a:hover{
-    text-decoration: underline;
-}
-.wrapper .btn{
-    width: 100%;
-    height: 45px;
-    background: linear-gradient(135deg, #11998e, #38ef7d); ;
-    border: none;
-    outline: none;
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgb(0,0,0,0.1);
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    font-weight: 600;
-}
-.wrapper .register-link{
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
-.register-link p a{
-    color: Black;
-    text-decoration: none;
-    font-weight: 600;
-}
-.register-link p a:hover{
-    text-decoration: underline;
-}
-</style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #11998e, #38ef7d);;
+    }
+
+    .wrapper {
+        width: 420px;
+        background: white;
+        border: 2px solid rgb(0, 0, 0, 1);
+        color: black;
+        border-radius: 10px;
+        padding: 30px 40px;
+    }
+
+    .wrapper h1 {
+        text-align: center;
+        font-size: 30px;
+        color: black;
+    }
+
+    .wrapper .input-box {
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+        position: relative;
+    }
+
+    .input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        outline: none;
+        border: 2px solid rgb(0, 0, 0, 1);
+        border-radius: 40px;
+        color: black;
+        padding: 20px 45px 20px 20px;
+    }
+
+    .input-box input::placeholder {
+        color: black;
+    }
+
+    .input-box i {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+    }
+
+    .wrapper .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14.5px;
+        margin: -15px 0 15px;
+
+    }
+
+    .remember-forgot label input {
+        accent-color: Black;
+        margin-right: 3px;
+    }
+
+    .remember-forgot a {
+        text-decoration: none;
+        color: Black;
+    }
+
+    .remember-forgot a:hover {
+        text-decoration: underline;
+    }
+
+    .wrapper .btn {
+        width: 100%;
+        height: 45px;
+        background: linear-gradient(135deg, #11998e, #38ef7d);;
+        border: none;
+        outline: none;
+        border-radius: 30px;
+        box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+        cursor: pointer;
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+    }
+
+    .wrapper .register-link {
+        font-size: 14.5px;
+        text-align: center;
+        margin: 20px 0 15px;
+    }
+
+    .register-link p a {
+        color: Black;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .register-link p a:hover {
+        text-decoration: underline;
+    }
+    </style>
 </head>
 <body>
 <div class="wrapper">
-    <form action ="SignIn" method="post">
+    <form action="SignIn" method="post">
         <h1>Đăng Nhập</h1>
-        <div class ="input-box">
+        <div class="input-box">
 
             <input type="text" placeholder="Email" name="email" required>
-            <i class='bxr  bx-user'  ></i>
+            <i class='bxr  bx-user'></i>
         </div>
-        <div class ="input-box">
+        <div class="input-box">
             <input type="password" placeholder="Mật Khẩu" name="pass" required>
-            <i class='bxr  bx-lock'  ></i>
+            <i class='bxr  bx-lock'></i>
         </div>
-        <div class ="remember-forgot">
+        <div class="remember-forgot">
             <label> <input type="checkbox">Lưu Đăng Nhập</label>
             <a href="#"> Quên Mật Khẩu? </a></div>
-        <button type="submit" class ="btn"> Đăng Nhập</button>
-        <div class="register-link" >
-            <p>Bạn chưa có tài khoản<a href="../html/dangky.html"> Đăng Ký </a> </p>
+        <button type="submit" class="btn"> Đăng Nhập</button>
+        <div class="register-link">
+            <p>Bạn chưa có tài khoản<a href="../html/dangky.html"> Đăng Ký </a></p>
         </div>
     </form>
 </div>
-`
 </body>
 </html>

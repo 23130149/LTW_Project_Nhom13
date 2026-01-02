@@ -1,15 +1,22 @@
+package controller;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.Product;
+import service.ProductService;
 
 import java.io.IOException;
 
-@WebServlet(name = "productController", value = "/productController")
-public class productController extends HttpServlet {
+@WebServlet(name = "ProductDetailController", value = "/chitietspController")
+public class ProductDetailController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int productId = 0;
         ProductService ps = new ProductService();
-        request.getRequestDispatcher("sanpham.jsp").forward(request, response);
+        Product productDetail = ps.getProductById(productId);
+        request.getRequestDispatcher("chitietsp.jsp").forward(request, response);
     }
 
     @Override

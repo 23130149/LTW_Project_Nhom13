@@ -7,8 +7,6 @@
 
   <link rel="stylesheet"
         href="${pageContext.request.contextPath}/css/dangky.css">
-  <link rel="stylesheet"
-        href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
   <style>
@@ -24,9 +22,15 @@
 
   <!-- FORM ĐĂNG KÝ -->
   <form action="${pageContext.request.contextPath}/Register"
-        method="post" id="registerForm">
+        method="post"
+        id="registerForm">
 
     <h1>Đăng Ký</h1>
+
+    <!-- HIỂN THỊ LỖI TỪ CONTROLLER -->
+    <c:if test="${not empty error}">
+      <p style="color:red; text-align:center;">${error}</p>
+    </c:if>
 
     <div class="input-box">
       <div class="input-field">
@@ -59,26 +63,13 @@
     <!-- CHECKBOX -->
     <div class="term">
       <label>
-        <input type="checkbox" id="agree" required>
-        Tôi đồng ý với điều khoản và điều kiện trong thỏa thuận
+        <input type="checkbox" required>
+        Tôi đồng ý với điều khoản và điều kiện
       </label>
     </div>
 
     <button type="submit" class="btn">Đăng Ký</button>
   </form>
-
-  <!-- ĐĂNG KÝ THÀNH CÔNG -->
-  <div id="successMessage"
-       style="display:none; text-align:center; padding:20px 0;">
-    <h1>Đăng ký thành công!</h1>
-    <p style="margin:20px 0;">Vui lòng Đăng Nhập để tiếp tục.</p>
-    <a href="${pageContext.request.contextPath}/Signin.jsp"
-       class="btn"
-       style="text-decoration:none; display:inline-block;
-                  line-height:45px; width:100%;">
-      Đăng Nhập
-    </a>
-  </div>
 
 </div>
 
@@ -86,7 +77,6 @@
   document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("registerForm");
-    const successMessage = document.getElementById("successMessage");
 
     const fullName = form.fullName;
     const email = form.email;
@@ -103,26 +93,19 @@
       el.style.color = ok ? "green" : "red";
     }
 
-    // Họ tên viết hoa chữ cái đầu
     fullName.addEventListener("input", () => {
       const regex = /^([A-ZÀ-Ỹ][a-zà-ỹ]+)(\s[A-ZÀ-Ỹ][a-zà-ỹ]+)*$/;
-      showMsg(
-              nameMsg,
-              "Viết hoa chữ cái đầu mỗi từ (VD: Trần Hoàng Quân)",
-              regex.test(fullName.value.trim())
-      );
+      showMsg(nameMsg,
+              "Viết hoa chữ cái đầu mỗi từ",
+              regex.test(fullName.value.trim()));
     });
 
-    // Email Gmail
     email.addEventListener("input", () => {
-      showMsg(
-              emailMsg,
+      showMsg(emailMsg,
               "Email phải kết thúc bằng @gmail.com",
-              email.value.endsWith("@gmail.com")
-      );
+              email.value.endsWith("@gmail.com"));
     });
 
-    // Password
     password.addEventListener("input", () => {
       const v = password.value;
       const ok =
@@ -132,26 +115,19 @@
               /[^A-Za-z0-9]/.test(v) &&
               v.length >= 8;
 
-      showMsg(
-              passwordMsg,
-              "Ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt",
-              ok
-      );
+      showMsg(passwordMsg,
+              "Ít nhất 8 ký tự, đủ mạnh",
+              ok);
     });
 
-    // Confirm password
     confirmPassword.addEventListener("input", () => {
-      showMsg(
-              confirmMsg,
-              "Mật khẩu xác nhận phải trùng khớp",
+      showMsg(confirmMsg,
+              "Mật khẩu xác nhận phải trùng",
               confirmPassword.value === password.value &&
-              confirmPassword.value !== ""
-      );
+              confirmPassword.value !== "");
     });
 
-    // Submit
     form.addEventListener("submit", function (e) {
-
       if (
               nameMsg.style.color !== "green" ||
               emailMsg.style.color !== "green" ||
@@ -160,7 +136,6 @@
       ) {
         e.preventDefault();
         alert("Vui lòng nhập đúng thông tin!");
-        return;
       }
     });
   });

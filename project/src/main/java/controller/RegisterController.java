@@ -1,10 +1,12 @@
-
 package controller;
-import model.User;
+
 import dao.UserDao;
-import jakarta.servlet.*;
+import model.User;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+
 import java.io.IOException;
 
 @WebServlet("/Register")
@@ -14,27 +16,50 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("fullName");
+        request.setCharacterEncoding("UTF-8");
+
+        // lấy dữ liệu từ form
+        String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
 
-        UserDao dao = new UserDao();
+        UserDao userDao = new UserDao();
 
-        // check email trùng
-        if (dao.emailExists(email)) {
-            request.setAttribute("error", "Email đã tồn tại");
-            request.getRequestDispatcher("Register.jsp").forward(request, response);
+        // ===== VALIDATE SERVER-SIDE =====
+        if (!password.equals(confirmPassword)) {
+            request.setAttribute("error", "Mật khẩu xác nhận không khớp");
+            request.getRequestDispatcher("/Register.jsp").forward(request, response);
             return;
         }
 
+        if (userDao.emailExists(email)) {
+            request.setAttribute("error", "Email đã tồn tại");
+            request.getRequestDispatcher("/Register.jsp").forward(request, response);
+            return;
+        }
+
+        // ===== TẠO USER =====
         User user = new User();
-        user.setUser_name(username);
+        user.setUser_name(fullName);
         user.setEmail(email);
-        user.setPassword(password); // sau này hash
+        user.setPassword(password); // TODO: hash sau
         user.setRole("USER");
 
-        dao.register(user);
+        userDao.register(user);
 
-        response.sendRedirect("SignIn.jsp");
+        // ===== ĐĂNG KÝ THÀNH CÔNG =====
+        // redirect để tránh submit lại form
+        response.sendRedirect(
+                request.getContextPath() + "/SignIn.jsp?success=1"
+        );
     }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.getRequestDispatcher("/Register.jsp")
+                .forward(request, response);
+    }
+
 }

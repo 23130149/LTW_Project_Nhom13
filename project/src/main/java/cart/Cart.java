@@ -14,7 +14,7 @@ public class Cart implements Serializable {
     }
     public void addProduct(Product p, int quantity){
         if (data.containsKey(p.getProduct_id())) data.get(p.getProduct_id()).upQuantity(quantity);
-        else data.put(p.getProduct_id(), new CartItem(p,p.getProduct_price(),quantity));
+        else data.put(p.getProduct_id(), new CartItem(p,quantity,p.getProduct_price()));
     }
     public CartItem deleteProduct(int id){
         return data.remove(id);
@@ -29,7 +29,7 @@ public class Cart implements Serializable {
     }
     public int getTotalQuantity(){
         AtomicInteger total = new AtomicInteger();
-        data.values().stream().forEach(p -> total.addAndGet(p.getQuantity()));
+        data.values().forEach(p -> total.addAndGet(p.getQuantity()));
         return total.get();
     }
 

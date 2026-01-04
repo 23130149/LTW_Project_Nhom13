@@ -7,7 +7,7 @@ import java.util.List;
 public class ProductDao extends BaseDao {
 
     public List<Product> getListProduct() {
-        String sql = "select * from products";
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p";
             return getJdbi().withHandle(handle ->
                     handle.createQuery(sql)
                     .mapToBean(Product.class)
@@ -15,7 +15,7 @@ public class ProductDao extends BaseDao {
         );
     }
     public List<Product> getProductsPerPage(int limit, int offset) {
-        String sql = "select * from products Order by product_id ASC LIMIT :limit OFFSET :offset";
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p Order by product_id ASC LIMIT :limit OFFSET :offset";
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                 .bind("limit", limit)
@@ -33,7 +33,7 @@ public class ProductDao extends BaseDao {
         );
     }
     public Product getProductById(int id) {
-        String sql = "select * from products where product_id = :id";
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p where product_id = :id";
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -45,7 +45,7 @@ public class ProductDao extends BaseDao {
     }
 
     public List<Product> getProductByCategoryId(int categoryId) {
-        String sql = "select * from products     where category_id = :categoryId";
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p where category_id = :categoryId";
 
             return getJdbi().withHandle(handle ->
                     handle.createQuery(sql)
@@ -60,12 +60,12 @@ public class ProductDao extends BaseDao {
 
         System.out.println("--- KIEM TRA KET QUA DAO ---");
         pdao.getListProduct().forEach(p ->
-                System.out.println(p.getProduct_name()));
+                System.out.println(p.getProduct_name() + " URL: " + p.getImage_url()));
         Product p = pdao.getProductById(1);
         if(p != null) {
-            System.out.println("Product ID 1: " + p.getProduct_name());
+            System.out.println("Product ID 1: " + p.getProduct_name() + " URL: " + p.getImage_url());
         }
         pdao.getProductByCategoryId(1).forEach(p2 ->
-                System.out.println(p2.getProduct_name() + "Cat: " + p2.getCategory_id()));
+                System.out.println(p2.getProduct_name() + "Cat: " + p2.getCategory_id() +  " URL: " + p2.getImage_url()));
         }
 }

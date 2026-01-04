@@ -32,7 +32,7 @@
                     <i class='bx  bx-heart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/cart.jsp" class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'></i>
+                    <i class='bx  bx-cart'></i> (${sessionScope.cart.totalQuantity})
                 </a>
                 <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
@@ -88,7 +88,8 @@
                                    class="product-thumb">
                                     <img src="${p.image_url}" alt="${p.product_name}">
                                 </a>
-                                <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                                <div class="add-to-cart-btn"><a href="add-Cart?id=${p.product_id}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
+
                             </div>
                             <div class="product-info">
                                 <a href="#" class="product-cat">Mã loại: ${p.category_id}</a>
@@ -123,14 +124,13 @@
                 <div class="filter-group category-filter">
                     <h4 class="filter-group-title">Danh mục</h4>
                     <ul>
-                        <li><a href="#">Móc khóa(25)</a></li>
-                        <li><a href="#">Vòng tay(25)</a></li>
-                        <li><a href="#">Nến thơm(25)</a></li>
-                        <li><a href="#">Túi xách(25)</a></li>
-                        <li><a href="#">Ốp lưng(25)</a></li>
-                        <li><a href="#">Kẹp tóc(25)</a></li>
-                        <li><a href="#">Sổ trang trí(25)</a></li>
-                        <li><a href="#">Đồ trang trí nhà(25)</a></li>
+                        <c:forEach items = "${categoryList}" var="cat">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/product?categoryId=${cat.category_id}">
+                                ${cat.name}
+                            </a>
+                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </aside>

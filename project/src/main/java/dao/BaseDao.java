@@ -1,9 +1,11 @@
 package dao;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import model.Product;
 import org.jdbi.v3.core.Jdbi;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class BaseDao {
     private Jdbi jdbi;
@@ -29,12 +31,12 @@ public class BaseDao {
         jdbi = Jdbi.create(dataSource);
 
     }
-    //   public static void main(String[] args) {
-//        BaseDao baseDao = new BaseDao();
+//    public static void main(String[] args) {
+//      BaseDao baseDao = new BaseDao();
 //        Jdbi jdbi = baseDao.getJdbi();
 //        List<Product> products = jdbi.withHandle(h -> {
-//            return h.createQuery("select * from products").mapToBean(Product.class).list();
-//        });
-//        System.out.println(products);
+//            return h.createQuery("select * from products").mapToBean(Product.class).list();});
+//      System.out.println(products);
 //    }
+//}
 }

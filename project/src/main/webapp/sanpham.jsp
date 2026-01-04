@@ -32,7 +32,7 @@
                     <i class='bx  bx-heart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/cart.jsp" class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'></i>
+                    <i class='bx  bx-cart'></i> (${sessionScope.cart.totalQuantity})
                 </a>
                 <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
@@ -88,7 +88,8 @@
                                    class="product-thumb">
                                     <img src="${p.image_url}" alt="${p.product_name}">
                                 </a>
-                                <div class="add-to-cart-btn"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</div>
+                                <div class="add-to-cart-btn"><a href="add-Cart?id=${p.product_id}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
+
                             </div>
                             <div class="product-info">
                                 <a href="#" class="product-cat">Mã loại: ${p.category_id}</a>

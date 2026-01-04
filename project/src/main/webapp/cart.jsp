@@ -11,8 +11,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Header and Footer/Styles.css">
-    <link rel="stylesheet" href="../css/cart.css">
 
 </head>
 <body>
@@ -56,69 +54,93 @@
     </div>
 </header>
 <section class="cart-page">
-    <div class="cart-header">
-        <h1><i class='bx bx-cart'></i> Giỏ Hàng Của Bạn</h1>
+
+    <h1 class="cart-header">
+        <i class='bx bx-cart'></i> Giỏ Hàng Của Bạn
+    </h1>
+
+    <!-- SUMMARY BAR -->
+    <div class="cart-summary-bar">
+        <div>
+            <div class="summary-title">Tổng tiền ước tính</div>
+            <div class="summary-price">56.980.000 đ</div>
+            <div class="summary-note">2 sản phẩm đã chọn</div>
+        </div>
+        <button class="summary-checkout">Thanh toán</button>
+    </div>
+
+    <!-- SELECT ACTION -->
+    <div class="cart-action">
+        <label class="check-all">
+            <input type="checkbox">
+            <span>Chọn tất cả (1 sản phẩm)</span>
+        </label>
+
+        <button class="btn-delete-selected">
+            <i class='bx bx-trash'></i> Xóa đã chọn
+        </button>
     </div>
 
     <div class="cart-container">
+
+        <!-- CART ITEMS -->
         <div class="cart-items">
+
+            <!-- CART ITEM -->
             <div class="cart-item">
-                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg"
-                     alt="Móc Khóa Lá Cờ Việt Nam">
+                <input type="checkbox" class="item-checkbox">
+
+                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg">
 
                 <div class="product-info">
                     <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
                     <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
+                    <div class="unit-price">15.000 đ</div>
                 </div>
 
-                <div class="qty-price">
-                    <div class="qty-control">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div class="product-price">15.000đ</div>
+                <div class="qty-box">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
                 </div>
 
-                <i class='bx bx-trash'></i>
+                <div class="item-total-price">
+                    15.000 đ
+                </div>
+
+                <i class='bx bx-trash item-remove'></i>
             </div>
 
-            <div class="cart-item">
-                <img src="https://i.pinimg.com/1200x/b3/3a/48/b33a48da7c9b720dee8f5f439ad8f12e.jpg"
-                     alt="Nến Thơm Xương Rồng">
-
-                <div class="product-info">
-                    <div class="product-name">Nến Thơm Xương Rồng</div>
-                    <div class="product-descr">Một chậu nến thơm đáng iu</div>
-                </div>
-
-                <div class="qty-price">
-                    <div class="qty-control">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div class="product-price">150.000đ</div>
-                </div>
-
-                <i class='bx bx-trash'></i>
-            </div>
         </div>
 
+        <!-- TOTAL BOX -->
         <div class="cart-total">
             <h3>Đơn Hàng Của Bạn</h3>
-            <div class="line"><span>Tổng tiền</span><span>165.000đ</span></div>
-            <div class="line"><span>Phí vận chuyển</span><span>Miễn phí</span></div>
-            <div class="line"><span>Giảm giá:</span><span>0đ</span></div>
-            <div class="voucher">
-                <input type="text" placeholder="Nhập mã giảm giá">
-                <button>Áp dụng</button>
+
+            <div class="line">
+                <span>Tạm tính</span>
+                <span>15.000 đ</span>
             </div>
-            <a href="../html/payment.html" class="checkout-button">
+
+            <div class="line">
+                <span>Phí vận chuyển</span>
+                <span class="free">Miễn phí</span>
+            </div>
+
+            <hr>
+
+            <div class="line total">
+                <span>Tổng cộng</span>
+                <span>15.000 đ</span>
+            </div>
+
+            <button class="checkout-button">
                 Tiến hành thanh toán
-            </a>
+            </button>
         </div>
+
     </div>
+
 </section>
 <footer class="footer">
     <div class="container">

@@ -1,30 +1,68 @@
 package controller;
 
-import jakarta.servlet.*;
+import dao.UserDao;
+import model.User;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "SignIn", value = "/SignIn")
-public class SignInController extends HttpServlet {
+@WebServlet("/SignIn")
+public class    SignInController extends HttpServlet {
 
+    private UserDao userDao;
+
+    @Override
+    public void init() {
+        userDao = new UserDao();
+    }
+
+    // ===== HIỂN THỊ TRANG ĐĂNG NHẬP =====
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.getRequestDispatcher("/SignIn.jsp")
+                .forward(request, response);
+    }
+
+    // ===== XỬ LÝ ĐĂNG NHẬP =====
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+
         String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
+        String password = request.getParameter("pass");
 
-        HttpSession session = request.getSession();
-        String regEmail = (String) session.getAttribute("regEmail");
-        String regPass = (String) session.getAttribute("regPass");
+        User user = userDao.login(email, password);
 
-        if (email.equals(regEmail) && pass.equals(regPass)) {
-            response.sendRedirect("jsp/home.jsp");
-        } else {
+        // ❌ LOGIN THẤT BẠI
+        if (user == null) {
             request.setAttribute("error", "Sai email hoặc mật khẩu");
-            request.getRequestDispatcher("webapp/signin.jsp").forward(request, response);
+            request.getRequestDispatcher("/SignIn.jsp")
+                    .forward(request, response);
+            return;
+        }
+
+        // ✅ LOGIN THÀNH CÔNG
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+
+        // 🔐 PHÂN QUYỀN
+        if ("ADMIN".equals(user.getRole())) {
+            // ADMIN → trang admin
+            response.sendRedirect(
+                    request.getContextPath() + "/trangadmin/tongquan.jsp"
+            );
+        } else {
+            // USER → trang user
+            response.sendRedirect(
+                    request.getContextPath() + "/trangchu.jsp"
+            );
         }
     }
 }

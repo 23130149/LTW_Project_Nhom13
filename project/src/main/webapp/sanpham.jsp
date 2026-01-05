@@ -124,14 +124,13 @@
                 <div class="filter-group category-filter">
                     <h4 class="filter-group-title">Danh mục</h4>
                     <ul>
-                        <li><a href="#">Móc khóa(25)</a></li>
-                        <li><a href="#">Vòng tay(25)</a></li>
-                        <li><a href="#">Nến thơm(25)</a></li>
-                        <li><a href="#">Túi xách(25)</a></li>
-                        <li><a href="#">Ốp lưng(25)</a></li>
-                        <li><a href="#">Kẹp tóc(25)</a></li>
-                        <li><a href="#">Sổ trang trí(25)</a></li>
-                        <li><a href="#">Đồ trang trí nhà(25)</a></li>
+                        <c:forEach items = "${categoryList}" var="cat">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/product?categoryId=${cat.category_id}">
+                                ${cat.name}
+                            </a>
+                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </aside>

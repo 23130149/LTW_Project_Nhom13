@@ -54,6 +54,15 @@ public class ProductDao extends BaseDao {
                     .list()
         );
     }
+    public List<Product> getFeaturedProductsByCategoryId(int  categoryId) {
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p where p.category_id = :categoryId LIMIT 8";
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("categoryId", categoryId)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
 
     public static void main(String[] args) {
         ProductDao pdao = new ProductDao();

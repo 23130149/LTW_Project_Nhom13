@@ -1,11 +1,12 @@
 package controller;
 
-import dao.CategoryDao;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Category;
 import model.Product;
+import service.CategoryService;
 import service.ProductService;
 
 import java.io.IOException;
@@ -19,9 +20,9 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductService ps = new ProductService();
-        CategoryDao categoryDao = new CategoryDao();
+        CategoryService cs = new CategoryService();
 
-        List<Category> categoryList = categoryDao.getAllCategories();
+        List<Category> categoryList = cs.getAllCategories();
         request.setAttribute("categoryList", categoryList);
         String categoryIdStr =  request.getParameter("categoryId");
         int categoryId = 0;
@@ -30,13 +31,13 @@ public class ProductController extends HttpServlet {
             try {
                 categoryId = Integer.parseInt(categoryIdStr);
             } catch (NumberFormatException e) {
+                System.err.println("Invalid category Id: " + categoryIdStr);
             }
         }
         List<Product> list;
 
         if(categoryId > 0) {
             list = ps.getListProductByCategoryId(categoryId);
-            System.out.println(categoryId + ", So luong SP: " + list.size());
             request.setAttribute("list", list);
         } else {
             int currentPage = 1;
@@ -45,13 +46,13 @@ public class ProductController extends HttpServlet {
                 try {
                     currentPage = Integer.parseInt(pageStr);
                 } catch (NumberFormatException e) {
+                    System.err.println("Invalid page: " + pageStr);
                 }
             }
             int offset = (currentPage - 1) * PRODUCTS_PER_PAGE;
             int totalProducts = ps.getTotalProducts();
             int totalPages = (int) Math.ceil((double) totalProducts / PRODUCTS_PER_PAGE);
             list = ps.getProductsPerPage(PRODUCTS_PER_PAGE, offset);
-            System.out.println("DEBUG CONTROLLER: So luong san pham lay duoc: " + list.size());
             request.setAttribute("list", list);
             request.setAttribute("currentPage", currentPage);
             request.setAttribute("totalPages", totalPages);

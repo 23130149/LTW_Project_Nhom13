@@ -41,5 +41,8 @@ public class CartItem {
         if(quantity <= 0) quantity = 1;
         this.quantity += quantity;
     }
+    public double getTotal(){
+        return price * quantity;
+    }
 
 }

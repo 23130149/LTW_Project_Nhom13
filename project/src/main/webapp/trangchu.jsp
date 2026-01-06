@@ -18,6 +18,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
                 <a href="${pageContext.request.contextPath}/trangchu.jsp">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">

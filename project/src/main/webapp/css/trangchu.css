@@ -3,6 +3,8 @@
         width: 100%;
         height: calc(100vh - 80px);
         margin-top: -40px;
+        height: calc(100vh - 120px);
+        margin-top: 120px;
         overflow: hidden;
         font-family: 'Poppins', sans-serif;
     }
@@ -14,6 +16,7 @@
         height: 50px;
         background-color: white;
         clip-path: polygon(0 0, 10% 100%, 20% 0, 30% 100%, 40% 0, 50% 100%, 60% 0, 70% 100%, 80% 0, 90% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 0 80%, 20% 100%, 40% 80%, 60% 100%, 80% 80%, 100% 100%);
         z-index: 5;
     }
     .slider-wrapper{
@@ -56,6 +59,7 @@
         z-index: 2;
         color: white;
         padding: 20px 30px;
+        padding: 40px;
         max-width: 900px;
     }
 
@@ -66,6 +70,9 @@
         text-transform: uppercase;
         margin-bottom: 15px;
         line-height: 1.1;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
     }
 
     .section-subtitle {
@@ -73,6 +80,7 @@
         line-height: 1.6;
         color: rgba(255, 255, 255, 0.85);
         margin-bottom: 20px;
+        margin-bottom: 35px;
     }
 
     .btn-view-more {

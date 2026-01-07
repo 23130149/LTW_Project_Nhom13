@@ -105,21 +105,19 @@ body {
 }
 
 .cart-items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex: 3;
 }
 
 /* ITEM */
 .cart-item {
-    display: grid;
-    grid-template-columns: 40px 100px 1fr 160px 140px 40px;
+    display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    background: #fff;
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
 }
 
 .item-checkbox {

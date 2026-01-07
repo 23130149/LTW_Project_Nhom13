@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
+                <a href="../html/trangchu.html">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
@@ -27,13 +26,13 @@
                 </button>
             </form>
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/favourite.jsp" class="icon-btn" id="heartBtn">
+                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/cart.jsp" class="icon-btn" id="cartBtn">
+                <a href="../html/cart.html" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
+                <a href="../html/account.html" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
                 </a>
             </div>
@@ -43,10 +42,10 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
-                    <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
+                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
+                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
+                    <li><a href="../html/blog.html">Blog</a></li>
+                    <li><a href="../html/contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
@@ -56,13 +55,13 @@
     <div class="page-title-container">
         <h2 class="page-main-title">Chi tiết sản phẩm</h2>
         <div class="breadcrumb">
-            <a href="${pageContext.request.contextPath}/home">Trang chủ</a>
+            <a href="#">Trang chủ</a>
             <a href="#"><i class="bx bx-chevron-right"></i></a>
             <span>Chi tiết sản phẩm</span>
-            <a href="${pageContext.request.contextPath}/product?categoryId=${product.category_id}"><i class="bx bx-chevron-right"></i></a>
-            <span>${product.category_name}</span>
             <a href="#"><i class="bx bx-chevron-right"></i></a>
-            <span>${product.product_name}</span>
+            <span>Móc khóa</span>
+            <a href="#"><i class="bx bx-chevron-right"></i></a>
+            <span>Móc khóa lá cờ Việt Nam</span>
         </div>
     </div>
 </div>
@@ -71,11 +70,12 @@
         <div class="product-detail-content">
             <div class="product-image">
                 <div class="main-image">
-                    <img src="${product.image_url}" alt="${product.product_name}">
+                    <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg"
+                         alt="Móc khóa lá cờ Việt Nam">
                 </div>
             </div>
             <div class="product-info">
-                <h1 class="product-title">${product.product_name}</h1>
+                <h1 class="product-title">Móc khóa lá cờ Việt Nam</h1>
                 <div class="product-rating">
                     <div class="stars">
                         <i class="bx bxs-star"></i>
@@ -86,15 +86,14 @@
                     </div>
                     <span class="rating-text">5.0 (86 đánh giá)</span>
                 </div>
-                <p class="price">${product.product_price}
-                </p>
+                <p class="price">15.000đ</p>
                 <div class="product-des">
                     <h2>Mô tả sản phẩm</h2>
-                    <p>${product.product_description}</p>
+                    <p> Tất cả đều làm thủ công 100%, để mang trải nghiệm tốt nhất cho khách hàng</p>
                 </div>
                 <div class="purchase-box">
                     <div class="quantity-input-box">
-                        <input type="number" class="quantity-input" value="1" min="1" max="${product.stock_Quantity}">
+                        <input type="number" class="quantity-input" value="1" min="1">
                         <div class="quantity-arrows">
                             <button class="arrow-up"><i class="bx bx-chevron-up"></i></button>
                             <button class="arrow-down"><i class="bx bx-chevron-down"></i></button>
@@ -113,7 +112,7 @@
                     <button type="button" class="btn btn-buy-now">Mua ngay</button>
                 </div>
                 <div class="product-meta">
-                    <p><strong>Danh mục: </strong><a href="${pageContext.request.contextPath}/product?categoryId=${product.category_id}">${product.category_name}</a></p>
+                    <p><strong>Danh mục: </strong><a href="#">Móc khóa</a></p>
                     <div class="share-links">
                         <strong>Chia sẻ:</strong>
                         <a href="#"><i class="bx bxl-facebook"></i></a>

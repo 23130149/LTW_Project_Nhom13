@@ -7,7 +7,7 @@ import java.util.List;
 public class ProductDao extends BaseDao {
 
     public List<Product> getListProduct() {
-        String sql = "select p.*, c.name as category_name, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p join categories c on p.category_id = c.category_id";
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p";
             return getJdbi().withHandle(handle ->
                     handle.createQuery(sql)
                     .mapToBean(Product.class)
@@ -45,22 +45,13 @@ public class ProductDao extends BaseDao {
     }
 
     public List<Product> getProductByCategoryId(int categoryId) {
-        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p where category_id = :categoryId limit 8";
+        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as image_url from products p where category_id = :categoryId";
 
             return getJdbi().withHandle(handle ->
                     handle.createQuery(sql)
                     .bind("categoryId", categoryId)
                     .mapToBean(Product.class)
                     .list()
-        );
-    }
-    public List<Product> getFeaturedProductsByCategoryId(int  categoryId) {
-        String sql = "select p.*, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p where p.category_id = :categoryId LIMIT 8";
-        return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("categoryId", categoryId)
-                        .mapToBean(Product.class)
-                        .list()
         );
     }
 

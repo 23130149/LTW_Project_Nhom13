@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -70,6 +69,7 @@
         <button class="summary-checkout">Thanh toán</button>
     </div>
 
+    <!-- SELECT ACTION -->
     <div class="cart-action">
         <label class="check-all">
             <input type="checkbox">
@@ -80,34 +80,38 @@
             <i class='bx bx-trash'></i> Xóa đã chọn
         </button>
     </div>
-    <c:forEach items="${sessionScope.cart.list}" var="p">
+
     <div class="cart-container">
 
+        <!-- CART ITEMS -->
         <div class="cart-items">
 
+            <!-- CART ITEM -->
             <div class="cart-item">
                 <input type="checkbox" class="item-checkbox">
-                <img src="${p.product.image_url}">
+
+                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg">
+
                 <div class="product-info">
-                    <div class="product-name">${p.product.product_name}</div>
-                    <div class="unit-price">${p.price}</div>
+                    <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
+                    <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
+                    <div class="unit-price">15.000 đ</div>
                 </div>
 
                 <div class="qty-box">
                     <button>-</button>
-                    <span> ${p.quantity}</span>
+                    <span>1</span>
                     <button>+</button>
                 </div>
 
                 <div class="item-total-price">
-                        ${p.total}
+                    15.000 đ
                 </div>
 
                 <i class='bx bx-trash item-remove'></i>
             </div>
 
         </div>
-    </c:forEach>
 
         <!-- TOTAL BOX -->
         <div class="cart-total">
@@ -127,7 +131,7 @@
 
             <div class="line total">
                 <span>Tổng cộng</span>
-                <span>${sessionScope.cart.totalPrice}</span>
+                <span>15.000 đ</span>
             </div>
 
             <button class="checkout-button">

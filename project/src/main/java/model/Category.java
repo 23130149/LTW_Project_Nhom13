@@ -3,16 +3,13 @@ package model;
 public class Category {
     private Integer category_id;
     private String name;
-    private String image_url;
-
 
     public Category() {
     }
 
-    public Category(Integer category_id, String name, String image_url) {
+    public Category(Integer category_id, String name) {
         this.category_id = category_id;
         this.name = name;
-        this.image_url= image_url;
     }
 
     @Override
@@ -20,7 +17,6 @@ public class Category {
         return "Category{" +
                 "category_id=" + category_id +
                 ", name='" + name + '\'' +
-                ", imageUrl='" + image_url + '\'' +
                 '}';
     }
 
@@ -38,13 +34,5 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
     }
 }

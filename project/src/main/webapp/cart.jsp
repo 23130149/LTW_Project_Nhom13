@@ -31,7 +31,7 @@
                 <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a href="../html/cart.html" class="icon-btn" id="cartBtn">
+                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
                 <a href="../html/account.html" class="icon-btn" id="userBtn">
@@ -44,8 +44,8 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
-                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="../html/blog.html">Blog</a></li>
                     <li><a href="../html/contact.html">Liên hệ</a></li>
                 </ul>
@@ -63,55 +63,60 @@
     <div class="cart-summary-bar">
         <div>
             <div class="summary-title">Tổng tiền ước tính</div>
-            <div class="summary-price">56.980.000 đ</div>
+            <div class="summary-price">${sessionScope.cart.totalPrice}</div>
             <div class="summary-note">2 sản phẩm đã chọn</div>
         </div>
         <button class="summary-checkout">Thanh toán</button>
     </div>
+    <form action="DelSelectProduct" method="post">
 
     <!-- SELECT ACTION -->
     <div class="cart-action">
-        <label class="check-all">
-            <input type="checkbox">
-            <span>Chọn tất cả (1 sản phẩm)</span>
+        <label class="check-all" >
+            <input type="checkbox" id="checkAll">
+            <span>Chọn tất cả(${sessionScope.cart.totalQuantity} sản phẩm)</span>
         </label>
 
         <button class="btn-delete-selected">
             <i class='bx bx-trash'></i> Xóa đã chọn
         </button>
     </div>
+        <div class="cart-list">
 
-    <div class="cart-container">
+            <c:forEach items="${sessionScope.cart.list}" var="p">
 
-        <!-- CART ITEMS -->
-        <div class="cart-items">
+                <div class="cart-item">
+                    <input type="checkbox"
+                           class="item-checkbox"
+                           name="productIds"
+                           value="${p.product.product_id}">
 
-            <!-- CART ITEM -->
-            <div class="cart-item">
-                <input type="checkbox" class="item-checkbox">
 
-                <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg">
+                    <img src="${p.product.image_url}" alt="">
 
-                <div class="product-info">
-                    <div class="product-name">Móc Khóa Lá Cờ Việt Nam</div>
-                    <div class="product-descr">Chiếc móc len tự hào và yêu nước</div>
-                    <div class="unit-price">15.000 đ</div>
+                    <div class="product-info">
+                        <div class="product-name">${p.product.product_name}</div>
+                        <div class="unit-price">${p.price}</div>
+                    </div>
+
+                    <div class="qty-box">
+                        <button>-</button>
+                        <span>${p.quantity}</span>
+                        <button>+</button>
+                    </div>
+
+                    <div class="item-total-price">
+                            ${p.total}
+                    </div>
+
+                    <i class='bx bx-trash item-remove'
+                       onclick="location.href='DelProduct?id=${p.product.product_id}'">
+                    </i>
                 </div>
-
-                <div class="qty-box">
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
-                </div>
-
-                <div class="item-total-price">
-                    15.000 đ
-                </div>
-
-                <i class='bx bx-trash item-remove'></i>
-            </div>
+            </c:forEach>
 
         </div>
+    </form>
 
         <!-- TOTAL BOX -->
         <div class="cart-total">
@@ -119,7 +124,7 @@
 
             <div class="line">
                 <span>Tạm tính</span>
-                <span>15.000 đ</span>
+                <span>${sessionScope.cart.totalPrice}</span>
             </div>
 
             <div class="line">
@@ -139,7 +144,6 @@
             </button>
         </div>
 
-    </div>
 
 </section>
 <footer class="footer">
@@ -191,6 +195,27 @@
         </div>
     </div>
 </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const checkAll = document.getElementById("checkAll");
+        const items = document.querySelectorAll(".item-checkbox");
+
+        // Tick / bỏ tick toàn bộ
+        checkAll.addEventListener("change", function () {
+            items.forEach(cb => cb.checked = checkAll.checked);
+        });
+
+        // Khi bỏ tick 1 item → bỏ tick checkAll
+        items.forEach(cb => {
+            cb.addEventListener("change", function () {
+                checkAll.checked = [...items].every(i => i.checked);
+            });
+        });
+
+    });
+</script>
+
 
 </body>
 </html>

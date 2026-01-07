@@ -1,4 +1,24 @@
 package controller;
 
-public class LogoutController {
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+
+@WebServlet("/Logout")
+public class LogoutController extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); // xoá toàn bộ session
+        }
+
+        // quay về trang đăng nhập
+        response.sendRedirect(request.getContextPath() + "/SignIn.jsp");
+    }
 }

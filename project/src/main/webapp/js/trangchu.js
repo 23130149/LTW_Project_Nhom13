@@ -1,27 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slide");
-    const intervalTime = 4000;
-
-    function showSlides(index) {
-        slides.forEach(slide => {
-            slide.classList.remove("slide-active");
-        });
-        slides[index].classList.add("slide-active");
-    }
-    function nextSlide() {
-        slideIndex++;
-        if (slideIndex >= slides.length) {
-            slideIndex = 0;
-        }
-        showSlides(slideIndex);
-    }
-    if(slides.length > 0) {
-        showSlides(slideIndex)
-        if(slides.length > 1) {
-            setInterval(nextSlide, intervalTime)
-        }
-    }
     const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 
     addToCartButtons.forEach(button => {

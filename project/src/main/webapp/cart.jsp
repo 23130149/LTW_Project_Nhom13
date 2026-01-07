@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -71,6 +70,7 @@
     </div>
     <form action="DelSelectProduct" method="post">
 
+    <!-- SELECT ACTION -->
     <div class="cart-action">
         <label class="check-all" >
             <input type="checkbox" id="checkAll">
@@ -136,7 +136,7 @@
 
             <div class="line total">
                 <span>Tổng cộng</span>
-                <span>${sessionScope.cart.totalPrice}</span>
+                <span>15.000 đ</span>
             </div>
 
             <button class="checkout-button">

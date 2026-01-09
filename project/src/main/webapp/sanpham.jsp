@@ -31,7 +31,7 @@
                 <a href="${pageContext.request.contextPath}/favourite.jsp" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/cart.jsp" class="icon-btn" id="cartBtn">
+                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i> (${sessionScope.cart.totalQuantity})
                 </a>
                 <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">

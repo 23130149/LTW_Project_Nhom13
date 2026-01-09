@@ -8,7 +8,7 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
-    <title>Chi tiết sản phẩm</title>
+    <title>${product.product_name}</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -57,11 +57,11 @@
         <h2 class="page-main-title">Chi tiết sản phẩm</h2>
         <div class="breadcrumb">
             <a href="${pageContext.request.contextPath}/home">Trang chủ</a>
-            <a href="#"><i class="bx bx-chevron-right"></i></a>
+            <i class="bx bx-chevron-right"></i>
             <span>Chi tiết sản phẩm</span>
-            <a href="${pageContext.request.contextPath}/product?categoryId=${product.category_id}"><i class="bx bx-chevron-right"></i></a>
+            <i class="bx bx-chevron-right"></i>
             <span>${product.category_name}</span>
-            <a href="#"><i class="bx bx-chevron-right"></i></a>
+            <i class="bx bx-chevron-right"></i>
             <span>${product.product_name}</span>
         </div>
     </div>
@@ -86,8 +86,7 @@
                     </div>
                     <span class="rating-text">5.0 (86 đánh giá)</span>
                 </div>
-                <p class="price">${product.product_price}
-                </p>
+                <p class="price">${product.product_price} đ</p>
                 <div class="product-des">
                     <h2>Mô tả sản phẩm</h2>
                     <p>${product.product_description}</p>
@@ -96,21 +95,20 @@
                     <div class="quantity-input-box">
                         <input type="number" class="quantity-input" value="1" min="1" max="${product.stock_Quantity}">
                         <div class="quantity-arrows">
-                            <button class="arrow-up"><i class="bx bx-chevron-up"></i></button>
-                            <button class="arrow-down"><i class="bx bx-chevron-down"></i></button>
+                            <button type="button" class="arrow-up"><i class="bx bx-chevron-up"></i></button>
+                            <button type="button" class="arrow-down"><i class="bx bx-chevron-down"></i></button>
                         </div>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn btn-add-to-cart">
+                        <button class="btn btn-add-to-cart" id="btnAddToCart" data-product-id="${product.product_id}">
                             <i class="bx bx-cart"></i> Thêm vào giỏ hàng
                         </button>
-                        <div class="extra-action">
-                            <button class="btn btn-icon-action" aria-label="Yêu thích">
-                                <i class="bx bx-heart"></i>
+                            <button class="btn btn-icon-action" id="favoriteBtn" aria-label="Yêu thích">
+                                <i class="bx bx-heart" id="favoriteIcon"></i>
                             </button>
-                        </div>
+
                     </div>
-                    <button type="button" class="btn btn-buy-now">Mua ngay</button>
+                    <button class="btn btn-buy-now">Mua ngay</button>
                 </div>
                 <div class="product-meta">
                     <p><strong>Danh mục: </strong><a href="${pageContext.request.contextPath}/product?categoryId=${product.category_id}">${product.category_name}</a></p>
@@ -128,15 +126,13 @@
         <div class="rating-section">
             <h2>Đánh giá sản phẩm</h2>
             <div class="rating-sumary">
-                <p class="rating-number">5.0/5</p>
+                <p class="rating-number">${avgRating}/5</p>
                 <div class="stars">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
+                    <c:forEach begin="1" end="5" var="i">
+                        <i class="bx ${i <= avgRating ? 'bxs-star' : 'bx-star'}"></i>
+                        </c:forEach>
                 </div>
-                <p class="rating-count">86 đánh giá</p>
+                <p class="rating-count">${ratingCount} đánh giá</p>
             </div>
             <div class="rating-breakdown">
                 <div class="rating-bar-now">
@@ -177,76 +173,33 @@
             </div>
         </div>
         <div class="review-list">
-            <h3>Bình luận từ khách hàng (3)</h3>
+            <h3>Bình luận từ khách hàng (${reviewCount})</h3>
+            <c:if test="${empty reviews}">
+                <p>Chưa có đánh giá nào.</p>
+            </c:if>
+
+            <c:forEach var="r" items="${reviews}">
             <div class="review-item">
                 <div class="review-header">
-                    <span class="user-avatar">P</span>
+                    <span class="user-avatar"> ${fn:substring(r.userName,0,1)}</span>
                     <div class="user-info">
-                        <p class="user-name">Nguyễn Thanh Phú</p>
+                        <p class="user-name">${r.userName}</p>
                         <div class="review-rating">
-                            <div class="small-stars">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <span class="review-date">28/12/2024</span>
+                            <c:forEach begin="1" end="5" var="i">
+                                <i class="bx ${i <= r.rating ? 'bxs-star' : 'bx-star'}"></i>
+                            </c:forEach>
+                            <span class="review-date"><fmt:formatDate value="${r.createAt}" pattern="dd/MM/yyyy"/></span>
                         </div>
                     </div>
                 </div>
-                <p class="review-text">Sản phẩm rất đẹp không có chỗ nào chê.</p>
+                <p class="review-text">${r.comment}</p>
                 <div class="review-actions">
                     <i class="bx bxs-hand-up"></i>
                     <span>Hữu ích (60)</span>
                 </div>
             </div>
-            <div class="review-item">
-                <div class="review-header">
-                    <span class="user-avatar">K</span>
-                    <div class="user-info">
-                        <p class="user-name">Lê Viết Khanh</p>
-                        <div class="review-rating">
-                            <div class="small-stars">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <span class="review-date">17/10/2024</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="review-text">Móc khóa dễ thương, chắc chắn lần sau tui sẽ mua tiếp.</p>
-                <div class="review-actions">
-                    <i class="bx bxs-hand-up"></i>
-                    <span>Hữu ích (30)</span>
-                </div>
             </div>
-            <div class="review-item">
-                <div class="review-header">
-                    <span class="user-avatar">Q</span>
-                    <div class="user-info">
-                        <p class="user-name">Trần Hoàng Quân</p>
-                        <div class="review-rating">
-                            <div class="small-stars">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <span class="review-date">25/11/2024</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="review-text">Sản phẩm rất đẹp, giá thành hợp lí.</p>
-                <div class="review-actions">
-                    <i class="bx bxs-hand-up"></i>
-                    <span>Hữu ích (10)</span>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <section class="related-products">
             <h2 id="related-title">Sản phẩm liên quan</h2>
@@ -374,5 +327,6 @@
         </div>
     </div>
 </footer>
+ <script src="${pageContext.request.contextPath}/js/chitietsp.js"></script>
 </body>
 </html>

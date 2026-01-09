@@ -19,6 +19,7 @@
         <div class="header-content">
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/trangchu.jsp">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
@@ -28,13 +29,6 @@
                 </button>
             </form>
             <div class="icons">
-                <c:if test="${empty sessionScope.user}">
-                    <a href="${pageContext.request.contextPath}/SignIn" class="icon-btn">
-                        <i class="bx bx-log-in"></i>
-                    </a>
-                </c:if>
-
-                <c:if test="${not empty sessionScope.user}">
                 <a href="${pageContext.request.contextPath}/favourite.jsp" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
@@ -44,7 +38,6 @@
                 <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
                 </a>
-                </c:if>
             </div>
         </div>
     </div>
@@ -118,12 +111,13 @@
                             </div>
                             <div class="category-list">
                                 <c:forEach items="${categoryList}" var="cat">
-                                    <a href="${pageContext.request.contextPath}/product?categoryId=${cat.category_id}" class="category-item">
-                                        <img src="${cat.image_url}" alt="${cat.name}" loading="lazy">
+                                    <div class="category-item">
+                                        <img src="${cat.image_url}" alt="${cat.name}">
                                         <div class="category-overlay">
                                             <h4>${cat.name}</h4>
+                                            <span>25 sản phẩm</span>
                                         </div>
-                                    </a>
+                                    </div>
                                 </c:forEach>
                             </div>
                         </div>

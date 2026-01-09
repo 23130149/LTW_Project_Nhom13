@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <meta charset="UTF-8">
-    <title>Chi tiết sản phẩm</title>
+    <title>${product.product_name}</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +17,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="../html/trangchu.html">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
@@ -26,13 +27,13 @@
                 </button>
             </form>
             <div class="icons">
-                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
+                <a href="${pageContext.request.contextPath}/favourite.jsp" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a href="../html/cart.html" class="icon-btn" id="cartBtn">
+                <a href="${pageContext.request.contextPath}/cart.jsp" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
-                <a href="../html/account.html" class="icon-btn" id="userBtn">
+                <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
                 </a>
             </div>
@@ -42,10 +43,10 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
-                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
-                    <li><a href="../html/blog.html">Blog</a></li>
-                    <li><a href="../html/contact.html">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
@@ -55,13 +56,13 @@
     <div class="page-title-container">
         <h2 class="page-main-title">Chi tiết sản phẩm</h2>
         <div class="breadcrumb">
-            <a href="#">Trang chủ</a>
-            <a href="#"><i class="bx bx-chevron-right"></i></a>
+            <a href="${pageContext.request.contextPath}/home">Trang chủ</a>
+            <i class="bx bx-chevron-right"></i>
             <span>Chi tiết sản phẩm</span>
-            <a href="#"><i class="bx bx-chevron-right"></i></a>
-            <span>Móc khóa</span>
-            <a href="#"><i class="bx bx-chevron-right"></i></a>
-            <span>Móc khóa lá cờ Việt Nam</span>
+            <i class="bx bx-chevron-right"></i>
+            <span>${product.category_name}</span>
+            <i class="bx bx-chevron-right"></i>
+            <span>${product.product_name}</span>
         </div>
     </div>
 </div>
@@ -70,12 +71,11 @@
         <div class="product-detail-content">
             <div class="product-image">
                 <div class="main-image">
-                    <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg"
-                         alt="Móc khóa lá cờ Việt Nam">
+                    <img src="${product.image_url}" alt="${product.product_name}">
                 </div>
             </div>
             <div class="product-info">
-                <h1 class="product-title">Móc khóa lá cờ Việt Nam</h1>
+                <h1 class="product-title">${product.product_name}</h1>
                 <div class="product-rating">
                     <div class="stars">
                         <i class="bx bxs-star"></i>
@@ -86,33 +86,32 @@
                     </div>
                     <span class="rating-text">5.0 (86 đánh giá)</span>
                 </div>
-                <p class="price">15.000đ</p>
+                <p class="price">${product.product_price} đ</p>
                 <div class="product-des">
                     <h2>Mô tả sản phẩm</h2>
-                    <p> Tất cả đều làm thủ công 100%, để mang trải nghiệm tốt nhất cho khách hàng</p>
+                    <p>${product.product_description}</p>
                 </div>
                 <div class="purchase-box">
                     <div class="quantity-input-box">
-                        <input type="number" class="quantity-input" value="1" min="1">
+                        <input type="number" class="quantity-input" value="1" min="1" max="${product.stock_Quantity}">
                         <div class="quantity-arrows">
-                            <button class="arrow-up"><i class="bx bx-chevron-up"></i></button>
-                            <button class="arrow-down"><i class="bx bx-chevron-down"></i></button>
+                            <button type="button" class="arrow-up"><i class="bx bx-chevron-up"></i></button>
+                            <button type="button" class="arrow-down"><i class="bx bx-chevron-down"></i></button>
                         </div>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn btn-add-to-cart">
+                        <button class="btn btn-add-to-cart" id="btnAddToCart" data-product-id="${product.product_id}">
                             <i class="bx bx-cart"></i> Thêm vào giỏ hàng
                         </button>
-                        <div class="extra-action">
-                            <button class="btn btn-icon-action" aria-label="Yêu thích">
-                                <i class="bx bx-heart"></i>
+                            <button class="btn btn-icon-action" id="favoriteBtn" aria-label="Yêu thích">
+                                <i class="bx bx-heart" id="favoriteIcon"></i>
                             </button>
-                        </div>
+
                     </div>
-                    <button type="button" class="btn btn-buy-now">Mua ngay</button>
+                    <button class="btn btn-buy-now">Mua ngay</button>
                 </div>
                 <div class="product-meta">
-                    <p><strong>Danh mục: </strong><a href="#">Móc khóa</a></p>
+                    <p><strong>Danh mục: </strong><a href="${pageContext.request.contextPath}/product?categoryId=${product.category_id}">${product.category_name}</a></p>
                     <div class="share-links">
                         <strong>Chia sẻ:</strong>
                         <a href="#"><i class="bx bxl-facebook"></i></a>
@@ -127,15 +126,13 @@
         <div class="rating-section">
             <h2>Đánh giá sản phẩm</h2>
             <div class="rating-sumary">
-                <p class="rating-number">5.0/5</p>
+                <p class="rating-number">${avgRating}/5</p>
                 <div class="stars">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
+                    <c:forEach begin="1" end="5" var="i">
+                        <i class="bx ${i <= avgRating ? 'bxs-star' : 'bx-star'}"></i>
+                        </c:forEach>
                 </div>
-                <p class="rating-count">86 đánh giá</p>
+                <p class="rating-count">${ratingCount} đánh giá</p>
             </div>
             <div class="rating-breakdown">
                 <div class="rating-bar-now">
@@ -176,76 +173,33 @@
             </div>
         </div>
         <div class="review-list">
-            <h3>Bình luận từ khách hàng (3)</h3>
+            <h3>Bình luận từ khách hàng (${reviewCount})</h3>
+            <c:if test="${empty reviews}">
+                <p>Chưa có đánh giá nào.</p>
+            </c:if>
+
+            <c:forEach var="r" items="${reviews}">
             <div class="review-item">
                 <div class="review-header">
-                    <span class="user-avatar">P</span>
+                    <span class="user-avatar"> ${fn:substring(r.userName,0,1)}</span>
                     <div class="user-info">
-                        <p class="user-name">Nguyễn Thanh Phú</p>
+                        <p class="user-name">${r.userName}</p>
                         <div class="review-rating">
-                            <div class="small-stars">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <span class="review-date">28/12/2024</span>
+                            <c:forEach begin="1" end="5" var="i">
+                                <i class="bx ${i <= r.rating ? 'bxs-star' : 'bx-star'}"></i>
+                            </c:forEach>
+                            <span class="review-date"><fmt:formatDate value="${r.createAt}" pattern="dd/MM/yyyy"/></span>
                         </div>
                     </div>
                 </div>
-                <p class="review-text">Sản phẩm rất đẹp không có chỗ nào chê.</p>
+                <p class="review-text">${r.comment}</p>
                 <div class="review-actions">
                     <i class="bx bxs-hand-up"></i>
                     <span>Hữu ích (60)</span>
                 </div>
             </div>
-            <div class="review-item">
-                <div class="review-header">
-                    <span class="user-avatar">K</span>
-                    <div class="user-info">
-                        <p class="user-name">Lê Viết Khanh</p>
-                        <div class="review-rating">
-                            <div class="small-stars">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <span class="review-date">17/10/2024</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="review-text">Móc khóa dễ thương, chắc chắn lần sau tui sẽ mua tiếp.</p>
-                <div class="review-actions">
-                    <i class="bx bxs-hand-up"></i>
-                    <span>Hữu ích (30)</span>
-                </div>
             </div>
-            <div class="review-item">
-                <div class="review-header">
-                    <span class="user-avatar">Q</span>
-                    <div class="user-info">
-                        <p class="user-name">Trần Hoàng Quân</p>
-                        <div class="review-rating">
-                            <div class="small-stars">
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                                <i class="bx bxs-star"></i>
-                            </div>
-                            <span class="review-date">25/11/2024</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="review-text">Sản phẩm rất đẹp, giá thành hợp lí.</p>
-                <div class="review-actions">
-                    <i class="bx bxs-hand-up"></i>
-                    <span>Hữu ích (10)</span>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <section class="related-products">
             <h2 id="related-title">Sản phẩm liên quan</h2>
@@ -373,5 +327,6 @@
         </div>
     </div>
 </footer>
+ <script src="${pageContext.request.contextPath}/js/chitietsp.js"></script>
 </body>
 </html>

@@ -8,15 +8,31 @@ import service.ProductService;
 
 import java.io.IOException;
 
-@WebServlet(name = "ProductDetailController", value = "/chitietspController")
+@WebServlet(name = "ProductDetailController", value = "/product-detail")
 public class ProductDetailController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int productId = 0;
+        String idParam = request.getParameter("id");
+        if (idParam == null || idParam.isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/product");
+            return;
+        }
+        int productId;
+        try {
+            productId = Integer.parseInt(idParam);
+        } catch (NumberFormatException e) {
+            response.sendRedirect(request.getContextPath() + "/product");
+            return;
+        }
         ProductService ps = new ProductService();
-        Product productDetail = ps.getProductById(productId);
-        request.getRequestDispatcher("chitietsp.jsp").forward(request, response);
+        Product product = ps.getProductById(productId);
+        if (product == null) {
+            response.sendRedirect(request.getContextPath() + "/product");
+            return;
+            }
+        request.setAttribute("product", product);
+        request.getRequestDispatcher("/chitietsp.jsp").forward(request, response);
     }
 
     @Override

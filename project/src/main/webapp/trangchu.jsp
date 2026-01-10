@@ -104,37 +104,37 @@
     </div>
 </section>
 <section class="categories">
-                        <div class="container">
-                            <div class="heading">
-                                <h3>Danh mục sản phẩm</h3>
-                                <p>Khám phá bộ sưu tập sản phẩm của chúng tôi</p>
-                            </div>
-                            <div class="category-list">
-                                <c:forEach items="${categoryList}" var="cat">
-                                    <div class="category-item">
-                                        <img src="${cat.image_url}" alt="${cat.name}">
-                                        <div class="category-overlay">
-                                            <h4>${cat.name}</h4>
-                                            <span>25 sản phẩm</span>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                        </div>
-                    </section>
-                        <section class="products-section">
-                            <div class="container">
-                                <div class="heading">
-                                    <h3>Sản phẩm nổi bật</h3>
-                                    <p>Chiêm ngưỡng những gợi ý hàng đầu của chúng tôi</p>
-                                </div>
-                                <div class="product-grid">
-                                    <c:forEach items="${productList}" var="p" begin="0" end="7">
-                                        <div class="product-item">
-                                            <div class="product-top">
-                                                <a href="${pageContext.request.contextPath}/chitietsp.jsp?id=${p.product_id}"  class="product-thumb">
-                                                    <img src="${p.image_url}" alt="${p.product_name}">
-                                                </a>
+    <div class="container">
+        <div class="heading">
+            <h3>Danh mục sản phẩm</h3>
+            <p>Khám phá bộ sưu tập sản phẩm của chúng tôi</p>
+        </div>
+        <div class="category-list">
+            <c:forEach items="${categoryList}" var="cat">
+                <div class="category-item">
+                    <img src="${cat.image_url}" alt="${cat.name}">
+                    <div class="category-overlay">
+                        <h4>${cat.name}</h4>
+                        <span>25 sản phẩm</span>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</section>
+<section class="products-section">
+    <div class="container">
+        <div class="heading">
+            <h3>Sản phẩm nổi bật</h3>
+            <p>Chiêm ngưỡng những gợi ý hàng đầu của chúng tôi</p>
+        </div>
+        <div class="product-grid">
+            <c:forEach items="${productList}" var="p" begin="0" end="7">
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="${pageContext.request.contextPath}/chitietsp.jsp?id=${p.product_id}"  class="product-thumb">
+                            <img src="${p.image_url}" alt="${p.product_name}">
+                        </a>
                         <div class="add-to-cart-btn"><a href="add-Cart?id=${p.product_id}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
                     </div>
                     <div class="product-info">

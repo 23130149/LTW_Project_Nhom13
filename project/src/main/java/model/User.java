@@ -3,32 +3,70 @@ package model;
 import java.time.LocalDateTime;
 
 public class User {
-    private int user_id;
-    private String user_name;
+
+    private int userId;
+    private String userName;
     private String email;
     private String phone;
     private String password;
-    private LocalDateTime create_at;
+    private LocalDateTime createAt;
     private String role;
 
-    public int getUser_id() { return user_id; }
-    public void setUser_id(int user_id) { this.user_id = user_id; }
+    // ===== GETTER / SETTER CHUẨN =====
 
-    public String getUser_name() { return user_name; }
-    public void setUser_name(String user_name) { this.user_name = user_name; }
+    public int getUserId() {
+        return userId;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public String getUserName() {
+        return userName;
+    }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-    public LocalDateTime getCreate_at() { return create_at; }
-    public void setCreate_at(LocalDateTime create_at) { this.create_at = create_at; }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

@@ -5,20 +5,17 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Tài khoản của tôi - Handmade House</title>
-
-    <!-- CSS -->
+    <title>Lịch sử đơn hàng - Handmade House</title>
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/account.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
-
-    <!-- ICON + FONT -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
 <header class="header">
     <div class="header-top-container">
         <div class="header-content">
@@ -53,6 +50,7 @@
 
         </div>
     </div>
+
     <div class="search-bar-section header-bottom-nav">
         <div class="container nav-only-container">
             <nav class="nav__links">
@@ -68,44 +66,9 @@
 </header>
 <main class="about-us-container">
 
-    <h1>Tài khoản của tôi</h1>
-
-    <<div class="account-info">
-    <i class='bx bxs-user-circle'></i>
-    <h3>${sessionScope.user.email}</h3>
-    <p>Xin chào, ${sessionScope.user.userName}!</p>
-</div>
-
-
-    <ul class="account-menu">
-        <li>
-            <a href="${pageContext.request.contextPath}/OrderHistory">
-                <i class='bx bx-receipt'></i>
-                <span>Lịch sử đơn hàng</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-edit-alt'></i>
-                <span>Thông tin cá nhân</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-lock-alt'></i>
-                <span>Đổi mật khẩu</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-map'></i>
-                <span>Sổ địa chỉ</span>
-            </a>
-        </li>
-    </ul>
+    <h1>Lịch sử đơn hàng</h1>
 
     <div class="recent-orders-box">
-        <h2>Đơn hàng gần đây</h2>
 
         <c:choose>
             <c:when test="${empty orderList}">
@@ -120,29 +83,36 @@
                         <th>Ngày đặt</th>
                         <th>Tổng tiền</th>
                         <th>Trạng thái</th>
+                        <th>Chi tiết</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <c:forEach var="order" items="${orderList}">
                         <tr>
-                            <td>#${order.id}</td>
-                            <td>${order.orderDate}</td>
+                            <td>#${order.orderCode}</td>
+                            <td>${order.createAt}</td>
                             <td>${order.totalPrice}đ</td>
                             <td>
-                                <span class="status-${order.status}">
-                                    <c:choose>
-                                        <c:when test="${order.status == 'delivered'}">
-                                            Đã giao
-                                        </c:when>
-                                        <c:when test="${order.status == 'processing'}">
-                                            Đang xử lý
-                                        </c:when>
-                                        <c:otherwise>
-                                            Chờ xác nhận
-                                        </c:otherwise>
-                                    </c:choose>
-                                </span>
+            <span class="status-${order.status}">
+                <c:choose>
+                    <c:when test="${order.status == 'delivered'}">
+                        Đã giao
+                    </c:when>
+                    <c:when test="${order.status == 'processing'}">
+                        Đang xử lý
+                    </c:when>
+                    <c:otherwise>
+                        Chờ xác nhận
+                    </c:otherwise>
+                </c:choose>
+            </span>
+                            </td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   class="view-all-orders">
+                                    Xem
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -150,10 +120,13 @@
                 </table>
             </c:otherwise>
         </c:choose>
+
     </div>
 
-    <a href="${pageContext.request.contextPath}/Logout" class="btn-logout">
-        Đăng xuất
+    <a href="${pageContext.request.contextPath}/Account"
+       class="btn-logout"
+       style="background:#11998e">
+        Quay lại tài khoản
     </a>
 
 </main>
@@ -213,7 +186,5 @@
 
     </div>
 </footer>
-
-
 </body>
 </html>

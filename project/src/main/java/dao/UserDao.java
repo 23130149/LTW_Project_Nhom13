@@ -13,7 +13,7 @@ public class UserDao extends BaseDao {
 
         getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("user_name", user.getUser_name())
+                        .bind("user_name", user.getUserName())
                         .bind("email", user.getEmail())
                         .bind("phone", user.getPhone())
                         .bind("password", user.getPassword())
@@ -24,10 +24,19 @@ public class UserDao extends BaseDao {
 
     // đăng nhập
     public User login(String email, String password) {
+
         String sql = """
-            SELECT * FROM user
-            WHERE Email = :email AND Password = :password
-        """;
+        SELECT
+            User_Id     AS userId,
+            User_Name   AS userName,
+            Email       AS email,
+            Phone       AS phone,
+            Password    AS password,
+            Create_At   AS createAt,
+            Role        AS role
+        FROM user
+        WHERE Email = :email AND Password = :password
+    """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)

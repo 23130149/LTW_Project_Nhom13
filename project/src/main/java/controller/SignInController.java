@@ -40,29 +40,19 @@ public class    SignInController extends HttpServlet {
 
         User user = userDao.login(email, password);
 
-        // ❌ LOGIN THẤT BẠI
         if (user == null) {
             request.setAttribute("error", "Sai email hoặc mật khẩu");
-            request.getRequestDispatcher("/SignIn.jsp")
-                    .forward(request, response);
+            request.getRequestDispatcher("/SignIn.jsp").forward(request, response);
             return;
         }
 
-        // ✅ LOGIN THÀNH CÔNG
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
 
-        // 🔐 PHÂN QUYỀN
-        if ("ADMIN".equals(user.getRole())) {
-            // ADMIN → trang admin
-            response.sendRedirect(
-                    request.getContextPath() + "/trangadmin/tongquan.jsp"
-            );
+        if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+            response.sendRedirect(request.getContextPath() + "/trangadmin/tongquan.jsp");
         } else {
-            // USER → trang user
-            response.sendRedirect(
-                    request.getContextPath() + "/home"
-            );
+            response.sendRedirect(request.getContextPath() + "/Account");
         }
     }
 }

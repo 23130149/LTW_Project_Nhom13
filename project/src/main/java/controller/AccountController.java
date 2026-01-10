@@ -17,11 +17,13 @@ public class AccountController extends HttpServlet {
         HttpSession session = request.getSession(false);
         User user = (session != null) ? (User) session.getAttribute("user") : null;
 
+        // ❌ Chưa login → về SignIn controller
         if (user == null) {
-            response.sendRedirect(request.getContextPath() + "/SignIn.jsp");
+            response.sendRedirect(request.getContextPath() + "/SignIn");
             return;
         }
 
+        // ✅ Đã login → vào account.jsp
         request.getRequestDispatcher("/account.jsp").forward(request, response);
     }
 }

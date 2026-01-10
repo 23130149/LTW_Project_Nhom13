@@ -61,7 +61,7 @@ public class    SignInController extends HttpServlet {
         } else {
             // USER → trang user
             response.sendRedirect(
-                    request.getContextPath() + "/trangchu.jsp"
+                    request.getContextPath() + "/home"
             );
         }
     }

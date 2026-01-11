@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @WebServlet(name = "productController", value = "/product")
-public class ProductController extends HttpServlet {
+public class    ProductController extends HttpServlet {
     private static final int PRODUCTS_PER_PAGE = 8;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

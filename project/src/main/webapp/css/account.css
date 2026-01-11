@@ -1,10 +1,11 @@
+
 main.about-us-container {
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
-    padding-top: 150px;
     padding-bottom: 80px;
 }
+
 
 .about-us-container h1 {
     font-size: 2.5rem;
@@ -44,7 +45,7 @@ main.about-us-container {
     margin: 0;
 }
 
-
+/* ===== MENU ===== */
 .account-menu {
     list-style: none;
     padding: 0;
@@ -83,10 +84,10 @@ main.about-us-container {
     margin-right: 20px;
     width: 30px;
     text-align: center;
-    color: #38ef7d; /* Màu phụ */
+    color: #38ef7d;
 }
 
-
+/* ===== ORDERS ===== */
 .recent-orders-box {
     background: #fcfcfc;
     border: 1px solid #eee;
@@ -130,29 +131,30 @@ main.about-us-container {
     color: #444;
 }
 
-.orders-table td .status-delivered {
+/* ===== STATUS ===== */
+.status-delivered {
     color: #28a745;
     font-weight: 600;
 }
 
-.orders-table td .status-processing {
+.status-processing {
     color: #ffc107;
     font-weight: 600;
 }
 
+/* ===== VIEW ALL ===== */
 .view-all-orders {
     display: inline-block;
     text-decoration: none;
     color: #11998e;
     font-weight: 600;
-    transition: color 0.3s;
 }
 
 .view-all-orders:hover {
     color: #38ef7d;
 }
 
-
+/* ===== LOGOUT ===== */
 .btn-logout {
     display: block;
     width: 100%;

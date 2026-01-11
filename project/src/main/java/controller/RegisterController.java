@@ -41,7 +41,7 @@ public class RegisterController extends HttpServlet {
 
         // ===== TẠO USER =====
         User user = new User();
-        user.setUser_name(fullName);
+        user.setUserName(fullName);
         user.setEmail(email);
         user.setPassword(password); // TODO: hash sau
         user.setRole("USER");

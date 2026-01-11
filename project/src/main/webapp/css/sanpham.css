@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    padding-top: 130px;
+    padding-top: 80px;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.8;
@@ -414,7 +414,7 @@ ul, li {
     opacity: 0;
 }
 
-.product-top:hover .add-to-cart-btn {
+.product-item:hover .add-to-cart-btn {
     transform: translateY(0);
     opacity: 1;
 }
@@ -441,7 +441,7 @@ ul, li {
 }
 
 .product-name {
-    color: #2C2C2C;
+    color: #11998e;
     font-weight: 600;
     text-decoration: none;
     display: block;

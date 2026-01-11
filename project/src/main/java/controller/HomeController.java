@@ -11,6 +11,7 @@ import service.CategoryService;
 import service.ProductService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,9 +23,16 @@ public class HomeController extends HttpServlet {
         ProductService ps = new ProductService();
 
         List<Category> categoryList = cs.getAllCategories();
-        List<Product> productList = ps.getListProduct();
+        List<Product> featuredProducts = new ArrayList<>();
+        for (Category c : categoryList) {
+            Product featured = ps.getFeaturedProductByCategoryId(c.getCategoryId());
+            if (featured != null) {
+                featuredProducts.add(featured);
+            }
+            if (featuredProducts.size() == 8) break;
+        }
         request.setAttribute("categoryList", categoryList);
-        request.setAttribute("productList", productList);
+        request.setAttribute("productList", featuredProducts);
         request.getRequestDispatcher("trangchu.jsp").forward(request, response);
 
     }

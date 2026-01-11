@@ -1,24 +1,24 @@
     package model;
 
     public class Product {
-        private Integer product_id;
-        private Integer category_id;
-        private String product_name;
-        private String category_name;
-        private Integer product_price;
-        private Integer Stock_Quantity;
-        private String product_description;
-        private String image_url;
+        private Integer productId;
+        private Integer categoryId;
+        private String productName;
+        private String categoryName;
+        private Integer productPrice;
+        private Integer stockQuantity;
+        private String productDescription;
+        private String imageUrl;
 
-        public Product(Integer product_id, Integer category_id, String product_name, String category_name, Integer product_price, Integer stock_Quantity, String product_description, String image_url) {
-            this.product_id = product_id;
-            this.category_id = category_id;
-            this.product_name = product_name;
-            this.category_name = category_name;
-            this.product_price = product_price;
-            Stock_Quantity = stock_Quantity;
-            this.product_description = product_description;
-            this.image_url = image_url;
+        public Product(Integer productId, Integer categoryId, String productName, Integer productPrice, String categoryName, Integer stockQuantity, String productDescription, String imageUrl) {
+            this.productId = productId;
+            this.categoryId = categoryId;
+            this.productName = productName;
+            this.productPrice = productPrice;
+            this.categoryName = categoryName;
+            this.stockQuantity = stockQuantity;
+            this.productDescription = productDescription;
+            this.imageUrl = imageUrl;
         }
 
         public Product() {
@@ -27,79 +27,78 @@
         @Override
         public String toString() {
             return "Product{" +
-                    "product_id=" + product_id +
-                    ", category_id=" + category_id +
-                    ", product_name='" + product_name + '\'' +
-                    ", category_name='" + category_name + '\'' +
-                    ", product_price=" + product_price +
-                    ", Stock_Quantity=" + Stock_Quantity +
-                    ", product_description='" + product_description + '\'' +
-                    ", image_url='" + image_url + '\'' +
+                    "productId=" + productId +
+                    ", categoryId=" + categoryId +
+                    ", productName='" + productName + '\'' +
+                    ", categoryName='" + categoryName + '\'' +
+                    ", productPrice=" + productPrice +
+                    ", stockQuantity=" + stockQuantity +
+                    ", productDescription='" + productDescription + '\'' +
+                    ", imageUrl='" + imageUrl + '\'' +
                     '}';
         }
 
-        public Integer getCategory_id() {
-            return category_id;
+        public Integer getProductId() {
+            return productId;
         }
 
-        public void setCategory_id(Integer category_id) {
-            this.category_id = category_id;
+        public void setProductId(Integer productId) {
+            this.productId = productId;
         }
 
-        public Integer getProduct_id() {
-            return product_id;
+        public Integer getCategoryId() {
+            return categoryId;
         }
 
-        public void setProduct_id(Integer product_id) {
-            this.product_id = product_id;
+        public void setCategoryId(Integer categoryId) {
+            this.categoryId = categoryId;
         }
 
-        public String getProduct_name() {
-            return product_name;
+        public String getProductName() {
+            return productName;
         }
 
-        public void setProduct_name(String product_name) {
-            this.product_name = product_name;
+        public void setProductName(String productName) {
+            this.productName = productName;
         }
 
-        public Integer getProduct_price() {
-            return product_price;
+        public String getCategoryName() {
+            return categoryName;
         }
 
-        public void setProduct_price(Integer product_price) {
-            this.product_price = product_price;
+        public void setCategoryName(String categoryName) {
+            this.categoryName = categoryName;
         }
 
-        public Integer getStock_Quantity() {
-            return Stock_Quantity;
+        public Integer getProductPrice() {
+            return productPrice;
         }
 
-        public void setStock_Quantity(Integer stock_Quantity) {
-            Stock_Quantity = stock_Quantity;
+        public void setProductPrice(Integer productPrice) {
+            this.productPrice = productPrice;
         }
 
-        public String getProduct_description() {
-            return product_description;
+        public Integer getStockQuantity() {
+            return stockQuantity;
         }
 
-        public void setProduct_description(String product_description) {
-            this.product_description = product_description;
+        public void setStockQuantity(Integer stockQuantity) {
+            this.stockQuantity = stockQuantity;
         }
 
-        public String getImage_url() {
-            return image_url;
+        public String getProductDescription() {
+            return productDescription;
         }
 
-        public void setImage_url(String image_url) {
-            this.image_url = image_url;
+        public void setProductDescription(String productDescription) {
+            this.productDescription = productDescription;
         }
 
-        public String getCategory_name() {
-            return category_name;
+        public String getImageUrl() {
+            return imageUrl;
         }
 
-        public void setCategory_name(String category_name) {
-            this.category_name = category_name;
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
         }
     }
-

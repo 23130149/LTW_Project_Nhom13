@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="vi_VN"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +35,7 @@
                     <i class='bx  bx-heart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/Cart" class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'></i> (${sessionScope.cart.totalQuantity})
+                    <i class='bx  bx-cart'></i> (${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0})
                 </a>
                 <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
@@ -44,7 +47,7 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/trangchu.jsp">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
                     <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
@@ -58,8 +61,8 @@
         <div class="page-meta">
             <h1 class="page-title-main">Sản phẩm</h1>
             <div class="breadcrumb">
-                <a href="#">Trang chủ</a>
-                <a href="#"><i class="bx bx-chevron-right"></i></a>
+                <a href="${pageContext.request.contextPath}/home">Trang chủ</a>
+                <i class="bx bx-chevron-right"></i>
                 <span>Sản phẩm</span>
             </div>
         </div>
@@ -67,7 +70,7 @@
             <div class="product-listing-area">
                 <div class="sort-stats-bar">
                     <div class="product-stats">
-                        Hiển thị ${list.size()} sản phẩm
+                        Hiển thị ${fn:length(list)} sản phẩm
                     </div>
                     <div class="sort-options">
                         <div class="custom-select-wrapper">
@@ -84,17 +87,19 @@
                     <c:forEach items="${list}" var="p">
                         <div class="product-item">
                             <div class="product-top">
-                                <a href="${pageContext.request.contextPath}/chitietsp.jsp?id=${p.product_id}"
+                                <a href="${pageContext.request.contextPath}/product-detail?id=${p.productId}"
                                    class="product-thumb">
-                                    <img src="${p.image_url}" alt="${p.product_name}">
+                                    <img src="${p.imageUrl}" alt="${p.productName}">
                                 </a>
-                                <div class="add-to-cart-btn"><a href="add-Cart?id=${p.product_id}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
+                                <div class="add-to-cart-btn"><a href="${pageContext.request.contextPath}/add-cart?id=${p.productId}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
 
                             </div>
                             <div class="product-info">
-                                <a href="#" class="product-cat">Mã loại: ${p.category_id}</a>
-                                <a href="#" class="product-name">${p.product_name}</a>
-                                <div class="product-price">${p.product_price}</div>
+                                <a href="${pageContext.request.contextPath}/product?categoryId=${p.categoryId}" class="product-cat">${p.categoryName}</a>
+                                <a href="${pageContext.request.contextPath}/product-detail?id=${p.productId}" class="product-name">${p.productName}</a>
+                                <span class="product-price">
+                                <fmt:formatNumber value="${p.productPrice}" type="currency" currencySymbol="₫"/>
+                                </span>
                             </div>
                         </div>
                     </c:forEach>
@@ -106,7 +111,7 @@
                                 <span class="current-page">${i}</span>
                             </c:when>
                             <c:otherwise>
-                                <a href="${pageContext.request.contextPath}/product?page=${i}">
+                                <a href="${pageContext.request.contextPath}/product?page=${i}&categoryId=${currentCategoryId}">
                                         ${i}
                                 </a>
                             </c:otherwise>
@@ -125,8 +130,8 @@
                     <h4 class="filter-group-title">Danh mục</h4>
                     <ul>
                         <c:forEach items = "${categoryList}" var="cat">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/product?categoryId=${cat.category_id}">
+                        <li class="${cat.categoryId == currentCategoryId ? 'active' : ''}">
+                            <a href="${pageContext.request.contextPath}/product?categoryId=${cat.categoryId}">
                                 ${cat.name}
                             </a>
                         </li>

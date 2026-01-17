@@ -17,6 +17,6 @@ public class CategoryDao extends BaseDao {
     public static void main(String[] args) {
         ProductDao pdao = new ProductDao();
         System.out.println("So luong san pham trong DB: " + pdao.getTotalProducts());
-        pdao.getListProduct().forEach(p -> System.out.println("Product: " + p.getProduct_name() + ", URL: " + p.getImage_url()));
+        pdao.getListProduct().forEach(p -> System.out.println("Product: " + p.getProductName() + ", URL: " + p.getImageUrl()));
     }
 }

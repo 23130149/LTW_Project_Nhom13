@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="vi_VN"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,6 @@
         <div class="header-content">
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">Handmade House</a>
-                <a href="${pageContext.request.contextPath}/trangchu.jsp">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
@@ -111,13 +112,14 @@
         </div>
         <div class="category-list">
             <c:forEach items="${categoryList}" var="cat">
-                <div class="category-item">
-                    <img src="${cat.image_url}" alt="${cat.name}">
+                <a href="${pageContext.request.contextPath}/product?categoryId=${cat.categoryId}"
+                   class="category-item">
+                    <img src="${cat.imageUrl}" alt="${cat.name}">
                     <div class="category-overlay">
                         <h4>${cat.name}</h4>
-                        <span>25 sản phẩm</span>
+                        <span>Xem sản phẩm</span>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -129,19 +131,26 @@
             <p>Chiêm ngưỡng những gợi ý hàng đầu của chúng tôi</p>
         </div>
         <div class="product-grid">
-            <c:forEach items="${productList}" var="p" begin="0" end="7">
+            <c:forEach items="${productList}" var="p">
                 <div class="product-item">
                     <div class="product-top">
-                        <a href="${pageContext.request.contextPath}/chitietsp.jsp?id=${p.product_id}"  class="product-thumb">
-                            <img src="${p.image_url}" alt="${p.product_name}">
+                        <a href="${pageContext.request.contextPath}/product-detail?id=${p.productId}"  class="product-thumb">
+                            <c:choose>
+                                <c:when test="${not empty p.imageUrl}">
+                                    <img src="${p.imageUrl}" alt="${p.productName}">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/images/no-image.png"
+                                         alt="No image">
+                                </c:otherwise>
+                            </c:choose>
                         </a>
-                        <div class="add-to-cart-btn"><a href="add-Cart?id=${p.product_id}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
+                        <div class="add-to-cart-btn"><a href="${pageContext.request.contextPath}/add-cart?id=${p.productId}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
                     </div>
                     <div class="product-info">
-                        <a href="#" class="product-cat">Mã loại: ${p.category_id}</a>
-                        <a href="#" class="product-name">${p.product_name}</a>
-                        <div class="product-price">${p.product_price}</div>
-                    </div>
+                        <a href="${pageContext.request.contextPath}/product?categoryId=${p.categoryId}" class="product-cat">${p.categoryName}</a>
+                        <a href="${pageContext.request.contextPath}/product-detail?id=${p.productId}" class="product-name">${p.productName}</a>
+                        <fmt:formatNumber value="${p.productPrice}" type="currency" currencySymbol="₫"/>                    </div>
                 </div>
             </c:forEach>
         </div>

@@ -20,6 +20,7 @@ public class ProductService {
     public Product getProductById(int id) {
         return pdao.getProductById(id);
     }
-    public List<Product> getListProductByCategoryId(int category_id) { return pdao.getProductByCategoryId(category_id); }
-    public List<Product> getFeaturedProductsByCategoryId(int category_id) { return pdao.getFeaturedProductsByCategoryId(category_id); }
+    public List<Product> getListProductByCategoryId(int categoryId, int limit) { return pdao.getProductByCategoryId(categoryId, 8); }
+    public Product getFeaturedProductByCategoryId(int categoryId) { return pdao.getFeaturedProductByCategoryId(categoryId); }
+    public List<Product> getRelatedProducts(int categoryId, int productId) { return pdao.getRelatedProducts(categoryId, productId); }
 }

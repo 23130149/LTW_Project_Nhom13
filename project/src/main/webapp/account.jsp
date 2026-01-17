@@ -70,7 +70,7 @@
 
     <h1>Tài khoản của tôi</h1>
 
-    <<div class="account-info">
+    <div class="account-info">
     <i class='bx bxs-user-circle'></i>
     <h3>${sessionScope.user.email}</h3>
     <p>Xin chào, ${sessionScope.user.userName}!</p>
@@ -85,24 +85,25 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="${pageContext.request.contextPath}/Profile">
                 <i class='bx bx-edit-alt'></i>
                 <span>Thông tin cá nhân</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="${pageContext.request.contextPath}/ChangePassword">
                 <i class='bx bx-lock-alt'></i>
                 <span>Đổi mật khẩu</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="${pageContext.request.contextPath}/Address">
                 <i class='bx bx-map'></i>
                 <span>Sổ địa chỉ</span>
             </a>
         </li>
     </ul>
+
 
     <div class="recent-orders-box">
         <h2>Đơn hàng gần đây</h2>

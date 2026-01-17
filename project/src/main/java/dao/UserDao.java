@@ -80,5 +80,36 @@ public class UserDao extends BaseDao {
 
         return rows > 0;
     }
+    public boolean checkPassword(int userId, String oldPassword) {
+
+        String sql = """
+        SELECT COUNT(*)
+        FROM `user`
+        WHERE User_Id = :user_id AND Password = :password
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("user_id", userId)
+                        .bind("password", oldPassword)
+                        .mapTo(Integer.class)
+                        .one() > 0
+        );
+    }
+    public boolean updatePassword(int userId, String newPassword) {
+
+        String sql = """
+        UPDATE `user`
+        SET Password = :password
+        WHERE User_Id = :user_id
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("password", newPassword)
+                        .bind("user_id", userId)
+                        .execute()
+        ) > 0;
+    }
 
 }

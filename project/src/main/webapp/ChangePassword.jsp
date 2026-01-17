@@ -129,7 +129,11 @@
 <main class="about-us-container">
 
   <h1>Đổi mật khẩu</h1>
-
+  <c:if test="${not empty error}">
+    <p style="color:red; text-align:center; margin-bottom: 15px;">
+        ${error}
+    </p>
+  </c:if>
   <div class="password-box">
 
     <form action="${pageContext.request.contextPath}/ChangePassword"
@@ -158,7 +162,7 @@
           Cập nhật mật khẩu
         </button>
 
-        <a href="${pageContext.request.contextPath}/Profile/Edit"
+        <a href="${pageContext.request.contextPath}/Profile"
            class="btn-back">
           Quay lại
         </a>
@@ -169,7 +173,6 @@
 
 </main>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
@@ -178,7 +181,6 @@
   </div>
 </footer>
 
-<!-- ===== VALIDATE (NHÉT TRỰC TIẾP – GIỐNG ĐĂNG KÝ) ===== -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
 

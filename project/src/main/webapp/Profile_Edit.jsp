@@ -149,12 +149,6 @@
                value="${sessionScope.user.phone}">
       </div>
 
-      <div class="form-row">
-        <label>Địa chỉ</label>
-        <input type="text" name="address"
-               value="${sessionScope.user.address}">
-      </div>
-
       <div class="profile-actions">
         <button type="submit" class="btn-save">
           Lưu thay đổi

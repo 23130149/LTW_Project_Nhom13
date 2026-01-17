@@ -59,4 +59,57 @@ public class UserDao extends BaseDao {
                         .one() > 0
         );
     }
+    // cập nhật thông tin cá nhân
+    public boolean updateProfile(User user) {
+
+        String sql = """
+        UPDATE user
+        SET
+            User_Name = :user_name,
+            Phone = :phone
+        WHERE User_Id = :user_id
+    """;
+
+        int rows = getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("user_name", user.getUserName())
+                        .bind("phone", user.getPhone())
+                        .bind("user_id", user.getUserId())
+                        .execute()
+        );
+
+        return rows > 0;
+    }
+    public boolean checkPassword(int userId, String oldPassword) {
+
+        String sql = """
+        SELECT COUNT(*)
+        FROM `user`
+        WHERE User_Id = :user_id AND Password = :password
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("user_id", userId)
+                        .bind("password", oldPassword)
+                        .mapTo(Integer.class)
+                        .one() > 0
+        );
+    }
+    public boolean updatePassword(int userId, String newPassword) {
+
+        String sql = """
+        UPDATE `user`
+        SET Password = :password
+        WHERE User_Id = :user_id
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("password", newPassword)
+                        .bind("user_id", userId)
+                        .execute()
+        ) > 0;
+    }
+
 }

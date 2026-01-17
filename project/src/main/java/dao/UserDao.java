@@ -59,4 +59,26 @@ public class UserDao extends BaseDao {
                         .one() > 0
         );
     }
+    // cập nhật thông tin cá nhân
+    public boolean updateProfile(User user) {
+
+        String sql = """
+        UPDATE user
+        SET
+            User_Name = :user_name,
+            Phone = :phone
+        WHERE User_Id = :user_id
+    """;
+
+        int rows = getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("user_name", user.getUserName())
+                        .bind("phone", user.getPhone())
+                        .bind("user_id", user.getUserId())
+                        .execute()
+        );
+
+        return rows > 0;
+    }
+
 }

@@ -116,10 +116,6 @@
                 <th>Số điện thoại</th>
                 <td>${sessionScope.user.phone}</td>
             </tr>
-            <tr>
-                <th>Địa chỉ</th>
-                <td>${sessionScope.user.address}</td>
-            </tr>
         </table>
 
         <a href="${pageContext.request.contextPath}/Profile/Edit"

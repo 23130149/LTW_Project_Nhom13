@@ -3,22 +3,22 @@ package model;
 import java.util.Date;
 
 public class Review {
-    private int review_id;
-    private double rating;
+    private int reviewId;
+    private int rating;
     private String comment;
-    private Date creatAt;
-    private int product_id;
-    private int user_id;
-    private String user_name;
+    private Date createAt;
+    private int productId;
+    private int userId;
+    private String userName;
 
-    public Review(int review_id, double rating, String comment, int product_id, Date creatAt, int user_id, String user_name) {
-        this.review_id = review_id;
+    public Review(int reviewId, int rating, String comment, Date createAt, int productId, int userId, String userName) {
+        this.reviewId = reviewId;
         this.rating = rating;
         this.comment = comment;
-        this.product_id = product_id;
-        this.creatAt = creatAt;
-        this.user_id = user_id;
-        this.user_name = user_name;
+        this.createAt = createAt;
+        this.productId = productId;
+        this.userId = userId;
+        this.userName = userName;
     }
 
     public Review() {
@@ -27,69 +27,58 @@ public class Review {
     @Override
     public String toString() {
         return "Review{" +
-                "review_id=" + review_id +
+                "reviewId=" + reviewId +
                 ", rating=" + rating +
                 ", comment='" + comment + '\'' +
-                ", creatAt=" + creatAt +
-                ", product_id=" + product_id +
-                ", user_id=" + user_id +
-                ", user_name='" + user_name + '\'' +
+                ", creatAt=" + createAt +
+                ", productId=" + productId +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 
-    public int getReview_id() {
-        return review_id;
+    public int getReviewId() {
+        return reviewId;
+    }
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
     }
 
-    public void setReview_id(int review_id) {
-        this.review_id = review_id;
-    }
-
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
-
     public String getComment() {
         return comment;
     }
-
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-    public Date getCreatAt() {
-        return creatAt;
+    public Date getCreatedAt() {
+        return createAt;
     }
-
-    public void setCreatAt(Date creatAt) {
-        this.creatAt = creatAt;
+    public void setCreatedAt(Date creatAt) {
+        this.createAt = creatAt;
     }
-
-    public int getProduct_id() {
-        return product_id;
+    public int getProductId() {
+        return productId;
     }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
-
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

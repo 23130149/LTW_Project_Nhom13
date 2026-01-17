@@ -37,7 +37,7 @@ public class    ProductController extends HttpServlet {
         List<Product> list;
 
         if(categoryId > 0) {
-            list = ps.getListProductByCategoryId(categoryId);
+            list = ps.getListProductByCategoryId(categoryId, 8);
             request.setAttribute("list", list);
         } else {
             int currentPage = 1;

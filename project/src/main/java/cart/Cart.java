@@ -13,8 +13,8 @@ public class Cart implements Serializable {
         data = new HashMap<>();
     }
     public void addProduct(Product p, int quantity){
-        if (data.containsKey(p.getProduct_id())) data.get(p.getProduct_id()).upQuantity(quantity);
-        else data.put(p.getProduct_id(), new CartItem(p,quantity,p.getProduct_price()));
+        if (data.containsKey(p.getProductId())) data.get(p.getProductId()).upQuantity(quantity);
+        else data.put(p.getProductId(), new CartItem(p,quantity,p.getProductPrice()));
     }
     public CartItem deleteProduct(int id){
         return data.remove(id);

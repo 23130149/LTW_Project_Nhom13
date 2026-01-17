@@ -90,28 +90,27 @@
                     <tbody>
                     <c:forEach var="order" items="${orderList}">
                         <tr>
-                            <td>#${order.orderCode}</td>
-                            <td>${order.createAt}</td>
-                            <td>${order.totalPrice}đ</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   style="color:#11998e; font-weight:600;">
+                                        ${order.orderCode}
+                                </a>
+                            </td>
+                            <td>${order.createAtFormatted}</td>
+                            <td>${order.totalPriceFormatted}</td>
                             <td>
             <span class="status-${order.status}">
                 <c:choose>
-                    <c:when test="${order.status == 'delivered'}">
-                        Đã giao
-                    </c:when>
-                    <c:when test="${order.status == 'processing'}">
-                        Đang xử lý
-                    </c:when>
-                    <c:otherwise>
-                        Chờ xác nhận
-                    </c:otherwise>
+                    <c:when test="${order.status == 'delivered'}">✔ Đã giao</c:when>
+                    <c:when test="${order.status == 'processing'}">⏳ Đang xử lý</c:when>
+                    <c:otherwise>✖ Chờ xác nhận</c:otherwise>
                 </c:choose>
+
             </span>
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
                                    class="view-all-orders">
-                                    Xem
                                 </a>
                             </td>
                         </tr>

@@ -12,8 +12,8 @@
           href="${pageContext.request.contextPath}/css/account.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-    <!-- ICON + FONT -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -127,23 +127,29 @@
                     <tbody>
                     <c:forEach var="order" items="${orderList}">
                         <tr>
-                            <td>#${order.id}</td>
-                            <td>${order.orderDate}</td>
-                            <td>${order.totalPrice}đ</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   style="color:#11998e; font-weight:600;">
+                                        ${order.orderCode}
+                                </a>
+                            </td>
+                            <td>${order.createAtFormatted}</td>
+                            <td>${order.totalPriceFormatted}</td>
                             <td>
                                 <span class="status-${order.status}">
-                                    <c:choose>
-                                        <c:when test="${order.status == 'delivered'}">
-                                            Đã giao
-                                        </c:when>
-                                        <c:when test="${order.status == 'processing'}">
-                                            Đang xử lý
-                                        </c:when>
-                                        <c:otherwise>
-                                            Chờ xác nhận
-                                        </c:otherwise>
-                                    </c:choose>
-                                </span>
+                            <c:choose>
+                            <c:when test="${order.status == 'delivered'}">
+                                <span class="status-icon">✔</span> Đã giao
+                             </c:when>
+                             <c:when test="${order.status == 'processing'}">
+                             <span class="status-icon">⏳</span> Đang xử lý
+                              </c:when>
+                                <c:otherwise>
+                                 <span class="status-icon">✖</span> Chờ xác nhận
+                             </c:otherwise>
+                           </c:choose>
+</span>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -152,10 +158,20 @@
             </c:otherwise>
         </c:choose>
     </div>
+    <c:if test="${not empty orderList}">
+        <div class="view-all-wrapper">
+            <a href="${pageContext.request.contextPath}/OrderHistory"
+               class="btn-view-all">
+                Xem tất cả đơn hàng
+            </a>
+        </div>
+    </c:if>
 
-    <a href="${pageContext.request.contextPath}/Logout" class="btn-logout">
+    <a href="${pageContext.request.contextPath}/Logout"
+       class="btn-logout">
         Đăng xuất
     </a>
+
 
 </main>
 <footer class="footer">

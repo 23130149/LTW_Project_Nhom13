@@ -20,7 +20,7 @@ public class DelSelectProduct extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("cart");
 
         if (cart == null) {
-            response.sendRedirect("Cart");
+            response.sendRedirect("cart");
             return;
         }
 
@@ -31,6 +31,6 @@ public class DelSelectProduct extends HttpServlet {
             }
         }
 
-        response.sendRedirect("Cart");
+        response.sendRedirect("cart");
     }
     }

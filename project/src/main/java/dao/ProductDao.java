@@ -6,6 +6,17 @@
 
     public class ProductDao extends BaseDao {
 
+        public int getStockById(int productId) {
+            String sql = "select stock_quantity from products where product_id = :id";
+
+            return getJdbi().withHandle(handle ->
+                    handle.createQuery(sql)
+                            .bind("id", productId)
+                            .mapTo(Integer.class)
+                            .one()
+            );
+        }
+
         public List<Product> getListProduct() {
             String sql = "select p.product_id AS productId, p.category_id AS categoryId, p.product_name AS productName, c.name AS categoryName, p.product_price AS productPrice, p.stock_quantity AS stockQuantity, p.product_description AS productDescription, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p join categories c on p.category_id = c.category_id";
                 return getJdbi().withHandle(handle ->

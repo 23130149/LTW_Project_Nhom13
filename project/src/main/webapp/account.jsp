@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="util.FormatUtil" %>
+<%@ taglib prefix="util" uri="http://handmade/util" %>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -133,9 +135,18 @@
                                         ${order.orderCode}
                                 </a>
                             </td>
-                            <td>${order.createAtFormatted}</td>
-                            <td>${order.totalPriceFormatted}</td>
-                            <td>${order.statusLabel}</td>
+                            <td>
+                                    ${util:formatDateTime(order.createAt)}
+                            </td>
+                            <td>
+                                    ${util:formatMoney(order.totalPrice)}
+                            </td>
+                            <td>
+            <span class="status-${order.status}">
+                ${util:orderStatusIcon(order.status)}
+                ${util:orderStatusLabel(order.status)}
+            </span>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

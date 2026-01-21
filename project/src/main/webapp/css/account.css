@@ -201,3 +201,6 @@ main.about-us-container {
     box-shadow: 0 8px 20px rgba(255, 94, 98, 0.35);
     transform: translateY(-3px);
 }
+.btn-back {
+    background: #11998e;
+}

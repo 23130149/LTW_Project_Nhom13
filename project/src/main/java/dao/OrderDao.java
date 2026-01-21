@@ -109,6 +109,32 @@ public class OrderDao extends BaseDao {
                         .one() > 0
         );
     }
+    public Order getOrderByIdAndUser(int orderId, int userId) {
+
+        String sql = """
+        SELECT
+            Order_Id       AS orderId,
+            User_Id        AS userId,
+            Create_At      AS createAt,
+            Total_Price    AS totalPrice,
+            Status         AS status,
+            Payment_Status AS paymentStatus,
+            Order_Code     AS orderCode,
+            Note           AS note
+        FROM orders
+        WHERE Order_Id = :orderId
+          AND User_Id = :userId
+    """;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("orderId", orderId)
+                        .bind("userId", userId)
+                        .mapToBean(Order.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
 
 
 }

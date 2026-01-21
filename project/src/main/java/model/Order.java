@@ -1,9 +1,7 @@
 package model;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.text.NumberFormat;
-import java.util.Locale;
+
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Order {
 
@@ -17,37 +15,6 @@ public class Order {
     private String orderCode;
     private String note;
     private BigDecimal totalPrice;
-
-
-    public LocalDateTime getCreateAt() {
-        return createAt;
-    }
-    public String getCreateAtFormatted() {
-        if (createAt == null) return "";
-        return createAt.format(
-                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
-        );
-    }
-
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
-    }
-    public String getTotalPriceFormatted() {
-        if (totalPrice == null) return "0đ";
-
-        NumberFormat nf = NumberFormat.getInstance(new Locale("vi", "VN"));
-        return nf.format(totalPrice) + " đ";
-    }
-    public String getStatusLabel() {
-        switch (status) {
-            case "COMPLETED": return "Hoàn thành";
-            case "SHIPPED": return "Đang giao";
-            case "CONFIRMED": return "Đã xác nhận";
-            case "PENDING": return "Chờ xác nhận";
-            case "CANCELLED": return "Đã huỷ";
-            default: return status;
-        }
-    }
 
     public int getOrderId() {
         return orderId;
@@ -63,6 +30,14 @@ public class Order {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
     }
 
     public int getUserAddressId() {
@@ -89,20 +64,20 @@ public class Order {
         this.status = status;
     }
 
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
     public String getOrderCode() {
         return orderCode;
     }
 
     public void setOrderCode(String orderCode) {
         this.orderCode = orderCode;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
     public String getNote() {
@@ -112,12 +87,12 @@ public class Order {
     public void setNote(String note) {
         this.note = note;
     }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 }
-
-
-
-
-

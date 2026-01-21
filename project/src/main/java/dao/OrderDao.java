@@ -76,17 +76,39 @@ public class OrderDao extends BaseDao {
             Payment_Status      AS paymentStatus,
             Order_Code          AS orderCode
         FROM orders
-        WHERE User_Id = :user_id
-        ORDER BY Create_At DESC
+        WHERE User_Id = :userId
+        ORDER BY Create_At DESC, Order_Id DESC
         LIMIT :limit
     """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
-                        .bind("user_id", userId)
+                        .bind("userId", userId)
                         .bind("limit", limit)
                         .mapToBean(Order.class)
                         .list()
         );
     }
+
+    public boolean hasUserPurchasedProduct(int userId, int productId) {
+
+        String sql = """
+        SELECT COUNT(*)
+        FROM Orders o
+        JOIN Order_Items oi ON o.Order_Id = oi.Order_Id
+        WHERE o.User_Id = :userId
+          AND oi.Product_Id = :productId
+          AND o.Status IN ('CONFIRMED','SHIPPED','COMPLETED')
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("userId", userId)
+                        .bind("productId", productId)
+                        .mapTo(int.class)
+                        .one() > 0
+        );
+    }
+
+
 }

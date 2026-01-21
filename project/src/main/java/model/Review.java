@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Review {
     private int reviewId;
-    private int rating;
+    private double rating;
     private String comment;
     private Date createAt;
     private int productId;
@@ -44,11 +44,11 @@ public class Review {
         this.reviewId = reviewId;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
     public String getComment() {

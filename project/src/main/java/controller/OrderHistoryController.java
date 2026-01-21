@@ -24,26 +24,20 @@ public class OrderHistoryController extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1️⃣ Lấy session (không tạo mới)
         HttpSession session = request.getSession(false);
 
-        // 2️⃣ Chưa login → redirect Login
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/SignIn");
             return;
         }
 
-        // 3️⃣ Lấy user từ session
         User user = (User) session.getAttribute("user");
 
-        // 4️⃣ Lấy TOÀN BỘ lịch sử đơn hàng
         List<Order> orderList =
                 orderDao.getOrdersByUserId(user.getUserId());
 
-        // 5️⃣ Đưa dữ liệu sang view
         request.setAttribute("orderList", orderList);
 
-        // 6️⃣ Forward
         request.getRequestDispatcher("/OrderHistory.jsp")
                 .forward(request, response);
     }

@@ -100,13 +100,19 @@
                         <div class="unit-price">${p.price}</div>
                     </div>
 
-                    <div class="qty-box" data-id="${p.product.productId}">
-                        <button type="button" class="btn-qty" data-action="dec"
-                            ${p.quantity == 1 ? "disabled" : ""}>−</button>
+                    <form action="CartUpdate" method="post">
+                        <input type="hidden" name="productId" value="${p.product.productId}">
+                        <input type="hidden" name="quantity" value="${p.quantity - 1}">
+                        <button>-</button>
+                    </form>
 
                         <span class="qty">${p.quantity}</span>
 
-                        <button type="button" class="btn-qty" data-action="inc">+</button>
+                    <form action="CartUpdate" method="post">
+                        <input type="hidden" name="productId" value="${p.product.productId}">
+                        <input type="hidden" name="quantity" value="${p.quantity + 1}">
+                        <button>+</button>
+                    </form>
                     </div>
 
                     <div class="item-total-price" id="total-${p.product.productId}">
@@ -217,39 +223,39 @@
         });
 
     });
-    document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".btn-qty").forEach(btn => {
-        btn.addEventListener("click", function () {
+    <%--document.addEventListener("DOMContentLoaded", function () {--%>
+    <%--document.querySelectorAll(".btn-qty").forEach(btn => {--%>
+    <%--    btn.addEventListener("click", function () {--%>
 
-            const box = this.closest(".qty-box");
-            const productId = box.dataset.id;
-            const action = this.dataset.action;
+    <%--        const box = this.closest(".qty-box");--%>
+    <%--        const productId = box.dataset.id;--%>
+    <%--        const action = this.dataset.action;--%>
 
-            fetch("${pageContext.request.contextPath}/CartUpdate", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `id=${productId}&action=${action}`
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (!data.success) return;
+    <%--        fetch("${pageContext.request.contextPath}/CartUpdate", {--%>
+    <%--            method: "POST",--%>
+    <%--            headers: {--%>
+    <%--                "Content-Type": "application/x-www-form-urlencoded"--%>
+    <%--            },--%>
+    <%--            body: `id=${productId}&action=${action}`--%>
+    <%--        })--%>
+    <%--            .then(res => res.json())--%>
+    <%--            .then(data => {--%>
+    <%--                if (!data.success) return;--%>
 
-                    box.querySelector(".qty").innerText = data.quantity;
-                    box.closest(".cart-item")
-                        .querySelector(".item-total-price")
-                        .innerText = data.itemTotal;
+    <%--                box.querySelector(".qty").innerText = data.quantity;--%>
+    <%--                box.closest(".cart-item")--%>
+    <%--                    .querySelector(".item-total-price")--%>
+    <%--                    .innerText = data.itemTotal;--%>
 
-                    document.querySelector(".summary-price")
-                        .innerText = data.cartTotal;
+    <%--                document.querySelector(".summary-price")--%>
+    <%--                    .innerText = data.cartTotal;--%>
 
-                    const btnDec = box.querySelector("[data-action='dec']");
-                    btnDec.disabled = data.quantity <= 1;
-                });
-        });
-    });
-    });
+    <%--                const btnDec = box.querySelector("[data-action='dec']");--%>
+    <%--                btnDec.disabled = data.quantity <= 1;--%>
+    <%--            });--%>
+    <%--    });--%>
+    <%--});--%>
+    <%--});--%>
 
 
 

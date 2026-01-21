@@ -135,7 +135,22 @@
                             </td>
                             <td>${order.createAtFormatted}</td>
                             <td>${order.totalPriceFormatted}</td>
-                            <td>${order.statusLabel}</td>
+                            <td>
+                                <span class="status-${order.status}">
+                            <c:choose>
+                            <c:when test="${order.status == 'delivered'}">
+                                <span class="status-icon">✔</span> Đã giao
+                             </c:when>
+                             <c:when test="${order.status == 'processing'}">
+                             <span class="status-icon">⏳</span> Đang xử lý
+                              </c:when>
+                                <c:otherwise>
+                                 <span class="status-icon">✖</span> Chờ xác nhận
+                             </c:otherwise>
+                           </c:choose>
+</span>
+
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

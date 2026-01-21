@@ -99,7 +99,14 @@
                             <td>${order.createAtFormatted}</td>
                             <td>${order.totalPriceFormatted}</td>
                             <td>
-                            ${order.statusLabel}
+            <span class="status-${order.status}">
+                <c:choose>
+                    <c:when test="${order.status == 'delivered'}">✔ Đã giao</c:when>
+                    <c:when test="${order.status == 'processing'}">⏳ Đang xử lý</c:when>
+                    <c:otherwise>✖ Chờ xác nhận</c:otherwise>
+                </c:choose>
+
+            </span>
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"

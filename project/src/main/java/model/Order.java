@@ -38,18 +38,7 @@ public class Order {
         NumberFormat nf = NumberFormat.getInstance(new Locale("vi", "VN"));
         return nf.format(totalPrice) + " đ";
     }
-    public String getStatusLabel() {
-        switch (status) {
-            case "COMPLETED": return "Hoàn thành";
-            case "SHIPPED": return "Đang giao";
-            case "CONFIRMED": return "Đã xác nhận";
-            case "PENDING": return "Chờ xác nhận";
-            case "CANCELLED": return "Đã huỷ";
-            default: return status;
-        }
-    }
-
-    public int getOrderId() {
+public int getOrderId() {
         return orderId;
     }
 

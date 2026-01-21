@@ -21,44 +21,20 @@ public class CartUpdate extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
-
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
 
         if (cart == null) {
-            response.getWriter().write("{\"success\":false}");
+            response.sendRedirect("cart");
             return;
         }
 
-        int productId = Integer.parseInt(request.getParameter("id"));
-        String action = request.getParameter("action");
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        int stock = productService.getStockById(productId);
-        int delta = action.equals("inc") ? 1 : -1;
+        cart.update(productId, quantity);
 
-        boolean ok = cart.update(productId, delta, stock);
-
-        CartItem item = cart.getItem(productId);
-
-        String json = """
-        {
-          "success": %s,
-          "quantity": %d,
-          "itemTotal": %.0f,
-          "cartTotal": %.0f
-        }
-        """.formatted(
-                ok,
-                item.getQuantity(),
-                item.getTotal(),
-                cart.getTotalPrice()
-        );
-
-        session.setAttribute("cart", cart);
-        response.getWriter().write(json);
-        System.out.println(">>> CART AJAX HIT <<<");
+        response.sendRedirect("cart");
     }
-
 }
 

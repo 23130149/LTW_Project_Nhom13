@@ -13,7 +13,8 @@
                     handle.createQuery(sql)
                             .bind("id", productId)
                             .mapTo(Integer.class)
-                            .one()
+                            .findOne()
+                            .orElse(0)
             );
         }
 

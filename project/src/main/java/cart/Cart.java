@@ -38,18 +38,19 @@ public class Cart implements Serializable {
         data.values().forEach(p -> total.updateAndGet(v ->  (v + p.getQuantity() * p.getPrice())));
     return total.get();
     }
-    public boolean update(int productId, int delta, int maxStock) {
+    public boolean update(int productId, int quantity) {
         CartItem item = data.get(productId);
         if (item == null) return false;
 
-        int newQty = item.getQuantity() + delta;
+        if (quantity <= 0) {
+            data.remove(productId);
+            return true;
+        }
 
-        if (newQty < 1) return false;                // không giảm < 1
-        if (newQty > maxStock) return false;         // không vượt tồn kho
-
-        item.setQuantity(newQty);
+        item.setQuantity(quantity);
         return true;
     }
+
 
     public CartItem getItem(int productId) {
         return data.get(productId);

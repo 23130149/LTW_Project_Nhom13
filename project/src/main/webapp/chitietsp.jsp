@@ -151,9 +151,58 @@
             </div>
             <div class="review-list">
                 <h3>Bình luận từ khách hàng (${reviewCount})</h3>
-                <c:if test="${empty reviews}">
-                    <p>Chưa có đánh giá nào.</p>
+                <p style="color:red">DEBUG canReview = ${canReview}</p>
+                <c:if test="${param.reviewSuccess == '1'}">
+                    <p style="color: green; font-weight: 600;">
+                        🎉 Cảm ơn bạn đã đánh giá sản phẩm!
+                    </p>
                 </c:if>
+
+
+                <c:choose>
+
+                    <c:when test="${canReview}">
+                        <form action="${pageContext.request.contextPath}/review"
+                              method="post"
+                              class="review-form">
+
+                            <input type="hidden" name="productId"
+                                   value="${product.productId}"/>
+
+                            <label>Đánh giá:</label>
+                            <select name="rating" required>
+                                <option value="5">★★★★★</option>
+                                <option value="4.5">★★★★☆</option>
+                                <option value="4">★★★★</option>
+                                <option value="3.5">★★★☆</option>
+                                <option value="3">★★★</option>
+                                <option value="2">★★</option>
+                                <option value="1">★</option>
+                            </select>
+
+                            <textarea name="comment"
+                                      placeholder="Nhập đánh giá của bạn..."
+                                      required></textarea>
+
+                            <button type="submit">Gửi đánh giá</button>
+                        </form>
+                    </c:when>
+
+                    <c:when test="${not empty sessionScope.user}">
+                        <p class="review-note">
+                            ⚠️ Bạn cần mua sản phẩm này để có thể đánh giá.
+                        </p>
+                    </c:when>
+
+                    <c:otherwise>
+                        <p>
+                            <a href="${pageContext.request.contextPath}/SignIn">
+                                Đăng nhập
+                            </a> để viết đánh giá.
+                        </p>
+                    </c:otherwise>
+
+                </c:choose>
 
                 <c:forEach var="r" items="${reviews}">
                 <div class="review-item">

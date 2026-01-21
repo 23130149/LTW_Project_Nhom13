@@ -23,29 +23,16 @@ public class AccountController extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-
         HttpSession session = request.getSession(false);
-        if (session == null) {
+        if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/SignIn");
             return;
         }
 
         User user = (User) session.getAttribute("user");
-        if (user == null) {
-            response.sendRedirect(request.getContextPath() + "/SignIn");
-            return;
-        }
 
-        @SuppressWarnings("unchecked")
         List<Order> recentOrders =
-                (List<Order>) session.getAttribute("recentOrders");
-
-        if (recentOrders == null) {
-            recentOrders =
-                    orderDao.getRecentOrdersByUser(user.getUserId(), 3);
-
-            session.setAttribute("recentOrders", recentOrders);
-        }
+                orderDao.getRecentOrdersByUser(user.getUserId(), 3);
 
         request.setAttribute("orderList", recentOrders);
 

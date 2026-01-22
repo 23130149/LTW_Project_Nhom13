@@ -157,23 +157,43 @@ body {
 }
 
 /* QTY */
-.qty-box {
-    display: flex;
+.cart-item form {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
 }
 
-.qty-box button {
-    width: 30px;
-    height: 30px;
+/* nút + - */
+.cart-item form button {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 1px solid #ccc;
     background: white;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.qty-box span {
+.cart-item form button:hover {
+    background: #11998e;
+    color: white;
+    border-color: #11998e;
+}
+
+/* số lượng */
+.cart-item .qty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    margin: 0 8px;
     font-weight: 600;
+    font-size: 15px;
+    background: #f5f5f5;
+    border-radius: 6px;
 }
 
 /* PRICE */

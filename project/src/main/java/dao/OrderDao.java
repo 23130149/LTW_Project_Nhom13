@@ -89,4 +89,12 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+
+    public Order getOrderByIdAndUser(int orderId, int userId) {
+        return null;
+    }
+
+    public boolean hasUserPurchasedProduct(int userId, int productId) {
+        return false;
+    }
 }

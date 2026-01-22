@@ -1,3 +1,6 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,17 +18,17 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="../Tongquan/tongquan.html"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li><a href="../Sanpham/qlsanpham.html"><i class="bx bx-package"></i>Sản phẩm</a></li>
-            <li><a href="../Donhang/donhang.html"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-            <li><a href="../Khachhang/khachhang.html"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="../Danhgia/danhgia.html"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="../Caidat/caidat.html"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/tongquan.jsp"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
+            <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
+            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
+            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
 
         </ul>
     </nav>
     <div class="logout">
-        <a href="../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
+        <a href="${pageContext.request.contextPath}/home"><i class="bx bx-log-out"></i>Đăng xuất</a>
     </div>
 </aside>
 <main class="main-content">
@@ -51,24 +54,26 @@
             <div class="stat-icon"><i class="bx bx-money"></i></div>
             <div class="stat-details">
                 <p class="title">Doanh thu tháng này</p>
-                <p class="value">205,000,000đ</p>
-                <span class="stat-change positive">+17.5% so với tháng trước</span>
+                <p class="value">
+                    <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/>đ
+                </p>
+                <span class="stat-change positive">Tổng doanh thu hệ thống</span>
             </div>
         </div>
         <div class="stat-card stat-new-orders">
             <div class="stat-icon"><i class="bx bx-receipt"></i></div>
             <div class="stat-details">
                 <p class="title">Đơn hàng mới</p>
-                <p class="value">148</p>
-                <span class="stat-change positive">+9.1% so với tháng trước</span>
+                <p class="value">${totalOrders}</p>
+                <span class="stat-change positive">Tổng số đơn đã tạo</span>
             </div>
         </div>
         <div class="stat-card stat-customers">
             <div class="stat-icon"><i class="bx bx-user-pin"></i></div>
             <div class="stat-details">
                 <p class="title">Khách hàng</p>
-                <p class="value">86</p>
-                <span class="stat-change positive">+12.1% so với tháng trước</span>
+                <p class="value">${totalUsers}</p>
+                <span class="stat-change positive">Tổng người dùng hệ thống</span>
             </div>
         </div>
     </div>
@@ -98,46 +103,18 @@
                 <h3 class="card-title">Top sản phẩm bán chạy</h3>
             </div>
             <div class="top-products">
+                <c:forEach items="${topProducts}" var="p" varStatus="st">
                 <div class="product-item">
-                    <span class="product-rank">1</span>
+                    <span class="product-rank">${st.index + 1}</span>
                     <div class="product-info">
-                        <p class="product-name">Ốp lưng điện thoại</p>
-                        <p class="product-sales">205 đã bán</p>
+                        <p class="product-name">${p.productName}</p>
+                        <p class="product-sales">${p.sold}</p>
                     </div>
-                    <span class="product-price">35.300.000đ</span>
+                    <span class="product-price">
+                        <fmt:formatNumber value="${p.revenue}" type="number" groupingUsed="true"/>đ
+                    </span>
                 </div>
-                <div class="product-item">
-                    <span class="product-rank">2</span>
-                    <div class="product-info">
-                        <p class="product-name">Móc khóa lá cờ Việt Nam</p>
-                        <p class="product-sales">184 đã bán</p>
-                    </div>
-                    <span class="product-price">30.360.000đ</span>
-                </div>
-                <div class="product-item">
-                    <span class="product-rank">3</span>
-                    <div class="product-info">
-                        <p class="product-name">Nến thơm xương rồng</p>
-                        <p class="product-sales">155 đã bán</p>
-                    </div>
-                    <span class="product-price">41.120.000đ</span>
-                </div>
-                <div class="product-item">
-                    <span class="product-rank">4</span>
-                    <div class="product-info">
-                        <p class="product-name">Kẹp tóc hoa dâu tay nhí</p>
-                        <p class="product-sales">103 đã bán</p>
-                    </div>
-                    <span class="product-price">21.000.000đ</span>
-                </div>
-                <div class="product-item">
-                    <span class="product-rank">5</span>
-                    <div class="product-info">
-                        <p class="product-name">Túi hoa Tulip</p>
-                        <p class="product-sales">86 đã bán</p>
-                    </div>
-                    <span class="product-price">25.300.000đ</span>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </div>

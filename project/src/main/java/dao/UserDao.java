@@ -111,5 +111,12 @@ public class UserDao extends BaseDao {
                         .execute()
         ) > 0;
     }
-
+    public int countUsers() {
+        String sql = "select count(*) from user";
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
 }

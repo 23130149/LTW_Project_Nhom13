@@ -88,7 +88,6 @@
                     </tr>
                     </thead>
 
-                    <%@ taglib prefix="util" uri="http://handmade/util" %>
 <tbody>
                 <c:forEach var="order" items="${orderList}">
                     <tr>
@@ -106,7 +105,7 @@
                                 ${util:formatMoney(order.totalPrice)}
                         </td>
                         <td>
-            <span class="status-${order.status}">
+<span class="${util:orderStatusClass(order.status)}">
                 ${util:orderStatusIcon(order.status)}
                 ${util:orderStatusLabel(order.status)}
             </span>
@@ -114,6 +113,7 @@
                         <td>
                             <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
                                class="view-all-orders">
+                                Xem chi tiết
                             </a>
                         </td>
                     </tr>

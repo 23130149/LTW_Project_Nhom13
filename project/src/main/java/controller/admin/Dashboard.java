@@ -25,20 +25,20 @@ public class Dashboard extends HttpServlet {
         ProductDao pdao = new ProductDao();
         OrderDao odao = new OrderDao();
         UserDao udao = new UserDao();
-
-        int totalProducts = pdao.getTotalProducts();
-        int totalOrders = odao.countOrders();
+        
+      //  int totalProducts = pdao.getTotalProducts();
+     //   int totalOrders = odao.countOrders();
         int totalUsers = udao.countUsers();
-        double totalRevenue = odao.getTotalRevenue();
-        List<Order> latestOrders = odao.getLatestOrders(5);
-        List<Product> topProducts = odao.getTopProducts(5);
+     //   double totalRevenue = odao.getTotalRevenue();
+     //   List<Order> latestOrders = odao.getLatestOrders(5);
+      //  List<Product> topProducts = odao.getTopProducts(5);
 
-        request.setAttribute("totalProducts", totalProducts);
-        request.setAttribute("totalOrders", totalOrders);
-        request.setAttribute("latestOrders", latestOrders);
-        request.setAttribute("topProducts", topProducts);
-        request.setAttribute("totalUsers", totalUsers);
-        request.setAttribute("totalRevenue", totalRevenue);
+      //  request.setAttribute("totalProducts", totalProducts);
+    //    request.setAttribute("totalOrders", totalOrders);
+      //  request.setAttribute("latestOrders", latestOrders);
+       // request.setAttribute("topProducts", topProducts);
+        //request.setAttribute("totalUsers", totalUsers);
+        // request.setAttribute("totalRevenue", totalRevenue);
 
         request.getRequestDispatcher("/trangadmin/tongquan.jsp").forward(request, response);
     }

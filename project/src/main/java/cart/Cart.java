@@ -42,8 +42,8 @@ public class Cart implements Serializable {
         CartItem item = data.get(productId);
         if (item == null) return false;
 
-        if (quantity <= 0) {
-            data.remove(productId);
+        if (quantity < 1) {
+            item.setQuantity(1);
             return true;
         }
 

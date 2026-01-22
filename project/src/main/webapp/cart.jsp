@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="util.FormatUtil" %>
+<%@ taglib prefix="util" uri="http://handmade/util" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -100,25 +102,21 @@
                         <div class="unit-price">${p.price}</div>
                     </div>
 
-                    <form action="CartUpdate" method="post">
-                        <input type="hidden" name="productId" value="${p.product.productId}">
-                        <input type="hidden" name="quantity" value="${p.quantity - 1}">
-                        <button>-</button>
-                    </form>
+                    <a class="btn-qty"
+                       href="CartUpdate?productId=${p.product.productId}&action=dec">−</a>
 
-                        <span class="qty">${p.quantity}</span>
+                    <span class="qty">${p.quantity}</span>
 
-                    <form action="CartUpdate" method="post">
-                        <input type="hidden" name="productId" value="${p.product.productId}">
-                        <input type="hidden" name="quantity" value="${p.quantity + 1}">
-                        <button>+</button>
-                    </form>
+                    <a class="btn-qty"
+                       href="CartUpdate?productId=${p.product.productId}&action=inc">+</a>
                     </div>
 
                     <div class="item-total-price" id="total-${p.product.productId}">
 
                     ${p.total}
                     </div>
+
+
 
                     <i class='bx bx-trash item-remove'
                        onclick="location.href='DelProduct?id=${p.product.productId}'">
@@ -150,9 +148,10 @@
                 <span>${sessionScope.cart.totalPrice}</span>
             </div>
 
-            <button class="checkout-button">
-                Tiến hành thanh toán
-            </button>
+            <a href="${pageContext.request.contextPath}/payment"
+               class="summary-checkout">
+                Thanh toán
+            </a>
         </div>
 
 

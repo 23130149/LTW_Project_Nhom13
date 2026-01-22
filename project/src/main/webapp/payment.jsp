@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +13,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Header and Footer/Styles.css">
-    <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/payment.css">
 
 </head>
 <body>
@@ -65,33 +68,49 @@
 
     <section class="product-list">
         <h2>Sản phẩm</h2>
-        <div class="product-item">
-            <img src="https://i.pinimg.com/736x/9c/0f/da/9c0fda2d42833544fba28360869fd5e8.jpg"
-                 alt="Móc khóa hình lá cờ">
-            <div class="product-detail">
-                <p class="product-name">Móc khóa hình lá cờ</p>
-                <p class="product-type">Phân loại: Lên, Vừa</p>
+
+        <c:forEach items="${cartItems}" var="item">
+            <div class="product-item">
+                <img src="${item.product.imageUrl}" alt="">
+                <div class="product-detail">
+                    <p class="product-name">${item.product.productName}</p>
+                </div>
+
+                <p class="product-price">
+                        ${item.price}₫
+                </p>
+
+                <p class="product-qty">
+                    x${item.quantity}
+                </p>
+
+                <p class="product-total">
+                        ${item.quantity * item.price}₫
+                </p>
             </div>
-            <p class="product-price">45.000₫</p>
-            <p class="product-qty">x3</p>
-            <p class="product-total">45.000₫</p>
-        </div>
+        </c:forEach>
     </section>
+
 
     <section class="summary">
         <div class="summary-row">
             <span>Tổng tiền hàng</span>
-            <span>45.000₫</span>
+            <span>${totalPrice}₫</span>
         </div>
+
         <div class="summary-row">
             <span>Phí vận chuyển</span>
-            <span>15.000₫</span>
+            <span>${shippingFee}₫</span>
         </div>
+
         <div class="summary-row total">
             <span>Tổng thanh toán</span>
-            <span class="highlight">60.000₫</span>
+            <span class="highlight">${grandTotal}₫</span>
         </div>
-        <button class="checkout-btn">Đặt hàng</button>
+
+        <form action="order" method="post">
+            <button class="checkout-btn">Đặt hàng</button>
+        </form>
     </section>
 </main>
 

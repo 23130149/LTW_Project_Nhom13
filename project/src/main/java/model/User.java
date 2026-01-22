@@ -12,8 +12,6 @@ public class User {
     private LocalDateTime createAt;
     private String role;
 
-    // ===== GETTER / SETTER CHUẨN =====
-
     public int getUserId() {
         return userId;
     }

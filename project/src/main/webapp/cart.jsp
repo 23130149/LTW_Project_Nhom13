@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="util.FormatUtil" %>
+<%@ taglib prefix="util" uri="http://handmade/util" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -31,7 +34,7 @@
                 <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn" id="cartBtn">
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
                 <a href="../html/account.html" class="icon-btn" id="userBtn">
@@ -89,28 +92,34 @@
                     <input type="checkbox"
                            class="item-checkbox"
                            name="productIds"
-                           value="${p.product.product_id}">
+                           value="${p.product.productId}">
 
 
-                    <img src="${p.product.image_url}" alt="">
+                    <img src="${p.product.imageUrl}" alt="">
 
                     <div class="product-info">
-                        <div class="product-name">${p.product.product_name}</div>
+                        <div class="product-name">${p.product.productName}</div>
                         <div class="unit-price">${p.price}</div>
                     </div>
 
-                    <div class="qty-box">
-                        <button>-</button>
-                        <span>${p.quantity}</span>
-                        <button>+</button>
+                    <a class="btn-qty"
+                       href="CartUpdate?productId=${p.product.productId}&action=dec">−</a>
+
+                    <span class="qty">${p.quantity}</span>
+
+                    <a class="btn-qty"
+                       href="CartUpdate?productId=${p.product.productId}&action=inc">+</a>
                     </div>
 
-                    <div class="item-total-price">
-                            ${p.total}
+                    <div class="item-total-price" id="total-${p.product.productId}">
+
+                    ${p.total}
                     </div>
+
+
 
                     <i class='bx bx-trash item-remove'
-                       onclick="location.href='DelProduct?id=${p.product.product_id}'">
+                       onclick="location.href='DelProduct?id=${p.product.productId}'">
                     </i>
                 </div>
             </c:forEach>
@@ -136,12 +145,13 @@
 
             <div class="line total">
                 <span>Tổng cộng</span>
-                <span>15.000 đ</span>
+                <span>${sessionScope.cart.totalPrice}</span>
             </div>
 
-            <button class="checkout-button">
-                Tiến hành thanh toán
-            </button>
+            <a href="${pageContext.request.contextPath}/payment"
+               class="summary-checkout">
+                Thanh toán
+            </a>
         </div>
 
 
@@ -201,12 +211,10 @@
         const checkAll = document.getElementById("checkAll");
         const items = document.querySelectorAll(".item-checkbox");
 
-        // Tick / bỏ tick toàn bộ
         checkAll.addEventListener("change", function () {
             items.forEach(cb => cb.checked = checkAll.checked);
         });
 
-        // Khi bỏ tick 1 item → bỏ tick checkAll
         items.forEach(cb => {
             cb.addEventListener("change", function () {
                 checkAll.checked = [...items].every(i => i.checked);
@@ -214,8 +222,44 @@
         });
 
     });
+    <%--document.addEventListener("DOMContentLoaded", function () {--%>
+    <%--document.querySelectorAll(".btn-qty").forEach(btn => {--%>
+    <%--    btn.addEventListener("click", function () {--%>
+
+    <%--        const box = this.closest(".qty-box");--%>
+    <%--        const productId = box.dataset.id;--%>
+    <%--        const action = this.dataset.action;--%>
+
+    <%--        fetch("${pageContext.request.contextPath}/CartUpdate", {--%>
+    <%--            method: "POST",--%>
+    <%--            headers: {--%>
+    <%--                "Content-Type": "application/x-www-form-urlencoded"--%>
+    <%--            },--%>
+    <%--            body: `id=${productId}&action=${action}`--%>
+    <%--        })--%>
+    <%--            .then(res => res.json())--%>
+    <%--            .then(data => {--%>
+    <%--                if (!data.success) return;--%>
+
+    <%--                box.querySelector(".qty").innerText = data.quantity;--%>
+    <%--                box.closest(".cart-item")--%>
+    <%--                    .querySelector(".item-total-price")--%>
+    <%--                    .innerText = data.itemTotal;--%>
+
+    <%--                document.querySelector(".summary-price")--%>
+    <%--                    .innerText = data.cartTotal;--%>
+
+    <%--                const btnDec = box.querySelector("[data-action='dec']");--%>
+    <%--                btnDec.disabled = data.quantity <= 1;--%>
+    <%--            });--%>
+    <%--    });--%>
+    <%--});--%>
+    <%--});--%>
+
+
+
+
+
 </script>
-
-
 </body>
 </html>

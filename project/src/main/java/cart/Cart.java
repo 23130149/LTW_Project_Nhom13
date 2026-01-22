@@ -38,8 +38,22 @@ public class Cart implements Serializable {
         data.values().forEach(p -> total.updateAndGet(v ->  (v + p.getQuantity() * p.getPrice())));
     return total.get();
     }
-    public boolean update(int id, Product p){
-        //
+    public boolean update(int productId, int quantity) {
+        CartItem item = data.get(productId);
+        if (item == null) return false;
+
+        if (quantity < 1) {
+            item.setQuantity(1);
+            return true;
+        }
+
+        item.setQuantity(quantity);
         return true;
     }
+
+
+    public CartItem getItem(int productId) {
+        return data.get(productId);
+    }
 }
+

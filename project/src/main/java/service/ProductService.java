@@ -14,6 +14,7 @@ public class ProductService {
     public List<Product> getProductsPerPage(int limit, int offset) {
         return pdao.getProductsPerPage(limit, offset);
     }
+    public  int getStockById(int productId){return pdao.getStockById(productId);}
     public int getTotalProducts() {
         return pdao.getTotalProducts();
     }

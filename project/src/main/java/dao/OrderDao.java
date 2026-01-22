@@ -61,4 +61,40 @@ public class OrderDao extends BaseDao {
                         .execute()
         );
     }
+    public List<Order> getRecentOrdersByUser(int userId, int limit) {
+
+        String sql = """
+        SELECT
+            Order_Id            AS orderId,
+            User_Id             AS userId,
+            User_Address_Id     AS userAddressId,
+            Payment_Method_Id   AS paymentMethodId,
+            Note                AS note,
+            Status              AS status,
+            Create_At           AS createAt,
+            Total_Price         AS totalPrice,
+            Payment_Status      AS paymentStatus,
+            Order_Code          AS orderCode
+        FROM orders
+        WHERE User_Id = :user_id
+        ORDER BY Create_At DESC
+        LIMIT :limit
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("user_id", userId)
+                        .bind("limit", limit)
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
+
+    public Order getOrderByIdAndUser(int orderId, int userId) {
+        return null;
+    }
+
+    public boolean hasUserPurchasedProduct(int userId, int productId) {
+        return false;
+    }
 }

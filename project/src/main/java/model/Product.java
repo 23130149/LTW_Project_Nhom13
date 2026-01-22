@@ -9,8 +9,10 @@
         private Integer stockQuantity;
         private String productDescription;
         private String imageUrl;
+        private Integer sold;
+        private Double revenue;
 
-        public Product(Integer productId, Integer categoryId, String productName, Integer productPrice, String categoryName, Integer stockQuantity, String productDescription, String imageUrl) {
+        public Product(Integer productId, Integer categoryId, String productName, Integer productPrice, String categoryName, Integer stockQuantity, String productDescription, String imageUrl, Integer sold, Double revenue) {
             this.productId = productId;
             this.categoryId = categoryId;
             this.productName = productName;
@@ -19,6 +21,8 @@
             this.stockQuantity = stockQuantity;
             this.productDescription = productDescription;
             this.imageUrl = imageUrl;
+            this.sold = sold;
+            this.revenue = revenue;
         }
 
         public Product() {
@@ -35,6 +39,8 @@
                     ", stockQuantity=" + stockQuantity +
                     ", productDescription='" + productDescription + '\'' +
                     ", imageUrl='" + imageUrl + '\'' +
+                    ", sold='" + sold + '\'' +
+                    ", revenue='" + revenue + '\'' +
                     '}';
         }
 
@@ -100,5 +106,21 @@
 
         public void setImageUrl(String imageUrl) {
             this.imageUrl = imageUrl;
+        }
+
+        public Integer getSold() {
+            return sold;
+        }
+
+        public void setSold(Integer sold) {
+            this.sold = sold;
+        }
+
+        public Double getRevenue() {
+            return revenue;
+        }
+
+        public void setRevenue(Double revenue) {
+            this.revenue = revenue;
         }
     }

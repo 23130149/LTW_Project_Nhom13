@@ -15,18 +15,18 @@ public class ReviewDao extends BaseDao {
                         .map((rs, ctx) -> {
                             Review r = new Review();
                             r.setReviewId(rs.getInt("review_id"));
-                            r.setRating(rs.getInt("rating"));
+                            r.setRating(rs.getDouble("rating")); //
                             r.setComment(rs.getString("comment"));
-                            r.setCreatedAt(rs.getTimestamp("created_at"));
+                            r.setCreatedAt(rs.getTimestamp("create_at")); // FIX
                             r.setProductId(rs.getInt("product_id"));
                             r.setUserId(rs.getInt("user_id"));
-                            r.setUserName(rs.getString("username"));
+                            r.setUserName(rs.getString("user_name")); // FIX
                             return r;
                         })
                         .list()
         );
     }
-    public Map<Integer, Integer> getRatingCountByProductId(int productId) {
+    public Map<Double, Integer> getRatingCountByProductId(int productId) {
         String sql = """
         SELECT rating, COUNT(*) AS total
         FROM reviews
@@ -38,7 +38,7 @@ public class ReviewDao extends BaseDao {
                 handle.createQuery(sql)
                         .bind("productId", productId)
                         .map((rs, ctx) -> Map.entry(
-                                rs.getInt("rating"),
+                                rs.getDouble("rating"),
                                 rs.getInt("total")
                         ))
                         .collect(Collectors.toMap(

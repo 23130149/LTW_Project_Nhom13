@@ -92,12 +92,20 @@
                         <option value="30" ${range == '30' ? 'selected' : ''}>30 ngày</option>
                     </select>
                 </form>
+                <h3 class="card-title">Doanh thu ${range == '30' ? '30 ngày qua' : '7 ngày qua'}</h3>
+                <select class="chart-filter"
+                        onchange="location.href='${pageContext.request.contextPath}/dashboard?range=' + this.value">>
+                    <option value="7" ${range == '7' ? 'selected' : ''}>7 ngày</option>
+                    <option value="30" ${range == '30' ? 'selected' : ''}>30 ngày</option>
+                </select>
             </div>
             <div class="chart-area">
                 <div class="bar-chart-container">
                     <c:forEach items="${revenueChart}" var="item">
                         <div class="bar-chart" style="height: ${item.value}%">
                             <span>${item.key}</span>
+                        <div class="bar-chart" style="heigt: ${item.value}%">
+                            <p>${item.key}</p>
                         </div>
                     </c:forEach>
                 </div>

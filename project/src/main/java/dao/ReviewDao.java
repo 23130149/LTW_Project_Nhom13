@@ -7,22 +7,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ReviewDao extends BaseDao {
-    public List<Review> getReviewsByProductId(int product_id) {
-        String sql = "select r.review_id, r.rating, r.comment, r.product_id, r.create_at, r.user_id, u.user_name from reviews r join user u on r.user_id = u.user_id where r.product_id = :product_id order by r.create_at desc";
+    public List<Review> getReviewsByProductId(int productId) {
+        String sql = "select r.review_id as reviewId, r.rating as rating, r.comment as comment, r.product_id as productId, r.user_id as userId, u.username as userName from reviews r join user u on r.user_id = u.user_id where r.product_id = :product_id order by r.create_at desc";
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
-                        .bind("product_id", product_id)
-                        .map((rs, ctx) -> {
-                            Review r = new Review();
-                            r.setReviewId(rs.getInt("review_id"));
-                            r.setRating(rs.getDouble("rating")); //
-                            r.setComment(rs.getString("comment"));
-                            r.setCreatedAt(rs.getTimestamp("create_at")); // FIX
-                            r.setProductId(rs.getInt("product_id"));
-                            r.setUserId(rs.getInt("user_id"));
-                            r.setUserName(rs.getString("user_name")); // FIX
-                            return r;
-                        })
+                        .bind("productId", productId)
+                        .mapToBean(Review.class)
                         .list()
         );
     }
@@ -48,9 +38,4 @@ public class ReviewDao extends BaseDao {
         );
     }
 
-
-    public static void main(String[] args) {
-        ReviewDao rdao = new ReviewDao();
-        rdao.getReviewsByProductId(1).forEach(System.out::println);
-    }
 }

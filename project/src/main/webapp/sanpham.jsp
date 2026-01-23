@@ -130,11 +130,11 @@
                     <h4 class="filter-group-title">Danh mục</h4>
                     <ul>
                         <c:forEach items = "${categoryList}" var="cat">
-                        <li class="${cat.categoryId == currentCategoryId ? 'active' : ''}">
-                            <a href="${pageContext.request.contextPath}/product?categoryId=${cat.categoryId}">
-                                ${cat.name}
-                            </a>
-                        </li>
+                            <li class="${cat.categoryId == currentCategoryId ? 'active' : ''}">
+                                <a href="${pageContext.request.contextPath}/product?categoryId=${cat.categoryId}">
+                                        ${cat.name}
+                                </a>
+                            </li>
                         </c:forEach>
                     </ul>
                 </div>

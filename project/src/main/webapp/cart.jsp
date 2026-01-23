@@ -21,7 +21,7 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="../html/trangchu.html">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
             <form class="search-form" action="#" method="GET">
                 <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
@@ -31,13 +31,13 @@
                 </button>
             </form>
             <div class="icons">
-                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
+                <a href="${pageContext.request.contextPath}/favourite" class="icon-btn" id="heartBtn">
                     <i class='bx  bx-heart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
-                <a href="../html/account.html" class="icon-btn" id="userBtn">
+                <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
                 </a>
             </div>
@@ -49,8 +49,8 @@
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
-                    <li><a href="../html/blog.html">Blog</a></li>
-                    <li><a href="../html/contact.html">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>

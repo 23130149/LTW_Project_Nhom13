@@ -4,7 +4,7 @@ import model.UserAddress;
 
 public class UserAddressDao extends BaseDao {
 
-    // lấy địa chỉ theo user
+
     public UserAddress findByUserId(int userId) {
 
         String sql = """

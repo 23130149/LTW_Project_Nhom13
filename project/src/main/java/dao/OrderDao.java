@@ -10,19 +10,12 @@ public class OrderDao extends BaseDao {
     public List<Order> getOrdersByUserId(int userId) {
 
         String sql = """
-            SELECT
-                Order_Id        AS orderId,
-                User_Id         AS userId,
-                Create_At       AS createAt,
-                Total_Price     AS totalPrice,
-                Status          AS status,
-                Payment_Status  AS paymentStatus,
-                Order_Code      AS orderCode,
-                Note            AS note
-            FROM orders
-            WHERE User_Id = :userId
-            ORDER BY Create_At DESC
-        """;
+        SELECT *
+        FROM orders
+        WHERE User_Id = :userId
+          AND Status <> 'PROCESSING'
+        ORDER BY Create_At DESC
+    """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -31,28 +24,27 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+
+
+
     public void insert(Order order) {
 
         String sql = """
         INSERT INTO orders (
             User_Id,
             User_Address_Id,
-            Payment_Method_Id,
             Note,
             Status,
             Create_At,
             Total_Price,
-            Payment_Status,
             Order_Code
         ) VALUES (
             :userId,
             :userAddressId,
-            :paymentMethodId,
             :note,
             :status,
             NOW(),
             :totalPrice,
-            :paymentStatus,
             :orderCode
         )
     """;
@@ -70,12 +62,10 @@ public class OrderDao extends BaseDao {
             Order_Id            AS orderId,
             User_Id             AS userId,
             User_Address_Id     AS userAddressId,
-            Payment_Method_Id   AS paymentMethodId,
             Note                AS note,
             Status              AS status,
             Create_At           AS createAt,
             Total_Price         AS totalPrice,
-            Payment_Status      AS paymentStatus,
             Order_Code          AS orderCode
         FROM orders
         WHERE User_Id = :user_id
@@ -124,6 +114,29 @@ public class OrderDao extends BaseDao {
                         .one()
         );
     }
+    public int insertAndReturnId(Order order) {
+        String sql = """
+        INSERT INTO orders (
+            User_Id, User_Address_Id, Note,
+            Status, Create_At, Total_Price,
+             Order_Code
+        )
+        VALUES (
+            :userId, :userAddressId, :note,
+            :status, NOW(), :totalPrice,
+             :orderCode
+        )
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bindBean(order)
+                        .executeAndReturnGeneratedKeys("Order_Id")
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
     public Order getOrderByIdAndUser(int orderId, int userId) {
         return null;
     }
@@ -131,4 +144,43 @@ public class OrderDao extends BaseDao {
     public boolean hasUserPurchasedProduct(int userId, int productId) {
         return false;
     }
+    public void updateStatus(int orderId, String status) {
+        String sql = "UPDATE orders SET Status = :status WHERE Order_Id = :id";
+
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("status", status)
+                        .bind("id", orderId)
+                        .execute()
+        );}
+
+
+    public List<Order> getAllOrders() {
+        String sql = """
+        SELECT
+            o.Order_Id        AS id,
+            o.User_Id         AS userId,
+            u.User_Name       AS customerName,
+            o.Status          AS status,
+            o.Create_At       AS createdAt,
+            o.Total_Price     AS totalPrice,
+            COUNT(oi.Product_Id) AS totalItems
+        FROM orders o
+        JOIN user u ON o.User_Id = u.User_Id
+        JOIN order_items oi ON oi.Order_Id = o.Order_Id
+        GROUP BY
+            o.Order_Id, o.User_Id, u.User_Name,
+            o.Status, 
+            o.Create_At, o.Total_Price
+        ORDER BY o.Create_At DESC
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
+
 }
+

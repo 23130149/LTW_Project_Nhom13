@@ -8,7 +8,6 @@ public class Order {
     private int orderId;
     private int userId;
     private int userAddressId;
-    private int paymentMethodId;
     private LocalDateTime createAt;
     private String status;
     private String paymentStatus;
@@ -46,14 +45,6 @@ public class Order {
 
     public void setUserAddressId(int userAddressId) {
         this.userAddressId = userAddressId;
-    }
-
-    public int getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
     }
 
     public String getStatus() {

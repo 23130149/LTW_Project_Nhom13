@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,67 +80,43 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>#DH001</td>
-                <td>Nguyễn Thanh Phú</td>
-                <td>2 sản phẩm</td>
-                <td>178.000đ</td>
-                <td>15/10/2025</td>
-                <td>Đã thanh toán</td>
-                <td><span class="status status-completed">Hoàn thành</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH002</td>
-                <td>Lê Viết Khanh</td>
-                <td>1 sản phẩm</td>
-                <td>15.000đ</td>
-                <td>2/9/2025</td>
-                <td>Đã thanh toán</td>
-                <td><span class="status status-shipping">Đang xử lý</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH003</td>
-                <td>Trần Hoàng Quân</td>
-                <td>1 sản phẩm</td>
-                <td>150.000đ</td>
-                <td>17/9/2025</td>
-                <td>Chưa thanh toán</td>
-                <td><span class="status status-pending">Chờ xác nhận</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH004</td>
-                <td>Nuyễn Lê Tiến Đạt</td>
-                <td>3 sản phẩm</td>
-                <td>90.000đ</td>
-                <td>10/10/2025</td>
-                <td>Đã thanh toán</td>
-                <td><span class="status status-completed">Hoàn thành</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH005</td>
-                <td>Nguyễn Huy Bảo</td>
-                <td>1 sản phẩm</td>
-                <td>120.000đ</td>
-                <td>12/11/2025</td>
-                <td>Đã hoàn tiền</td>
-                <td><span class="status status-cancelled">Đã hủy</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
+            <c:forEach var="order" items="${orders}">
+                <tr>
+                    <td>#DH${order.orderId}</td>
+                    <td>${order.userId}</td>
+                    <td>${order.totalPrice}đ</td>
+                    <td>${order.createAt}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${order.paymentStatus == 'PAID'}">Đã thanh toán</c:when>
+                            <c:otherwise>Chưa thanh toán</c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+            <span class="status
+                <c:if test='${order.status == "CONFIRMED"}'>status-completed</c:if>
+                <c:if test='${order.status == "PENDING"}'>status-pending</c:if>
+            '>
+                ${order.status}
+            </span>
+        </td>
+        <td>
+            <c:if test="${order.status == 'PENDING'}">
+                <form action="${pageContext.request.contextPath}/ConfirmController" method="post">
+                        <input type="hidden" name="orderId" value="${order.orderId}">
+                        <button type="submit" class="btn-confirm">Xác nhận</button>
+                        </form>
+                        </c:if>
+
+                        <c:if test="${order.status == 'CONFIRMED'}">
+                            <i class="bx bx-check-circle" style="color:green"></i>
+                        </c:if>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
+
+
         </table>
     </div>
 </main>

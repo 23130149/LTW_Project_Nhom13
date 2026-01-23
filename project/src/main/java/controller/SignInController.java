@@ -50,7 +50,7 @@ public class    SignInController extends HttpServlet {
         session.setAttribute("user", user);
 
         if ("ADMIN".equalsIgnoreCase(user.getRole())) {
-            response.sendRedirect(request.getContextPath() + "/trangadmin/tongquan.jsp");
+            response.sendRedirect(request.getContextPath() + "/trangadmin/dashboard");
         } else {
             response.sendRedirect(request.getContextPath() + "/Account");
         }

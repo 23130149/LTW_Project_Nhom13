@@ -119,4 +119,15 @@ public class UserDao extends BaseDao {
                         .one()
         );
     }
+    public User getAdmin() {
+        String sql = "select user_id as userId, user_name as userName, email, phone, password, create_at as createAt, role from user where role = :role limit 1";
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("role", "ADMIN")
+                        .mapToBean(User.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
 }

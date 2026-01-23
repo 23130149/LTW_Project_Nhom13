@@ -2,31 +2,32 @@ package dao;
 
 import model.UserAddress;
 
+import java.util.List;
+
 public class UserAddressDao extends BaseDao {
 
-    // lấy địa chỉ theo user
-    public UserAddress findByUserId(int userId) {
+    public List<UserAddress> findByUserId(int userId) {
 
         String sql = """
-            SELECT
-                User_Address_Id AS userAddressId,
-                User_Id AS userId,
-                Country AS country,
-                Province AS province,
-                District AS district,
-                Street AS street
-            FROM user_address
-            WHERE User_Id = :user_id
-        """;
+        SELECT
+            User_Address_Id AS userAddressId,
+            User_Id AS userId,
+            Country AS country,
+            Province AS province,
+            District AS district,
+            Street AS street
+        FROM user_address
+        WHERE User_Id = :user_id
+    """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("user_id", userId)
                         .mapToBean(UserAddress.class)
-                        .findOne()
-                        .orElse(null)
+                        .list()
         );
     }
+
 
     // thêm mới
     public void insert(UserAddress address) {
@@ -48,18 +49,17 @@ public class UserAddressDao extends BaseDao {
         );
     }
 
-    // cập nhật
     public void update(UserAddress address) {
 
         String sql = """
-            UPDATE user_address
-            SET
-                Country = :country,
-                Province = :province,
-                District = :district,
-                Street = :street
-            WHERE User_Id = :user_id
-        """;
+        UPDATE user_address
+        SET
+            Country = :country,
+            Province = :province,
+            District = :district,
+            Street = :street
+        WHERE User_Address_Id = :id
+    """;
 
         getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
@@ -67,8 +67,40 @@ public class UserAddressDao extends BaseDao {
                         .bind("province", address.getProvince())
                         .bind("district", address.getDistrict())
                         .bind("street", address.getStreet())
-                        .bind("user_id", address.getUserId())
+                        .bind("id", address.getUserAddressId())
                         .execute()
         );
     }
+
+    public UserAddress findById(int id) {
+        String sql = """
+        SELECT
+            User_Address_Id AS userAddressId,
+            User_Id AS userId,
+            Country AS country,
+            Province AS province,
+            District AS district,
+            Street AS street
+        FROM user_address
+        WHERE User_Address_Id = :id
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("id", id)
+                        .mapToBean(UserAddress.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+    public void deleteById(int id) {
+        String sql = "DELETE FROM user_address WHERE User_Address_Id = :id";
+
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", id)
+                        .execute()
+        );
+    }
+
 }

@@ -36,13 +36,11 @@ public class CheckoutController extends HttpServlet {
                 new BigDecimal(request.getParameter("totalPrice"));
 
         int addressId = Integer.parseInt(request.getParameter("addressId"));
-        int paymentMethodId = Integer.parseInt(request.getParameter("paymentMethodId"));
         String note = request.getParameter("note");
 
         Order order = new Order();
         order.setUserId(user.getUserId());
         order.setUserAddressId(addressId);
-        order.setPaymentMethodId(paymentMethodId);
         order.setTotalPrice(totalPrice);
         order.setStatus("pending");
         order.setPaymentStatus("UNPAID");

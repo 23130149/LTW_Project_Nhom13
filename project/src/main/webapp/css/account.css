@@ -204,3 +204,41 @@ main.about-us-container {
 .btn-back {
     background: #11998e;
 }
+.view-all-wrapper {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-view-all-orders {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 26px;
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: #fff;
+
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+
+    box-shadow: 0 8px 20px rgba(17, 153, 142, 0.25);
+    transition: all 0.25s ease;
+}
+
+.btn-view-all-orders i {
+    font-size: 18px;
+}
+
+.btn-view-all-orders:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(17, 153, 142, 0.35);
+    filter: brightness(1.05);
+}
+.btn-view-all-orders:focus {
+    outline: 3px solid rgba(17, 153, 142, 0.35);
+    outline-offset: 3px;
+}

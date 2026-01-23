@@ -14,7 +14,6 @@ public class OrderDao extends BaseDao {
                 Create_At       AS createAt,
                 Total_Price     AS totalPrice,
                 Status          AS status,
-                Payment_Status  AS paymentStatus,
                 Order_Code      AS orderCode,
                 Note            AS note
             FROM orders
@@ -94,21 +93,22 @@ public class OrderDao extends BaseDao {
 
         String sql = """
         SELECT COUNT(*)
-        FROM Orders o
-        JOIN Order_Items oi ON o.Order_Id = oi.Order_Id
+        FROM orders o
+        JOIN order_items oi ON o.Order_Id = oi.Order_Id
         WHERE o.User_Id = :userId
           AND oi.Product_Id = :productId
-          AND o.Status IN ('CONFIRMED','SHIPPED','COMPLETED')
+          AND o.Status = 'COMPLETED'
     """;
 
-        return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
                         .bind("userId", userId)
                         .bind("productId", productId)
                         .mapTo(int.class)
                         .one() > 0
         );
     }
+
     public Order getOrderByIdAndUser(int orderId, int userId) {
 
         String sql = """

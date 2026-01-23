@@ -1,17 +1,18 @@
 package model;
-
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Review {
     private int review_id;
     private double rating;
     private String comment;
-    private Date creatAt;
+    private LocalDateTime creatAt;
     private int product_id;
     private int user_id;
     private String user_name;
+    private String formattedDate;
 
-    public Review(int review_id, double rating, String comment, int product_id, Date creatAt, int user_id, String user_name) {
+    public Review(int review_id, double rating, String comment, int product_id, LocalDateTime  creatAt, int user_id, String user_name) {
         this.review_id = review_id;
         this.rating = rating;
         this.comment = comment;
@@ -61,14 +62,6 @@ public class Review {
         this.comment = comment;
     }
 
-    public Date getCreatAt() {
-        return creatAt;
-    }
-
-    public void setCreatAt(Date creatAt) {
-        this.creatAt = creatAt;
-    }
-
     public int getProduct_id() {
         return product_id;
     }
@@ -92,4 +85,19 @@ public class Review {
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
+    public LocalDateTime getCreatAt() {
+        return creatAt;
+    }
+
+    public void setCreatAt(LocalDateTime creatAt) {
+        this.creatAt = creatAt;
+    }public String getFormattedDate() {
+        return formattedDate;
+    }
+
+    public void setFormattedDate(String formattedDate) {
+        this.formattedDate = formattedDate;
+    }
+
+
 }

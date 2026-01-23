@@ -88,37 +88,37 @@
                     </tr>
                     </thead>
 
-<tbody>
-                <c:forEach var="order" items="${orderList}">
-                    <tr>
+                    <%@ taglib prefix="util" uri="http://handmade/util" %>
+                    <tbody>
+                    <c:forEach var="order" items="${orderList}">
+                        <tr>
 
-                        <td>
-                            <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
-                               style="color:#11998e; font-weight:600;">
-                                    ${order.orderCode}
-                            </a>
-                        </td>
-                        <td>
-                                ${util:formatDateTime(order.createAt)}
-                        </td>
-                        <td>
-                                ${util:formatMoney(order.totalPrice)}
-                        </td>
-                        <td>
-<span class="${util:orderStatusClass(order.status)}">
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   style="color:#11998e; font-weight:600;">
+                                        ${order.orderCode}
+                                </a>
+                            </td>
+                            <td>
+                                    ${util:formatDateTime(order.createAt)}
+                            </td>
+                            <td>
+                                    ${util:formatMoney(order.totalPrice)}
+                            </td>
+                            <td>
+            <span class="status-${order.status}">
                 ${util:orderStatusIcon(order.status)}
                 ${util:orderStatusLabel(order.status)}
             </span>
-                        </td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
-                               class="view-all-orders">
-                                Xem chi tiết
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
+                            </td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   class="view-all-orders">
+                                </a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
 
                 </table>
             </c:otherwise>

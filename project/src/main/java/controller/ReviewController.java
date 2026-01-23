@@ -1,8 +1,7 @@
 package controller;
 
-import dao.ReviewDao;
 import model.User;
-
+import service.ReviewService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/review")
 public class ReviewController extends HttpServlet {
 
-    private ReviewDao reviewDao = new ReviewDao();
+    private ReviewService reviewService = new ReviewService();
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -31,24 +30,37 @@ public class ReviewController extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         int productId = Integer.parseInt(request.getParameter("productId"));
-        double rating = Double.parseDouble(request.getParameter("rating"));
         String comment = request.getParameter("comment");
+        String ratingStr = request.getParameter("rating");
 
-        String sql = """
-            INSERT INTO reviews (Rating, Comment, Create_At, Product_Id, User_Id)
-            VALUES (:rating, :comment, NOW(), :productId, :userId)
-        """;
+        if (ratingStr == null || ratingStr.isBlank()) {
+            response.sendRedirect(
+                    request.getContextPath()
+                            + "/product-detail?id=" + productId + "&ratingError=1"
+            );
+            return;
+        }
 
-        reviewDao.getJdbi().withHandle(handle ->
-                handle.createUpdate(sql)
-                        .bind("rating", rating)
-                        .bind("comment", comment)
-                        .bind("productId", productId)
-                        .bind("userId", user.getUserId())
-                        .execute()
-        );
+        double rating = Double.parseDouble(ratingStr);
+
+        try {
+            reviewService.addReview(
+                    user.getUserId(),
+                    productId,
+                    rating,
+                    comment
+            );
+        } catch (RuntimeException e) {
+            response.sendRedirect(
+                    request.getContextPath()
+                            + "/product-detail?id=" + productId + "&reviewExist=1"
+            );
+            return;
+        }
+
         response.sendRedirect(
-                request.getContextPath() + "/product-detail?id=" + productId + "&reviewSuccess=1"
+                request.getContextPath()
+                        + "/product-detail?id=" + productId + "&reviewSuccess=1"
         );
 
     }

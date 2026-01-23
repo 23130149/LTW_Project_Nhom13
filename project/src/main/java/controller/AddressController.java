@@ -9,13 +9,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/Address")
 public class AddressController extends HttpServlet {
 
-    private UserAddressDao addressDao = new UserAddressDao();
+    private final UserAddressDao addressDao = new UserAddressDao();
 
-    // hiển thị trang
+    // HIỂN THỊ TRANG
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
@@ -28,15 +29,31 @@ public class AddressController extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/SignIn");
             return;
         }
+        String deleteId = request.getParameter("delete");
+        if (deleteId != null) {
+            addressDao.deleteById(Integer.parseInt(deleteId));
+            response.sendRedirect(request.getContextPath() + "/Address");
+            return;
+        }
 
-        UserAddress address = addressDao.findByUserId(user.getUserId());
-        request.setAttribute("address", address);
+        List<UserAddress> addresses =
+                addressDao.findByUserId(user.getUserId());
+
+        request.setAttribute("addresses", addresses);
+
+        String editId = request.getParameter("edit");
+        if (editId != null) {
+            UserAddress editAddress =
+                    addressDao.findById(Integer.parseInt(editId));
+            request.setAttribute("address", editAddress);
+        } else {
+            request.setAttribute("address", new UserAddress());
+        }
 
         request.getRequestDispatcher("/Address.jsp")
                 .forward(request, response);
     }
 
-    // lưu địa chỉ
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
@@ -52,16 +69,21 @@ public class AddressController extends HttpServlet {
             return;
         }
 
+        int addressId = 0;
+        try {
+            addressId = Integer.parseInt(
+                    request.getParameter("userAddressId"));
+        } catch (Exception ignored) {}
+
         UserAddress address = new UserAddress();
+        address.setUserAddressId(addressId);
         address.setUserId(user.getUserId());
         address.setCountry(request.getParameter("country"));
         address.setProvince(request.getParameter("province"));
         address.setDistrict(request.getParameter("district"));
         address.setStreet(request.getParameter("street"));
 
-        UserAddress existed = addressDao.findByUserId(user.getUserId());
-
-        if (existed == null) {
+        if (addressId == 0) {
             addressDao.insert(address);
         } else {
             addressDao.update(address);

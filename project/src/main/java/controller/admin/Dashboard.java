@@ -19,7 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "Dashboard", value = "/dashboard")
+@WebServlet(name = "Dashboard", value = "/admin/dashboard")
 public class Dashboard extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(Dashboard.class);
 

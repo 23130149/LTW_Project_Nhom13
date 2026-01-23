@@ -44,9 +44,33 @@ public class ProductDao extends BaseDao {
                         .one()
         );
     }
+    public int countOutOfStock() {
+        String sql = "select count(*) from products where stock_quantity = 0";
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+    public int getTotalStock() {
+        String sql = "select coalesce(sum(stock_quantity),0) from products";
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+    public double getTotalInventoryValue() {
+        String sql = "select coalesce(sum(product_price * stock_quantity), 0) from products";
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapTo(Double.class)
+                        .one()
+        );
+    }
     public Product getProductById(int id) {
         String sql = "select p.product_id AS productId, p.category_id AS categoryId, p.product_name AS productName, c.name AS categoryName, p.product_price AS productPrice, p.stock_quantity AS stockQuantity, p.product_description AS productDescription, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p join categories c on p.category_id = c.category_id where p.product_id = :id";
-
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("id", id)
@@ -79,7 +103,6 @@ public class ProductDao extends BaseDao {
     public List<Product> getRelatedProducts(int categoryId, int productId) {
         String sql = "select p.product_id AS productId, p.category_id AS categoryId, p.product_name AS productName, c.name AS categoryName, p.product_price AS productPrice, p.stock_quantity AS stockQuantity, p.product_description AS productDescription, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p join categories c on p.category_id = c.category_id where p.category_id = :categoryId and p.product_id != :productId limit 4";
 
-
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("categoryId", categoryId)
@@ -88,5 +111,33 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
-
+    public void insert(Product p) {
+        String sql = "insert into products (product_name, product_price, stock_quantity) values (:name, :price, :stock)";
+        getJdbi().withHandle(handle ->
+            handle.createUpdate(sql)
+                    .bind("name", p.getProductName())
+                    .bind("price", p.getProductPrice())
+                    .bind("stock", p.getStockQuantity())
+                    .execute()
+        );
+    }
+    public void update(Product p) {
+        String sql = "update products set product_name = :name, product_price = :price, stock_quantity = :stock where product_id = :id";
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", p.getProductId())
+                        .bind("name", p.getProductName())
+                        .bind("price", p.getProductPrice())
+                        .bind("stock", p.getStockQuantity())
+                        .execute()
+        );
+    }
+    public void delete(int productId) {
+        String sql = "delete from products where product_id = :id";
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", productId)
+                        .execute()
+        );
+    }
 }

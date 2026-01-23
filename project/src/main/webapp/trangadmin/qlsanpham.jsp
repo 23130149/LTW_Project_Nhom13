@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +17,8 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/tongquan.jsp"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
@@ -35,12 +37,17 @@
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
@@ -50,7 +57,7 @@
             <div class="stat-icon"><i class="bx bx-cube"></i></div>
             <div class="stat-details">
                 <p class="title">Tổng sản phẩm</p>
-                <p class="value">80</p>
+                <p class="value">${totalProducts}</p>
                 <span class="stat-change positive"></span>
             </div>
         </div>
@@ -58,7 +65,9 @@
             <div class="stat-icon"><i class="bx bx-dollar-circle"></i></div>
             <div class="stat-details">
                 <p class="title">Tổng giá trị hàng</p>
-                <p class="value">48.700.000đ</p>
+                <p class="value">
+                    <fmt:formatNumber value="${totalValue}" type="number"/>đ
+                </p>
                 <span class="stat-change positive"></span>
             </div>
         </div>
@@ -66,7 +75,7 @@
             <div class="stat-icon"><i class="bx bx-error-alt"></i></div>
             <div class="stat-details">
                 <p class="title">Sản phẩm hết hàng</p>
-                <p class="value">0</p>
+                <p class="value">${outOfStock}</p>
                 <span class="stat-change positive"></span>
             </div>
         </div>
@@ -74,7 +83,7 @@
             <div class="stat-icon"><i class="bx bx-package"></i></div>
             <div class="stat-details">
                 <p class="title">Tổng tồn kho</p>
-                <p class="value">330</p>
+                <p class="value">${totalStock}</p>
                 <span class="stat-change positive"></span>
             </div>
         </div>
@@ -101,66 +110,49 @@
             </tr>
             </thead>
             <tbody>
+            <c:forEach var="p" items="${products}">
             <tr>
-                <td>#DH001</td>
-                <td>Ốp lưng điện thoại</td>
-                <td>89.000đ</td>
-                <td>18</td>
-                <td>29</td>
-                <td><span class="status status-completed">Còn hàng</span></td>
+                <td>#SP${p.productId}</td>
+                <td>${p.productName}</td>
                 <td>
-                    <button class="action-icon"><i class="bx bx-pencil"></i></button>
-                    <button class="action-icon"><i class="bx bx-trash"></i></button>
+                    <fmt:formatNumber value="${p.productPrice}" type="number"/>đ
+                </td>
+                <td>${p.stockQuantity}</td>
+                <td>${p.sold != null ? p.sold : 0}</td>
+                <td>
+                 <c:choose>
+                    <c:when test="${p.stockQuantity == 0}">
+                        <span class="status status-pending">Hết hàng</span>
+                    </c:when>
+                    <c:when test="${p.stockQuantity < 5}">
+                        <span class="status status-warning">Sắp hết</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="status status-completed">Còn hàng</span>
+                    </c:otherwise>
+                </c:choose>
+                </td>
+                <td>
+                    <button class="action-icon"
+                            onclick="openEditModal(
+                            '${p.productId}',
+                            '${p.productName}',
+                            '${p.productPrice}',
+                            '${p.stockQuantity}'
+                            )">
+                        <i class="bx bx-pencil"></i>
+                    </button>
+                    <form action="${pageContext.request.contextPath}/admin/products"
+                          method="post" style="display:inline">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="productId" value="${p.productId}">
+                        <button class="action-icon" onclick="return confirm('Xoá sản phẩm này?')">
+                            <i class="bx bx-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
-            <tr>
-                <td>#DH002</td>
-                <td>Móc khóa lá cờ Việt Nam</td>
-                <td>15.000đ</td>
-                <td>0</td>
-                <td>41</td>
-                <td><span class="status status-pending">Hết hàng</span></td>
-                <td>
-                    <button class="action-icon"><i class="bx bx-pencil"></i></button>
-                    <button class="action-icon"><i class="bx bx-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH003</td>
-                <td>Nến thơm xương rồng</td>
-                <td>150.000đ</td>
-                <td>18</td>
-                <td>29</td>
-                <td><span class="status status-completed">Còn hàng</span></td>
-                <td>
-                    <button class="action-icon"><i class="bx bx-pencil"></i></button>
-                    <button class="action-icon"><i class="bx bx-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH004</td>
-                <td>Kẹp tóc hoa dâu tây nhí</td>
-                <td>30.000đ</td>
-                <td>10</td>
-                <td>41</td>
-                <td><span class="status status-completed">Còn hàng</span></td>
-                <td>
-                    <button class="action-icon"><i class="bx bx-pencil"></i></button>
-                    <button class="action-icon"><i class="bx bx-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH005</td>
-                <td>Túi hoa Tulip</td>
-                <td>120.000đ</td>
-                <td>5</td>
-                <td>30</td>
-                <td><span class="status status-warning">Sắp hết</span></td>
-                <td>
-                    <button class="action-icon"><i class="bx bx-pencil"></i></button>
-                    <button class="action-icon"><i class="bx bx-trash"></i></button>
-                </td>
-            </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
@@ -170,7 +162,8 @@
     <div class="modal-content">
         <span class="close-btn">&times;</span>
         <h3 id="modalTitle">Thông tin sản phẩm</h3>
-        <form id="productForm">
+        <form action="${pageContext.request.contextPath}/admin/products"
+              method="post" id="productForm">
             <div class="form-group">
                 <label>Tên sản phẩm</label>
                 <input type="text" id="prodName" required>

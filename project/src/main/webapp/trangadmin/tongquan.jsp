@@ -18,7 +18,7 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/tongquan.jsp"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
@@ -39,12 +39,17 @@
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
@@ -80,18 +85,19 @@
     <div class="charts-section">
         <div class="chart-card">
             <div class="card-header">
-                <h3 class="card-title">Doanh thu ${range == '30' ? '30 ngày qua' : '7 ngày qua'}</h3>
-                <select class="chart-filter"
-                        onchange="location.href='${pageContext.request.contextPath}/dashboard?range=' + this.value">>
-                    <option value="7" ${range == '7' ? 'selected' : ''}>7 ngày</option>
-                    <option value="30" ${range == '30' ? 'selected' : ''}>30 ngày</option>
-                </select>
+                <h3 class="card-title">Doanh thu ${range} ngày qua</h3>
+                <form method="get" action="${pageContext.request.contextPath}/dashboard">
+                    <select name="range" onchange="this.form.submit()">
+                        <option value="7" ${range == '7' ? 'selected' : ''}>7 ngày</option>
+                        <option value="30" ${range == '30' ? 'selected' : ''}>30 ngày</option>
+                    </select>
+                </form>
             </div>
             <div class="chart-area">
                 <div class="bar-chart-container">
                     <c:forEach items="${revenueChart}" var="item">
-                        <div class="bar-chart" style="heigt: ${item.value}%">
-                            <p>${item.key}</p>
+                        <div class="bar-chart" style="height: ${item.value}%">
+                            <span>${item.key}</span>
                         </div>
                     </c:forEach>
                 </div>

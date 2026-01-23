@@ -15,6 +15,9 @@ public class Order {
     private String orderCode;
     private String note;
     private BigDecimal totalPrice;
+    private String userName;
+    private String productName;
+    private int quantity;
 
     public int getOrderId() {
         return orderId;
@@ -94,5 +97,28 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

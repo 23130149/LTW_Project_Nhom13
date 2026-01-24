@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="util" uri="http://handmade/util" %>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -88,38 +87,35 @@
                     </tr>
                     </thead>
 
-                    <%@ taglib prefix="util" uri="http://handmade/util" %>
-<tbody>
-                <c:forEach var="order" items="${orderList}">
-                    <tr>
-
-                        <td>
-                            <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
-                               style="color:#11998e; font-weight:600;">
-                                    ${order.orderCode}
-                            </a>
-                        </td>
-                        <td>
-                                ${util:formatDateTime(order.createAt)}
-                        </td>
-                        <td>
-                                ${util:formatMoney(order.totalPrice)}
-                        </td>
-                        <td>
+                    <tbody>
+                    <c:forEach var="order" items="${orderList}">
+                        <tr>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   style="color:#11998e; font-weight:600;">
+                                        ${order.orderCode}
+                                </a>
+                            </td>
+                            <td>${order.createAtFormatted}</td>
+                            <td>${order.totalPriceFormatted}</td>
+                            <td>
             <span class="status-${order.status}">
-                ${util:orderStatusIcon(order.status)}
-                ${util:orderStatusLabel(order.status)}
-            </span>
-                        </td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
-                               class="view-all-orders">
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
+                <c:choose>
+                    <c:when test="${order.status == 'delivered'}">✔ Đã giao</c:when>
+                    <c:when test="${order.status == 'processing'}">⏳ Đang xử lý</c:when>
+                    <c:otherwise>✖ Chờ xác nhận</c:otherwise>
+                </c:choose>
 
+            </span>
+                            </td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
+                                   class="view-all-orders">
+                                </a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
                 </table>
             </c:otherwise>
         </c:choose>
@@ -127,7 +123,7 @@
     </div>
 
     <a href="${pageContext.request.contextPath}/Account"
-       class="btn-logout btn-back"
+       class="btn-logout"
        style="background:#11998e">
         Quay lại tài khoản
     </a>

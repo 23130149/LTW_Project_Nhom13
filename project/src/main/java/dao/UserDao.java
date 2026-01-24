@@ -86,6 +86,7 @@ public class UserDao extends BaseDao {
         SELECT COUNT(*)
         FROM `user`
         WHERE User_Id = :user_id AND Password = :password
+          AND Password IS NOT NULL
     """;
 
         return getJdbi().withHandle(handle ->
@@ -99,9 +100,10 @@ public class UserDao extends BaseDao {
     public boolean updatePassword(int userId, String newPassword) {
 
         String sql = """
-        UPDATE `user`
-        SET Password = :password
-        WHERE User_Id = :user_id
+        UPDATE user
+                                            SET Password = :password
+                                            WHERE User_Id = :user_id
+                                              AND Google_Id IS NULL
     """;
 
         return getJdbi().withHandle(handle ->
@@ -119,4 +121,43 @@ public class UserDao extends BaseDao {
                         .one()
         );
     }
+    public User findByEmail(String email) {
+
+        String sql = """
+        SELECT
+            User_Id     AS userId,
+            User_Name   AS userName,
+            Email       AS email,
+            Phone       AS phone,
+            Password    AS password,
+            Google_Id   AS googleId,
+            Create_At   AS createAt,
+            Role        AS role
+        FROM user
+        WHERE Email = :email
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("email", email)
+                        .mapToBean(User.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+    public void insertGoogleUser(String email, String googleId) {
+
+        String sql = """
+        INSERT INTO user (Email, Google_Id, Role, Create_At)
+        VALUES (:email, :google_id, 'USER', NOW())
+    """;
+
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("email", email)
+                        .bind("google_id", googleId)
+                        .execute()
+        );
+    }
+
 }

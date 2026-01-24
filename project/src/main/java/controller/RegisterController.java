@@ -6,54 +6,121 @@ import model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import service.EmailService;
+import service.OtpService;
 
 import java.io.IOException;
 
 @WebServlet("/Register")
 public class RegisterController extends HttpServlet {
 
+    private static final int OTP_EXPIRE_SECONDS = 120;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
 
-        // lấy dữ liệu từ form
-        String fullName = request.getParameter("fullName");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
-
+        String action = request.getParameter("action");
         UserDao userDao = new UserDao();
 
-        // ===== VALIDATE SERVER-SIDE =====
-        if (!password.equals(confirmPassword)) {
-            request.setAttribute("error", "Mật khẩu xác nhận không khớp");
+        // ================= BƯỚC 1: GỬI OTP =================
+        if ("sendOtp".equals(action)) {
+
+            String fullName = request.getParameter("fullName");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String confirmPassword = request.getParameter("confirmPassword");
+
+            // validate server-side
+            if (!password.equals(confirmPassword)) {
+                request.setAttribute("error", "Mật khẩu xác nhận không khớp");
+                request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                return;
+            }
+
+            if (!email.endsWith("@gmail.com")) {
+                request.setAttribute("error", "Chỉ chấp nhận Gmail");
+                request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                return;
+            }
+
+            if (userDao.emailExists(email)) {
+                request.setAttribute("error", "Email đã tồn tại");
+                request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                return;
+            }
+
+            // tạo OTP
+            String otp = String.valueOf(100000 + (int)(Math.random() * 900000));
+
+            // TODO: gửi email (bạn đã có send mail rồi)
+            EmailService.sendOtpEmail(email, otp);
+
+            // lưu tạm vào session
+            session.setAttribute("reg_fullName", fullName);
+            session.setAttribute("reg_email", email);
+            session.setAttribute("reg_password", password);
+            session.setAttribute("reg_otp", otp);
+            session.setAttribute("reg_otp_time", System.currentTimeMillis());
+
+            request.setAttribute("step", "OTP_SENT");
             request.getRequestDispatcher("/Register.jsp").forward(request, response);
             return;
         }
 
-        if (userDao.emailExists(email)) {
-            request.setAttribute("error", "Email đã tồn tại");
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
-            return;
+        // ================= BƯỚC 2: XÁC NHẬN OTP =================
+        if ("confirmOtp".equals(action)) {
+
+            String inputOtp = request.getParameter("otp");
+
+            String sessionOtp = (String) session.getAttribute("reg_otp");
+            Long otpTime = (Long) session.getAttribute("reg_otp_time");
+
+            if (sessionOtp == null || otpTime == null) {
+                request.setAttribute("error", "OTP không hợp lệ hoặc đã hết hạn");
+                request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                return;
+            }
+
+            long diff = (System.currentTimeMillis() - otpTime) / 1000;
+            if (diff > OTP_EXPIRE_SECONDS) {
+                request.setAttribute("error", "OTP đã hết hạn");
+                request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                return;
+            }
+
+            if (!sessionOtp.equals(inputOtp)) {
+                request.setAttribute("error", "OTP không đúng");
+                request.setAttribute("step", "OTP_SENT");
+                request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                return;
+            }
+
+            // tạo user
+            User user = new User();
+            user.setUserName((String) session.getAttribute("reg_fullName"));
+            user.setEmail((String) session.getAttribute("reg_email"));
+            user.setPassword((String) session.getAttribute("reg_password"));
+            user.setRole("USER");
+
+            userDao.register(user);
+
+            // clear session
+            session.removeAttribute("reg_fullName");
+            session.removeAttribute("reg_email");
+            session.removeAttribute("reg_password");
+            session.removeAttribute("reg_otp");
+            session.removeAttribute("reg_otp_time");
+
+            response.sendRedirect(
+                    request.getContextPath() + "/SignIn.jsp?success=1"
+            );
         }
-
-        // ===== TẠO USER =====
-        User user = new User();
-        user.setUserName(fullName);
-        user.setEmail(email);
-        user.setPassword(password); // TODO: hash sau
-        user.setRole("USER");
-
-        userDao.register(user);
-
-        // ===== ĐĂNG KÝ THÀNH CÔNG =====
-        // redirect để tránh submit lại form
-        response.sendRedirect(
-                request.getContextPath() + "/SignIn.jsp?success=1"
-        );
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,5 +128,4 @@ public class RegisterController extends HttpServlet {
         request.getRequestDispatcher("/Register.jsp")
                 .forward(request, response);
     }
-
 }

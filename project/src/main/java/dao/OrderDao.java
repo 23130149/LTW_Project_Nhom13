@@ -138,11 +138,50 @@ public class OrderDao extends BaseDao {
     }
 
     public Order getOrderByIdAndUser(int orderId, int userId) {
-        return null;
+
+        String sql = """
+        SELECT
+            Order_Id       AS orderId,
+            User_Id        AS userId,
+            Create_At      AS createAt,
+            Total_Price    AS totalPrice,
+            Status         AS status,
+            Order_Code     AS orderCode,
+            Note           AS note
+        FROM orders
+        WHERE Order_Id = :orderId
+          AND User_Id = :userId
+    """;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("orderId", orderId)
+                        .bind("userId", userId)
+                        .mapToBean(Order.class)
+                        .findOne()
+                        .orElse(null)
+        );
     }
 
+
     public boolean hasUserPurchasedProduct(int userId, int productId) {
-        return false;
+
+        String sql = """
+        SELECT COUNT(*)
+        FROM Orders o
+        JOIN Order_Items oi ON o.Order_Id = oi.Order_Id
+        WHERE o.User_Id = :userId
+          AND oi.Product_Id = :productId
+          AND o.Status IN ('CONFIRMED','SHIPPED','COMPLETED')
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("userId", userId)
+                        .bind("productId", productId)
+                        .mapTo(int.class)
+                        .one() > 0
+        );
     }
     public void updateStatus(int orderId, String status) {
         String sql = "UPDATE orders SET Status = :status WHERE Order_Id = :id";

@@ -13,6 +13,7 @@ import model.UserAddress;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 @WebServlet(name = "Payment", value = "/payment")
 public class  Payment extends HttpServlet {
@@ -27,7 +28,13 @@ public class  Payment extends HttpServlet {
             response.sendRedirect("cart");
             return;
         }
-        UserAddress address = addressDao.findByUserId(user.getUserId());
+        List<UserAddress> addresses = addressDao.findByUserId(user.getUserId());
+
+        UserAddress address = null;
+        if (addresses != null && !addresses.isEmpty()) {
+            address = addresses.get(0);
+        }
+
         request.setAttribute("address", address);
 
 

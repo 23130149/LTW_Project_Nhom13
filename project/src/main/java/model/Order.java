@@ -1,7 +1,10 @@
 package model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Order {
 
@@ -85,5 +88,18 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getCreateAtFormatted() {
+        if (createAt == null) return "";
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return createAt.format(formatter);
+    }
+    public String getTotalPriceFormatted() {
+        if (totalPrice == null) return "0 ₫";
+        NumberFormat vn =
+                NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return vn.format(totalPrice);
     }
 }

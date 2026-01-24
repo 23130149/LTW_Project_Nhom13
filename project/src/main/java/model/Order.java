@@ -17,6 +17,9 @@ public class Order {
     private String orderCode;
     private String note;
     private BigDecimal totalPrice;
+    private String userName;
+    private String productName;
+    private int quantity;
 
     public int getOrderId() {
         return orderId;
@@ -48,6 +51,14 @@ public class Order {
 
     public void setUserAddressId(int userAddressId) {
         this.userAddressId = userAddressId;
+    }
+
+    public int getPaymentMethodId() {
+        return paymentMethodId;
+    }
+
+    public void setPaymentMethodId(int paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
     }
 
     public String getStatus() {
@@ -101,5 +112,28 @@ public class Order {
         NumberFormat vn =
                 NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         return vn.format(totalPrice);
+    }
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

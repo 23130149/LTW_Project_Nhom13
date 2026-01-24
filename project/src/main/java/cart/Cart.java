@@ -3,6 +3,7 @@ package cart;
 import model.Product;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -33,10 +34,10 @@ public class Cart implements Serializable {
         return total.get();
     }
 
-    public double getTotalPrice(){
+    public BigDecimal getTotalPrice(){
         AtomicReference<Double> total = new AtomicReference<>((double) 0);
         data.values().forEach(p -> total.updateAndGet(v ->  (v + p.getQuantity() * p.getPrice())));
-    return total.get();
+    return BigDecimal.valueOf(total.get());
     }
     public boolean update(int productId, int quantity) {
         CartItem item = data.get(productId);

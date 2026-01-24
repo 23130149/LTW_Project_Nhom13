@@ -1,5 +1,6 @@
 package dao;
 
+import cart.CartItem;
 import model.OrderItem;
 import java.util.List;
 
@@ -29,4 +30,31 @@ public class OrderItemDao extends BaseDao {
                         .list()
         );
     }
-}
+
+    public void insert(int orderId, CartItem item) {
+        String sql = """
+            INSERT INTO order_items (
+                Order_Id,
+                Product_Id,
+                Quantity,
+                Unit_Price
+            )
+            VALUES (
+                :orderId,
+                :productId,
+                :quantity,
+                :price
+            )
+        """;
+
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("orderId", orderId)
+                        .bind("productId", item.getProduct().getProductId())
+                        .bind("quantity", item.getQuantity())
+                        .bind("price", item.getProduct().getProductPrice())
+                        .execute()
+        );
+    }
+    }
+

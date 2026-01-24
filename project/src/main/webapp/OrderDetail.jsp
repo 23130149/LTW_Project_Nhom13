@@ -21,7 +21,6 @@
 
 <body>
 
-<!-- ===== HEADER (GIỐNG ACCOUNT) ===== -->
 <header class="header">
   <div class="header-top-container">
     <div class="header-content">

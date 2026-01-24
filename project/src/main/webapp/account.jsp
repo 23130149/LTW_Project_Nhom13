@@ -8,8 +8,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Tài khoản của tôi - Handmade House</title>
-
-    <!-- CSS -->
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/account.css">
     <link rel="stylesheet"
@@ -26,7 +24,7 @@
         <div class="header-content">
 
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/Home">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
 
             <form class="search-form"
@@ -42,10 +40,10 @@
             </form>
 
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/Favourite" class="icon-btn">
+                <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
                     <i class='bx bx-heart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn">
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
                     <i class='bx bx-cart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn">
@@ -59,8 +57,8 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/Home">Trang chủ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Products">Sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/Blog">Blog</a></li>
                     <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
@@ -74,8 +72,9 @@
 
     <div class="account-info">
     <i class='bx bxs-user-circle'></i>
+        <h2>Xin chào ${sessionScope.user.userName},</h2>
     <h3>${sessionScope.user.email}</h3>
-    <p>Xin chào, ${sessionScope.user.userName}!</p>
+
 </div>
 
 
@@ -157,11 +156,13 @@
     <c:if test="${not empty orderList}">
         <div class="view-all-wrapper">
             <a href="${pageContext.request.contextPath}/OrderHistory"
-               class="btn-view-all">
+               class="btn-view-all-orders">
+                <i class='bx bx-list-ul'></i>
                 Xem tất cả đơn hàng
             </a>
         </div>
     </c:if>
+
 
     <a href="${pageContext.request.contextPath}/Logout"
        class="btn-logout">

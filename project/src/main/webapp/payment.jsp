@@ -61,9 +61,30 @@
 <main class="checkout-container">
     <section class="shipping-info">
         <h2>📍 Địa Chỉ Nhận Hàng</h2>
-        <p><strong>Lê Khanh</strong> (+84) 964 429 619</p>
-        <p>Hẻm 962 Đường Bùi Hữu Nghĩa, Phường Hóa An, Thành Phố Biên Hòa, Đồng Nai</p>
-        <a href="#" class="change-btn">Thay đổi</a>
+
+        <c:choose>
+            <c:when test="${address != null}">
+                <p>
+                        ${address.street},
+                        ${address.district},
+                        ${address.province},
+                        ${address.country}
+                </p>
+
+                <a href="${pageContext.request.contextPath}/Address"
+                   class="change-btn">
+                    Thay đổi
+                </a>
+            </c:when>
+
+            <c:otherwise>
+                <p>⚠️ Bạn chưa có địa chỉ nhận hàng</p>
+                <a href="${pageContext.request.contextPath}/Address"
+                   class="change-btn">
+                    Thêm địa chỉ
+                </a>
+            </c:otherwise>
+        </c:choose>
     </section>
 
     <section class="product-list">
@@ -108,7 +129,10 @@
             <span class="highlight">${grandTotal}₫</span>
         </div>
 
-        <form action="order" method="post">
+        <form action="${pageContext.request.contextPath}/payment" method="post">
+            <input type="hidden"
+                   name="addressId"
+                   value="${address.userAddressId}" />
             <button class="checkout-btn">Đặt hàng</button>
         </form>
     </section>

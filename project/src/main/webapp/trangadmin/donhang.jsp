@@ -54,21 +54,38 @@
         </div>
     </header>
     <div class="order-status-tabs">
-        <button class="tab-btn active">Tất cả</button>
-        <button class="tab-btn">Hoàn thành <span class="count">2</span></button>
-        <button class="tab-btn">Đang xử lý <span class="count">1</span></button>
-        <button class="tab-btn">Chờ xác nhận <span class="count">1</span></button>
-        <button class="tab-btn">Đã hủy <span class="count">1</span></button>
+        <a class="tab-btn ${empty param.status ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders">
+            Tất cả
+        </a>
+
+        <a class="tab-btn ${param.status == 'COMPLETED' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=COMPLETED">
+            Hoàn thành
+        </a>
+
+        <a class="tab-btn ${param.status == 'SHIPPED' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=SHIPPED">
+            Đang xử lý
+        </a>
+
+        <a class="tab-btn ${param.status == 'PENDING' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=PENDING">
+            Chờ xác nhận
+        </a>
+
+        <a class="tab-btn ${param.status == 'CANCELED' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=CANCELLED">
+            Đã hủy
+        </a>
     </div>
+
     <div class="search-filter-row">
         <div class="search-review-box">
             <i class="bx bx-search"></i>
             <input type="text" placeholder="Tìm kiếm đơn hàng...">
         </div>
-        <div class="action-group">
-            <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
-            <button class="view-all-btn"><i class="bx bx-download"></i>In hóa đơn</button>
-        </div>
+
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -79,45 +96,38 @@
                 <th>Sản phẩm</th>
                 <th>Tổng tiền</th>
                 <th>Ngày đặt</th>
-                <th>Thanh toán</th>
                 <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="order" items="${orders}">
+            <c:forEach items="${orders}" var="order">
                 <tr>
-                    <td>#DH${order.orderId}</td>
-                    <td>${order.userId}</td>
-                    <td>${order.totalPrice}đ</td>
-                    <td>${order.createAt}</td>
+                    <td>#${order.orderCode}</td>
+                    <td>${order.userName}</td>
+                    <td>${order.totalQuantity} sản phẩm</td>
+                    <td>${order.totalPriceFormatted}</td>
+                    <td>${order.createAtFormatted}</td>
+
                     <td>
-                        <c:choose>
-                            <c:when test="${order.status == 'PENDING'}">Chờ xử lý</c:when>
-                            <c:when test="${order.status == 'SHIPPING'}">Đang giao</c:when>
-                            <c:when test="${order.status == 'COMPLETED'}">Hoàn thành</c:when>
-                            <c:otherwise>Đã huỷ</c:otherwise>
-                        </c:choose>
+    <span class="status ${order.status}">
+        <c:choose>
+            <c:when test="${order.status == 'PENDING'}">Chờ xác nhận</c:when>
+            <c:when test="${order.status == 'SHIPPED'}">Đã giao</c:when>
+            <c:when test="${order.status == 'COMPLETED'}">Hoàn thành</c:when>
+            <c:otherwise>Đã huỷ</c:otherwise>
+        </c:choose>
+    </span>
                     </td>
 
                     <td>
-            <span class="status
-                <c:if test='${order.status == "CONFIRMED"}'>status-completed</c:if>
-                <c:if test='${order.status == "PENDING"}'>status-pending</c:if>
-            '>
-                ${order.status}
-            </span>
-        </td>
-        <td>
-            <c:if test="${order.status == 'PENDING'}">
-                <form action="${pageContext.request.contextPath}/ConfirmController" method="post">
-                        <input type="hidden" name="orderId" value="${order.orderId}">
-                        <button type="submit" class="btn-confirm">Xác nhận</button>
-                        </form>
-                        </c:if>
-
-                        <c:if test="${order.status == 'CONFIRMED'}">
-                            <i class="bx bx-check-circle" style="color:green"></i>
+                        <c:if test="${order.status == 'PENDING'}">
+                            <form action="${pageContext.request.contextPath}/admin/orders"
+                                  method="post">
+                                <input type="hidden" name="orderId" value="${order.orderId}">
+                                <input type="hidden" name="action" value="ship">
+                                <button class="btn-confirm">Xác nhận</button>
+                            </form>
                         </c:if>
                     </td>
                 </tr>

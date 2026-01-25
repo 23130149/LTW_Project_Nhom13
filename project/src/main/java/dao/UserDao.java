@@ -121,8 +121,6 @@ public class UserDao extends BaseDao {
                         .one()
         );
     }
-<<<<<<< HEAD
-=======
     public User findByEmail(String email) {
 
         String sql = """
@@ -162,7 +160,6 @@ public class UserDao extends BaseDao {
         );
     }
 
->>>>>>> f24212bf4e7a8c9d7c82828d061dd10829e2af2e
     public User getAdmin() {
         String sql = "select user_id as userId, user_name as userName, email, phone, password, create_at as createAt, role from user where role = :role limit 1";
 

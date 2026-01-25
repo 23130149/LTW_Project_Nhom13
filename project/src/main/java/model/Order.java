@@ -82,8 +82,6 @@ public class Order {
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
-<<<<<<< HEAD
-=======
 
     public String getCreateAtFormatted() {
         if (createAt == null) return "";
@@ -97,7 +95,6 @@ public class Order {
                 NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         return vn.format(totalPrice);
     }
->>>>>>> f24212bf4e7a8c9d7c82828d061dd10829e2af2e
     public String getUserName() {
         return userName;
     }

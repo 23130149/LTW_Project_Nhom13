@@ -20,15 +20,7 @@
         <ul>
             <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
-<<<<<<< HEAD
-            <li><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-=======
-            <li class="active"><a href="${pageContext.request.contextPath}/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/orders">
-                <i class="bx bx-receipt"></i>Đơn hàng
-            </a>
->>>>>>> f24212bf4e7a8c9d7c82828d061dd10829e2af2e
+            <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
@@ -93,13 +85,6 @@
     <div class="charts-section">
         <div class="chart-card">
             <div class="card-header">
-                <h3 class="card-title">Doanh thu ${range} ngày qua</h3>
-                <form method="get" action="${pageContext.request.contextPath}/dashboard">
-                    <select name="range" onchange="this.form.submit()">
-                        <option value="7" ${range == '7' ? 'selected' : ''}>7 ngày</option>
-                        <option value="30" ${range == '30' ? 'selected' : ''}>30 ngày</option>
-                    </select>
-                </form>
                 <h3 class="card-title">Doanh thu ${range == '30' ? '30 ngày qua' : '7 ngày qua'}</h3>
                 <select class="chart-filter"
                         onchange="location.href='${pageContext.request.contextPath}/dashboard?range=' + this.value">>
@@ -111,8 +96,6 @@
                 <div class="bar-chart-container">
                     <c:forEach items="${revenueChart}" var="item">
                         <div class="bar-chart" style="height: ${item.value}%">
-                            <span>${item.key}</span>
-                        <div class="bar-chart" style="heigt: ${item.value}%">
                             <p>${item.key}</p>
                         </div>
                     </c:forEach>
@@ -178,9 +161,7 @@
                 ${o.status}
                 </span>
                 </td>
-                <td>
                 <td>${o.createAtFormatted}</td>
-
                 <td>
                     <i class="bx bx-show-alt action-icon"></i>
                 </td>

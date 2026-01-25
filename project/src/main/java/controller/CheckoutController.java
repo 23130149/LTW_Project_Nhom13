@@ -45,7 +45,6 @@ public class CheckoutController extends HttpServlet {
 
         order.setTotalPrice(totalPrice);
         order.setStatus("pending");
-        order.setPaymentStatus("UNPAID");
         order.setOrderCode("ORD-" + System.currentTimeMillis());
         order.setNote(note);
 

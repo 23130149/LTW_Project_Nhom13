@@ -20,7 +20,15 @@
         <ul>
             <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
+<<<<<<< HEAD
             <li><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
+=======
+            <li class="active"><a href="${pageContext.request.contextPath}/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/orders">
+                <i class="bx bx-receipt"></i>Đơn hàng
+            </a>
+>>>>>>> f24212bf4e7a8c9d7c82828d061dd10829e2af2e
             <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
@@ -171,8 +179,8 @@
                 </span>
                 </td>
                 <td>
-                <fmt:formatDate value="${o.createAt}" pattern="dd/MM/yyyy"/>
-                </td>
+                <td>${o.createAtFormatted}</td>
+
                 <td>
                     <i class="bx bx-show-alt action-icon"></i>
                 </td>

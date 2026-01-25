@@ -46,7 +46,7 @@ public class OrderDetailController extends HttpServlet {
             return;
         }
 
-        // 3️⃣ Lấy đơn hàng (check đúng user)
+
         Order order = orderDao.getOrderByIdAndUser(orderId, user.getUserId());
         if (order == null) {
             response.sendRedirect(request.getContextPath() + "/OrderHistory");

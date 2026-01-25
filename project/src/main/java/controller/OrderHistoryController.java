@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/OrderHistory")
@@ -36,7 +37,7 @@ public class OrderHistoryController extends HttpServlet {
         List<Order> orderList =
                 orderDao.getOrdersByUserId(user.getUserId());
 
-        request.setAttribute("orderList", orderList);
+        request.setAttribute("orderList", orderList != null ? orderList : new ArrayList<>());
 
         request.getRequestDispatcher("/OrderHistory.jsp")
                 .forward(request, response);

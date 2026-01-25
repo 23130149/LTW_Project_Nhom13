@@ -11,6 +11,7 @@ public class User {
     private String password;
     private LocalDateTime createAt;
     private String role;
+    private String googleId;
 
     public int getUserId() {
         return userId;
@@ -59,7 +60,13 @@ public class User {
     public void setCreateAt(LocalDateTime createAt) {
         this.createAt = createAt;
     }
+    public String getGoogleId() {
+        return googleId;
+    }
 
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
+    }
     public String getRole() {
         return role;
     }

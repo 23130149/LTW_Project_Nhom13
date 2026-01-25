@@ -42,10 +42,9 @@ public class CheckoutController extends HttpServlet {
         Order order = new Order();
         order.setUserId(user.getUserId());
         order.setUserAddressId(addressId);
-        order.setPaymentMethodId(paymentMethodId);
+
         order.setTotalPrice(totalPrice);
         order.setStatus("pending");
-        order.setPaymentStatus("UNPAID");
         order.setOrderCode("ORD-" + System.currentTimeMillis());
         order.setNote(note);
 

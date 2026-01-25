@@ -1,17 +1,18 @@
 package model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Order {
 
     private int orderId;
     private int userId;
     private int userAddressId;
-    private int paymentMethodId;
     private LocalDateTime createAt;
     private String status;
-    private String paymentStatus;
     private String orderCode;
     private String note;
     private BigDecimal totalPrice;
@@ -51,14 +52,6 @@ public class Order {
         this.userAddressId = userAddressId;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -74,15 +67,6 @@ public class Order {
     public void setOrderCode(String orderCode) {
         this.orderCode = orderCode;
     }
-
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
     public String getNote() {
         return note;
     }
@@ -98,6 +82,22 @@ public class Order {
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
+<<<<<<< HEAD
+=======
+
+    public String getCreateAtFormatted() {
+        if (createAt == null) return "";
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return createAt.format(formatter);
+    }
+    public String getTotalPriceFormatted() {
+        if (totalPrice == null) return "0 ₫";
+        NumberFormat vn =
+                NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return vn.format(totalPrice);
+    }
+>>>>>>> f24212bf4e7a8c9d7c82828d061dd10829e2af2e
     public String getUserName() {
         return userName;
     }

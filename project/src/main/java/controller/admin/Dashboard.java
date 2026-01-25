@@ -71,20 +71,6 @@ public class Dashboard extends HttpServlet {
             adminRole = "Quản trị viên";
             adminAvatar = adminName.substring(0, 1).toUpperCase();
         }
-        if ("30".equals(range)) {
-            revenueChart.put("Tuần 1", 40);
-            revenueChart.put("Tuần 2", 60);
-            revenueChart.put("Tuần 3", 75);
-            revenueChart.put("Tuần 4", 90);
-        } else {
-            revenueChart.put("T2", 50);
-            revenueChart.put("T3", 60);
-            revenueChart.put("T4", 40);
-            revenueChart.put("T5", 45);
-            revenueChart.put("T6", 70);
-            revenueChart.put("T7", 85);
-            revenueChart.put("CN", 75);
-        }
 
         request.setAttribute("totalProducts", totalProducts);
         request.setAttribute("totalOrders", totalOrders);

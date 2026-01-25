@@ -68,7 +68,6 @@ public class  Payment extends HttpServlet {
         order.setNote(request.getParameter("note"));
         order.setStatus("PENDING"); // 👈 QUAN TRỌNG
         order.setTotalPrice(cart.getTotalPrice());
-        order.setPaymentStatus("UNPAID");
         order.setOrderCode("DH" + System.currentTimeMillis());
 
         OrderDao orderDao = new OrderDao();

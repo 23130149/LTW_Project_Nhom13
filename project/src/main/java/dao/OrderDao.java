@@ -89,7 +89,7 @@ public class OrderDao extends BaseDao {
         );
     }
     public List<Order> getLatestOrders(int limit) {
-        String sql = "select  o.Order_Id as orderId,o.User_Id as userId, o.User_Address_Id as userAddressId,  o.Create_At as createAt, o.Status as status, o.Order_Code as orderCode, o.Note as note, o.Total_Price as totalPrice, u.user_name as userName, p.Product_Name  as productName, oi.Quantity as quantity from orders o  join user u ON o.user_id = u.user_id join order_items oi ON o.order_id = oi.order_id join products p ON oi.product_id = p.product_id order by o.Create_At desc limit :limit";
+        String sql = "select  o.Order_Id as orderId,o.User_Id as userId, o.User_Address_Id as userAddressId, o.Payment_Method_Id as paymentMethodId, o.Create_At as createAt, o.Status as status, o.Payment_Status as paymentStatus, o.Order_Code as orderCode, o.Note as note, o.Total_Price as totalPrice, u.user_name as userName, p.Product_Name  as productName, oi.Quantity as quantity from orders o  join user u ON o.user_id = u.user_id join order_items oi ON o.order_id = oi.order_id join products p ON oi.product_id = p.product_id order by o.Create_At desc limit :limit";
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("limit", limit)

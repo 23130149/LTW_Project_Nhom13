@@ -42,4 +42,20 @@ public class OrderHistoryController extends HttpServlet {
         request.getRequestDispatcher("/OrderHistory.jsp")
                 .forward(request, response);
     }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        String action = req.getParameter("action");
+
+        if ("complete".equals(action)) {
+            orderDao.updateStatus(orderId, "COMPLETED");
+        } else if ("cancel".equals(action)) {
+            orderDao.updateStatus(orderId, "CANCELLED");
+        }
+
+        resp.sendRedirect("OrderHistory");
+    }
+
 }

@@ -5,56 +5,76 @@ import model.Product;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Cart implements Serializable {
-    Map<Integer,CartItem> data;
-    public  Cart(){
-        data = new HashMap<>();
-    }
-    public void addProduct(Product p, int quantity){
-        if (data.containsKey(p.getProductId())) data.get(p.getProductId()).upQuantity(quantity);
-        else data.put(p.getProductId(), new CartItem(p,quantity,p.getProductPrice()));
-    }
-    public CartItem deleteProduct(int id){
-        return data.remove(id);
-    }
-    public List<CartItem> removeAllProducts(){
-      Collection<CartItem> values = data.values();
-        data.clear();
-        return  new ArrayList<>(values);
-    }
-    public List<CartItem> getList(){
-        return new ArrayList<>(data.values());
-    }
-    public int getTotalQuantity(){
-        AtomicInteger total = new AtomicInteger();
-        data.values().forEach(p -> total.addAndGet(p.getQuantity()));
-        return total.get();
+
+    private Map<Integer, CartItem> data;
+
+    public Cart() {
+        data = new LinkedHashMap<>();
     }
 
-    public BigDecimal getTotalPrice(){
-        AtomicReference<Double> total = new AtomicReference<>((double) 0);
-        data.values().forEach(p -> total.updateAndGet(v ->  (v + p.getQuantity() * p.getPrice())));
-    return BigDecimal.valueOf(total.get());
+    // ===== ADD =====
+    public void addProduct(Product p, int quantity) {
+        if (quantity <= 0) quantity = 1;
+
+        CartItem item = data.get(p.getProductId());
+
+        if (item != null) {
+            item.upQuantity(quantity);
+        } else {
+            data.put(
+                    p.getProductId(),
+                    new CartItem(p, quantity, p.getProductPrice())
+            );
+        }
     }
+
+    // ===== UPDATE =====
     public boolean update(int productId, int quantity) {
         CartItem item = data.get(productId);
         if (item == null) return false;
-
-        if (quantity < 1) {
-            item.setQuantity(1);
-            return true;
-        }
 
         item.setQuantity(quantity);
         return true;
     }
 
+    // ===== REMOVE =====
+    public CartItem deleteProduct(int productId) {
+        return data.remove(productId);
+    }
+
+    public void clear() {
+        data.clear();
+    }
+
+    // ===== GET =====
+    public List<CartItem> getList() {
+        return new ArrayList<>(data.values());
+    }
 
     public CartItem getItem(int productId) {
         return data.get(productId);
     }
-}
 
+    public int getTotalQuantity() {
+        int total = 0;
+        for (CartItem item : data.values()) {
+            total += item.getQuantity();
+        }
+        return total;
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (CartItem item : data.values()) {
+            total = total.add(item.getTotal());
+        }
+        return total;
+    }
+
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
+}

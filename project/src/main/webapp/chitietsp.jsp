@@ -101,17 +101,18 @@
                 </div>
 
                 <div class="action-buttons">
-                    <form action="${pageContext.request.contextPath}/cart/add" method="post">
-                        <input type="hidden" name="productId" value="${product.productId}">
-                        <button class="btn btn-add-to-cart">
-                            <i class="bx bx-cart"></i> Thêm vào giỏ
-                        </button>
-                    </form>
+                    <a class="btn btn-add-to-cart"
+                       href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1">
+                        <i class="bx bx-cart"></i> Thêm vào giỏ
+                    </a>
 
-                    <form action="${pageContext.request.contextPath}/checkout" method="post">
-                        <input type="hidden" name="productId" value="${product.productId}">
-                        <button class="btn btn-buy-now">Mua ngay</button>
-                    </form>
+                    <a class="btn btn-buy-now"
+                       href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1&buyNow=1">
+                        Mua ngay
+                    </a>
+
+
+
                 </div>
             </div>
         </div>

@@ -88,10 +88,13 @@
                     <td>${order.createAt}</td>
                     <td>
                         <c:choose>
-                            <c:when test="${order.paymentStatus == 'PAID'}">Đã thanh toán</c:when>
-                            <c:otherwise>Chưa thanh toán</c:otherwise>
+                            <c:when test="${order.status == 'PENDING'}">Chờ xử lý</c:when>
+                            <c:when test="${order.status == 'SHIPPING'}">Đang giao</c:when>
+                            <c:when test="${order.status == 'COMPLETED'}">Hoàn thành</c:when>
+                            <c:otherwise>Đã huỷ</c:otherwise>
                         </c:choose>
                     </td>
+
                     <td>
             <span class="status
                 <c:if test='${order.status == "CONFIRMED"}'>status-completed</c:if>

@@ -175,8 +175,8 @@
                 </span>
                 </td>
                 <td>
-                <fmt:formatDate value="${o.createAt}" pattern="dd/MM/yyyy"/>
-                </td>
+                <td>${o.createAtFormatted}</td>
+
                 <td>
                     <i class="bx bx-show-alt action-icon"></i>
                 </td>

@@ -13,7 +13,6 @@ public class Order {
     private int userAddressId;
     private LocalDateTime createAt;
     private String status;
-    private String paymentStatus;
     private String orderCode;
     private String note;
     private BigDecimal totalPrice;
@@ -53,14 +52,6 @@ public class Order {
         this.userAddressId = userAddressId;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -76,15 +67,6 @@ public class Order {
     public void setOrderCode(String orderCode) {
         this.orderCode = orderCode;
     }
-
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
     public String getNote() {
         return note;
     }

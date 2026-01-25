@@ -2,25 +2,33 @@ package cart;
 
 import model.Product;
 
-public class CartItem {
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+public class CartItem implements Serializable {
+
     private Product product;
     private int quantity;
-    private int price;
+    // giá tại thời điểm thêm vào giỏ (không phụ thuộc giá DB sau này)
+    private BigDecimal price;
 
-    public CartItem(Product product, int quantity, int price) {
+    public CartItem(Product product, int quantity, Integer price) {
         this.product = product;
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity = Math.max(quantity, 1);
+        this.price = BigDecimal.valueOf(price);
     }
 
-    public int getQuantity() {
-        return quantity;
+    // ===== BUSINESS =====
+    public void upQuantity(int amount) {
+        if (amount <= 0) amount = 1;
+        this.quantity += amount;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public BigDecimal getTotal() {
+        return price.multiply(BigDecimal.valueOf(quantity));
     }
 
+    // ===== GET / SET =====
     public Product getProduct() {
         return product;
     }
@@ -29,20 +37,19 @@ public class CartItem {
         this.product = product;
     }
 
-    public int getPrice() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = Math.max(quantity, 1);
+    }
+
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
-    public void upQuantity(int quantity) {
-        if(quantity <= 0) quantity = 1;
-        this.quantity += quantity;
-    }
-    public double getTotal() {
-        return price * quantity;
-    }
-
 }

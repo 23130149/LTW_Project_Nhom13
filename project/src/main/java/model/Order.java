@@ -53,14 +53,6 @@ public class Order {
         this.userAddressId = userAddressId;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
-    }
-
     public String getStatus() {
         return status;
     }

@@ -44,6 +44,12 @@ public class Cart implements Serializable {
         return data.remove(productId);
     }
 
+    public List<CartItem> removeAllProducts() {
+        List<CartItem> items = new ArrayList<>(data.values());
+        data.clear();
+        return items;
+    }
+
     public void clear() {
         data.clear();
     }
@@ -67,7 +73,6 @@ public class Cart implements Serializable {
 
     public BigDecimal getTotalPrice() {
         BigDecimal total = BigDecimal.ZERO;
-
         for (CartItem item : data.values()) {
             total = total.add(item.getTotal());
         }

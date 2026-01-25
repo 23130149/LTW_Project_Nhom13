@@ -1,9 +1,9 @@
 package controller.cart;
 
 import cart.Cart;
-import jakarta.servlet.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 import model.Product;
 import service.ProductService;
 
@@ -11,32 +11,71 @@ import java.io.IOException;
 
 @WebServlet(name = "AddCart", value = "/add-cart")
 public class AddCart extends HttpServlet {
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            int id = Integer.parseInt(request.getParameter("id"));
-            int q = Integer.parseInt(request.getParameter("q"));
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String idRaw = request.getParameter("id");
+        String qRaw = request.getParameter("q");
+
+        if (idRaw == null || qRaw == null) {
+            response.sendRedirect(request.getContextPath() + "/product");
+            return;
+        }
+
+        int id;
+        int quantity;
+        try {
+            id = Integer.parseInt(idRaw);
+            quantity = Integer.parseInt(qRaw);
+        } catch (NumberFormatException e) {
+            response.sendRedirect(request.getContextPath() + "/product");
+            return;
+        }
+
+        if (quantity <= 0) quantity = 1;
+
         ProductService ps = new ProductService();
         Product product = ps.getProductById(id);
 
         if (product == null) {
-            response.sendRedirect("product");
+            response.sendRedirect(request.getContextPath() + "/product");
             return;
         }
 
         HttpSession session = request.getSession();
-        Cart c = (Cart) session.getAttribute("cart");
-        if (c == null) {
-            c = new Cart();
-        }
-        c.addProduct(product, 1);
-        session.setAttribute("cart", c);
+        Cart cart = (Cart) session.getAttribute("cart");
 
-        response.sendRedirect("product");
+        if (cart == null) {
+            cart = new Cart();
+        }
+
+        // ✅ ADD VÀO CART
+        cart.addProduct(product, quantity);
+        session.setAttribute("cartMessage", "Đã thêm sản phẩm vào giỏ hàng");
+        session.setAttribute("cart", cart);
+
+        // ✅ PHÂN BIỆT THÊM GIỎ / MUA NGAY
+        boolean buyNow = "1".equals(request.getParameter("buyNow"));
+
+        if (buyNow) {
+            // Mua ngay → sang thanh toán
+            response.sendRedirect(request.getContextPath() + "/payment");
+        } else {
+            // Thêm vào giỏ → quay lại trang trước (UX như Shopee)
+            String referer = request.getHeader("Referer");
+            if (referer != null) {
+                response.sendRedirect(referer);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/product");
+            }
+        }
     }
 
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
     }
 }

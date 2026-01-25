@@ -9,7 +9,8 @@ public class CartItem implements Serializable {
 
     private Product product;
     private int quantity;
-    private BigDecimal price; // giá tại thời điểm add vào cart
+    // giá tại thời điểm thêm vào giỏ (không phụ thuộc giá DB sau này)
+    private BigDecimal price;
 
     public CartItem(Product product, int quantity, Integer price) {
         this.product = product;

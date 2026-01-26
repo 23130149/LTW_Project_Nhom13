@@ -66,7 +66,7 @@ public class  Payment extends HttpServlet {
         order.setUserId(user.getUserId());
         order.setUserAddressId(Integer.parseInt(request.getParameter("addressId")));
         order.setNote(request.getParameter("note"));
-        order.setStatus("PENDING"); // 👈 QUAN TRỌNG
+        order.setStatus("PENDING");
         order.setTotalPrice(cart.getTotalPrice());
         order.setOrderCode("DH" + System.currentTimeMillis());
 

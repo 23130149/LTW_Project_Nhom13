@@ -30,7 +30,6 @@ public class UserAddressDao extends BaseDao {
     }
 
 
-    // thêm mới
     public void insert(UserAddress address) {
 
         String sql = """
@@ -50,7 +49,6 @@ public class UserAddressDao extends BaseDao {
         );
     }
 
-    // cập nhật
     public void update(UserAddress address) {
 
         String sql = """

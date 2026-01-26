@@ -21,7 +21,7 @@
         <div class="header-content">
 
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/Home">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
 
             <form class="search-form"
@@ -37,10 +37,7 @@
             </form>
 
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/Favourite" class="icon-btn">
-                    <i class='bx bx-heart'></i>
-                </a>
-                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn">
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
                     <i class='bx bx-cart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn">

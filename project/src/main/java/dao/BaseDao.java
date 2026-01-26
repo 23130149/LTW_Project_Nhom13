@@ -31,12 +31,4 @@ public class BaseDao {
         jdbi = Jdbi.create(dataSource);
 
     }
-//    public static void main(String[] args) {
-//      BaseDao baseDao = new BaseDao();
-//        Jdbi jdbi = baseDao.getJdbi();
-//        List<Product> products = jdbi.withHandle(h -> {
-//            return h.createQuery("select * from products").mapToBean(Product.class).list();});
-//      System.out.println(products);
-//    }
-//}
 }

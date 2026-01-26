@@ -87,9 +87,6 @@
       </form>
 
       <div class="icons">
-        <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
-          <i class='bx bx-heart'></i>
-        </a>
         <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
           <i class='bx bx-cart'></i>
         </a>
@@ -156,7 +153,6 @@
         </div>
       </c:if>
 
-      <!-- ===== BƯỚC 2: NHẬP OTP + MẬT KHẨU MỚI ===== -->
       <c:if test="${step == 'OTP_SENT'}">
 
         <div class="form-row">
@@ -171,15 +167,20 @@
           <label>Mật khẩu mới</label>
           <input type="password"
                  name="newPassword"
+                 id="newPassword"
                  required>
+          <p id="passwordMsg" class="msg"></p>
         </div>
 
         <div class="form-row">
           <label>Nhập lại mật khẩu mới</label>
           <input type="password"
                  name="confirmPassword"
+                 id="confirmPassword"
                  required>
+          <p id="confirmMsg" class="msg"></p>
         </div>
+
 
         <c:if test="${resendRemain > 0}">
           <div class="countdown">
@@ -211,7 +212,6 @@
 
 </main>
 
-<!-- ================= FOOTER (COPY Y CHANG BLOG) ================= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -264,6 +264,47 @@
     </div>
   </div>
 </footer>
+<script>
+  const newPassword = document.getElementById("newPassword");
+  const confirmPassword = document.getElementById("confirmPassword");
+  const passwordMsg = document.getElementById("passwordMsg");
+  const confirmMsg = document.getElementById("confirmMsg");
+
+  function showMsg(el, msg, ok) {
+    if (!el) return;
+    el.innerHTML = (ok ? "✔ " : "❌ ") + msg;
+    el.style.color = ok ? "green" : "red";
+  }
+
+  if (newPassword) {
+    newPassword.addEventListener("input", () => {
+      const v = newPassword.value;
+      const ok =
+              /[A-Z]/.test(v) &&
+              /[a-z]/.test(v) &&
+              /\d/.test(v) &&
+              /[^A-Za-z0-9]/.test(v) &&
+              v.length >= 8;
+
+      showMsg(
+              passwordMsg,
+              "Ít nhất 8 ký tự, gồm hoa, thường, số, ký tự đặc biệt",
+              ok
+      );
+    });
+  }
+
+  if (confirmPassword) {
+    confirmPassword.addEventListener("input", () => {
+      showMsg(
+              confirmMsg,
+              "Mật khẩu xác nhận phải trùng",
+              confirmPassword.value === newPassword.value &&
+              confirmPassword.value !== ""
+      );
+    });
+  }
+</script>
 
 </body>
 </html>

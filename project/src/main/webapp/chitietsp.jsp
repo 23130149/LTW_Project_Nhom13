@@ -39,11 +39,6 @@
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
-
-            <div class="icons">
-                <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
-                    <i class="bx bx-heart"></i>
-                </a>
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
                     <i class='bx bx-cart'></i>
                     <c:if test="${sessionScope.cart != null}">

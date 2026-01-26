@@ -33,9 +33,6 @@
                 </button>
             </form>
             <div class="icons">
-                <a href="../html/favourite.html" class="icon-btn" id="heartBtn">
-                    <i class='bx  bx-heart'></i>
-                </a>
                 <a href="../html/cart.html" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>
@@ -45,17 +42,17 @@
             </div>
         </div>
     </div>
-    <div class="search-bar-section header-bottom-nav">
-        <div class="container nav-only-container">
-            <nav class="nav__links">
-                <ul>
-                    <li><a href="../html/trangchu.html">Trang chủ</a></li>
-                    <li><a href="../html/sanpham.html">Sản phẩm</a></li>
-                    <li><a href="../html/blog.html">Blog</a></li>
-                    <li><a href="../html/contact.html">Liên hệ</a></li>
-                </ul>
-            </nav>
-        </div>
+    div class="search-bar-section header-bottom-nav">
+    <div class="container nav-only-container">
+        <nav class="nav__links">
+            <ul>
+                <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+                <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
+                <li><a href="${pageContext.request.contextPath}/Blog">Blog.jsp</a></li>
+                <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </div>
     </div>
 </header>
 <main class="checkout-container">

@@ -2,12 +2,11 @@ package controller;
 
 import dao.UserDao;
 import model.User;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import service.EmailService;
-import service.OtpService;
+import util.PasswordUtil;
 
 import java.io.IOException;
 
@@ -26,7 +25,6 @@ public class RegisterController extends HttpServlet {
         String action = request.getParameter("action");
         UserDao userDao = new UserDao();
 
-        // ================= BƯỚC 1: GỬI OTP =================
         if ("sendOtp".equals(action)) {
 
             String fullName = request.getParameter("fullName");
@@ -34,7 +32,6 @@ public class RegisterController extends HttpServlet {
             String password = request.getParameter("password");
             String confirmPassword = request.getParameter("confirmPassword");
 
-            // validate server-side
             if (!password.equals(confirmPassword)) {
                 request.setAttribute("error", "Mật khẩu xác nhận không khớp");
                 request.getRequestDispatcher("/Register.jsp").forward(request, response);
@@ -53,16 +50,15 @@ public class RegisterController extends HttpServlet {
                 return;
             }
 
-            // tạo OTP
-            String otp = String.valueOf(100000 + (int)(Math.random() * 900000));
+            String otp = String.valueOf(100000 + (int) (Math.random() * 900000));
 
-            // TODO: gửi email (bạn đã có send mail rồi)
             EmailService.sendOtpEmail(email, otp);
 
-            // lưu tạm vào session
+            String hashedPassword = PasswordUtil.hash(password);
+
             session.setAttribute("reg_fullName", fullName);
             session.setAttribute("reg_email", email);
-            session.setAttribute("reg_password", password);
+            session.setAttribute("reg_password", hashedPassword);
             session.setAttribute("reg_otp", otp);
             session.setAttribute("reg_otp_time", System.currentTimeMillis());
 
@@ -71,7 +67,6 @@ public class RegisterController extends HttpServlet {
             return;
         }
 
-        // ================= BƯỚC 2: XÁC NHẬN OTP =================
         if ("confirmOtp".equals(action)) {
 
             String inputOtp = request.getParameter("otp");
@@ -99,7 +94,6 @@ public class RegisterController extends HttpServlet {
                 return;
             }
 
-            // tạo user
             User user = new User();
             user.setUserName((String) session.getAttribute("reg_fullName"));
             user.setEmail((String) session.getAttribute("reg_email"));
@@ -108,16 +102,13 @@ public class RegisterController extends HttpServlet {
 
             userDao.register(user);
 
-            // clear session
             session.removeAttribute("reg_fullName");
             session.removeAttribute("reg_email");
             session.removeAttribute("reg_password");
             session.removeAttribute("reg_otp");
             session.removeAttribute("reg_otp_time");
 
-            response.sendRedirect(
-                    request.getContextPath() + "/SignIn.jsp?success=1"
-            );
+            response.sendRedirect(request.getContextPath() + "/SignIn.jsp?success=1");
         }
     }
 

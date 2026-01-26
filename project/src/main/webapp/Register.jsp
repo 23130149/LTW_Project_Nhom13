@@ -34,14 +34,12 @@
 
     <h1>Đăng Ký</h1>
 
-    <!-- ERROR SERVER -->
     <c:if test="${not empty error}">
       <p style="color:red; text-align:center; margin-bottom:12px;">
           ${error}
       </p>
     </c:if>
 
-    <!-- ================== BƯỚC 1: NHẬP THÔNG TIN ================== -->
     <c:if test="${empty step}">
 
       <div class="input-box">
@@ -135,7 +133,6 @@
 
 </div>
 
-<!-- ================== VALIDATE CLIENT ================== -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
 
@@ -207,7 +204,6 @@
               passwordMsg && passwordMsg.style.color !== "green" ||
               confirmMsg && confirmMsg.style.color !== "green"
       ) {
-        // chỉ chặn ở bước 1
         if (!document.querySelector("input[name='otp']")) {
           e.preventDefault();
           alert("Vui lòng nhập đúng thông tin!");

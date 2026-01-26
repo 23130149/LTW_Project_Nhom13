@@ -99,14 +99,38 @@
                             <td>${order.createAtFormatted}</td>
                             <td>${order.totalPriceFormatted}</td>
                             <td>
-            <span class="status-${order.status}">
-                <c:choose>
-                    <c:when test="${order.status == 'delivered'}">✔ Đã giao</c:when>
-                    <c:when test="${order.status == 'processing'}">⏳ Đang xử lý</c:when>
-                    <c:otherwise>✖ Chờ xác nhận</c:otherwise>
-                </c:choose>
+                                <!-- KHÁCH XÁC NHẬN ĐÃ NHẬN HÀNG -->
+                                <c:if test="${order.status == 'SHIPPED'}">
+                                    <form action="OrderHistory" method="post" style="display:inline">
+                                        <input type="hidden" name="orderId" value="${order.orderId}">
+                                        <input type="hidden" name="action" value="complete">
+                                        <button class="btn btn-success btn-sm">
+                                            Đã nhận hàng
+                                        </button>
+                                    </form>
+                                </c:if>
 
-            </span>
+                                <!-- KHÁCH HUỶ ĐƠN -->
+                                <c:if test="${order.status == 'PENDING'}">
+                                    <form action="OrderHistory" method="post"
+                                          style="display:inline"
+                                          onsubmit="return confirm('Bạn có chắc muốn huỷ đơn này?');">
+                                        <input type="hidden" name="orderId" value="${order.orderId}">
+                                        <input type="hidden" name="action" value="cancel">
+                                        <button class="btn btn-danger btn-sm">
+                                            Huỷ đơn
+                                        </button>
+                                    </form>
+                                </c:if>
+
+                                <!-- CÁC TRẠNG THÁI KHÁC -->
+                                <c:if test="${order.status == 'COMPLETED'}">
+                                    <span class="text-success">Hoàn thành</span>
+                                </c:if>
+
+                                <c:if test="${order.status == 'CANCELED'}">
+                                    <span class="text-danger">Đã huỷ</span>
+                                </c:if>
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"

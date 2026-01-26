@@ -69,7 +69,9 @@
             <div class="summary-price">${sessionScope.cart.totalPrice}</div>
             <div class="summary-note">2 sản phẩm đã chọn</div>
         </div>
-        <button class="summary-checkout">Thanh toán</button>
+        <button class="summary-checkout">
+            <a href="${pageContext.request.contextPath}/payment">Thanh toán</a>
+            </button>
     </div>
     <form action="DelSelectProduct" method="post">
 
@@ -89,11 +91,11 @@
             <c:forEach items="${sessionScope.cart.list}" var="p">
 
                 <div class="cart-item">
+                    <!-- checkbox -->
                     <input type="checkbox"
                            class="item-checkbox"
                            name="productIds"
                            value="${p.product.productId}">
-
 
                     <img src="${p.product.imageUrl}" alt="">
 
@@ -102,26 +104,24 @@
                         <div class="unit-price">${p.price}</div>
                     </div>
 
-                    <a class="btn-qty"
-                       href="CartUpdate?productId=${p.product.productId}&action=dec">−</a>
+                    <div class="qty-box">
+                        <a class="qty-btn"
+                           href="CartUpdate?productId=${p.product.productId}&action=dec">−</a>
 
-                    <span class="qty">${p.quantity}</span>
+                        <span class="qty">${p.quantity}</span>
 
-                    <a class="btn-qty"
-                       href="CartUpdate?productId=${p.product.productId}&action=inc">+</a>
+                        <a class="qty-btn"
+                           href="CartUpdate?productId=${p.product.productId}&action=inc">+</a>
                     </div>
 
-                    <div class="item-total-price" id="total-${p.product.productId}">
-
-                    ${p.total}
+                    <div class="item-total-price">
+                            ${p.total}
                     </div>
-
-
 
                     <i class='bx bx-trash item-remove'
-                       onclick="location.href='DelProduct?id=${p.product.productId}'">
-                    </i>
+                       onclick="location.href='DelProduct?id=${p.product.productId}'"></i>
                 </div>
+
             </c:forEach>
 
         </div>

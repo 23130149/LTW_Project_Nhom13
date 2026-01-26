@@ -19,11 +19,16 @@ public class Order {
     private String userName;
     private String productName;
     private int quantity;
+    private int totalQuantity;
 
     public int getOrderId() {
         return orderId;
     }
 
+    public int getTotalQuantity(){return  totalQuantity;};
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }

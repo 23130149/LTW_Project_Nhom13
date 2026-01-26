@@ -45,7 +45,10 @@
                     <i class="bx bx-heart"></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
-                    <i class="bx bx-cart"></i>
+                    <i class='bx bx-cart'></i>
+                    <c:if test="${sessionScope.cart != null}">
+                        (${sessionScope.cart.totalQuantity})
+                    </c:if>
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn">
                     <i class="bx bx-user"></i>
@@ -101,17 +104,23 @@
                 </div>
 
                 <div class="action-buttons">
-                    <form action="${pageContext.request.contextPath}/cart/add" method="post">
-                        <input type="hidden" name="productId" value="${product.productId}">
-                        <button class="btn btn-add-to-cart">
-                            <i class="bx bx-cart"></i> Thêm vào giỏ
-                        </button>
-                    </form>
+                    <a class="btn btn-add-to-cart"
+                       href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1">
+                    <i class="bx bx-cart"></i> Thêm vào giỏ
+                    </a>
+                    <c:if test="${not empty sessionScope.cartMessage}">
+                        <div class="cart-toast">
+                                ${sessionScope.cartMessage}
+                        </div>
+                        <c:remove var="cartMessage" scope="session"/>
+                    </c:if>
+                    <a class="btn btn-buy-now"
+                       href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1&buyNow=1">
+                        Mua ngay
+                    </a>
 
-                    <form action="${pageContext.request.contextPath}/checkout" method="post">
-                        <input type="hidden" name="productId" value="${product.productId}">
-                        <button class="btn btn-buy-now">Mua ngay</button>
-                    </form>
+
+
                 </div>
             </div>
         </div>

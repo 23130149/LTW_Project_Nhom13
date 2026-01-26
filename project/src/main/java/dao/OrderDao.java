@@ -3,6 +3,10 @@ package dao;
 import model.Order;
 import model.Product;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDao extends BaseDao {
@@ -195,27 +199,55 @@ public class OrderDao extends BaseDao {
     public List<Order> getAllOrders() {
         String sql = """
         SELECT
-            o.Order_Id        AS id,
-            o.User_Id         AS userId,
-            u.User_Name       AS customerName,
-            o.Status          AS status,
-            o.Create_At       AS createdAt,
-            o.Total_Price     AS totalPrice,
-            COUNT(oi.Product_Id) AS totalItems
+            o.Order_Id            AS orderId,
+            o.Order_Code          AS orderCode,
+            u.User_Name           AS userName,
+            COUNT(oi.Product_Id)  AS totalQuantity,
+            o.Total_Price         AS totalPrice,
+            o.Create_At           AS createAt,
+            o.Status              AS status
         FROM orders o
         JOIN user u ON o.User_Id = u.User_Id
-        JOIN order_items oi ON oi.Order_Id = o.Order_Id
+        JOIN order_items oi ON o.Order_Id = oi.Order_Id
         GROUP BY
-            o.Order_Id, o.User_Id, u.User_Name,
-            o.Status, 
-            o.Create_At, o.Total_Price
+            o.Order_Id, o.Order_Code, u.User_Name,
+            o.Total_Price, o.Create_At, o.Status
         ORDER BY o.Create_At DESC
     """;
 
-        return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
                         .mapToBean(Order.class)
                         .list()
         );
     }
+
+    public List<Order> getOrdersByStatus(String status) {
+        String sql = """
+        SELECT
+            o.Order_Id            AS orderId,
+            o.Order_Code          AS orderCode,
+            u.User_Name           AS userName,
+            COUNT(oi.Product_Id)  AS totalQuantity,
+            o.Total_Price         AS totalPrice,
+            o.Create_At           AS createAt,
+            o.Status              AS status
+        FROM orders o
+        JOIN user u ON o.User_Id = u.User_Id
+        JOIN order_items oi ON o.Order_Id = oi.Order_Id
+        WHERE o.Status = :status
+        GROUP BY
+            o.Order_Id, o.Order_Code, u.User_Name,
+            o.Total_Price, o.Create_At, o.Status
+        ORDER BY o.Create_At DESC
+    """;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("status", status)
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
+
 }

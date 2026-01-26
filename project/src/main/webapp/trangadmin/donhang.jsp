@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +17,9 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/tongquan.jsp"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
@@ -25,43 +27,65 @@
         </ul>
     </nav>
     <div class="logout">
-        <a href="../../../../../../html/trangchu.html"><i class="bx bx-log-out"></i>Đăng xuất</a>
+        <a href="${pageContext.request.contextPath}/home"><i class="bx bx-log-out"></i>Đăng xuất</a>
     </div>
 </aside>
 <main class="main-content">
     <header class="header">
-        <h2>Đơn hàng</h2>
+        <h2>Sản phẩm</h2>
         <div class="search-box">
             <input type="text" placeholder="Tìm kiếm...">
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
     </header>
     <div class="order-status-tabs">
-        <button class="tab-btn active">Tất cả</button>
-        <button class="tab-btn">Hoàn thành <span class="count">2</span></button>
-        <button class="tab-btn">Đang xử lý <span class="count">1</span></button>
-        <button class="tab-btn">Chờ xác nhận <span class="count">1</span></button>
-        <button class="tab-btn">Đã hủy <span class="count">1</span></button>
+        <a class="tab-btn ${empty param.status ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders">
+            Tất cả
+        </a>
+
+        <a class="tab-btn ${param.status == 'COMPLETED' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=COMPLETED">
+            Hoàn thành
+        </a>
+
+        <a class="tab-btn ${param.status == 'SHIPPED' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=SHIPPED">
+            Đang xử lý
+        </a>
+
+        <a class="tab-btn ${param.status == 'PENDING' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=PENDING">
+            Chờ xác nhận
+        </a>
+
+        <a class="tab-btn ${param.status == 'CANCELED' ? 'active' : ''}"
+           href="${pageContext.request.contextPath}/admin/orders?status=CANCELLED">
+            Đã hủy
+        </a>
     </div>
+
     <div class="search-filter-row">
         <div class="search-review-box">
             <i class="bx bx-search"></i>
             <input type="text" placeholder="Tìm kiếm đơn hàng...">
         </div>
-        <div class="action-group">
-            <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
-            <button class="view-all-btn"><i class="bx bx-download"></i>In hóa đơn</button>
-        </div>
+
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -72,73 +96,45 @@
                 <th>Sản phẩm</th>
                 <th>Tổng tiền</th>
                 <th>Ngày đặt</th>
-                <th>Thanh toán</th>
                 <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>#DH001</td>
-                <td>Nguyễn Thanh Phú</td>
-                <td>2 sản phẩm</td>
-                <td>178.000đ</td>
-                <td>15/10/2025</td>
-                <td>Đã thanh toán</td>
-                <td><span class="status status-completed">Hoàn thành</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH002</td>
-                <td>Lê Viết Khanh</td>
-                <td>1 sản phẩm</td>
-                <td>15.000đ</td>
-                <td>2/9/2025</td>
-                <td>Đã thanh toán</td>
-                <td><span class="status status-shipping">Đang xử lý</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH003</td>
-                <td>Trần Hoàng Quân</td>
-                <td>1 sản phẩm</td>
-                <td>150.000đ</td>
-                <td>17/9/2025</td>
-                <td>Chưa thanh toán</td>
-                <td><span class="status status-pending">Chờ xác nhận</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH004</td>
-                <td>Nuyễn Lê Tiến Đạt</td>
-                <td>3 sản phẩm</td>
-                <td>90.000đ</td>
-                <td>10/10/2025</td>
-                <td>Đã thanh toán</td>
-                <td><span class="status status-completed">Hoàn thành</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH005</td>
-                <td>Nguyễn Huy Bảo</td>
-                <td>1 sản phẩm</td>
-                <td>120.000đ</td>
-                <td>12/11/2025</td>
-                <td>Đã hoàn tiền</td>
-                <td><span class="status status-cancelled">Đã hủy</span></td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
+            <c:forEach items="${orders}" var="order">
+                <tr>
+                    <td>#${order.orderCode}</td>
+                    <td>${order.userName}</td>
+                    <td>${order.totalQuantity} sản phẩm</td>
+                    <td>${order.totalPriceFormatted}</td>
+                    <td>${order.createAtFormatted}</td>
+
+                    <td>
+    <span class="status ${order.status}">
+        <c:choose>
+            <c:when test="${order.status == 'PENDING'}">Chờ xác nhận</c:when>
+            <c:when test="${order.status == 'SHIPPED'}">Đã giao</c:when>
+            <c:when test="${order.status == 'COMPLETED'}">Hoàn thành</c:when>
+            <c:otherwise>Đã huỷ</c:otherwise>
+        </c:choose>
+    </span>
+                    </td>
+
+                    <td>
+                        <c:if test="${order.status == 'PENDING'}">
+                            <form action="${pageContext.request.contextPath}/admin/orders"
+                                  method="post">
+                                <input type="hidden" name="orderId" value="${order.orderId}">
+                                <input type="hidden" name="action" value="ship">
+                                <button class="btn-confirm">Xác nhận</button>
+                            </form>
+                        </c:if>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
+
+
         </table>
     </div>
 </main>

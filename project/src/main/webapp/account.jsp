@@ -24,7 +24,7 @@
         <div class="header-content">
 
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/Home">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
 
             <form class="search-form"
@@ -40,10 +40,7 @@
             </form>
 
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/Favourite" class="icon-btn">
-                    <i class='bx bx-heart'></i>
-                </a>
-                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn">
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
                     <i class='bx bx-cart'></i>
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn">
@@ -57,8 +54,8 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/Home">Trang chủ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Products">Sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/Blog">Blog</a></li>
                     <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>

@@ -31,13 +31,11 @@ public class OrderDetailController extends HttpServlet {
         HttpSession session = request.getSession(false);
         User user = (session != null) ? (User) session.getAttribute("user") : null;
 
-        // 1️⃣ Chưa login
         if (user == null) {
             response.sendRedirect(request.getContextPath() + "/SignIn");
             return;
         }
 
-        // 2️⃣ Lấy orderId
         int orderId;
         try {
             orderId = Integer.parseInt(request.getParameter("orderId"));
@@ -46,17 +44,14 @@ public class OrderDetailController extends HttpServlet {
             return;
         }
 
-        // 3️⃣ Lấy đơn hàng (check đúng user)
+
         Order order = orderDao.getOrderByIdAndUser(orderId, user.getUserId());
         if (order == null) {
             response.sendRedirect(request.getContextPath() + "/OrderHistory");
             return;
         }
 
-        // 4️⃣ Lấy danh sách item
         List<OrderItem> items = orderItemDao.getItemsByOrderId(orderId);
-
-        // 5️⃣ Gửi sang JSP
         request.setAttribute("order", order);
         request.setAttribute("orderItems", items);
 

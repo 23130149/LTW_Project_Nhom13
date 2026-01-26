@@ -2,15 +2,15 @@ package controller;
 
 import dao.UserDao;
 import model.User;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import util.PasswordUtil;
 
 import java.io.IOException;
 
 @WebServlet("/SignIn")
-public class    SignInController extends HttpServlet {
+public class SignInController extends HttpServlet {
 
     private UserDao userDao;
 
@@ -19,16 +19,13 @@ public class    SignInController extends HttpServlet {
         userDao = new UserDao();
     }
 
-    // ===== HIỂN THỊ TRANG ĐĂNG NHẬP =====
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("/SignIn.jsp")
-                .forward(request, response);
+        request.getRequestDispatcher("/SignIn.jsp").forward(request, response);
     }
 
-    // ===== XỬ LÝ ĐĂNG NHẬP =====
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,9 +35,11 @@ public class    SignInController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
 
-        User user = userDao.login(email, password);
+        User user = userDao.findByEmail(email);
 
-        if (user == null) {
+        if (user == null || user.getPassword() == null ||
+                !PasswordUtil.verify(password, user.getPassword())) {
+
             request.setAttribute("error", "Sai email hoặc mật khẩu");
             request.getRequestDispatcher("/SignIn.jsp").forward(request, response);
             return;
@@ -50,7 +49,7 @@ public class    SignInController extends HttpServlet {
         session.setAttribute("user", user);
 
         if ("ADMIN".equalsIgnoreCase(user.getRole())) {
-            response.sendRedirect(request.getContextPath() + "/trangadmin/tongquan.jsp");
+            response.sendRedirect(request.getContextPath() + "/admin/dashboard");
         } else {
             response.sendRedirect(request.getContextPath() + "/Account");
         }

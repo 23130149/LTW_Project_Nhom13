@@ -87,9 +87,6 @@
       </form>
 
       <div class="icons">
-        <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
-          <i class='bx bx-heart'></i>
-        </a>
         <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
           <i class='bx bx-cart'></i>
         </a>
@@ -156,7 +153,6 @@
         </div>
       </c:if>
 
-      <!-- ===== BƯỚC 2: NHẬP OTP + MẬT KHẨU MỚI ===== -->
       <c:if test="${step == 'OTP_SENT'}">
 
         <div class="form-row">
@@ -211,7 +207,6 @@
 
 </main>
 
-<!-- ================= FOOTER (COPY Y CHANG BLOG) ================= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">

@@ -20,7 +20,6 @@ public class AdminFilter implements Filter {
         HttpSession session = req.getSession(false);
 
         if (session == null || session.getAttribute("user") == null) {
-            // chưa login
             resp.sendRedirect(req.getContextPath() + "/SignIn");
             return;
         }
@@ -29,12 +28,10 @@ public class AdminFilter implements Filter {
         model.User user = (model.User) obj;
 
         if (!"ADMIN".equals(user.getRole())) {
-            // không phải admin
             resp.sendRedirect(req.getContextPath() + "/trangchu.jsp");
             return;
         }
 
-        // là admin → cho đi tiếp
         chain.doFilter(request, response);
     }
 }

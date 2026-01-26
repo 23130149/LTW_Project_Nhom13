@@ -18,9 +18,9 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/tongquan.jsp"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/qlsanpham.jsp"><i class="bx bx-package"></i>Sản phẩm</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/donhang.jsp"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
@@ -39,12 +39,17 @@
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
@@ -80,21 +85,20 @@
     <div class="charts-section">
         <div class="chart-card">
             <div class="card-header">
-                <h3 class="card-title">Doanh thu 7 ngày qua</h3>
-                <select class="chart-filter">
-                    <option>7 ngày</option>
-                    <option>30 ngày</option>
+                <h3 class="card-title">Doanh thu ${range == '30' ? '30 ngày qua' : '7 ngày qua'}</h3>
+                <select class="chart-filter"
+                        onchange="location.href='${pageContext.request.contextPath}/dashboard?range=' + this.value">>
+                    <option value="7" ${range == '7' ? 'selected' : ''}>7 ngày</option>
+                    <option value="30" ${range == '30' ? 'selected' : ''}>30 ngày</option>
                 </select>
             </div>
             <div class="chart-area">
                 <div class="bar-chart-container">
-                    <div class="bar-chart" style="height: 50%"><p>T2</p></div>
-                    <div class="bar-chart" style="height: 60%"><p>T3</p></div>
-                    <div class="bar-chart" style="height: 40%"><p>T4</p></div>
-                    <div class="bar-chart" style="height: 45%"><p>T5</p></div>
-                    <div class="bar-chart" style="height: 70%"><p>T6</p></div>
-                    <div class="bar-chart" style="height: 85%"><p>T7</p></div>
-                    <div class="bar-chart" style="height: 75%"><p>CN</p></div>
+                    <c:forEach items="${revenueChart}" var="item">
+                        <div class="bar-chart" style="height: ${item.value}%">
+                            <p>${item.key}</p>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -136,81 +140,33 @@
             </tr>
             </thead>
             <tbody>
+            <c:forEach items="${latestOrders}" var="o">
             <tr>
-                <td>#DH001</td>
+                <td>${o.orderCode}</td>
                 <td class="customer-info">
-                    <span class="customer-avatar">P</span>
-                    Nguyễn Thanh Phú
+                    <span class="customer-avatar">
+                       ${fn:substring(o.userName,0,1)}
+                    </span>
+                    ${o.userName}
                 </td>
-                <td>Ốp lưng điện thoại</td>
-                <td>3</td>
-                <td>267.000đ</td>
-                <td><span class="status status-pending">Đang xử lý</span></td>
-                <td>17/10/2025</td>
+                <td>${o.productName}</td>
+                <td>${o.quantity}</td>
+                <td>
+                <fmt:formatNumber value="${o.totalPrice}" type="number" groupingUsed="true"/>đ
+                </td>
+                <td>
+                <span class="status
+                ${o.status == 'Hoàn thành' ? 'status-completed' :
+                  o.status == 'Đang giao' ? 'status-shipping' : 'status-pending'}">
+                ${o.status}
+                </span>
+                </td>
+                <td>${o.createAtFormatted}</td>
                 <td>
                     <i class="bx bx-show-alt action-icon"></i>
                 </td>
             </tr>
-            <tr>
-                <td>#DH002</td>
-                <td class="customer-info">
-                    <span class="customer-avatar">K</span>
-                    Lê Viết Khanh
-                </td>
-                <td>Móc khóa lá cờ Việt Nam</td>
-                <td>10</td>
-                <td>150.000đ</td>
-                <td><span class="status status-completed">Hoàn thành</span></td>
-                <td>2/9/2025</td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH003</td>
-                <td class="customer-info">
-                    <span class="customer-avatar">Q</span>
-                    Trần Hoàng Quân
-                </td>
-                <td>Nến thơm xương rồng</td>
-                <td>2</td>
-                <td>300.000đ</td>
-                <td><span class="status status-shipping">Đang giao</span></td>
-                <td>17/9/2025</td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH004</td>
-                <td class="customer-info">
-                    <span class="customer-avatar">Đ</span>
-                    Nguyễn Lê Tiến Đạt
-                </td>
-                <td>Kẹp tóc hoa dâu tây nhí</td>
-                <td>5</td>
-                <td>150.000đ</td>
-                <td><span class="status status-completed">Hoàn thành</span></td>
-                <td>10/10/2025</td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>#DH005</td>
-                <td class="customer-info">
-                    <span class="customer-avatar">B</span>
-                    Nguyễn Huy Bảo
-                </td>
-                <td>Túi hoa Tulip</td>
-                <td>1</td>
-                <td>120.000đ</td>
-                <td><span class="status status-pending">Đang xử lý</span></td>
-                <td>12/11/2025</td>
-                <td>
-                    <i class="bx bx-show-alt action-icon"></i>
-                </td>
-            </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

@@ -6,6 +6,7 @@ import java.util.List;
 
 public class UserAddressDao extends BaseDao {
 
+
     public List<UserAddress> findByUserId(int userId) {
 
         String sql = """
@@ -29,7 +30,6 @@ public class UserAddressDao extends BaseDao {
     }
 
 
-    // thêm mới
     public void insert(UserAddress address) {
 
         String sql = """
@@ -52,14 +52,14 @@ public class UserAddressDao extends BaseDao {
     public void update(UserAddress address) {
 
         String sql = """
-        UPDATE user_address
-        SET
-            Country = :country,
-            Province = :province,
-            District = :district,
-            Street = :street
-        WHERE User_Address_Id = :id
-    """;
+            UPDATE user_address
+            SET
+                Country = :country,
+                Province = :province,
+                District = :district,
+                Street = :street
+            WHERE User_Id = :user_id
+        """;
 
         getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
@@ -67,11 +67,10 @@ public class UserAddressDao extends BaseDao {
                         .bind("province", address.getProvince())
                         .bind("district", address.getDistrict())
                         .bind("street", address.getStreet())
-                        .bind("id", address.getUserAddressId())
+                        .bind("user_id", address.getUserId())
                         .execute()
         );
     }
-
     public UserAddress findById(int id) {
         String sql = """
         SELECT
@@ -102,5 +101,4 @@ public class UserAddressDao extends BaseDao {
                         .execute()
         );
     }
-
 }

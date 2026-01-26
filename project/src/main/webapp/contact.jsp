@@ -27,9 +27,6 @@
                 </button>
             </form>
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/favourite" class="icon-btn" id="heartBtn">
-                    <i class='bx  bx-heart'></i>
-                </a>
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
                 </a>

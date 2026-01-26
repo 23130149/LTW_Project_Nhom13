@@ -1,25 +1,34 @@
 package model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Order {
 
     private int orderId;
     private int userId;
     private int userAddressId;
-    private int paymentMethodId;
     private LocalDateTime createAt;
     private String status;
-    private String paymentStatus;
     private String orderCode;
     private String note;
     private BigDecimal totalPrice;
+    private String userName;
+    private String productName;
+    private int quantity;
+    private int totalQuantity;
 
     public int getOrderId() {
         return orderId;
     }
 
+    public int getTotalQuantity(){return  totalQuantity;};
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
@@ -48,14 +57,6 @@ public class Order {
         this.userAddressId = userAddressId;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -71,15 +72,6 @@ public class Order {
     public void setOrderCode(String orderCode) {
         this.orderCode = orderCode;
     }
-
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
     public String getNote() {
         return note;
     }
@@ -94,5 +86,41 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getCreateAtFormatted() {
+        if (createAt == null) return "";
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return createAt.format(formatter);
+    }
+    public String getTotalPriceFormatted() {
+        if (totalPrice == null) return "0 ₫";
+        NumberFormat vn =
+                NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return vn.format(totalPrice);
+    }
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

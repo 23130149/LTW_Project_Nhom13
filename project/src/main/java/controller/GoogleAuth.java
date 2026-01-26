@@ -57,7 +57,6 @@ public class GoogleAuth extends HttpServlet {
         }
     }
 
-    // Google POST → forward về doPost
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

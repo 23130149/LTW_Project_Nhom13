@@ -1,85 +1,92 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const $ = document.querySelector.bind(document);
-    const $$ = document.querySelectorAll.bind(document);
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("productModal");
+    const productForm = document.getElementById("productForm");
 
-    const searchInputs = $$('.search-box input, .search-review-box input');
-    const rows = $$('.data-table tbody tr');
+    const prodIdInput = document.getElementById("prodId");
+    const prodNameInput = document.getElementById("prodName");
+    const prodPriceInput = document.getElementById("prodPrice");
+    const prodStockInput = document.getElementById("prodStock");
+    const prodCategoryInput = document.getElementById("prodCategory");
+    const prodDescriptionInput = document.getElementById("prodDescription");
+    const actionInput = document.getElementById("modalAction");
 
-    searchInputs.forEach(input => {
-        input.addEventListener('input', (e) => {
-            const value = e.target.value.toLowerCase();
+    const imageInput = document.getElementById("imageInput");
+    const imgPreview = document.getElementById("imgPreview");
+    const placeholderIcon = document.getElementById("placeholderIcon");
 
-            searchInputs.forEach(el => el.value = e.target.value);
+    window.openEditModal = function (btn) {
+        modal.querySelector(".modal-header h3").innerText = "Chỉnh sửa sản phẩm";
+        actionInput.value = "update";
 
-            rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(value) ? '' : 'none';
-            });
-        });
-    });
+        const id = btn.getAttribute("data-id");
+        const name = btn.getAttribute("data-name");
+        const price = btn.getAttribute("data-price");
+        const stock = btn.getAttribute("data-stock");
+        const catId = btn.getAttribute("data-category");
+        const desc = btn.getAttribute("data-description");
+        const img = btn.getAttribute("data-image");
 
-    const bell = $('.notification-badge');
-    if (bell) {
-        bell.onclick = () => {
-            alert("Thông báo kho hàng:\n- Móc khóa lá cờ Việt Nam đã hết hàng!\n- Túi hoa Tulip sắp hết (còn 5).");
-        };
-    }
+        prodIdInput.value = id;
+        prodNameInput.value = name;
+        prodPriceInput.value = price;
+        prodStockInput.value = stock;
+        prodCategoryInput.value = catId;
+        prodDescriptionInput.value = (desc && desc !== 'null') ? desc : "";
 
-    const modal = $('#productModal');
-    const addBtn = $('.view-all-btn');
-    const closeBtn = $('.close-btn');
+        if (img && img !== 'null' && img !== '') {
+            const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
+            imgPreview.src = img.startsWith('http') ? img : contextPath + "/images/" + img;
+            imgPreview.style.display = "block";
+            placeholderIcon.style.display = "none";
+        } else {
+            resetImagePreview();
+        }
 
+        modal.style.display = "block";
+    };
+
+    const addBtn = document.querySelector(".view-all-btn");
     if (addBtn) {
-        addBtn.onclick = () => {
-            $('#modalTitle').innerText = "Thêm sản phẩm mới";
-            $('#productForm').reset();
-            modal.style.display = 'block';
-        };
+        addBtn.addEventListener("click", () => {
+            modal.querySelector(".modal-header h3").innerText = "Thêm sản phẩm mới";
+            actionInput.value = "add";
+            productForm.reset();
+            prodIdInput.value = "";
+            resetImagePreview();
+            modal.style.display = "block";
+        });
     }
 
-    $$('.bx-pencil').forEach(btn => {
-        btn.parentElement.onclick = () => {
-            const row = btn.closest('tr');
-            $('#modalTitle').innerText = "Chỉnh sửa sản phẩm";
-
-            $('#prodName').value = row.cells[1].innerText;
-            $('#prodPrice').value = row.cells[2].innerText;
-            $('#prodStock').value = row.cells[3].innerText;
-
-            modal.style.display = 'block';
-        };
-    });
-
-    if (closeBtn) {
-        closeBtn.onclick = () => modal.style.display = 'none';
-    }
-
-    $$('.bx-trash').forEach(btn => {
-        btn.parentElement.onclick = () => {
-            const row = btn.closest('tr');
-            const productName = row.cells[1].innerText;
-            if (confirm(`Bạn có chắc chắn muốn xóa sản phẩm: ${productName}?`)) {
-                row.remove();
-                showToast("Đã xóa sản phẩm thành công!");
+    if (imageInput) {
+        imageInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imgPreview.src = e.target.result;
+                    imgPreview.style.display = "block";
+                    placeholderIcon.style.display = "none";
+                };
+                reader.readAsDataURL(file);
             }
+        });
+    }
+
+    document.querySelectorAll(".close-btn, .btn-cancel").forEach(btn => {
+        btn.onclick = () => {
+            modal.style.display = "none";
         };
     });
 
-    $('#productForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        modal.style.display = 'none';
-        showToast("Dữ liệu đã được cập nhật!");
-    });
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
 
-    function showToast(message) {
-        const container = $('#toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerText = message;
-        container.appendChild(toast);
-
-        setTimeout(() => {
-            toast.remove();
-        }, 3000);
+    function resetImagePreview() {
+        imgPreview.src = "";
+        imgPreview.style.display = "none";
+        placeholderIcon.style.display = "block";
     }
 });

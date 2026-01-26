@@ -112,23 +112,27 @@ public class ProductDao extends BaseDao {
         );
     }
     public void insert(Product p) {
-        String sql = "insert into products (product_name, product_price, stock_quantity) values (:name, :price, :stock)";
+        String sql = "insert into products (product_name, product_price, stock_quantity, category_id, product_description) values (:name, :price, :stock, :catId, :desc)";
         getJdbi().withHandle(handle ->
             handle.createUpdate(sql)
                     .bind("name", p.getProductName())
                     .bind("price", p.getProductPrice())
                     .bind("stock", p.getStockQuantity())
+                    .bind("catId", p.getCategoryId())
+                    .bind("desc", p.getProductDescription())
                     .execute()
         );
     }
     public void update(Product p) {
-        String sql = "update products set product_name = :name, product_price = :price, stock_quantity = :stock where product_id = :id";
+        String sql = "update products set product_name = :name, product_price = :price, stock_quantity = :stock, category_id = :catId, product_description = :desc where product_id = :id";
         getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("id", p.getProductId())
                         .bind("name", p.getProductName())
                         .bind("price", p.getProductPrice())
                         .bind("stock", p.getStockQuantity())
+                        .bind("catId", p.getCategoryId())
+                        .bind("desc", p.getProductDescription())
                         .execute()
         );
     }
@@ -137,6 +141,15 @@ public class ProductDao extends BaseDao {
         getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("id", productId)
+                        .execute()
+        );
+    }
+    public void updateImage(int productId, String imageUrl) {
+        String sql = "update product_images set image_url = :url where product_id = :id";
+        getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", productId)
+                        .bind("url", imageUrl)
                         .execute()
         );
     }

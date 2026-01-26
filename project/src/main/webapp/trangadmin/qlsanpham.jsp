@@ -37,7 +37,7 @@
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge">
+            <span class="notification-badge" id="notiBell">
                 <i class="bx bx-bell"></i>
                 <c:if test="${notificationCount > 0}">
                     <span class="badge">${notificationCount}</span>
@@ -102,6 +102,7 @@
             <tr>
                 <th>Mã đơn</th>
                 <th>Tên sản phẩm</th>
+                <th class="img-col-header">Hình ảnh</th>
                 <th>Giá bán</th>
                 <th>Tồn kho</th>
                 <th>Đã bán</th>
@@ -114,6 +115,17 @@
             <tr>
                 <td>#SP${p.productId}</td>
                 <td>${p.productName}</td>
+                <td class="img-col">
+                    <c:choose>
+                        <c:when test="${not empty p.imageUrl}">
+                            <img src="${p.imageUrl.startsWith('http') ? p.imageUrl : pageContext.request.contextPath.concat('/images/').concat(p.imageUrl)}"
+                                 alt="Product" class="table-img">
+                        </c:when>
+                        <c:otherwise>
+                            <div class="no-img"><i class='bx bx-image'></i></div>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
                 <td>
                     <fmt:formatNumber value="${p.productPrice}" type="number"/>đ
                 </td>
@@ -133,20 +145,21 @@
                 </c:choose>
                 </td>
                 <td>
-                    <button class="action-icon"
-                            onclick="openEditModal(
-                            '${p.productId}',
-                            '${p.productName}',
-                            '${p.productPrice}',
-                            '${p.stockQuantity}'
-                            )">
-                        <i class="bx bx-pencil"></i>
+                    <button class="action-icon" type="button"
+                            data-id="${p.productId}"
+                            data-name="${p.productName}"
+                            data-price="${p.productPrice}"
+                            data-stock="${p.stockQuantity}"
+                            data-category="${p.categoryId}"
+                            data-description="${p.productDescription}"
+                            data-image="${p.imageUrl}"
+                            onclick="openEditModal(this)"> <i class="bx bx-pencil"></i>
                     </button>
                     <form action="${pageContext.request.contextPath}/admin/products"
                           method="post" style="display:inline">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="productId" value="${p.productId}">
-                        <button class="action-icon" onclick="return confirm('Xoá sản phẩm này?')">
+                        <button type="submit" class="action-icon" onclick="return confirm('Xoá sản phẩm này?')">
                             <i class="bx bx-trash"></i>
                         </button>
                     </form>
@@ -157,28 +170,72 @@
         </table>
     </div>
 </main>
-<div id="toast-container"></div>
 <div id="productModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h3 id="modalTitle">Thông tin sản phẩm</h3>
-        <form action="${pageContext.request.contextPath}/admin/products"
-              method="post" id="productForm">
+        <div class="modal-header">
+            <h3>Thêm sản phẩm mới</h3>
+            <span class="close-btn">&times;</span>
+        </div>
+
+        <form action="${pageContext.request.contextPath}/admin/products" method="post" id="productForm" enctype="multipart/form-data">
+            <input type="hidden" name="action" id="modalAction" value="add">
+            <input type="hidden" name="productId" id="prodId">
+
             <div class="form-group">
                 <label>Tên sản phẩm</label>
-                <input type="text" id="prodName" required>
+                <input type="text" name="name" id="prodName" placeholder="Ví dụ: Móc khóa len cờ Việt Nam..." required>
             </div>
+
             <div class="form-row">
                 <div class="form-group">
-                    <label>Giá bán</label>
-                    <input type="text" id="prodPrice" required>
+                    <label>Giá bán (VNĐ)</label>
+                    <input type="number" name="price" id="prodPrice" required>
                 </div>
                 <div class="form-group">
-                    <label>Tồn kho</label>
-                    <input type="number" id="prodStock" required>
+                    <label>Số lượng kho</label>
+                    <input type="number" name="stock" id="prodStock" required>
                 </div>
             </div>
-            <button type="submit" class="btn-save">Lưu dữ liệu</button>
+
+            <div class="form-group">
+                <label>Danh mục</label>
+                <select name="categoryId" id="prodCategory">
+                    <option value="1">Móc khóa</option>
+                    <option value="2">Vòng tay</option>
+                    <option value="3">Nến thơm</option>
+                    <option value="4">Ốp lưng</option>
+                    <option value="5">Thời trang</option>
+                    <option value="6">Len-Crochet</option>
+                    <option value="7">Đồ trang trí</option>
+                    <option value="8">Thú cưng</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Hình ảnh sản phẩm</label>
+                <div class="custom-file-upload">
+                    <div class="preview-box">
+                        <img id="imgPreview" src="" alt="Preview" style="display:none;">
+                        <i class='bx bx-image-add' id="placeholderIcon"></i>
+                    </div>
+                    <div class="upload-controls">
+                        <input type="file" name="productImage" id="imageInput" hidden accept="image/*">
+                        <button type="button" class="btn-outline" onclick="document.getElementById('imageInput').click()">
+                            <i class='bx bx-upload'></i> Chọn ảnh
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Mô tả sản phẩm</label>
+                <textarea name="description" id="prodDescription" rows="3" placeholder="Mô tả ngắn gọn về sản phẩm..."></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel close-btn">Hủy bỏ</button>
+                <button type="submit" class="btn-submit">Xác nhận Lưu</button>
+            </div>
         </form>
     </div>
 </div>

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "ProductDetailController", value = "/product-detail")
-public class ProductDetailController extends HttpServlet {
+public class    ProductDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,6 +48,7 @@ public class ProductDetailController extends HttpServlet {
         double avgRating = reviewDao.getAverageRating(productId);
         Map<Double, Integer> ratingMap = reviewDao.getRatingCountByProductId(productId);
 
+        List<Product> relatedProducts = productService.getRelatedProducts(product.getCategoryId(), productId);
         request.setAttribute("reviews", reviews);
         request.setAttribute("reviewCount", reviews.size());
         request.setAttribute("avgRating", avgRating);
@@ -67,6 +68,7 @@ public class ProductDetailController extends HttpServlet {
         }
 
         request.setAttribute("canReview", canReview);
+        request.setAttribute("relatedProducts", relatedProducts);
         request.setAttribute("product", product);
 
         request.getRequestDispatcher("/chitietsp.jsp")

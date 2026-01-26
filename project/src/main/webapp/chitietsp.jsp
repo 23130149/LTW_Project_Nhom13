@@ -102,7 +102,13 @@
                     <h3>Mô tả sản phẩm</h3>
                     <p>${product.productDescription}</p>
                 </div>
-
+                <div class="quantity-input-box">
+                    <input type="number" class="quantity-input" value="1" min="1" max="${product.stockQuantity}">
+                    <div class="quantity-arrows">
+                        <button type="button" class="arrow-up"><i class="bx bx-chevron-up"></i></button>
+                        <button type="button" class="arrow-down"><i class="bx bx-chevron-down"></i></button>
+                    </div>
+                </div>
                 <div class="action-buttons">
                     <a class="btn btn-add-to-cart"
                        href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1">
@@ -185,7 +191,26 @@
                 </div>
             </c:forEach>
         </div>
-
+        <section class="related-products">
+            <h2 id="related-title">Sản phẩm liên quan</h2>
+            <div class="product-grid">
+                <c:forEach var="rp" items="${relatedProducts}">
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="${pageContext.request.contextPath}/product-detail?id=${rp.productId}" class="product-thumb">
+                                <img src="${rp.imageUrl}"
+                                     alt="${rp.productName}">
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="${pageContext.request.contextPath}/product?categoryId=${rp.categoryId}" class="product-cat">${rp.categoryName}</a>
+                            <a href="${pageContext.request.contextPath}/product-detail?id=${rp.productId}" class="product-name">${rp.productName}</a>
+                            <div class="product-price"><fmt:formatNumber value="${rp.productPrice}" type="number" groupingUsed="true"/> đ</div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </section>
     </div>
 </main>
 
@@ -242,18 +267,7 @@
         </div>
     </div>
 </footer>
-<script>
-    const stars = document.querySelectorAll(".star-rating i");
-    const ratingInput = document.getElementById("ratingValue");
-
-    stars.forEach(star => {
-        star.addEventListener("click", () => {
-            const value = star.dataset.value;
-            ratingInput.value = value;
-            stars.forEach(s => s.classList.toggle("active", s.dataset.value <= value));
-        });
-    });
-</script>
+<script src="${pageContext.request.contextPath}/js/chitietsp.js"></script>
 
 </body>
 </html>

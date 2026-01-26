@@ -70,38 +70,33 @@ public class ProductManagement extends HttpServlet {
         log.info("AdminProduct action = {}", action);
 
         try {
-            if ("add".equals(action)) {
-
+            if ("add".equals(action) || "update".equals(action)) {
                 String name = request.getParameter("name");
                 int price = Integer.parseInt(request.getParameter("price"));
                 int stock = Integer.parseInt(request.getParameter("stock"));
+                int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+                String description = request.getParameter("description");
+
+
+                String imageUrl = request.getParameter("imageUrl");
 
                 Product p = new Product();
                 p.setProductName(name);
                 p.setProductPrice(price);
                 p.setStockQuantity(stock);
+                p.setCategoryId(categoryId);
+                p.setProductDescription(description);
+                p.setImageUrl(imageUrl);
 
-                pdao.insert(p);
-
+                if ("add".equals(action)) {
+                    pdao.insert(p);
+                } else {
+                    int id = Integer.parseInt(request.getParameter("productId"));
+                    p.setProductId(id);
+                    pdao.update(p);
+                }
             }
-            else if ("update".equals(action)) {
-
-                int id = Integer.parseInt(request.getParameter("productId"));
-                String name = request.getParameter("name");
-                int price = Integer.parseInt(request.getParameter("price"));
-                int stock = Integer.parseInt(request.getParameter("stock"));
-
-                Product p = new Product();
-                p.setProductId(id);
-                p.setProductName(name);
-                p.setProductPrice(price);
-                p.setStockQuantity(stock);
-
-                pdao.update(p);
-            }
-
             else if ("delete".equals(action)) {
-
                 int id = Integer.parseInt(request.getParameter("productId"));
                 pdao.delete(id);
             }
@@ -112,4 +107,4 @@ public class ProductManagement extends HttpServlet {
 
         response.sendRedirect(request.getContextPath() + "/admin/products");
     }
-}
+    }

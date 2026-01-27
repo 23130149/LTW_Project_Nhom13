@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,29 +51,28 @@
     <div class="customer-summary-grid">
         <div class="summary-card">
             <p>Tổng khách hàng</p>
-            <span class="summary-value">535</span>
+            <span class="summary-value">${totalCustomers}</span>
             <span class="summary-detail growth">+8% tháng này</span>
         </div>
+
         <div class="summary-card vip">
             <p>Khách VIP</p>
-            <span class="summary-value">87</span>
+            <span class="summary-value">${vipCustomers}</span>
             <span class="summary-detail growth">+12% tháng này</span>
         </div>
+
         <div class="summary-card new">
             <p>Khách mới</p>
-            <span class="summary-value">156</span>
+            <span class="summary-value">${newCustomers}</span>
             <span class="summary-detail growth">+23% tháng này</span>
         </div>
+
         <div class="summary-card aov">
             <p>Giá trị TB/Khách</p>
-            <span class="summary-value">₫3.6M</span>
+            <span class="summary-value">
+            ₫<fmt:formatNumber value="${avgOrderValue}" type="number" maxFractionDigits="0"/>
+        </span>
             <span class="summary-detail decline">-7% tháng này</span>
-        </div>
-    </div>
-    <div class="customer-search-filter-row">
-        <div class="search-customer-box">
-            <i class="bx bx-search"></i>
-            <input type="text" placeholder="Tìm kiếm khách hàng...">
         </div>
     </div>
     <div class="order-table-container">
@@ -105,15 +105,17 @@
                         <span class="badge ${c.customerType}">${c.customerTypeLabel}</span>
                     </td>
                     <td>
-                        <button class="icon-btn view-btn" data-id="${c.userId}">
-                            <i class='bx bx-show'></i>
+                        <button class="action-icon view-btn" type="button" data-id="${c.userId}">
+                            <i class="bx bx-show"></i>
                         </button>
-                        <button class="icon-btn edit-btn"
+
+                        <button class="action-icon edit-btn" type="button"
                                 data-id="${c.userId}"
                                 data-name="${c.userName}"
                                 data-phone="${c.phone}">
-                            <i class='bx bx-edit'></i>
+                            <i class="bx bx-pencil"></i>
                         </button>
+
                     </td>
                 </tr>
             </c:forEach>

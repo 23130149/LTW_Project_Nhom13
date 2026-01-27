@@ -32,11 +32,23 @@ public class AdminCustomerController extends HttpServlet {
         if ("/admin/customers".equals(path)) {
 
             List<User> customers = userDao.getAllCustomers();
+
+            int totalCustomers = userDao.countTotalCustomers();
+            int vipCustomers = userDao.countVipCustomers();
+            int newCustomers = userDao.countNewCustomersThisMonth();
+            double avgOrderValue = userDao.getAverageSpendPerCustomer();
+
             request.setAttribute("customers", customers);
+            request.setAttribute("totalCustomers", totalCustomers);
+            request.setAttribute("vipCustomers", vipCustomers);
+            request.setAttribute("newCustomers", newCustomers);
+            request.setAttribute("avgOrderValue", avgOrderValue);
+
             request.getRequestDispatcher("/trangadmin/khachhang.jsp")
                     .forward(request, response);
             return;
         }
+
 
         if ("/admin/customer-detail".equals(path)) {
 

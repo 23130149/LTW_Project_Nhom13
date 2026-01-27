@@ -263,6 +263,65 @@ public class UserDao extends BaseDao {
                         .execute()
         );
     }
+    public int countTotalCustomers() {
+        String sql = "SELECT COUNT(*) FROM user WHERE Role = 'USER'";
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+    public int countVipCustomers() {
+        String sql = """
+        SELECT COUNT(*) FROM (
+            SELECT u.User_Id
+            FROM user u
+            JOIN orders o ON u.User_Id = o.User_Id
+            WHERE u.Role = 'USER'
+              AND o.Status = 'COMPLETED'
+            GROUP BY u.User_Id
+            HAVING SUM(o.Total_Price) >= 5000000
+        ) vip
+    """;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+    public int countNewCustomersThisMonth() {
+        String sql = """
+        SELECT COUNT(*) 
+        FROM user
+        WHERE Role = 'USER'
+          AND MONTH(Create_At) = MONTH(CURRENT_DATE())
+          AND YEAR(Create_At) = YEAR(CURRENT_DATE())
+    """;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+    public double getAverageSpendPerCustomer() {
+        String sql = """
+        SELECT 
+            COALESCE(SUM(o.Total_Price) / COUNT(DISTINCT u.User_Id), 0)
+        FROM user u
+        LEFT JOIN orders o 
+            ON u.User_Id = o.User_Id
+            AND o.Status = 'COMPLETED'
+        WHERE u.Role = 'USER'
+    """;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .mapTo(Double.class)
+                        .one()
+        );
+    }
 
 
 

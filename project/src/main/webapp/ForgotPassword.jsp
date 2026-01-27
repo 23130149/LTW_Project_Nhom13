@@ -69,7 +69,6 @@
 
 <body>
 
-<!-- ================= HEADER (COPY Y CHANG BLOG) ================= -->
 <header class="header">
   <div class="header-top-container">
     <div class="header-content">
@@ -112,7 +111,6 @@
   </div>
 </header>
 
-<!-- ================= MAIN ================= -->
 <main class="about-us-container">
 
   <h1>Quên mật khẩu</h1>
@@ -128,7 +126,6 @@
     <form action="${pageContext.request.contextPath}/ForgotPassword"
           method="post">
 
-      <!-- ===== BƯỚC 1: NHẬP EMAIL ===== -->
       <c:if test="${empty step}">
         <div class="form-row">
           <label>Email đăng ký</label>

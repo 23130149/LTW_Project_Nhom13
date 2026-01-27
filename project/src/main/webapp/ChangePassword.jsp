@@ -76,7 +76,6 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="header">
   <div class="header-top-container">
     <div class="header-content">
@@ -125,7 +124,6 @@
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
 <main class="about-us-container">
 
   <h1>Đổi mật khẩu</h1>

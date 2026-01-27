@@ -1,4 +1,3 @@
-/* ===== LAYOUT ===== */
 main.about-us-container {
     width: 90%;
     max-width: 900px;
@@ -14,7 +13,6 @@ main.about-us-container {
     font-weight: 700;
 }
 
-/* ===== ACCOUNT INFO ===== */
 .account-info {
     text-align: center;
     background: #fcfcfc;
@@ -44,7 +42,6 @@ main.about-us-container {
     margin: 0;
 }
 
-/* ===== MENU ===== */
 .account-menu {
     list-style: none;
     padding: 0;
@@ -87,7 +84,6 @@ main.about-us-container {
     color: #38ef7d;
 }
 
-/* ===== RECENT ORDERS ===== */
 .recent-orders-box {
     background: #fcfcfc;
     border: 1px solid #eee;
@@ -130,7 +126,6 @@ main.about-us-container {
     color: #444;
 }
 
-/* ===== STATUS ===== */
 .status-delivered {
     color: #4caf50;
     font-weight: 600;
@@ -151,7 +146,6 @@ main.about-us-container {
     margin-right: 6px;
 }
 
-/* ===== VIEW ALL ORDERS ===== */
 .view-all-wrapper {
     text-align: right;
     margin-bottom: 40px;

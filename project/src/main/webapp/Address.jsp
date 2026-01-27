@@ -63,7 +63,6 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="header">
   <div class="header-top-container">
     <div class="header-content">
@@ -112,7 +111,6 @@
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
 <main class="about-us-container">
 
   <h1>Sổ địa chỉ</h1>
@@ -194,7 +192,6 @@
 
 </main>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">

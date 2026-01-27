@@ -11,20 +11,9 @@ public class Review {
     private int user_id;
     private String user_name;
     private String formattedDate;
-
-    public Review(int review_id, double rating, String comment, int product_id, LocalDateTime  creatAt, int user_id, String user_name) {
-        this.review_id = review_id;
-        this.rating = rating;
-        this.comment = comment;
-        this.product_id = product_id;
-        this.creatAt = creatAt;
-        this.user_id = user_id;
-        this.user_name = user_name;
-    }
-
-    public Review() {
-    }
-
+    private String status;
+    private String shopReply;
+    private int likeCount;
     @Override
     public String toString() {
         return "Review{" +
@@ -35,6 +24,8 @@ public class Review {
                 ", product_id=" + product_id +
                 ", user_id=" + user_id +
                 ", user_name='" + user_name + '\'' +
+                ", formattedDate='" + formattedDate + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 
@@ -62,6 +53,14 @@ public class Review {
         this.comment = comment;
     }
 
+    public LocalDateTime getCreatAt() {
+        return creatAt;
+    }
+
+    public void setCreatAt(LocalDateTime creatAt) {
+        this.creatAt = creatAt;
+    }
+
     public int getProduct_id() {
         return product_id;
     }
@@ -85,13 +84,8 @@ public class Review {
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
-    public LocalDateTime getCreatAt() {
-        return creatAt;
-    }
 
-    public void setCreatAt(LocalDateTime creatAt) {
-        this.creatAt = creatAt;
-    }public String getFormattedDate() {
+    public String getFormattedDate() {
         return formattedDate;
     }
 
@@ -99,5 +93,26 @@ public class Review {
         this.formattedDate = formattedDate;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    public String getShopReply() {
+        return shopReply;
+    }
+
+    public void setShopReply(String shopReply) {
+        this.shopReply = shopReply;
+    }
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
 }

@@ -1,111 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const $ = document.querySelector.bind(document);
-    const $$ = document.querySelectorAll.bind(document);
 
-    const replyModal = $('#replyModal');
-    const viewModal = $('#viewModal');
-    const replyToName = $('#replyToName');
-    const viewDetailContent = $('#viewDetailContent');
-    let currentReviewItem = null;
+    const headerSearch = document.getElementById('headerSearch');
+    const listSearch = document.getElementById('listSearch');
 
-    const searchInputs = [
-        $('.header .search-box input'),
-        $('.search-review-box input')
-    ].filter(el => el !== null);
+    function filterReviews(keyword) {
+        keyword = keyword.toLowerCase().trim();
 
-    searchInputs.forEach(input => {
-        input.oninput = function () {
-            const keyword = this.value.toLowerCase().trim();
-            const reviews = $$('.review-item');
+        document.querySelectorAll('.review-item').forEach(item => {
+            const name = item.querySelector('.reviewer-name').innerText.toLowerCase();
+            const product = item.querySelector('.review-product').innerText.toLowerCase();
+            const content = item.querySelector('.review-text').innerText.toLowerCase();
 
-            searchInputs.forEach(other => {
-                if (other) other.value = this.value;
-            });
+            const match =
+                name.includes(keyword) ||
+                product.includes(keyword) ||
+                content.includes(keyword);
 
-            reviews.forEach(item => {
-                const name = item.querySelector('.reviewer-name').innerText.toLowerCase();
-                const product = item.querySelector('.review-product').innerText.toLowerCase();
-                const content = item.querySelector('.review-text').innerText.toLowerCase();
+            item.style.display = match ? 'flex' : 'none';
+        });
+    }
 
-                const isMatch = name.includes(keyword) || product.includes(keyword) || content.includes(keyword);
-                item.style.display = isMatch ? 'flex' : 'none';
-            });
-        };
+    [headerSearch, listSearch].forEach(input => {
+        input.addEventListener('input', function () {
+            const value = this.value;
+
+            if (this !== headerSearch) headerSearch.value = value;
+            if (this !== listSearch) listSearch.value = value;
+
+            filterReviews(value);
+        });
     });
 
-    $$('.bx-show-alt').forEach(btn => {
-        btn.onclick = function () {
-            const item = this.closest('.review-item');
-            viewDetailContent.innerHTML = `
-                <div style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
-                    <p><strong>Khách hàng:</strong> ${item.querySelector('.reviewer-name').innerText}</p>
-                    <p><strong>Ngày:</strong> ${item.querySelector('.review-item-date').innerText}</p>
-                    <div style="color: #f1c40f;">${item.querySelector('.rating-stars').innerHTML}</div>
-                </div>
+    document.querySelectorAll('.filter-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-button')
+                .forEach(b => b.classList.remove('active'));
+
+            btn.classList.add('active');
+
+            const target = btn.innerText[0];
+
+            document.querySelectorAll('.review-item').forEach(item => {
+                const starCount = item.querySelectorAll('.bxs-star').length;
+                item.style.display =
+                    btn.innerText.includes('Tất cả') || starCount == target
+                        ? 'flex' : 'none';
+            });
+        });
+    });
+
+    document.querySelectorAll('.bx-show-alt').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.review-item');
+            document.getElementById('viewDetailContent').innerHTML = `
+                <p><strong>Khách hàng:</strong> ${item.querySelector('.reviewer-name').innerText}</p>
+                <p><strong>Ngày:</strong> ${item.querySelector('.review-item-date').innerText}</p>
+                <div>${item.querySelector('.rating-stars').innerHTML}</div>
                 <p><strong>Sản phẩm:</strong> ${item.querySelector('.review-product').innerText}</p>
-                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px; font-style: italic;">
-                    "${item.querySelector('.review-text').innerText}"
-                </div>
+                <p>"${item.querySelector('.review-text').innerText}"</p>
             `;
-            viewModal.style.display = 'block';
-        };
+            document.getElementById('viewModal').style.display = 'block';
+        });
     });
 
-    $$('.review-reply-action').forEach(btn => {
-        btn.onclick = function () {
-            currentReviewItem = this.closest('.review-item');
-            replyToName.innerText = currentReviewItem.querySelector('.reviewer-name').innerText;
-            replyModal.style.display = 'block';
-            $('#replyText').focus();
-        };
+    let currentReview = null;
+
+    document.querySelectorAll('.review-reply-action').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentReview = btn.closest('.review-item');
+            document.getElementById('replyToName').innerText =
+                currentReview.querySelector('.reviewer-name').innerText;
+            document.getElementById('replyModal').style.display = 'block';
+        });
     });
 
-    $('#sendReplyBtn').onclick = () => {
-        const text = $('#replyText').value.trim();
-        if (!text) return alert("Vui lòng nhập nội dung!");
+    document.getElementById('sendReplyBtn').onclick = () => {
+        const text = document.getElementById('replyText').value.trim();
+        if (!text) return;
 
-        const responseDiv = document.createElement('div');
-        responseDiv.className = 'shop-response';
-        responseDiv.innerHTML = `<p class="response-title"><i class="bx bx-reply"></i> Shop phản hồi:</p><p class="response-text">${text}</p>`;
+        const div = document.createElement('div');
+        div.className = 'shop-response';
+        div.innerHTML = `<p class="response-title">Phản hồi:</p><p>${text}</p>`;
+        currentReview.querySelector('.review-content').appendChild(div);
 
-        currentReviewItem.querySelector('.review-content').appendChild(responseDiv);
-        const replyBtn = currentReviewItem.querySelector('.review-reply-action');
-        if (replyBtn) replyBtn.remove();
-
-        alert("Gửi thành công!");
-        replyModal.style.display = 'none';
-        $('#replyText').value = "";
+        currentReview.querySelector('.review-reply-action').remove();
+        document.getElementById('replyModal').style.display = 'none';
+        document.getElementById('replyText').value = '';
     };
 
-    const filterButtons = $$('.filter-button');
-    filterButtons.forEach(btn => {
-        btn.onclick = function () {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            const starTarget = this.innerText.trim()[0];
-            $$('.review-item').forEach(item => {
-                if (this.innerText.includes("Tất cả")) {
-                    item.style.display = 'flex';
-                } else {
-                    const stars = item.querySelectorAll('.rating-stars .bxs-star').length;
-                    item.style.display = (stars == starTarget) ? 'flex' : 'none';
-                }
-            });
-        };
-    });
-
-    $$('.close-modal').forEach(btn => {
+    document.querySelectorAll('.close-modal').forEach(btn => {
         btn.onclick = () => {
-            replyModal.style.display = 'none';
-            viewModal.style.display = 'none';
+            document.getElementById('replyModal').style.display = 'none';
+            document.getElementById('viewModal').style.display = 'none';
         };
     });
 
-    window.onclick = (e) => {
-        if (e.target == replyModal || e.target == viewModal) {
-            replyModal.style.display = 'none';
-            viewModal.style.display = 'none';
-        }
-    };
-});
+    window.onclick = e => {
+    }
+}

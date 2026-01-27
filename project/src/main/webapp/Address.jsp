@@ -17,28 +17,13 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- STYLE RIÊNG -->
   <style>
     .address-box {
       max-width: 650px;
       background: #fff;
       padding: 30px;
       border-radius: 14px;
-    }
-
-    .address-item {
-      border: 1px solid #ddd;
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-
-    .address-item p {
-      margin: 0 0 6px 0;
-    }
-
-    .address-item a {
-      margin-right: 10px;
-      font-size: 14px;
     }
 
     .form-row {
@@ -78,7 +63,6 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="header">
   <div class="header-top-container">
     <div class="header-content">
@@ -127,7 +111,6 @@
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
 <main class="about-us-container">
 
   <h1>Sổ địa chỉ</h1>
@@ -167,49 +150,12 @@
     </li>
   </ul>
 
-  <!-- ===== ADDRESS LIST ===== -->
+  <!-- ADDRESS FORM -->
   <div class="recent-orders-box address-box">
-    <h2>Danh sách địa chỉ</h2>
+    <h2>Địa chỉ giao hàng</h2>
 
-    <c:if test="${empty addresses}">
-      <p>Bạn chưa có địa chỉ nào.</p>
-    </c:if>
-
-    <c:forEach items="${addresses}" var="addr">
-      <div class="address-item">
-        <p>
-            ${addr.country}, ${addr.province},
-            ${addr.district}, ${addr.street}
-        </p>
-        <a href="${pageContext.request.contextPath}/Address?edit=${addr.userAddressId}">
-          Sửa
-        </a>
-        |
-        <a href="${pageContext.request.contextPath}/Address?delete=${addr.userAddressId}"
-           onclick="return confirm('Xóa địa chỉ này?')">
-          Xóa
-        </a>
-      </div>
-    </c:forEach>
-  </div>
-
-  <!-- ===== ADDRESS FORM ===== -->
-  <div class="recent-orders-box address-box" style="margin-top:30px">
-    <h2>
-      <c:choose>
-        <c:when test="${address.userAddressId > 0}">
-          Cập nhật địa chỉ
-        </c:when>
-        <c:otherwise>
-          Thêm địa chỉ mới
-        </c:otherwise>
-      </c:choose>
-    </h2>
-
-    <form action="${pageContext.request.contextPath}/Address" method="post">
-
-      <input type="hidden" name="userAddressId"
-             value="${address.userAddressId}" />
+    <form action="${pageContext.request.contextPath}/Address"
+          method="post">
 
       <div class="form-row">
         <label>Quốc gia</label>
@@ -246,7 +192,6 @@
 
 </main>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">

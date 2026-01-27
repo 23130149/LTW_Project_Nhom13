@@ -14,7 +14,6 @@ public class Cart implements Serializable {
         data = new LinkedHashMap<>();
     }
 
-    // ===== ADD =====
     public void addProduct(Product p, int quantity) {
         if (quantity <= 0) quantity = 1;
 
@@ -30,7 +29,7 @@ public class Cart implements Serializable {
         }
     }
 
-    // ===== UPDATE =====
+
     public boolean update(int productId, int quantity) {
         CartItem item = data.get(productId);
         if (item == null) return false;
@@ -39,7 +38,6 @@ public class Cart implements Serializable {
         return true;
     }
 
-    // ===== REMOVE =====
     public CartItem deleteProduct(int productId) {
         return data.remove(productId);
     }
@@ -54,7 +52,7 @@ public class Cart implements Serializable {
         data.clear();
     }
 
-    // ===== GET =====
+
     public List<CartItem> getList() {
         return new ArrayList<>(data.values());
     }

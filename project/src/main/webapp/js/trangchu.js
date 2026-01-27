@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         slides[index].classList.add("slide-active");
     }
+
     function nextSlide() {
         slideIndex++;
         if (slideIndex >= slides.length) {
@@ -16,9 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         showSlides(slideIndex);
     }
-    if(slides.length > 0) {
+
+    if (slides.length > 0) {
         showSlides(slideIndex)
-        if(slides.length > 1) {
+        if (slides.length > 1) {
             setInterval(nextSlide, intervalTime)
         }
     }
@@ -85,14 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("VIEW DETAIL:", productName);
         });
     });
-
-    const heartBtn = document.getElementById("heartBtn");
     const cartBtn = document.getElementById("cartBtn");
     const userBtn = document.getElementById("userBtn");
-
-    heartBtn?.addEventListener("click", () => {
-        console.log("OPEN FAVORITE");
-    });
 
     cartBtn?.addEventListener("click", () => {
         console.log("OPEN CART");

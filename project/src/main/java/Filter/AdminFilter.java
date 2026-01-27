@@ -3,10 +3,11 @@ package Filter;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.*;
+import model.User;
 
 import java.io.IOException;
 
-@WebFilter("/trangadmin/*")
+@WebFilter({"/admin/*", "/trangadmin/*"})
 public class AdminFilter implements Filter {
 
     @Override
@@ -20,21 +21,17 @@ public class AdminFilter implements Filter {
         HttpSession session = req.getSession(false);
 
         if (session == null || session.getAttribute("user") == null) {
-            // chưa login
             resp.sendRedirect(req.getContextPath() + "/SignIn");
             return;
         }
 
-        Object obj = session.getAttribute("user");
-        model.User user = (model.User) obj;
-
+        User user = (User) session.getAttribute("user");
         if (!"ADMIN".equals(user.getRole())) {
-            // không phải admin
             resp.sendRedirect(req.getContextPath() + "/trangchu.jsp");
             return;
         }
 
-        // là admin → cho đi tiếp
+
         chain.doFilter(request, response);
     }
 }

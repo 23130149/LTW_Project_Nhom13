@@ -31,9 +31,6 @@
                 </button>
             </form>
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/favourite.jsp" class="icon-btn" id="heartBtn">
-                    <i class='bx  bx-heart'></i>
-                </a>
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i> (${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0})
                 </a>
@@ -91,12 +88,16 @@
                                    class="product-thumb">
                                     <img src="${p.imageUrl}" alt="${p.productName}">
                                 </a>
-                                <div class="add-to-cart-btn"><a href="${pageContext.request.contextPath}/add-cart?id=${p.productId}&q=1"><i class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
+                                <div class="add-to-cart-btn"><a
+                                        href="${pageContext.request.contextPath}/add-cart?id=${p.productId}&q=1"><i
+                                        class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
 
                             </div>
                             <div class="product-info">
-                                <a href="${pageContext.request.contextPath}/product?categoryId=${p.categoryId}" class="product-cat">${p.categoryName}</a>
-                                <a href="${pageContext.request.contextPath}/product-detail?id=${p.productId}" class="product-name">${p.productName}</a>
+                                <a href="${pageContext.request.contextPath}/product?categoryId=${p.categoryId}"
+                                   class="product-cat">${p.categoryName}</a>
+                                <a href="${pageContext.request.contextPath}/product-detail?id=${p.productId}"
+                                   class="product-name">${p.productName}</a>
                                 <span class="product-price">
                                 <fmt:formatNumber value="${p.productPrice}" type="currency" currencySymbol="₫"/>
                                 </span>
@@ -129,7 +130,7 @@
                 <div class="filter-group category-filter">
                     <h4 class="filter-group-title">Danh mục</h4>
                     <ul>
-                        <c:forEach items = "${categoryList}" var="cat">
+                        <c:forEach items="${categoryList}" var="cat">
                             <li class="${cat.categoryId == currentCategoryId ? 'active' : ''}">
                                 <a href="${pageContext.request.contextPath}/product?categoryId=${cat.categoryId}">
                                         ${cat.name}

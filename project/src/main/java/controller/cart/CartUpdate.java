@@ -36,7 +36,6 @@ public class CartUpdate extends HttpServlet {
         int stockQuantity = productService.getStockById(productId);
 
         if ("inc".equals(action)) {
-            // ✅ CHỈ TĂNG KHI CÒN HÀNG
             if (currentQuantity < stockQuantity) {
                 currentQuantity++;
             }

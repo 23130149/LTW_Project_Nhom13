@@ -24,21 +24,31 @@ public class UserDao extends BaseDao {
         );
     }
 
-    // đăng nhập
-    public User login(String email, String password) {
+    public boolean emailExists(String email) {
+        String sql = "SELECT COUNT(*) FROM user WHERE Email = :email";
 
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("email", email)
+                        .mapTo(Integer.class)
+                        .one() > 0
+        );
+    }
+
+    public User findByEmail(String email) {
         String sql = """
-        SELECT
-            User_Id     AS userId,
-            User_Name   AS userName,
-            Email       AS email,
-            Phone       AS phone,
-            Password    AS password,
-            Create_At   AS createAt,
-            Role        AS role
-        FROM user
-        WHERE Email = :email AND Password = :password
-    """;
+            SELECT
+                User_Id     AS userId,
+                User_Name   AS userName,
+                Email       AS email,
+                Phone       AS phone,
+                Password    AS password,
+                Google_Id   AS googleId,
+                Create_At   AS createAt,
+                Role        AS role
+            FROM user
+            WHERE Email = :email
+        """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -50,109 +60,53 @@ public class UserDao extends BaseDao {
         );
     }
 
-    // check email tồn tại
-    public boolean emailExists(String email) {
-        String sql = "SELECT COUNT(*) FROM user WHERE Email = :email";
+    public boolean updateProfile(User user) {
+        String sql = """
+            UPDATE user
+            SET User_Name = :user_name,
+                Phone = :phone
+            WHERE User_Id = :user_id
+        """;
 
         return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("email", email)
-                        .mapTo(Integer.class)
-                        .one() > 0
-        );
-    }
-    // cập nhật thông tin cá nhân
-    public boolean updateProfile(User user) {
-
-        String sql = """
-        UPDATE user
-        SET
-            User_Name = :user_name,
-            Phone = :phone
-        WHERE User_Id = :user_id
-    """;
-
-        int rows = getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("user_name", user.getUserName())
                         .bind("phone", user.getPhone())
                         .bind("user_id", user.getUserId())
                         .execute()
-        );
-
-        return rows > 0;
+        ) > 0;
     }
-    public boolean checkPassword(int userId, String oldPassword) {
 
+    public boolean updatePassword(int userId, String hashedPassword) {
         String sql = """
-        SELECT COUNT(*)
-        FROM `user`
-        WHERE User_Id = :user_id AND Password = :password
-          AND Password IS NOT NULL
-    """;
-
-        return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("user_id", userId)
-                        .bind("password", oldPassword)
-                        .mapTo(Integer.class)
-                        .one() > 0
-        );
-    }
-    public boolean updatePassword(int userId, String newPassword) {
-
-        String sql = """
-        UPDATE user
-                                            SET Password = :password
-                                            WHERE User_Id = :user_id
-                                              AND Google_Id IS NULL
-    """;
+            UPDATE user
+            SET Password = :password
+            WHERE User_Id = :user_id
+              AND Google_Id IS NULL
+        """;
 
         return getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
-                        .bind("password", newPassword)
+                        .bind("password", hashedPassword)
                         .bind("user_id", userId)
                         .execute()
         ) > 0;
     }
+
     public int countUsers() {
-        String sql = "select count(*) from user";
+        String sql = "SELECT COUNT(*) FROM user";
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .mapTo(Integer.class)
                         .one()
         );
     }
-    public User findByEmail(String email) {
 
-        String sql = """
-        SELECT
-            User_Id     AS userId,
-            User_Name   AS userName,
-            Email       AS email,
-            Phone       AS phone,
-            Password    AS password,
-            Google_Id   AS googleId,
-            Create_At   AS createAt,
-            Role        AS role
-        FROM user
-        WHERE Email = :email
-    """;
-
-        return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("email", email)
-                        .mapToBean(User.class)
-                        .findOne()
-                        .orElse(null)
-        );
-    }
     public void insertGoogleUser(String email, String googleId) {
-
         String sql = """
-        INSERT INTO user (Email, Google_Id, Role, Create_At)
-        VALUES (:email, :google_id, 'USER', NOW())
-    """;
+            INSERT INTO user (Email, Google_Id, Role, Create_At)
+            VALUES (:email, :google_id, 'USER', NOW())
+        """;
 
         getJdbi().withHandle(handle ->
                 handle.createUpdate(sql)
@@ -163,7 +117,19 @@ public class UserDao extends BaseDao {
     }
 
     public User getAdmin() {
-        String sql = "select user_id as userId, user_name as userName, email, phone, password, create_at as createAt, role from user where role = :role limit 1";
+        String sql = """
+            SELECT
+                User_Id   AS userId,
+                User_Name AS userName,
+                Email     AS email,
+                Phone     AS phone,
+                Password  AS password,
+                Create_At AS createAt,
+                Role      AS role
+            FROM user
+            WHERE Role = :role
+            LIMIT 1
+        """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -171,6 +137,26 @@ public class UserDao extends BaseDao {
                         .mapToBean(User.class)
                         .findOne()
                         .orElse(null)
+        );
+    }
+    public List<User> getAllUsers() {
+        String sql = """
+        SELECT
+            User_Id   AS userId,
+            User_Name AS userName,
+            Email     AS email,
+            Phone     AS phone,
+            Password  AS password,
+            Google_Id AS googleId,
+            Role      AS role
+        FROM user
+        WHERE Password IS NOT NULL
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .mapToBean(User.class)
+                        .list()
         );
     }
     public List<User> getAllCustomers() {
@@ -322,6 +308,7 @@ public class UserDao extends BaseDao {
                         .one()
         );
     }
+
 
 
 

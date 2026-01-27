@@ -112,7 +112,7 @@
                 <div class="action-buttons">
                     <a class="btn btn-add-to-cart"
                        href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1">
-                    <i class="bx bx-cart"></i> Thêm vào giỏ
+                        <i class="bx bx-cart"></i> Thêm vào giỏ
                     </a>
                     <c:if test="${not empty sessionScope.cartMessage}">
                         <div class="cart-toast">
@@ -131,7 +131,6 @@
             </div>
         </div>
 
-        <!-- ================= REVIEW ================= -->
         <div class="review-list">
             <h3>Bình luận từ khách hàng (${reviewCount})</h3>
 

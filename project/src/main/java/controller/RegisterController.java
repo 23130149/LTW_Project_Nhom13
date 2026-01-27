@@ -29,36 +29,48 @@ public class RegisterController extends HttpServlet {
 
             String fullName = request.getParameter("fullName");
             String email = request.getParameter("email");
+
             String password = request.getParameter("password");
             String confirmPassword = request.getParameter("confirmPassword");
 
-            if (!password.equals(confirmPassword)) {
-                request.setAttribute("error", "Mật khẩu xác nhận không khớp");
-                request.getRequestDispatcher("/Register.jsp").forward(request, response);
-                return;
-            }
+            if (password == null) {
+                fullName = (String) session.getAttribute("reg_fullName");
+                email = (String) session.getAttribute("reg_email");
 
-            if (!email.endsWith("@gmail.com")) {
-                request.setAttribute("error", "Chỉ chấp nhận Gmail");
-                request.getRequestDispatcher("/Register.jsp").forward(request, response);
-                return;
+                if (fullName == null || email == null) {
+                    request.setAttribute("error", "Phiên đăng ký đã hết hạn, vui lòng đăng ký lại");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
             }
+            else {
+                if (!password.equals(confirmPassword)) {
+                    request.setAttribute("error", "Mật khẩu xác nhận không khớp");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
 
-            if (userDao.emailExists(email)) {
-                request.setAttribute("error", "Email đã tồn tại");
-                request.getRequestDispatcher("/Register.jsp").forward(request, response);
-                return;
+                if (!email.endsWith("@gmail.com")) {
+                    request.setAttribute("error", "Chỉ chấp nhận Gmail");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
+
+                if (userDao.emailExists(email)) {
+                    request.setAttribute("error", "Email đã tồn tại");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
+
+                String hashedPassword = PasswordUtil.hash(password);
+                session.setAttribute("reg_password", hashedPassword);
+                session.setAttribute("reg_fullName", fullName);
+                session.setAttribute("reg_email", email);
             }
 
             String otp = String.valueOf(100000 + (int) (Math.random() * 900000));
-
             EmailService.sendOtpEmail(email, otp);
 
-            String hashedPassword = PasswordUtil.hash(password);
-
-            session.setAttribute("reg_fullName", fullName);
-            session.setAttribute("reg_email", email);
-            session.setAttribute("reg_password", hashedPassword);
             session.setAttribute("reg_otp", otp);
             session.setAttribute("reg_otp_time", System.currentTimeMillis());
 
@@ -99,6 +111,7 @@ public class RegisterController extends HttpServlet {
             user.setEmail((String) session.getAttribute("reg_email"));
             user.setPassword((String) session.getAttribute("reg_password"));
             user.setRole("USER");
+            user.setPhone(null);
 
             userDao.register(user);
 

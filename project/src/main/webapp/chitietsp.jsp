@@ -39,6 +39,11 @@
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
+
+            <div class="icons">
+                <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
+                    <i class="bx bx-heart"></i>
+                </a>
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
                     <i class='bx bx-cart'></i>
                     <c:if test="${sessionScope.cart != null}">
@@ -107,7 +112,7 @@
                 <div class="action-buttons">
                     <a class="btn btn-add-to-cart"
                        href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1">
-                    <i class="bx bx-cart"></i> Thêm vào giỏ
+                        <i class="bx bx-cart"></i> Thêm vào giỏ
                     </a>
                     <c:if test="${not empty sessionScope.cartMessage}">
                         <div class="cart-toast">
@@ -126,7 +131,6 @@
             </div>
         </div>
 
-        <!-- ================= REVIEW ================= -->
         <div class="review-list">
             <h3>Bình luận từ khách hàng (${reviewCount})</h3>
 

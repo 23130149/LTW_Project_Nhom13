@@ -74,8 +74,6 @@
             <i class="bx bx-search"></i>
             <input type="text" placeholder="Tìm kiếm khách hàng...">
         </div>
-        <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
-
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -157,6 +155,6 @@
         </form>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.js"></script>
+<script src="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.js"></script>
 </body>
 </html>

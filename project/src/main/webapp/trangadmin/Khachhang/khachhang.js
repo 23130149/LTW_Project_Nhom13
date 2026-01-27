@@ -1,93 +1,121 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const $ = document.querySelector.bind(document);
     const $$ = document.querySelectorAll.bind(document);
 
-    const detailModal = $('#customerModal');
-    const addModal = $('#addCustomerModal');
-    const detailBody = $('#customerDetailBody');
+    /* ======================
+       SIDEBAR ACTIVE
+       ====================== */
+    const navItems = $$('.slidebar-nav ul li');
+    navItems.forEach(item => {
+        item.addEventListener('click', function () {
+            navItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 
-    function attachViewEvents() {
-        $$('.action-icon').forEach(icon => {
-            icon.onclick = function () {
-                const row = this.closest('tr');
-
-                const name = row.cells[0].innerText.trim();
-                const contact = row.cells[1].innerText;
-                const orders = row.cells[2].innerText;
-                const spend = row.cells[3].innerText;
-                const date = row.cells[4].innerText;
-                const typeHTML = row.cells[5].innerHTML;
-
-                detailBody.innerHTML = `
-                    <div style="line-height: 2.2; font-size: 15px;">
-                        <p><b>Khách hàng:</b> ${name}</p>
-                        <p><b>Số điện thoại:</b> ${contact}</p>
-                        <p><b>Số đơn hàng:</b> ${orders}</p>
-                        <p><b>Tổng chi tiêu:</b> <span style="color: #e74c3c; font-weight: bold;">${spend}</span></p>
-                        <p><b>Ngày tham gia:</b> ${date}</p>
-                        <p style="display: flex; align-items: center; gap: 10px;">
-                            <b>Hạng:</b> ${typeHTML}
-                        </p>
-                    </div>
-                `;
-
-                detailModal.style.display = 'block';
-            };
+    /* ======================
+       SEARCH CUSTOMER
+       ====================== */
+    const searchInput = $('.search-customer-box input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const keyword = this.value.toLowerCase().trim();
+            $$('#customerTable tr').forEach(row => {
+                const name = row.querySelector('.name')?.innerText.toLowerCase() || '';
+                row.style.display = name.includes(keyword) ? '' : 'none';
+            });
         });
     }
 
-    attachViewEvents();
+    /* ======================
+       VIEW CUSTOMER MODAL
+       ====================== */
+    const detailModal = $('#customerModal');
+    const detailBody = $('#customerDetailBody');
+    const closeModal = $('.close-modal');
 
-    const addBtn = $('.add-customer-btn');
-    if (addBtn) {
-        addBtn.onclick = () => {
-            addModal.style.display = 'block';
-        };
-    }
+    document.addEventListener('click', (e) => {
+        const viewBtn = e.target.closest('.view-btn');
+        if (!viewBtn) return;
 
-    $$('.close-modal, .close-add-modal').forEach(btn => {
-        btn.onclick = () => {
-            detailModal.style.display = 'none';
-            addModal.style.display = 'none';
-        };
+        e.stopPropagation();
+
+        const row = viewBtn.closest('tr');
+
+        detailBody.innerHTML = `
+            <p><b>Khách hàng:</b> ${row.querySelector('.name').innerText}</p>
+            <p><b>SĐT:</b> ${row.cells[1].innerText}</p>
+            <p><b>Số đơn:</b> ${row.cells[2].innerText}</p>
+            <p><b>Tổng chi tiêu:</b>
+                <span style="color:#e74c3c;font-weight:600">
+                    ${row.cells[3].innerText}
+                </span>
+            </p>
+            <p><b>Ngày tham gia:</b> ${row.cells[4].innerText}</p>
+            <p><b>Loại khách hàng:</b> ${row.cells[5].innerHTML}</p>
+        `;
+
+        detailModal.style.display = 'flex';
     });
 
-    window.onclick = (e) => {
-        if (e.target == detailModal) detailModal.style.display = 'none';
-        if (e.target == addModal) addModal.style.display = 'none';
-    };
-
-    const addForm = $('#addCustomerForm');
-    if (addForm) {
-        addForm.onsubmit = (e) => {
-            e.preventDefault();
-            alert("Hệ thống: Đã ghi nhận thông tin khách hàng mới!");
-            addModal.style.display = 'none';
-            addForm.reset();
-        };
+    if (closeModal) {
+        closeModal.onclick = () => detailModal.style.display = 'none';
     }
 
-    const mainSearch = $('.search-customer-box input');
-    if (mainSearch) {
-        mainSearch.oninput = function () {
-            const val = this.value.toLowerCase();
-            $$('.data-table tbody tr').forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(val) ? '' : 'none';
-            });
-        };
+    /* ======================
+       EDIT CUSTOMER MODAL
+       ====================== */
+    const editModal = $('#editCustomerModal');
+    const editUserId = $('#editUserId');
+    const editName = $('#editName');
+    const editPhone = $('#editPhone');
+    const closeEdit = $('.close-edit');
+
+    document.addEventListener('click', (e) => {
+        const editBtn = e.target.closest('.edit-btn');
+        if (!editBtn) return;
+
+        e.stopPropagation();
+
+        editUserId.value = editBtn.dataset.id;
+        editName.value = editBtn.dataset.name;
+        editPhone.value = editBtn.dataset.phone;
+
+        editModal.style.display = 'flex';
+    });
+
+    if (closeEdit) {
+        closeEdit.onclick = () => editModal.style.display = 'none';
     }
-    const bell = $('.notification-badge');
-    if (bell) {
-        bell.onclick = () => {
-            alert(
-                "🔔 THÔNG BÁO HỆ THỐNG:\n" +
-                "----------------------------------\n" +
-                "- Khách hàng mới: 5 người đăng ký hôm nay.\n" +
-                "- VIP: Nguyễn Thanh Phú vừa thăng hạng.\n" +
-                "- Đơn hàng: Có 2 đơn hàng đang chờ xử lý.\n" +
-                "----------------------------------"
-            );
-        };
+
+    /* ======================
+       CLOSE MODAL BY BACKDROP
+       ====================== */
+    window.addEventListener('click', (e) => {
+        if (e.target === detailModal) detailModal.style.display = 'none';
+        if (e.target === editModal) editModal.style.display = 'none';
+    });
+
+    /* ======================
+       NOTIFICATION (OPTIONAL)
+       ====================== */
+    const notifyBtn = $('.notification-badge');
+    if (notifyBtn) {
+        notifyBtn.addEventListener('click', () => {
+            alert("🔔 Bạn có thông báo mới!");
+        });
     }
+
+    /* ======================
+       LOGOUT CONFIRM
+       ====================== */
+    const logoutBtn = $('.logout a');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            if (!confirm("Xác nhận đăng xuất?")) e.preventDefault();
+        });
+    }
+
+    console.log("✅ khachhang.js loaded successfully");
 });

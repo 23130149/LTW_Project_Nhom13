@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +15,10 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
         </ul>
@@ -33,7 +31,7 @@
     <header class="header">
         <h2>Khách hàng</h2>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm khách hàng...">
+            <input type="text" placeholder="Tìm kiếm...">
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
@@ -75,7 +73,7 @@
             <input type="text" placeholder="Tìm kiếm khách hàng...">
         </div>
         <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
-
+        <button class="add-customer-btn"><i class="bx bx-plus"></i>Thêm khách hàng</button>
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -90,35 +88,77 @@
                 <th>Thao tác</th>
             </tr>
             </thead>
-            <tbody id="customerTable">
-            <c:forEach items="${customers}" var="c">
-                <tr>
-                    <td>
-                        <div class="customer-info">
-                            <span class="avatar">${fn:substring(c.userName,0,1)}</span>
-                            <span class="name">${c.userName}</span>
-                        </div>
-                    </td>
-                    <td>${c.phone}</td>
-                    <td>${c.orderCount}</td>
-                    <td>${c.totalSpendFormatted}</td>
-                    <td>${c.joinDateFormatted}</td>
-                    <td>
-                        <span class="badge ${c.customerType}">${c.customerTypeLabel}</span>
-                    </td>
-                    <td>
-                        <button class="icon-btn view-btn" data-id="${c.userId}">
-                            <i class='bx bx-show'></i>
-                        </button>
-                        <button class="icon-btn edit-btn"
-                                data-id="${c.userId}"
-                                data-name="${c.userName}"
-                                data-phone="${c.phone}">
-                            <i class='bx bx-edit'></i>
-                        </button>
-                    </td>
-                </tr>
-            </c:forEach>
+            <tbody>
+            <tr>
+                <td class="customer-info">
+                    <span class="customer-avatar">P</span>
+                    Nguyễn Thanh Phú
+                </td>
+                <td>0944912685</td>
+                <td>28</td>
+                <td>15.000.000đ</td>
+                <td>28/12/2024</td>
+                <td><span class="customer-type-tag type-vip">Vip</span></td>
+                <td>
+                    <i class="bx bx-show-alt action-icon"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="customer-info">
+                    <span class="customer-avatar">K</span>
+                    Lê Viết Khanh
+                </td>
+                <td>098573125</td>
+                <td>14</td>
+                <td>3.000.000đ</td>
+                <td>30/4/2025</td>
+                <td><span class="customer-type-tag type-thuongxuyen">Thường xuyên</span></td>
+                <td>
+                    <i class="bx bx-show-alt action-icon"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="customer-info">
+                    <span class="customer-avatar">Q</span>
+                    Trần Hoàng Quân
+                </td>
+                <td>038757486</td>
+                <td>20</td>
+                <td>9.300.000đ</td>
+                <td>12/1/2025</td>
+                <td><span class="customer-type-tag type-moi">Mới</span></td>
+                <td>
+                    <i class="bx bx-show-alt action-icon"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="customer-info">
+                    <span class="customer-avatar">Đ</span>
+                    Nguyễn Lê Tiến Đạt
+                </td>
+                <td>0268565975</td>
+                <td>3</td>
+                <td>1.050.000đ</td>
+                <td>2/10/2025</td>
+                <td><span class="customer-type-tag type-thuongxuyen">Thường xuyên</span></td>
+                <td>
+                    <i class="bx bx-show-alt action-icon"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="customer-info">
+                    <span class="customer-avatar">B</span>
+                    Nguyễn Huy Bảo
+                </td>
+                <td>095838756</td>
+                <td>10</td>
+                <td>2.500.000đ</td>
+                <td>12/8/2025</td>
+                <td><span class="customer-type-tag type-vip">Vip</span></td>
+                <td>
+                    <i class="bx bx-show-alt action-icon"></i>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -132,31 +172,36 @@
         <div id="customerDetailBody" class="modal-body"></div>
     </div>
 </div>
-<div id="editCustomerModal" class="modal-overlay">
+
+<div id="addCustomerModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
-            <h3>Chỉnh sửa khách hàng</h3>
-            <span class="close-edit">&times;</span>
+            <h3>Thêm Khách Hàng Mới</h3>
+            <span class="close-add-modal">&times;</span>
         </div>
-
-        <form action="${pageContext.request.contextPath}/admin/customers" method="post">
-            <input type="hidden" name="action" value="edit">
-            <input type="hidden" name="userId" id="editUserId">
-
+        <form id="addCustomerForm">
             <div class="form-group">
                 <label>Họ và tên</label>
-                <input type="text" name="userName" id="editName" required>
+                <input type="text" id="newCustName" required>
             </div>
-
             <div class="form-group">
                 <label>Số điện thoại</label>
-                <input type="text" name="phone" id="editPhone" required>
+                <input type="text" id="newCustPhone" required>
             </div>
-
-            <button type="submit" class="btn-save">Lưu thay đổi</button>
+            <div class="form-group">
+                <label>Loại khách hàng</label>
+                <select id="newCustType">
+                    <option value="type-moi">Mới</option>
+                    <option value="type-thuongxuyen">Thường xuyên</option>
+                    <option value="type-vip">Vip</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-save">Lưu khách hàng</button>
         </form>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.js"></script>
+<script src="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.js"></script>
+</body>
+</html>
 </body>
 </html>

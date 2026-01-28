@@ -16,7 +16,6 @@ public class AddressController extends HttpServlet {
 
     private final UserAddressDao addressDao = new UserAddressDao();
 
-    // HIỂN THỊ TRANG
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)

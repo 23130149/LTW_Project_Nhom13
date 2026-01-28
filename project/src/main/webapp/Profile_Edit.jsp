@@ -95,9 +95,6 @@
       </form>
 
       <div class="icons">
-        <a href="${pageContext.request.contextPath}/Favourite" class="icon-btn">
-          <i class='bx bx-heart'></i>
-        </a>
         <a href="${pageContext.request.contextPath}/Cart" class="icon-btn">
           <i class='bx bx-cart'></i>
         </a>

@@ -42,9 +42,6 @@
       </form>
 
       <div class="icons">
-        <a href="${pageContext.request.contextPath}/Favourite" class="icon-btn">
-          <i class='bx bx-heart'></i>
-        </a>
         <a href="${pageContext.request.contextPath}/Cart" class="icon-btn">
           <i class='bx bx-cart'></i>
         </a>
@@ -70,12 +67,10 @@
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
 <main class="about-us-container">
 
   <h1>Chi tiết đơn hàng</h1>
 
-  <!-- ===== ORDER INFO ===== -->
   <div class="recent-orders-box">
     <h2>Thông tin đơn hàng</h2>
 
@@ -106,7 +101,6 @@
     </table>
   </div>
 
-  <!-- ===== ORDER ITEMS ===== -->
   <div class="recent-orders-box">
     <h2>Sản phẩm trong đơn</h2>
 
@@ -135,7 +129,6 @@
     </table>
   </div>
 
-  <!-- ===== ACTION ===== -->
   <a href="${pageContext.request.contextPath}/OrderHistory"
      class="btn-logout"
      style="background:#11998e">
@@ -144,7 +137,6 @@
 
 </main>
 
-<!-- ===== FOOTER (GIỐNG ACCOUNT) ===== -->
 <footer class="footer">
   <div class="container">
 

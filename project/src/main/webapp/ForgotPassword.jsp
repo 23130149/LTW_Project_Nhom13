@@ -69,7 +69,6 @@
 
 <body>
 
-<!-- ================= HEADER (COPY Y CHANG BLOG) ================= -->
 <header class="header">
   <div class="header-top-container">
     <div class="header-content">
@@ -87,9 +86,6 @@
       </form>
 
       <div class="icons">
-        <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
-          <i class='bx bx-heart'></i>
-        </a>
         <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
           <i class='bx bx-cart'></i>
         </a>
@@ -115,7 +111,6 @@
   </div>
 </header>
 
-<!-- ================= MAIN ================= -->
 <main class="about-us-container">
 
   <h1>Quên mật khẩu</h1>
@@ -131,7 +126,6 @@
     <form action="${pageContext.request.contextPath}/ForgotPassword"
           method="post">
 
-      <!-- ===== BƯỚC 1: NHẬP EMAIL ===== -->
       <c:if test="${empty step}">
         <div class="form-row">
           <label>Email đăng ký</label>
@@ -156,7 +150,6 @@
         </div>
       </c:if>
 
-      <!-- ===== BƯỚC 2: NHẬP OTP + MẬT KHẨU MỚI ===== -->
       <c:if test="${step == 'OTP_SENT'}">
 
         <div class="form-row">
@@ -211,7 +204,6 @@
 
 </main>
 
-<!-- ================= FOOTER (COPY Y CHANG BLOG) ================= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">

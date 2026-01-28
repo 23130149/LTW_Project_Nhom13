@@ -22,9 +22,9 @@ public class AdminOrderController extends HttpServlet {
 
         List<Order> orders;
         if (status == null || status.isEmpty()) {
-            orders = orderDao.getAllOrders(); // TẤT CẢ
+            orders = orderDao.getAllOrders();
         } else {
-            orders = orderDao.getOrdersByStatus(status); // LỌC
+            orders = orderDao.getOrdersByStatus(status);
         }
 
         request.setAttribute("orders", orders);
@@ -33,8 +33,7 @@ public class AdminOrderController extends HttpServlet {
     }
 
 
-
-        @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         int orderId = Integer.parseInt(request.getParameter("orderId"));
@@ -43,6 +42,6 @@ public class AdminOrderController extends HttpServlet {
             orderDao.updateStatus(orderId, "SHIPPED");
         }
 
-        response.sendRedirect(request.getContextPath() +"/admin/orders");
+        response.sendRedirect(request.getContextPath() + "/admin/orders");
     }
-    }
+}

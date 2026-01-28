@@ -9,7 +9,6 @@ public class CartItem implements Serializable {
 
     private Product product;
     private int quantity;
-    // giá tại thời điểm thêm vào giỏ (không phụ thuộc giá DB sau này)
     private BigDecimal price;
 
     public CartItem(Product product, int quantity, Integer price) {
@@ -18,7 +17,6 @@ public class CartItem implements Serializable {
         this.price = BigDecimal.valueOf(price);
     }
 
-    // ===== BUSINESS =====
     public void upQuantity(int amount) {
         if (amount <= 0) amount = 1;
         this.quantity += amount;
@@ -28,7 +26,6 @@ public class CartItem implements Serializable {
         return price.multiply(BigDecimal.valueOf(quantity));
     }
 
-    // ===== GET / SET =====
     public Product getProduct() {
         return product;
     }

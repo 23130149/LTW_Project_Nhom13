@@ -51,19 +51,15 @@ public class AddCart extends HttpServlet {
             cart = new Cart();
         }
 
-        // ✅ ADD VÀO CART
         cart.addProduct(product, quantity);
         session.setAttribute("cartMessage", "Đã thêm sản phẩm vào giỏ hàng");
         session.setAttribute("cart", cart);
 
-        // ✅ PHÂN BIỆT THÊM GIỎ / MUA NGAY
         boolean buyNow = "1".equals(request.getParameter("buyNow"));
 
         if (buyNow) {
-            // Mua ngay → sang thanh toán
             response.sendRedirect(request.getContextPath() + "/payment");
         } else {
-            // Thêm vào giỏ → quay lại trang trước (UX như Shopee)
             String referer = request.getHeader("Referer");
             if (referer != null) {
                 response.sendRedirect(referer);

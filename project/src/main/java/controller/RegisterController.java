@@ -2,12 +2,11 @@ package controller;
 
 import dao.UserDao;
 import model.User;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import service.EmailService;
-import service.OtpService;
+import util.PasswordUtil;
 
 import java.io.IOException;
 
@@ -26,43 +25,52 @@ public class RegisterController extends HttpServlet {
         String action = request.getParameter("action");
         UserDao userDao = new UserDao();
 
-        // ================= BƯỚC 1: GỬI OTP =================
         if ("sendOtp".equals(action)) {
 
             String fullName = request.getParameter("fullName");
             String email = request.getParameter("email");
+
             String password = request.getParameter("password");
             String confirmPassword = request.getParameter("confirmPassword");
 
-            // validate server-side
-            if (!password.equals(confirmPassword)) {
-                request.setAttribute("error", "Mật khẩu xác nhận không khớp");
-                request.getRequestDispatcher("/Register.jsp").forward(request, response);
-                return;
+            if (password == null) {
+                fullName = (String) session.getAttribute("reg_fullName");
+                email = (String) session.getAttribute("reg_email");
+
+                if (fullName == null || email == null) {
+                    request.setAttribute("error", "Phiên đăng ký đã hết hạn, vui lòng đăng ký lại");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
+            }
+            else {
+                if (!password.equals(confirmPassword)) {
+                    request.setAttribute("error", "Mật khẩu xác nhận không khớp");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
+
+                if (!email.endsWith("@gmail.com")) {
+                    request.setAttribute("error", "Chỉ chấp nhận Gmail");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
+
+                if (userDao.emailExists(email)) {
+                    request.setAttribute("error", "Email đã tồn tại");
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);
+                    return;
+                }
+
+                String hashedPassword = PasswordUtil.hash(password);
+                session.setAttribute("reg_password", hashedPassword);
+                session.setAttribute("reg_fullName", fullName);
+                session.setAttribute("reg_email", email);
             }
 
-            if (!email.endsWith("@gmail.com")) {
-                request.setAttribute("error", "Chỉ chấp nhận Gmail");
-                request.getRequestDispatcher("/Register.jsp").forward(request, response);
-                return;
-            }
-
-            if (userDao.emailExists(email)) {
-                request.setAttribute("error", "Email đã tồn tại");
-                request.getRequestDispatcher("/Register.jsp").forward(request, response);
-                return;
-            }
-
-            // tạo OTP
-            String otp = String.valueOf(100000 + (int)(Math.random() * 900000));
-
-            // TODO: gửi email (bạn đã có send mail rồi)
+            String otp = String.valueOf(100000 + (int) (Math.random() * 900000));
             EmailService.sendOtpEmail(email, otp);
 
-            // lưu tạm vào session
-            session.setAttribute("reg_fullName", fullName);
-            session.setAttribute("reg_email", email);
-            session.setAttribute("reg_password", password);
             session.setAttribute("reg_otp", otp);
             session.setAttribute("reg_otp_time", System.currentTimeMillis());
 
@@ -71,7 +79,6 @@ public class RegisterController extends HttpServlet {
             return;
         }
 
-        // ================= BƯỚC 2: XÁC NHẬN OTP =================
         if ("confirmOtp".equals(action)) {
 
             String inputOtp = request.getParameter("otp");
@@ -99,25 +106,22 @@ public class RegisterController extends HttpServlet {
                 return;
             }
 
-            // tạo user
             User user = new User();
             user.setUserName((String) session.getAttribute("reg_fullName"));
             user.setEmail((String) session.getAttribute("reg_email"));
             user.setPassword((String) session.getAttribute("reg_password"));
             user.setRole("USER");
+            user.setPhone(null);
 
             userDao.register(user);
 
-            // clear session
             session.removeAttribute("reg_fullName");
             session.removeAttribute("reg_email");
             session.removeAttribute("reg_password");
             session.removeAttribute("reg_otp");
             session.removeAttribute("reg_otp_time");
 
-            response.sendRedirect(
-                    request.getContextPath() + "/SignIn.jsp?success=1"
-            );
+            response.sendRedirect(request.getContextPath() + "/SignIn.jsp?success=1");
         }
     }
 

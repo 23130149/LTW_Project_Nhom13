@@ -1,102 +1,83 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const saveBtn = document.querySelector(".btn-save");
+/**
+ * Admin Settings Script
+ * Xử lý: UI Theme, Validation Form, Toast Notifications
+ */
+document.addEventListener('DOMContentLoaded', function() {
 
-    saveBtn.addEventListener("click", () => {
-        const inputs = document.querySelectorAll(
-            ".settings-card input, .settings-card textarea"
-        );
-
-        let valid = true;
-        inputs.forEach(input => {
-            if (input.value.trim() === "") {
-                input.style.borderColor = "red";
-                valid = false;
-            } else {
-                input.style.borderColor = "#e2e8f0";
-            }
-        });
-
-        if (!valid) {
-            alert("❌ Vui lòng nhập đầy đủ thông tin!");
-            return;
-        }
-
-        alert("✅ Lưu thông tin thành công!");
-    });
-
-    document.querySelectorAll(".toggle input").forEach(toggle => {
-        toggle.addEventListener("change", () => {
-            console.log(toggle.checked ? "🔔 Bật thông báo" : "🔕 Tắt thông báo");
-        });
-    });
-
-    const colorCircles = document.querySelectorAll(".color-circle");
-    const sidebar = document.querySelector(".sliderbar");
-    const saveButton = document.querySelector(".btn-save");
-    const passwordButton = document.querySelector(".btn-password");
-    const activeIcon = document.querySelectorAll(".settings-card h3 i");
-
-    const themes = {
-        c1: "linear-gradient(to bottom, #11998e, #38ef7d)",
-        c2: "linear-gradient(to bottom, #0984e3, #74b9ff)",
-        c3: "linear-gradient(to bottom, #e17055, #fab1a0)",
-        c4: "linear-gradient(to bottom, #7f00ff, #c77dff)"
-    };
-
+    const colorCircles = document.querySelectorAll('.color-circle');
     colorCircles.forEach(circle => {
-        circle.addEventListener("click", () => {
-            colorCircles.forEach(c => c.classList.remove("active"));
-            circle.classList.add("active");
+        circle.addEventListener('click', function() {
+            colorCircles.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
 
-            const themeClass = [...circle.classList].find(c => themes[c]);
-            if (!themeClass) return;
-
-            sidebar.style.background = themes[themeClass];
-            saveButton.style.background = themes[themeClass];
-            passwordButton.style.background = themes[themeClass];
-
-            activeIcon.forEach(icon => {
-                icon.style.color = getComputedStyle(circle).backgroundColor;
-            });
-
-            console.log("🎨 Đã đổi theme:", themeClass);
+            const color = window.getComputedStyle(this).backgroundColor;
+            console.log("Màu chủ đạo đã chọn:", color);
         });
     });
 
-    const languageSelect = document.querySelector("select");
-    languageSelect.addEventListener("change", () => {
-        alert(`🌐 Đã chuyển sang ${languageSelect.value} (demo)`);
-    });
+    const btnPassword = document.querySelector('.btn-password');
+    if (btnPassword) {
+        btnPassword.addEventListener('click', function(e) {
+            // Lấy form chứa nút này
+            const form = this.closest('section').querySelectorAll('input');
+            const oldPass = form[0].value;
+            const newPass = form[1].value;
+            const confirmPass = form[2].value;
 
-    const passwordBtn = document.querySelector(".btn-password");
+            if (!oldPass || !newPass || !confirmPass) {
+                showToast("Vui lòng nhập đầy đủ các trường mật khẩu!", "error");
+                return;
+            }
 
-    passwordBtn.addEventListener("click", () => {
-        const inputs = document.querySelectorAll(".form-input");
-        const current = inputs[0].value;
-        const newPass = inputs[1].value;
-        const confirm = inputs[2].value;
+            if (newPass.length < 6) {
+                showToast("Mật khẩu mới phải từ 6 ký tự trở lên!", "error");
+                return;
+            }
 
-        if (!current || !newPass || !confirm) {
-            alert("❌ Nhập đầy đủ mật khẩu");
-            return;
+            if (newPass !== confirmPass) {
+                showToast("Mật khẩu xác nhận không khớp!", "error");
+                return;
+            }
+
+            showToast("Đang xử lý đổi mật khẩu...", "info");
+        });
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+
+    if (status === 'success') {
+        showToast("Cập nhật dữ liệu thành công!", "success");
+        window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (status === 'error') {
+        showToast("Có lỗi xảy ra, vui lòng kiểm tra lại!", "error");
+    }
+
+    function showToast(message, type = 'success') {
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'toast-container';
+            document.body.appendChild(container);
         }
 
-        if (newPass.length < 6) {
-            alert("❌ Mật khẩu phải ≥ 6 ký tự");
-            return;
-        }
+        const toast = document.createElement('div');
+        toast.className = `toast-item ${type}`;
 
-        if (newPass !== confirm) {
-            alert("❌ Mật khẩu xác nhận không khớp");
-            return;
-        }
+        let icon = 'bx-check-circle';
+        if (type === 'error') icon = 'bx-error-circle';
+        if (type === 'info') icon = 'bx-info-circle';
 
-        alert("✅ Đổi mật khẩu thành công!");
-        inputs.forEach(i => i.value = "");
-    });
+        toast.innerHTML = `
+            <i class='bx ${icon}'></i>
+            <span>${message}</span>
+        `;
 
-    document.querySelector(".notification-badge").addEventListener("click", () => {
-        alert("🔔 Bạn có 3 thông báo mới");
-    });
+        container.appendChild(toast);
 
+        setTimeout(() => {
+            toast.style.animation = 'fadeOut 0.5s forwards';
+            setTimeout(() => toast.remove(), 500);
+        }, 4000);
+    }
 });

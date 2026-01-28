@@ -18,10 +18,11 @@ public class ProductService {
     public int getTotalProducts() {
         return pdao.getTotalProducts();
     }
-    public Product getProductById(int id) {
-        return pdao.getProductById(id);
-    }
-    public List<Product> getListProductByCategoryId(int categoryId, int limit) { return pdao.getProductByCategoryId(categoryId, 8); }
+    public int getTotalProductsByCategory(int categoryId) {return pdao.getTotalProductsByCategory(categoryId);}
+    public List<Product> getProductsByCategoryPerPage(int categoryId, int limit, int offset) {return pdao.getProductsByCategoryPerPage(categoryId, limit, offset);}
+    public Product getProductById(int id) {return pdao.getProductById(id);}
     public Product getFeaturedProductByCategoryId(int categoryId) { return pdao.getFeaturedProductByCategoryId(categoryId); }
     public List<Product> getRelatedProducts(int categoryId, int productId) { return pdao.getRelatedProducts(categoryId, productId); }
+    public int getTotalProductsByKeyword(String keyword) {return pdao.getTotalProductsByKeyword(keyword);}
+    public List<Product> searchProductsByKeyword(String keyword, int limit, int offset) {return pdao.searchProductsByKeyword(keyword, limit, offset);}
 }

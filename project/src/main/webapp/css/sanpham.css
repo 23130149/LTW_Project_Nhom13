@@ -462,21 +462,44 @@ ul, li {
 }
 .pagination {
     display: flex;
-    gap: 10px;
     justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 30px 0;
+    flex-wrap: wrap;
 }
+
 .pagination a,
 .pagination span {
-    padding: 8px 14px;
+    min-width: 36px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
     border-radius: 6px;
     border: 1px solid #ddd;
     text-decoration: none;
     color: #333;
+    font-size: 14px;
+    text-align: center;
 }
+
+.pagination a:hover {
+    background-color: #f1f1f1;
+}
+
 .pagination .current-page {
     background-color: #1abc9c;
     color: white;
     font-weight: bold;
+    border-color: #1abc9c;
+}
+
+.pagination .dots {
+    border: none;
+    background: transparent;
+    padding: 0 4px;
+    color: #999;
+    cursor: default;
 }
 .footer {
     background: linear-gradient(to right, #11998e, #38ef7d);

@@ -6,9 +6,9 @@
 <html lang="en">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/trangchu.css">
-    <link rel="stylesheet"
           href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/trangchu.css">
     <meta charset="UTF-8">
     <title>Handmade Shop</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -22,9 +22,8 @@
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
-            <form class="search-form" action="#" method="GET">
-                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
-                       aria-label="Tìm kiếm sản phẩm">
+            <form class="search-form" action="${pageContext.request.contextPath}/product" method="GET">
+                <input type="text" class="search-input" name="keyword" value="${keyword}" placeholder="Tìm kiếm bất cứ thứ gì" aria-label="Tìm kiếm sản phẩm" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
@@ -46,7 +45,7 @@
                     <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>

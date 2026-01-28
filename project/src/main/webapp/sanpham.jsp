@@ -6,10 +6,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/sanpham.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
+    <jsp:useBean id="cart" class="cart.Cart" scope="session"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sanpham.css">
     <meta charset="UTF-8">
     <title>Sản phẩm</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -21,20 +20,19 @@
     <div class="header-top-container">
         <div class="header-content">
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/trangchu.jsp">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
-            <form class="search-form" action="#" method="GET">
-                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
-                       aria-label="Tìm kiếm sản phẩm">
+            <form class="search-form" action="${pageContext.request.contextPath}/product" method="GET">
+                <input type="text" class="search-input" name="keyword" value="${keyword}" placeholder="Tìm kiếm bất cứ thứ gì" aria-label="Tìm kiếm sản phẩm" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
             <div class="icons">
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'></i> (${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0})
+                    <i class='bx  bx-cart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/account.jsp" class="icon-btn" id="userBtn">
+                <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
                 </a>
             </div>
@@ -47,7 +45,7 @@
                     <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
@@ -68,6 +66,9 @@
                 <div class="sort-stats-bar">
                     <div class="product-stats">
                         Hiển thị ${fn:length(list)} sản phẩm
+                        <c:if test="${not empty keyword}">
+                            cho từ khóa "<strong>${keyword}</strong>"
+                        </c:if>
                     </div>
                     <div class="sort-options">
                         <div class="custom-select-wrapper">
@@ -106,25 +107,72 @@
                     </c:forEach>
                 </div>
                 <div class="pagination">
-                    <c:forEach begin="1" end="${totalPages}" var="i">
+
+                    <c:if test="${currentPage > 1}">
+                        <a href="${pageContext.request.contextPath}/product?page=${currentPage - 1}
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                            «
+                        </a>
+                    </c:if>
+
+                    <c:set var="range" value="2"/>
+                    <c:set var="startPage" value="${currentPage - range}"/>
+                    <c:set var="endPage" value="${currentPage + range}"/>
+
+                    <c:if test="${startPage < 1}">
+                        <c:set var="startPage" value="1"/>
+                    </c:if>
+                    <c:if test="${endPage > totalPages}">
+                        <c:set var="endPage" value="${totalPages}"/>
+                    </c:if>
+
+                    <c:if test="${startPage > 1}">
+                        <a href="${pageContext.request.contextPath}/product?page=1
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">1</a>
+                        <span class="dots">...</span>
+                    </c:if>
+
+                    <c:forEach begin="${startPage}" end="${endPage}" var="i">
                         <c:choose>
                             <c:when test="${i == currentPage}">
                                 <span class="current-page">${i}</span>
                             </c:when>
                             <c:otherwise>
-                                <a href="${pageContext.request.contextPath}/product?page=${i}&categoryId=${currentCategoryId}">
+                                <a href="${pageContext.request.contextPath}/product?page=${i}
+                    <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+                    <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+                    <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
                                         ${i}
                                 </a>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
 
-                    <c:if test="${currentPage < totalPages}">
-                        <a href="${pageContext.request.contextPath}/product?page=${currentPage + 1}">
-                            <i class="bx bx-chevron-right"></i>
+                    <c:if test="${endPage < totalPages}">
+                        <span class="dots">...</span>
+                        <a href="${pageContext.request.contextPath}/product?page=${totalPages}
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                                ${totalPages}
                         </a>
                     </c:if>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="${pageContext.request.contextPath}/product?page=${currentPage + 1}
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                            »
+                        </a>
+                    </c:if>
+
                 </div>
+
             </div>
             <aside class="sidebar-filters">
                 <div class="filter-group category-filter">

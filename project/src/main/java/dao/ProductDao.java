@@ -79,17 +79,7 @@ public class ProductDao extends BaseDao {
                         .orElse(null)
         );
     }
-    public List<Product> getProductByCategoryId(int categoryId, int limit) {
-        String sql = "select p.product_id AS productId, p.category_id AS categoryId, p.product_name AS productName, c.name AS categoryName, p.product_price AS productPrice, p.stock_quantity AS stockQuantity, p.product_description AS productDescription, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p join categories c on p.category_id = c.category_id where p.category_id = :categoryId limit :limit";
 
-        return getJdbi().withHandle(handle ->
-                handle.createQuery(sql)
-                        .bind("categoryId", categoryId)
-                        .bind("limit", limit)
-                        .mapToBean(Product.class)
-                        .list()
-        );
-    }
     public Product getFeaturedProductByCategoryId(int categoryId) {
         String sql = "select p.product_id AS productId, p.category_id AS categoryId, p.product_name AS productName, c.name AS categoryName, p.product_price AS productPrice, p.stock_quantity AS stockQuantity, p.product_description AS productDescription, (select pi.image_url from product_images pi where pi.product_id = p.product_id order by pi.image_id ASC limit 1) as imageUrl from products p join categories c on p.category_id = c.category_id where p.category_id = :categoryId order by p.product_id desc LIMIT 1";
         return getJdbi().withHandle(handle ->
@@ -113,15 +103,23 @@ public class ProductDao extends BaseDao {
     }
     public void insert(Product p) {
         String sql = "insert into products (product_name, product_price, stock_quantity, category_id, product_description) values (:name, :price, :stock, :catId, :desc)";
-        getJdbi().withHandle(handle ->
-            handle.createUpdate(sql)
-                    .bind("name", p.getProductName())
-                    .bind("price", p.getProductPrice())
-                    .bind("stock", p.getStockQuantity())
-                    .bind("catId", p.getCategoryId())
-                    .bind("desc", p.getProductDescription())
-                    .execute()
+        int productId = getJdbi().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("name", p.getProductName())
+                        .bind("price", p.getProductPrice())
+                        .bind("stock", p.getStockQuantity())
+                        .bind("catId", p.getCategoryId())
+                        .bind("desc", p.getProductDescription())
+                        .executeAndReturnGeneratedKeys("product_id")
+                        .mapTo(Integer.class)
+                        .one()
         );
+
+        p.setProductId(productId);
+
+        if (p.getImageUrl() != null && !p.getImageUrl().isEmpty()) {
+            insertImage(productId, p.getImageUrl());
+        }
     }
     public void update(Product p) {
         String sql = "update products set product_name = :name, product_price = :price, stock_quantity = :stock, category_id = :catId, product_description = :desc where product_id = :id";
@@ -144,6 +142,19 @@ public class ProductDao extends BaseDao {
                         .execute()
         );
     }
+    public void insertImage(int productId, String imageUrl) {
+        String sql = """
+            INSERT INTO product_images (product_id, image_url)
+            VALUES (:id, :url)
+        """;
+
+        getJdbi().withHandle(h ->
+                h.createUpdate(sql)
+                        .bind("id", productId)
+                        .bind("url", imageUrl)
+                        .execute()
+        );
+    }
     public void updateImage(int productId, String imageUrl) {
         String sql = "update product_images set image_url = :url where product_id = :id";
         getJdbi().withHandle(handle ->
@@ -151,6 +162,98 @@ public class ProductDao extends BaseDao {
                         .bind("id", productId)
                         .bind("url", imageUrl)
                         .execute()
+        );
+    }
+    public int getTotalProductsByCategory(int categoryId) {
+        String sql = "SELECT COUNT(*) FROM products WHERE category_id = :categoryId";
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("categoryId", categoryId)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    public List<Product> getProductsByCategoryPerPage(int categoryId, int limit, int offset) {
+        String sql = """
+        SELECT 
+            p.product_id AS productId,
+            p.category_id AS categoryId,
+            p.product_name AS productName,
+            c.name AS categoryName,
+            p.product_price AS productPrice,
+            p.stock_quantity AS stockQuantity,
+            p.product_description AS productDescription,
+            (
+                SELECT pi.image_url 
+                FROM product_images pi 
+                WHERE pi.product_id = p.product_id 
+                ORDER BY pi.image_id ASC 
+                LIMIT 1
+            ) AS imageUrl
+        FROM products p
+        JOIN categories c ON p.category_id = c.category_id
+        WHERE p.category_id = :categoryId
+        ORDER BY p.product_id ASC
+        LIMIT :limit OFFSET :offset
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("categoryId", categoryId)
+                        .bind("limit", limit)
+                        .bind("offset", offset)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+    public int getTotalProductsByKeyword(String keyword) {
+        String sql = """
+        SELECT COUNT(*)
+        FROM products
+        WHERE product_name LIKE :keyword
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("keyword", "%" + keyword + "%")
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    public List<Product> searchProductsByKeyword(String keyword, int limit, int offset) {
+        String sql = """
+        SELECT 
+            p.product_id AS productId,
+            p.category_id AS categoryId,
+            p.product_name AS productName,
+            c.name AS categoryName,
+            p.product_price AS productPrice,
+            p.stock_quantity AS stockQuantity,
+            p.product_description AS productDescription,
+            (
+                SELECT pi.image_url 
+                FROM product_images pi 
+                WHERE pi.product_id = p.product_id 
+                ORDER BY pi.image_id ASC 
+                LIMIT 1
+            ) AS imageUrl
+        FROM products p
+        JOIN categories c ON p.category_id = c.category_id
+        WHERE p.product_name LIKE :keyword
+        ORDER BY p.product_id ASC
+        LIMIT :limit OFFSET :offset
+    """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("keyword", "%" + keyword + "%")
+                        .bind("limit", limit)
+                        .bind("offset", offset)
+                        .mapToBean(Product.class)
+                        .list()
         );
     }
 }

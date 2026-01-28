@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -141,18 +141,6 @@
         <div class="form-row">
           <label>Mật khẩu hiện tại</label>
           <input type="password" name="oldPassword" required>
-        </div>
-
-        <div class="form-row">
-          <label>Mật khẩu mới</label>
-          <input type="password" id="newPassword" name="newPassword" required>
-          <p id="passwordMsg" class="msg"></p>
-        </div>
-
-        <div class="form-row">
-          <label>Nhập lại mật khẩu mới</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" required>
-          <p id="confirmMsg" class="msg"></p>
         </div>
 
         <div class="password-actions">

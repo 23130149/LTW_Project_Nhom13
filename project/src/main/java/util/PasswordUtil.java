@@ -8,7 +8,15 @@ public class PasswordUtil {
         return BCrypt.hashpw(plainPassword, BCrypt.gensalt(12));
     }
 
-    public static boolean verify(String plainPassword, String hashedPassword) {
-        return BCrypt.checkpw(plainPassword, hashedPassword);
+    public static boolean verify(String plain, String stored) {
+
+        // password cũ (plaintext)
+        if (!stored.startsWith("$2")) {
+            return plain.equals(stored);
+        }
+
+        // password mới (bcrypt)
+        return BCrypt.checkpw(plain, stored);
     }
+
 }

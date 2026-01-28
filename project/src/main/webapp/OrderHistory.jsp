@@ -19,38 +19,25 @@
 <header class="header">
     <div class="header-top-container">
         <div class="header-content">
-
             <div class="logo">
-                <a href="${pageContext.request.contextPath}/Home">Handmade House</a>
+                <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
-
-            <form class="search-form"
-                  action="${pageContext.request.contextPath}/Search"
-                  method="GET">
-                <input type="text"
-                       class="search-input"
-                       name="keyword"
-                       placeholder="Tìm kiếm bất cứ thứ gì...">
+            <form class="search-form" action="${pageContext.request.contextPath}/product" method="GET">
+                <input type="text" class="search-input" name="keyword" value="${keyword}" placeholder="Tìm kiếm bất cứ thứ gì" aria-label="Tìm kiếm sản phẩm" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
-
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/Favourite" class="icon-btn">
-                    <i class='bx bx-heart'></i>
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
+                    <i class='bx  bx-cart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/Cart" class="icon-btn">
-                    <i class='bx bx-cart'></i>
-                </a>
-                <a href="${pageContext.request.contextPath}/Account" class="icon-btn">
-                    <i class='bx bx-user'></i>
+                <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
+                    <i class='bx  bx-user'></i>
                 </a>
             </div>
-
         </div>
     </div>
-
     <div class="search-bar-section header-bottom-nav">
         <div class="container nav-only-container">
             <nav class="nav__links">

@@ -44,7 +44,7 @@ a {
 
 .slidebar-nav {
     flex-grow: 1;
-    padding: 15px 0;
+    padding: 16px 0;
     overflow-y: auto;
 }
 
@@ -53,19 +53,18 @@ a {
 }
 
 .slidebar-nav li {
-    position: relative;
     margin-bottom: 1px;
+    position: relative;
 }
 
 .slidebar-nav li a {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    transition: all 0.3s;
-    text-decoration: none;
-    color: white;
+    transition: background-color 0.3s;
     width: 100%;
-    z-index: 2;
+    height: 100%;
+    color: white;
 }
 
 .slidebar-nav i {
@@ -109,7 +108,7 @@ a {
 .main-content {
     flex-grow: 1;
     margin-left: 250px;
-    padding: 120px 30px 30px;
+    padding: 100px 30px 30px;
 }
 
 .header {
@@ -167,24 +166,40 @@ a {
 
 .notification-badge {
     position: relative;
-    font-size: 24px;
-    color: #666666;
     cursor: pointer;
+    font-size: 24px;
+    color: #636e72;
+    padding: 5px;
+    transition: 0.3s;
 }
 
-.notification-badge::after {
-    content: '3';
+.notification-badge:hover {
+    color: #00b894;
+}
+
+.badge {
     position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #ff6347;
+    top: -2px;
+    right: -2px;
+    background-color: #ff7675;
     color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(255, 118, 117, 0.4);
 }
 
+@keyframes bellRing {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+.notification-badge:hover i {
+    animation: bellRing 0.5s ease-in-out;
+}
 .profile-admin {
     display: flex;
     align-items: center;
@@ -206,6 +221,7 @@ a {
     align-items: center;
     font-weight: bold;
     font-size: 18px;
+    flex-shrink: 0;
 }
 
 .profile-admin > div {
@@ -225,6 +241,7 @@ a {
     display: block;
     margin: 0;
 }
+
 
 .order-status-tabs {
     display: flex;

@@ -1,74 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const qtyInput = document.querySelector(".quantity-input");
+
+    const mainImage = document.getElementById("mainImage");
+    const thumbnails = document.querySelectorAll(".thumbnail-item");
+
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener("click", function () {
+
+            const newSrc = this.getAttribute("data-src") || this.src;
+            mainImage.src = newSrc;
+
+            thumbnails.forEach(t => t.classList.remove("active"));
+
+            this.classList.add("active");
+        });
+    });
+
+    const quantityInput = document.querySelector(".quantity-input");
     const btnUp = document.querySelector(".arrow-up");
     const btnDown = document.querySelector(".arrow-down");
 
-    const addToCartBtn = document.querySelector(".btn-add-to-cart");
-    const buyNowBtn = document.querySelector(".btn-buy-now");
+    if (quantityInput && btnUp && btnDown) {
 
-    if (!qtyInput || !btnUp || !btnDown) return;
+        btnUp.addEventListener("click", function () {
+            let value = parseInt(quantityInput.value) || 1;
+            const max = parseInt(quantityInput.max) || 999;
 
-    const min = parseInt(qtyInput.min) || 1;
-    const max = parseInt(qtyInput.max) || 999;
+            if (value < max) {
+                quantityInput.value = value + 1;
+            }
+        });
 
-    function updateLinks() {
-        const q = qtyInput.value;
+        btnDown.addEventListener("click", function () {
+            let value = parseInt(quantityInput.value) || 1;
+            const min = parseInt(quantityInput.min) || 1;
 
-        if (addToCartBtn) {
-            const url = new URL(addToCartBtn.href, window.location.origin);
-            url.searchParams.set("q", q);
-            addToCartBtn.href = url.toString();
-        }
-
-        if (buyNowBtn) {
-            const url = new URL(buyNowBtn.href, window.location.origin);
-            url.searchParams.set("q", q);
-            buyNowBtn.href = url.toString();
-        }
+            if (value > min) {
+                quantityInput.value = value - 1;
+            }
+        });
     }
-
-    btnUp.addEventListener("click", function () {
-        let value = parseInt(qtyInput.value) || min;
-        if (value < max) {
-            qtyInput.value = value + 1;
-            updateLinks();
-        }
-    });
-
-    btnDown.addEventListener("click", function () {
-        let value = parseInt(qtyInput.value) || min;
-        if (value > min) {
-            qtyInput.value = value - 1;
-            updateLinks();
-        }
-    });
-
-    qtyInput.addEventListener("input", function () {
-        let value = parseInt(this.value);
-        if (isNaN(value) || value < min) value = min;
-        if (value > max) value = max;
-        this.value = value;
-        updateLinks();
-    });
 
     const stars = document.querySelectorAll(".star-rating i");
     const ratingInput = document.getElementById("ratingValue");
 
     stars.forEach(star => {
-        star.addEventListener("click", () => {
-            const value = star.dataset.value;
-            ratingInput.value = value;
+        star.addEventListener("click", function () {
+            const rating = this.getAttribute("data-value");
+            ratingInput.value = rating;
 
             stars.forEach(s => {
-                s.classList.toggle("active", s.dataset.value <= value);
-                s.classList.toggle("bxs-star", s.dataset.value <= value);
-                s.classList.toggle("bx-star", s.dataset.value > value);
+                s.classList.remove("bxs-star");
+                s.classList.add("bx-star");
             });
+
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.remove("bx-star");
+                stars[i].classList.add("bxs-star");
+            }
         });
     });
 
-    const toast = document.querySelector(".cart-toast");
-    if (toast) {
-        setTimeout(() => toast.remove(), 3000);
-    }
 });

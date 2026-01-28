@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/Donhang/donhang.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/trangadmin/Donhang/donhang.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý đơn hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -17,25 +16,13 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li class="active"><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/reviews">
-                    <i class="bx bx-star"></i>Đánh giá
-                </a>
-            </li>
-            <li>
-            <a href="${pageContext.request.contextPath}/admin/contacts">
-                <i class="bx bx-envelope"></i> Liên hệ
-            </a>
-        </li>
-
-            <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i> Đánh giá</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
 
         </ul>
     </nav>
@@ -45,7 +32,7 @@
 </aside>
 <main class="main-content">
     <header class="header">
-        <h2>Sản phẩm</h2>
+        <h2>Đơn hàng</h2>
         <div class="search-box">
             <input type="text" placeholder="Tìm kiếm...">
             <button><i class="bx bx-search"></i></button>

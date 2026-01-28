@@ -15,19 +15,13 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/contacts">
-                    <i class="bx bx-envelope"></i> Liên hệ
-                </a>
-            </li>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
         </ul>
     </nav>
     <div class="logout">
@@ -42,39 +36,45 @@
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
     </header>
     <div class="setting-container">
+        <form action="${pageContext.request.contextPath}/admin/setting" method="POST">
         <section class="settings-card">
             <h3><i class='bx bx-store-alt'></i> Thông tin cửa hàng</h3>
             <div class="form-grid">
                 <div class="form-group">
                     <label>Tên cửa hàng</label>
-                    <input type="text" value="Handmade House">
+                    <input type="text"  name="shopName" value="${st.shop_name}">
                 </div>
                 <div class="form-group">
                     <label>Email liên hệ</label>
-                    <input type="email" value="handmadehouse23@handmade.vn">
+                    <input type="email" name="email" value="${st.email}">
                 </div>
                 <div class="form-group">
                     <label>Số điện thoại</label>
-                    <input type="text" value="0944912685">
+                    <input type="text" name="phone" value="${st.phone}">
                 </div>
                 <div class="form-group">
                     <label>Website</label>
-                    <input type="text" value="https://handmadehouse.com">
+                    <input type="text" name="website" value="${st.website}">
                 </div>
                 <div class="form-group full-width">
                     <label>Địa chỉ</label>
-                    <textarea rows="3">Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh123 Đường ABC, Quận 1, TP.HCM</textarea>
+                    <textarea name="address" rows="3">${st.address}</textarea>
                 </div>
             </div>
             <div class="card-footer">
@@ -130,15 +130,15 @@
             <div class="form-grid">
                 <div class="form-group full-width">
                     <label>Mật khẩu hiện tại</label>
-                    <input type="password" class="form-input" placeholder="••••••••">
+                    <input type="password" name="oldPassword" class="form-input" placeholder="••••••••">
                 </div>
                 <div class="form-group">
                     <label>Mật khẩu mới</label>
-                    <input type="password" class="form-input" placeholder="••••••••">
+                    <input type="password" name="newPassword" class="form-input" placeholder="••••••••">
                 </div>
                 <div class="form-group">
                     <label>Xác nhận mật khẩu mới</label>
-                    <input type="password" class="form-input" placeholder="••••••••">
+                    <input type="password" name="confirmPassword" class="form-input" placeholder="••••••••">
                 </div>
             </div>
             <div class="button-row">

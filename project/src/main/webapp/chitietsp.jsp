@@ -24,40 +24,25 @@
 <header class="header">
     <div class="header-top-container">
         <div class="header-content">
-
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
-
             <form class="search-form" action="${pageContext.request.contextPath}/product" method="GET">
-                <input type="text"
-                       name="keyword"
-                       class="search-input"
-                       placeholder="Tìm kiếm bất cứ thứ gì..."
-                       aria-label="Tìm kiếm sản phẩm">
+                <input type="text" class="search-input" name="keyword" value="${keyword}" placeholder="Tìm kiếm bất cứ thứ gì" aria-label="Tìm kiếm sản phẩm" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
-
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/favourite" class="icon-btn">
-                    <i class="bx bx-heart"></i>
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
+                    <i class='bx  bx-cart'></i>
                 </a>
-                <a href="${pageContext.request.contextPath}/cart" class="icon-btn">
-                    <i class='bx bx-cart'></i>
-                    <c:if test="${sessionScope.cart != null}">
-                        (${sessionScope.cart.totalQuantity})
-                    </c:if>
-                </a>
-                <a href="${pageContext.request.contextPath}/Account" class="icon-btn">
-                    <i class="bx bx-user"></i>
+                <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
+                    <i class='bx  bx-user'></i>
                 </a>
             </div>
-
         </div>
     </div>
-
     <div class="search-bar-section header-bottom-nav">
         <div class="container nav-only-container">
             <nav class="nav__links">
@@ -65,7 +50,7 @@
                     <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
@@ -75,11 +60,23 @@
 <main class="product-detail-page">
     <div class="container">
 
-        <!-- PRODUCT DETAIL -->
         <div class="product-detail-content">
 
             <div class="product-image">
-                <img src="${product.imageUrl}" alt="${product.productName}">
+
+                <img id="mainImage"
+                     src="${not empty productImages ? productImages[0].imageUrl : product.imageUrl}"
+                     alt="${product.productName}"
+                     class="main-product-image">
+
+                <div class="thumbnail-list">
+                    <c:forEach var="img" items="${productImages}" varStatus="status" begin="1" end="3">
+                        <img src="${img.imageUrl}"
+                             data-src="${img.imageUrl}"
+                             class="thumbnail-item ${status.first ? 'active' : ''}">
+                    </c:forEach>
+                </div>
+
             </div>
 
             <div class="product-info-detail">

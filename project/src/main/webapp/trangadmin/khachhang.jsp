@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.css">
+          href="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý khách hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -18,23 +18,14 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/reviews">
-                    <i class="bx bx-star"></i>Đánh giá
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/contacts">
-                    <i class="bx bx-envelope"></i> Liên hệ
-                </a>
-            </li>
-            <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i> Đánh giá</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
+
         </ul>
     </nav>
     <div class="logout">
@@ -49,12 +40,17 @@
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
@@ -63,19 +59,16 @@
         <div class="summary-card">
             <p>Tổng khách hàng</p>
             <span class="summary-value">${totalCustomers}</span>
-            <span class="summary-detail growth">+8% tháng này</span>
         </div>
 
         <div class="summary-card vip">
             <p>Khách VIP</p>
             <span class="summary-value">${vipCustomers}</span>
-            <span class="summary-detail growth">+12% tháng này</span>
         </div>
 
         <div class="summary-card new">
             <p>Khách mới</p>
             <span class="summary-value">${newCustomers}</span>
-            <span class="summary-detail growth">+23% tháng này</span>
         </div>
 
         <div class="summary-card aov">
@@ -83,7 +76,6 @@
             <span class="summary-value">
             ₫<fmt:formatNumber value="${avgOrderValue}" type="number" maxFractionDigits="0"/>
         </span>
-            <span class="summary-detail decline">-7% tháng này</span>
         </div>
     </div>
     <div class="order-table-container">
@@ -147,7 +139,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3>Chỉnh sửa khách hàng</h3>
-            <span class="close-edit">&times;</span>
+            <span class="close-edit">&times</span>
         </div>
 
         <form action="${pageContext.request.contextPath}/admin/customers" method="post">
@@ -168,6 +160,6 @@
         </form>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.js"></script>
+<script src="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.js"></script>
 </body>
 </html>

@@ -358,5 +358,34 @@ a { text-decoration: none; color: inherit; }
     border-radius: 5px;
     transition: 0.2s;
 }
+/* ===== ICON BUTTON ===== */
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-right: 6px;
+}
+
+.action-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.action-icon:hover {
+    background: #edf2f7;
+}
+
 
 .action-icon:hover { background: #e6fffa; }

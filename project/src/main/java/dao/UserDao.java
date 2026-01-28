@@ -53,7 +53,6 @@ public class UserDao extends BaseDao {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("email", email)
-                        .bind("password", password)
                         .mapToBean(User.class)
                         .findOne()
                         .orElse(null)

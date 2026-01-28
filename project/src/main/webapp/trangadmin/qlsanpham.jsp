@@ -17,23 +17,13 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/reviews">
-                    <i class="bx bx-star"></i>Đánh giá
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/contacts">
-                    <i class="bx bx-envelope"></i> Liên hệ
-                </a>
-            </li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i>Đánh giá</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
         </ul>
     </nav>
     <div class="logout">
@@ -105,7 +95,7 @@
             <input type="text" placeholder="Tìm kiếm sản phẩm...">
         </div>
         <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
-        <button class="view-all-btn"><i class="bx bx-plus"></i>Thêm sản phẩm</button>
+        <button type="button" class="view-all-btn" onclick="openAddModal()"><i class="bx bx-plus"></i>Thêm sản phẩm</button>
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -189,6 +179,7 @@
         </div>
 
         <form action="${pageContext.request.contextPath}/admin/products" method="post" id="productForm" enctype="multipart/form-data">
+
             <input type="hidden" name="action" id="modalAction" value="add">
             <input type="hidden" name="productId" id="prodId">
 

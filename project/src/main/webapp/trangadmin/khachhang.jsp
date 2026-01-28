@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.css">
+          href="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý khách hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -18,7 +18,8 @@
             <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i> Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
         </ul>
@@ -29,18 +30,23 @@
 </aside>
 <main class="main-content">
     <header class="header">
-        <h2>Khách hàng</h2>
+        <h2>Tổng quan</h2>
         <div class="search-box">
             <input type="text" placeholder="Tìm kiếm...">
             <button><i class="bx bx-search"></i></button>
         </div>
         <div class="user-info">
-            <span class="notification-badge"><i class="bx bx-bell"></i></span>
+            <span class="notification-badge">
+                <i class="bx bx-bell"></i>
+                <c:if test="${notificationCount > 0}">
+                    <span class="badge">${notificationCount}</span>
+                </c:if>
+            </span>
             <div class="profile-admin">
-                <span class="admin-avatar">L</span>
+                <span class="admin-avatar">${adminAvatar}</span>
                 <div class="user-details">
-                    <span class="user-name">Phan Đình Long</span>
-                    <span class="user-role">Quản trị viên</span>
+                    <span class="user-name">${adminName}</span>
+                    <span class="user-role">${adminRole}</span>
                 </div>
             </div>
         </div>
@@ -200,7 +206,7 @@
         </form>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.js"></script>
+<script src="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.js"></script>
 </body>
 </html>
 </body>

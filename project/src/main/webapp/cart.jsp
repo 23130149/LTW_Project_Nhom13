@@ -23,16 +23,20 @@
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">Handmade House</a>
             </div>
-            <form class="search-form" action="#" method="GET">
-                <input type="text" class="search-input" placeholder="Tìm kiếm bất cứ thứ gì..."
-                       aria-label="Tìm kiếm sản phẩm">
+            <form class="search-form" action="${pageContext.request.contextPath}/product" method="GET">
+                <input type="text" class="search-input" name="keyword" value="${keyword}" placeholder="Tìm kiếm bất cứ thứ gì" aria-label="Tìm kiếm sản phẩm" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <button type="submit" class="search-btn">
                     <i class="bx bx-search-alt-2"></i>
                 </button>
             </form>
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'></i>
+                <a href="${pageContext.request.contextPath}/cart" class="icon-btn cart-icon">
+                    <span class="cart-wrap">
+                        <i class="bx bx-cart"></i>
+                        <span class="cart-badge ${cart.totalQuantity == 0 ? 'hidden' : ''}">
+                            ${cart.totalQuantity}
+                        </span>
+                    </span>
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
@@ -47,7 +51,7 @@
                     <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
                     <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>

@@ -1,49 +1,49 @@
 package model;
 
 public class ProductImage {
-    private Integer image_id;
-    private Integer product_id;
-    private String image_url;
+    private Integer imageId;
+    private Integer productId;
+    private String imageUrl;
 
     public ProductImage() {
     }
 
-    public ProductImage(Integer product_id, Integer image_id, String image_url) {
-        this.product_id = product_id;
-        this.image_id = image_id;
-        this.image_url = image_url;
+    public ProductImage(Integer productId, Integer imageId, String imageUrl) {
+        this.productId = productId;
+        this.imageId = imageId;
+        this.imageUrl = imageUrl;
     }
 
     @Override
     public String toString() {
         return "ProductImage{" +
-                "image_id=" + image_id +
-                ", product_id=" + product_id +
-                ", image_url='" + image_url + '\'' +
+                "imageId=" + imageId +
+                ", productId=" + productId +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 
-    public Integer getImage_id() {
-        return image_id;
+    public Integer getImageId() {
+        return imageId;
     }
 
-    public void setImage_id(Integer image_id) {
-        this.image_id = image_id;
+    public void setImageId(Integer imageId) {
+        this.imageId = imageId;
     }
 
-    public Integer getProduct_id() {
-        return product_id;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

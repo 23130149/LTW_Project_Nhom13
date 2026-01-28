@@ -1,10 +1,12 @@
 package controller;
 
+import dao.ImageDao;
 import dao.ReviewDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Product;
+import model.ProductImage;
 import model.Review;
 import model.User;
 import service.ProductService;
@@ -41,7 +43,8 @@ public class    ProductDetailController extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/product");
             return;
         }
-
+        ImageDao imageDao = new ImageDao();
+        List<ProductImage> productImages = imageDao.getAllImageByProductId(productId);
 
         ReviewDao reviewDao = new ReviewDao();
         List<Review> reviews = reviewDao.getReviewsByProductId(productId);
@@ -66,18 +69,18 @@ public class    ProductDetailController extends HttpServlet {
 
             canReview = bought && !reviewed;
         }
-
-        request.setAttribute("canReview", canReview);
-        request.setAttribute("relatedProducts", relatedProducts);
-        request.setAttribute("product", product);
-
-        request.getRequestDispatcher("/chitietsp.jsp")
-                .forward(request, response);
         for (Review r : reviews) {
             r.setFormattedDate(
                     FormatUtil.formatDateTime(r.getCreatAt())
             );
         }
+        request.setAttribute("canReview", canReview);
+        request.setAttribute("relatedProducts", relatedProducts);
+        request.setAttribute("product", product);
+        request.setAttribute("productImages", productImages);
+
+        request.getRequestDispatcher("/chitietsp.jsp")
+                .forward(request, response);
 
     }
         @Override

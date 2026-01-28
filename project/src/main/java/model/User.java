@@ -1,6 +1,10 @@
 package model;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class User {
 
@@ -12,6 +16,8 @@ public class User {
     private LocalDateTime createAt;
     private String role;
     private String googleId;
+    private int orderCount;
+    private BigDecimal totalSpend;
 
     public int getUserId() {
         return userId;
@@ -20,6 +26,7 @@ public class User {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
 
     public String getUserName() {
         return userName;
@@ -67,11 +74,51 @@ public class User {
     public void setGoogleId(String googleId) {
         this.googleId = googleId;
     }
+    public int getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(int orderCount) {
+        this.orderCount = orderCount;
+    }
+
+    public BigDecimal getTotalSpend() {
+        return totalSpend;
+    }
+
+    public void setTotalSpend(BigDecimal totalSpend) {
+        this.totalSpend = totalSpend;
+    }
     public String getRole() {
         return role;
+    }
+    public String getTotalSpendFormatted() {
+        if (totalSpend == null) return "0 ₫";
+        NumberFormat vn = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return vn.format(totalSpend);
+    }
+
+    public String getJoinDateFormatted() {
+        if (createAt == null) return "";
+        return createAt.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+      public String getCustomerType() {
+        if (totalSpend.doubleValue() >= 10000000) return "vip";
+        if (totalSpend.doubleValue() >= 3000000) return "regular";
+        return "new";
+    }
+
+
+    public String getCustomerTypeLabel() {
+        switch (getCustomerType()) {
+            case "vip": return "Vip";
+            case "regular": return "Thường xuyên";
+            default: return "Mới";
+        }
     }
 }

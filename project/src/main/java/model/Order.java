@@ -20,7 +20,7 @@ public class Order {
     private String productName;
     private int quantity;
     private int totalQuantity;
-
+    private String shipAddress;
     public int getOrderId() {
         return orderId;
     }
@@ -40,7 +40,12 @@ public class Order {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
+    public String getShipAddress() {
+        return shipAddress;
+    }
+    public void setShipAddress(String shipAddress) {
+        this.shipAddress = shipAddress;
+    }
     public LocalDateTime getCreateAt() {
         return createAt;
     }

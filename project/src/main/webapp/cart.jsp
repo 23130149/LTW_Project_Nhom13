@@ -219,44 +219,6 @@
         });
 
     });
-    <%--document.addEventListener("DOMContentLoaded", function () {--%>
-    <%--document.querySelectorAll(".btn-qty").forEach(btn => {--%>
-    <%--    btn.addEventListener("click", function () {--%>
-
-    <%--        const box = this.closest(".qty-box");--%>
-    <%--        const productId = box.dataset.id;--%>
-    <%--        const action = this.dataset.action;--%>
-
-    <%--        fetch("${pageContext.request.contextPath}/CartUpdate", {--%>
-    <%--            method: "POST",--%>
-    <%--            headers: {--%>
-    <%--                "Content-Type": "application/x-www-form-urlencoded"--%>
-    <%--            },--%>
-    <%--            body: `id=${productId}&action=${action}`--%>
-    <%--        })--%>
-    <%--            .then(res => res.json())--%>
-    <%--            .then(data => {--%>
-    <%--                if (!data.success) return;--%>
-
-    <%--                box.querySelector(".qty").innerText = data.quantity;--%>
-    <%--                box.closest(".cart-item")--%>
-    <%--                    .querySelector(".item-total-price")--%>
-    <%--                    .innerText = data.itemTotal;--%>
-
-    <%--                document.querySelector(".summary-price")--%>
-    <%--                    .innerText = data.cartTotal;--%>
-
-    <%--                const btnDec = box.querySelector("[data-action='dec']");--%>
-    <%--                btnDec.disabled = data.quantity <= 1;--%>
-    <%--            });--%>
-    <%--    });--%>
-    <%--});--%>
-    <%--});--%>
-
-
-
-
-
 </script>
 </body>
 </html>

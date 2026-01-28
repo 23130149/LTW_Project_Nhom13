@@ -107,28 +107,72 @@
                     </c:forEach>
                 </div>
                 <div class="pagination">
-                    <c:forEach begin="1" end="${totalPages}" var="i">
+
+                    <c:if test="${currentPage > 1}">
+                        <a href="${pageContext.request.contextPath}/product?page=${currentPage - 1}
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                            «
+                        </a>
+                    </c:if>
+
+                    <c:set var="range" value="2"/>
+                    <c:set var="startPage" value="${currentPage - range}"/>
+                    <c:set var="endPage" value="${currentPage + range}"/>
+
+                    <c:if test="${startPage < 1}">
+                        <c:set var="startPage" value="1"/>
+                    </c:if>
+                    <c:if test="${endPage > totalPages}">
+                        <c:set var="endPage" value="${totalPages}"/>
+                    </c:if>
+
+                    <c:if test="${startPage > 1}">
+                        <a href="${pageContext.request.contextPath}/product?page=1
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">1</a>
+                        <span class="dots">...</span>
+                    </c:if>
+
+                    <c:forEach begin="${startPage}" end="${endPage}" var="i">
                         <c:choose>
                             <c:when test="${i == currentPage}">
                                 <span class="current-page">${i}</span>
                             </c:when>
                             <c:otherwise>
                                 <a href="${pageContext.request.contextPath}/product?page=${i}
-                                    <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
-                                    <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
-                                    <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                    <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+                    <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+                    <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
                                         ${i}
                                 </a>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
 
-                    <c:if test="${currentPage < totalPages}">
-                        <a href="${pageContext.request.contextPath}/product?page=${currentPage + 1}<c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if><c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>">
-                            <i class="bx bx-chevron-right"></i>
+                    <c:if test="${endPage < totalPages}">
+                        <span class="dots">...</span>
+                        <a href="${pageContext.request.contextPath}/product?page=${totalPages}
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                                ${totalPages}
                         </a>
                     </c:if>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="${pageContext.request.contextPath}/product?page=${currentPage + 1}
+            <c:if test='${not empty keyword}'>&keyword=${fn:escapeXml(keyword)}</c:if>
+            <c:if test='${currentCategoryId > 0}'>&categoryId=${currentCategoryId}</c:if>
+            <c:if test='${not empty sort}'>&sort=${sort}</c:if>">
+                            »
+                        </a>
+                    </c:if>
+
                 </div>
+
             </div>
             <aside class="sidebar-filters">
                 <div class="filter-group category-filter">

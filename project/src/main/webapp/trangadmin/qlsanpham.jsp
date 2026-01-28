@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/Sanpham/qlsanpham.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/trangadmin/Sanpham/qlsanpham.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý sản phẩm</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -175,7 +174,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3>Thêm sản phẩm mới</h3>
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
         </div>
 
         <form action="${pageContext.request.contextPath}/admin/products" method="post" id="productForm" enctype="multipart/form-data">
@@ -217,7 +216,7 @@
                 <label>Hình ảnh sản phẩm</label>
                 <div class="custom-file-upload">
                     <div class="preview-box">
-                        <img id="imgPreview" src="" alt="Preview" style="display:none;">
+                        <img id="imgPreview" src="" alt="Preview" style="display:none; max-width: 100%; height: auto;">
                         <i class='bx bx-image-add' id="placeholderIcon"></i>
                     </div>
                     <div class="upload-controls">
@@ -235,7 +234,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn-cancel close-btn">Hủy bỏ</button>
+                <button type="button" class="btn-cancel" onclick="closeModal()">Hủy bỏ</button>
                 <button type="submit" class="btn-submit">Xác nhận Lưu</button>
             </div>
         </form>

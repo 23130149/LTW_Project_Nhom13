@@ -34,13 +34,8 @@
         </button>
       </form>
       <div class="icons">
-        <a href="${pageContext.request.contextPath}/cart" class="icon-btn cart-icon">
-                    <span class="cart-wrap">
-                        <i class="bx bx-cart"></i>
-                        <span class="cart-badge ${cart.totalQuantity == 0 ? 'hidden' : ''}">
-                          ${cart.totalQuantity}
-                        </span>
-                    </span>
+        <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
+          <i class='bx  bx-cart'></i>
         </a>
         <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
           <i class='bx  bx-user'></i>

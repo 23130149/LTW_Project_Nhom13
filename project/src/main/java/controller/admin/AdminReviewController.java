@@ -1,5 +1,6 @@
 package controller.admin;
 
+import dao.OrderDao;
 import dao.UserDao; // Thêm UserDao
 import model.User;  // Thêm model User
 import service.AdminReviewService;
@@ -19,6 +20,7 @@ public class AdminReviewController extends HttpServlet {
 
     AdminReviewService service = new AdminReviewService();
     UserDao udao = new UserDao();
+    OrderDao odao = new OrderDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -33,7 +35,7 @@ public class AdminReviewController extends HttpServlet {
         String adminName = "Admin";
         String adminRole = "Quản trị viên";
         String adminAvatar = "A";
-        int notificationCount = 0;
+        int notificationCount = odao.countOrdersByStatus("PENDING");
 
         if (admin != null) {
             adminName = admin.getUserName();

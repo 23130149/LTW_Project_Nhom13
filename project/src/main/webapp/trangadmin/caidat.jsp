@@ -30,7 +30,7 @@
 </aside>
 <main class="main-content">
     <header class="header">
-        <h2>Tổng quan</h2>
+        <h2>Cài đặt</h2>
         <div class="search-box">
             <input type="text" placeholder="Tìm kiếm...">
             <button><i class="bx bx-search"></i></button>

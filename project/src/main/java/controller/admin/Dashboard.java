@@ -4,7 +4,7 @@ import dao.OrderDao;
 import dao.ProductDao;
 import dao.UserDao;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,7 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,27 +41,46 @@ public class Dashboard extends HttpServlet {
         String range = request.getParameter("range");
         if (range == null) range = "7";
 
-        Map<String, Integer> revenueChart = new LinkedHashMap<>();
+        Map<String, Double> rawRevenueChart = odao.getRevenueChart(range);
 
-        if (totalOrders == 0) {
-            if ("30".equals(range)) {
-                revenueChart.put("Tuần 1", 0);
-                revenueChart.put("Tuần 2", 0);
-                revenueChart.put("Tuần 3", 0);
-                revenueChart.put("Tuần 4", 0);
-            } else {
-                revenueChart.put("T2", 0);
-                revenueChart.put("T3", 0);
-                revenueChart.put("T4", 0);
-                revenueChart.put("T5", 0);
-                revenueChart.put("T6", 0);
-                revenueChart.put("T7", 0);
-                revenueChart.put("CN", 0);
-            }
-        } else {
+        double maxRevenue = rawRevenueChart.values().stream()
+                .mapToDouble(Double::doubleValue)
+                .max()
+                .orElse(1.0);
+
+        List<Map<String, Object>> revenueChart = new ArrayList<>();
+        for (Map.Entry<String, Double> entry : rawRevenueChart.entrySet()) {
+            Map<String, Object> item = new HashMap<>();
+            item.put("key", entry.getKey());
+            item.put("value", (entry.getValue() / maxRevenue) * 100);
+            item.put("originalValue", entry.getValue());
+            revenueChart.add(item);
         }
 
-        int notificationCount = 0;
+        if (revenueChart.isEmpty()) {
+            revenueChart = new ArrayList<>();
+            if ("30".equals(range)) {
+                String[] weeks = {"Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"};
+                for (String week : weeks) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("key", week);
+                    item.put("value", 0.0);
+                    item.put("originalValue", 0.0);
+                    revenueChart.add(item);
+                }
+            } else {
+                String[] days = {"T2", "T3", "T4", "T5", "T6", "T7", "CN"};
+                for (String day : days) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("key", day);
+                    item.put("value", 0.0);
+                    item.put("originalValue", 0.0);
+                    revenueChart.add(item);
+                }
+            }
+        }
+
+        int notificationCount = odao.countOrdersByStatus("PENDING");
 
         String adminName = "Admin";
         String adminRole = "Quản trị viên";
@@ -79,7 +99,7 @@ public class Dashboard extends HttpServlet {
         request.setAttribute("totalUsers", totalUsers);
         request.setAttribute("totalRevenue", totalRevenue);
         request.setAttribute("range", range);
-        request.setAttribute("revenueChart", revenueChart);
+        request.setAttribute("revenueChart", revenueChart);  // giờ là List<Map>
         request.setAttribute("notificationCount", notificationCount);
         request.setAttribute("adminName", adminName);
         request.setAttribute("adminRole", adminRole);
@@ -92,4 +112,4 @@ public class Dashboard extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    }
+}

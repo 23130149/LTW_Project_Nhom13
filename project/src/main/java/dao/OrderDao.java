@@ -3,11 +3,9 @@ package dao;
 import model.Order;
 import model.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderDao extends BaseDao {
 
@@ -102,15 +100,38 @@ public class OrderDao extends BaseDao {
         );
     }
     public List<Product> getTopProducts(int limit) {
-        String sql = "select p.product_id as productId, p.product_name as productName, p.product_price as productPrice, sum(oi.quantity) as sold, sum(oi.quantity*p.product_price) as revenue from order_items oi join orders o on oi.order_id = o.order_id join products p on oi.product_id = p.product_id where o.status = 'Hoàn thành' group by p.product_id, p.product_name, p.product_price order by sold desc limit :limit";
+        String sql = """
+            SELECT 
+                p.product_id AS productId,
+                p.product_name AS productName,
+                p.product_price AS productPrice,
+                SUM(oi.quantity) AS sold,
+                SUM(oi.quantity * p.product_price) AS revenue
+            FROM products p
+            JOIN order_items oi ON p.product_id = oi.product_id
+            JOIN orders o ON oi.order_id = o.order_id
+            WHERE o.Status IN ('COMPLETED', 'SHIPPED')
+            GROUP BY p.product_id, p.product_name, p.product_price
+            ORDER BY sold DESC
+            LIMIT :limit
+        """;
+
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .bind("limit", limit)
                         .mapToBean(Product.class)
-                        .list() );
+                        .list()
+        );
     }
     public double getTotalRevenue() {
-        String sql = "select coalesce(sum(total_price),0) from orders where status = 'Hoàn thành'";
+        String sql = """
+            SELECT COALESCE(SUM(o.Total_Price), 0)
+            FROM orders o
+            WHERE YEAR(o.Create_At) = YEAR(CURDATE())
+              AND MONTH(o.Create_At) = MONTH(CURDATE())
+              AND o.Status IN ('COMPLETED', 'SHIPPED')
+        """;
+
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
                         .mapTo(Double.class)
@@ -249,5 +270,49 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+    public int countOrdersByStatus(String status) {
+        String sql = "SELECT COUNT(*) FROM orders WHERE Status = :status";
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("status", status)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
 
+    public Map<String, Double> getRevenueChart(String range) {
+        Map<String, Double> chart = new LinkedHashMap<>();
+        int days = "30".equals(range) ? 30 : 7;
+
+        String sql = """
+            SELECT DATE(o.Create_At) AS order_date,
+                   COALESCE(SUM(oi.quantity * p.product_price), 0) AS daily_revenue
+            FROM orders o
+            JOIN order_items oi ON o.Order_Id = oi.Order_Id
+            JOIN products p ON oi.product_id = p.product_id
+            WHERE o.Create_At >= DATE_SUB(CURDATE(), INTERVAL :days DAY)
+              AND o.Status IN ('COMPLETED', 'SHIPPED')
+            GROUP BY DATE(o.Create_At)
+            ORDER BY order_date ASC
+        """;
+
+        getJdbi().withHandle(handle -> {
+            handle.createQuery(sql)
+                    .bind("days", days)
+                    .map((rs, ctx) -> {
+                        java.sql.Date sqlDate = rs.getDate("order_date");
+                        if (sqlDate != null) {
+                            String dateStr = sqlDate.toLocalDate()
+                                    .format(java.time.format.DateTimeFormatter.ofPattern("dd/MM"));
+                            double rev = rs.getDouble("daily_revenue");
+                            chart.put(dateStr, rev);
+                        }
+                        return null;
+                    })
+                    .list();
+            return null;
+        });
+
+        return chart;
+    }
 }

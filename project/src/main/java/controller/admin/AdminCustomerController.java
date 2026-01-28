@@ -1,6 +1,7 @@
 package controller.admin;
 
 import com.google.gson.Gson;
+import dao.OrderDao;
 import dao.UserDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,11 +18,13 @@ public class AdminCustomerController extends HttpServlet {
 
     private UserDao userDao;
     private Gson gson;
+    private OrderDao odao;
 
     @Override
     public void init() {
         userDao = new UserDao();
         gson = new Gson();
+        odao = new OrderDao();
     }
 
     @Override
@@ -41,7 +44,7 @@ public class AdminCustomerController extends HttpServlet {
             String adminName = "Admin";
             String adminRole = "Quản trị viên";
             String adminAvatar = "A";
-            int notificationCount = 0;
+            int notificationCount = odao.countOrdersByStatus("PENDING");
 
             if (admin != null) {
                 adminName = admin.getUserName();

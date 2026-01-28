@@ -1,5 +1,6 @@
 package controller.admin;
 
+import dao.OrderDao;
 import dao.SettingDao;
 import dao.UserDao;
 import model.User;
@@ -13,6 +14,7 @@ import java.util.Map;
 public class SettingController extends HttpServlet {
     private SettingDao settingDao = new SettingDao();
     private UserDao udao = new UserDao();
+    private OrderDao odao = new OrderDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,7 +27,7 @@ public class SettingController extends HttpServlet {
         String adminName = "Admin";
         String adminRole = "Quản trị viên";
         String adminAvatar = "A";
-        int notificationCount = 0;
+        int notificationCount = odao.countOrdersByStatus("PENDING");
 
         if (admin != null) {
             adminName = admin.getUserName();

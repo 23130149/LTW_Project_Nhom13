@@ -18,26 +18,14 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
-            <li class="active"><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/reviews">
-                    <i class="bx bx-star"></i>Đánh giá
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/contacts">
-                    <i class="bx bx-envelope"></i> Liên hệ
-                </a>
-            </li>
-            <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
             <li class="active"><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i> Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
+
         </ul>
     </nav>
     <div class="logout">
@@ -46,7 +34,7 @@
 </aside>
 <main class="main-content">
     <header class="header">
-        <h2>Tổng quan</h2>
+        <h2>Khách hàng</h2>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Tìm kiếm khách hàng...">
             <button><i class="bx bx-search"></i></button>
@@ -71,19 +59,16 @@
         <div class="summary-card">
             <p>Tổng khách hàng</p>
             <span class="summary-value">${totalCustomers}</span>
-            <span class="summary-detail growth">+8% tháng này</span>
         </div>
 
         <div class="summary-card vip">
             <p>Khách VIP</p>
             <span class="summary-value">${vipCustomers}</span>
-            <span class="summary-detail growth">+12% tháng này</span>
         </div>
 
         <div class="summary-card new">
             <p>Khách mới</p>
             <span class="summary-value">${newCustomers}</span>
-            <span class="summary-detail growth">+23% tháng này</span>
         </div>
 
         <div class="summary-card aov">
@@ -91,7 +76,6 @@
             <span class="summary-value">
             ₫<fmt:formatNumber value="${avgOrderValue}" type="number" maxFractionDigits="0"/>
         </span>
-            <span class="summary-detail decline">-7% tháng này</span>
         </div>
     </div>
     <div class="order-table-container">
@@ -155,7 +139,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3>Chỉnh sửa khách hàng</h3>
-            <span class="close-edit">&times;</span>
+            <span class="close-edit">&times</span>
         </div>
 
         <form action="${pageContext.request.contextPath}/admin/customers" method="post">

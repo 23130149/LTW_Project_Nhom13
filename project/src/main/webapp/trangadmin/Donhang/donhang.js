@@ -3,18 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const $$ = document.querySelectorAll.bind(document);
 
     const rows = $$('.data-table tbody tr');
-
     const searchInputs = $$('.search-box input, .search-review-box input');
+
     searchInputs.forEach(input => {
         input.addEventListener('input', (e) => {
             const value = e.target.value.toLowerCase().trim();
-
             searchInputs.forEach(el => el.value = e.target.value);
 
             rows.forEach(row => {
                 const textSearch = row.cells[0].innerText + row.cells[1].innerText + row.cells[2].innerText;
-                const isVisible = textSearch.toLowerCase().includes(value);
-                row.style.display = isVisible ? '' : 'none';
+                row.style.display = textSearch.toLowerCase().includes(value) ? '' : 'none';
             });
         });
     });
@@ -22,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmButtons = $$('.btn-confirm');
     confirmButtons.forEach(btn => {
         btn.onclick = (e) => {
-            if (!confirm("Bạn có chắc chắn muốn xác nhận đơn hàng này và chuyển sang trạng thái Đã giao?")) {
+            if (!confirm("Bạn có chắc chắn muốn xác nhận đơn hàng này?")) {
                 e.preventDefault();
             } else {
-                showToast("Đang cập nhật trạng thái...");
+                showToast("Đang cập nhật trạng thái đơn hàng...");
             }
         };
     });
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p style="margin-top: 5px;">${sanPham}</p>
                         </div>
                         <div style="margin-top: 15px; text-align: right;">
-                            <p style="font-size: 1.2rem;"><strong>Tổng tiền thanh toán:</strong> 
+                            <p style="font-size: 1.2rem;"><strong>Tổng thanh toán:</strong> 
                                 <span style="color: #e74c3c; font-weight: bold;">${tongTien}</span>
                             </p>
                         </div>
@@ -67,27 +65,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         $('.close-btn').onclick = () => modal.style.display = "none";
-
-        window.onclick = (event) => {
-            if (event.target === modal) modal.style.display = "none";
-        };
+        window.onclick = (event) => { if (event.target === modal) modal.style.display = "none"; };
     }
 
     function showToast(message) {
-        const container = $('#toast-container');
-        if (!container) return;
+        let container = $('#toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            document.body.appendChild(container);
+        }
         const toast = document.createElement('div');
         toast.className = 'toast-item';
+        toast.style.cssText = "background: #333; color: #fff; padding: 10px 20px; border-radius: 5px; margin-top: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);";
         toast.innerText = message;
         container.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 500);
+        }, 3000);
     }
 
     const bell = $('.notification-badge');
     if (bell) {
         bell.onclick = () => {
-            const count = bell.querySelector('.badge')?.innerText || "0";
-            showToast(`Bạn có ${count} thông báo mới!`);
+            const badge = bell.querySelector('.badge');
+            if (!badge || badge.innerText.trim() === "0" || badge.innerText.trim() === "") {
+                showToast("Bạn không có thông báo mới nào.");
+            } else {
+                showToast(`Bạn có ${badge.innerText} đơn hàng đang chờ xác nhận!`);
+            }
         };
     }
 });

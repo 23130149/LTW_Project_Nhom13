@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/Donhang/donhang.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/trangadmin/Donhang/donhang.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý đơn hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -33,7 +32,7 @@
 </aside>
 <main class="main-content">
     <header class="header">
-        <h2>Sản phẩm</h2>
+        <h2>Đơn hàng</h2>
         <div class="search-box">
             <input type="text" placeholder="Tìm kiếm...">
             <button><i class="bx bx-search"></i></button>

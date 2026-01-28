@@ -33,7 +33,7 @@ public class AdminOrderController extends HttpServlet {
         String adminName = "Admin";
         String adminRole = "Quản trị viên";
         String adminAvatar = "A";
-        int notificationCount = 0;
+        int notificationCount = orderDao.countOrdersByStatus("PENDING");
 
         if (admin != null) {
             adminName = admin.getUserName();

@@ -97,6 +97,9 @@
                 <div class="bar-chart-container">
                     <c:forEach items="${revenueChart}" var="item">
                         <div class="bar-chart" style="height: ${item.value}%">
+            <span class="revenue-label">
+                <fmt:formatNumber value="${item.originalValue}" type="number" groupingUsed="true"/>đ
+            </span>
                             <p>${item.key}</p>
                         </div>
                     </c:forEach>

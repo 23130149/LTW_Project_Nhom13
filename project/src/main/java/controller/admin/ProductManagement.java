@@ -1,5 +1,6 @@
 package controller.admin;
 
+import dao.OrderDao;
 import dao.ProductDao;
 import dao.UserDao;
 import jakarta.servlet.ServletException;
@@ -27,22 +28,22 @@ public class ProductManagement extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ProductManagement.class);
     private ProductDao pdao;
     private UserDao udao;
+    private OrderDao odao;
 
     @Override
     public void init() {
         pdao = new ProductDao();
         udao = new UserDao();
+        odao = new OrderDao();
     }
 
-    // ======================= GET =======================
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        int notificationCount = odao.countOrdersByStatus("PENDING");
         User admin = udao.getAdmin();
-
         String adminName = "Admin";
-        String adminRole = "Quản trị viên";
         String adminAvatar = "A";
 
         if (admin != null) {
@@ -57,16 +58,13 @@ public class ProductManagement extends HttpServlet {
         request.setAttribute("outOfStock", pdao.countOutOfStock());
         request.setAttribute("totalStock", pdao.getTotalStock());
         request.setAttribute("totalValue", pdao.getTotalInventoryValue());
-        request.setAttribute("notificationCount", 0);
         request.setAttribute("adminName", adminName);
-        request.setAttribute("adminRole", adminRole);
+        request.setAttribute("adminRole", "Quản trị viên");
         request.setAttribute("adminAvatar", adminAvatar);
 
-        request.getRequestDispatcher("/trangadmin/qlsanpham.jsp")
-                .forward(request, response);
+        request.getRequestDispatcher("/trangadmin/qlsanpham.jsp").forward(request, response);
     }
 
-    // ======================= POST =======================
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,10 +72,10 @@ public class ProductManagement extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
 
-        log.info("AdminProduct action = {}", action);
+        log.info("Hành động nhận được từ trình duyệt: {}", action);
 
         try {
-            if ("add".equals(action) || "update".equals(action)) {
+            if ("add".equals(action) || "edit".equals(action)) {
 
                 String name = request.getParameter("name");
                 int price = Integer.parseInt(request.getParameter("price"));
@@ -85,14 +83,11 @@ public class ProductManagement extends HttpServlet {
                 int categoryId = Integer.parseInt(request.getParameter("categoryId"));
                 String description = request.getParameter("description");
 
-                // ===== XỬ LÝ UPLOAD ẢNH =====
                 Part filePart = request.getPart("productImage");
                 String imageUrl = null;
 
                 if (filePart != null && filePart.getSize() > 0) {
-                    String fileName = Paths.get(filePart.getSubmittedFileName())
-                            .getFileName().toString();
-
+                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
                     String uploadPath = getServletContext().getRealPath("/images");
                     File uploadDir = new File(uploadPath);
                     if (!uploadDir.exists()) uploadDir.mkdirs();
@@ -111,28 +106,32 @@ public class ProductManagement extends HttpServlet {
                 if ("add".equals(action)) {
                     p.setImageUrl(imageUrl);
                     pdao.insert(p);
-                } else {
+                    log.info("Đã thêm sản phẩm mới: {}", name);
+                }
+                else if ("edit".equals(action)) {
                     int id = Integer.parseInt(request.getParameter("productId"));
                     p.setProductId(id);
 
-                    if (imageUrl == null) {
-                        Product old = pdao.getProductById(id);
-                        p.setImageUrl(old.getImageUrl());
+                    if (imageUrl == null || imageUrl.isEmpty()) {
+                        Product currentProduct = pdao.getProductById(id);
+                        p.setImageUrl(currentProduct.getImageUrl());
                     } else {
                         p.setImageUrl(imageUrl);
                     }
 
                     pdao.update(p);
+                    log.info("Đã cập nhật sản phẩm ID: {}", id);
                 }
-
-            } else if ("delete".equals(action)) {
+            }
+            else if ("delete".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("productId"));
                 pdao.delete(id);
+                log.info("Đã xóa sản phẩm ID: {}", id);
             }
 
         } catch (Exception e) {
+            log.error("Lỗi khi xử lý dữ liệu: {}", e.getMessage());
             e.printStackTrace();
-            log.error("ProductManagement error", e);
         }
 
         response.sendRedirect(request.getContextPath() + "/admin/products");

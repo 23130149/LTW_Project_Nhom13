@@ -95,8 +95,10 @@
         <td>${util:formatMoney(order.totalPrice)}</td>
       </tr>
       <tr>
-        <th>Ghi chú</th>
-        <td>${order.note}</td>
+        <th>Địa chỉ nhận hàng</th>
+        <td>
+          ${order.shipAddress}
+        </td>
       </tr>
     </table>
   </div>

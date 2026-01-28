@@ -37,18 +37,18 @@ public class UserDao extends BaseDao {
 
     public User findByEmail(String email) {
         String sql = """
-            SELECT
-                User_Id     AS userId,
-                User_Name   AS userName,
-                Email       AS email,
-                Phone       AS phone,
-                Password    AS password,
-                Google_Id   AS googleId,
-                Create_At   AS createAt,
-                Role        AS role
-            FROM user
-            WHERE Email = :email
-        """;
+        SELECT
+            User_Id     AS userId,
+            User_Name   AS userName,
+            Email       AS email,
+            Phone       AS phone,
+            Password    AS password,
+            Google_Id   AS googleId,
+            Create_At   AS createAt,
+            Role        AS role
+        FROM user
+        WHERE Email = :email
+    """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -160,7 +160,7 @@ public class UserDao extends BaseDao {
     }
     public List<User> getAllCustomers() {
 
-                String sql = """
+        String sql = """
                     SELECT 
                         u.User_Id,
                         u.User_Name,

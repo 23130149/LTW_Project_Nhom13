@@ -32,7 +32,11 @@ public class AccountController extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         List<Order> recentOrders =
-                orderDao.getRecentOrdersByUser(user.getUserId(), 3);
+                orderDao.getOrdersByUserId(user.getUserId())
+                        .stream()
+                        .limit(3)
+                        .toList();
+
 
         request.setAttribute("orderList", recentOrders);
 

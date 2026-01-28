@@ -29,7 +29,7 @@ public class  Payment extends HttpServlet {
             return;
         }
         List<UserAddress> addresses = addressDao.findByUserId(user.getUserId());
-
+        request.setAttribute("addresses", addresses);
         UserAddress address = null;
         if (addresses != null && !addresses.isEmpty()) {
             address = addresses.get(0);
@@ -56,7 +56,9 @@ public class  Payment extends HttpServlet {
         HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("user");
         Cart cart = (Cart) session.getAttribute("cart");
-
+        int addressId = Integer.parseInt(request.getParameter("addressId"));
+        UserAddress addr = addressDao.findById(addressId);
+        
         if (user == null || cart == null || cart.getList().isEmpty()) {
             response.sendRedirect("cart");
             return;
@@ -69,6 +71,13 @@ public class  Payment extends HttpServlet {
         order.setStatus("PENDING");
         order.setTotalPrice(cart.getTotalPrice());
         order.setOrderCode("DH" + System.currentTimeMillis());
+        order.setUserAddressId(addressId);
+        order.setShipAddress(
+                addr.getStreet() + ", " +
+                        addr.getDistrict() + ", " +
+                        addr.getProvince() + ", " +
+                        addr.getCountry()
+        );
 
         OrderDao orderDao = new OrderDao();
         int orderId = orderDao.insertAndReturnId(order);

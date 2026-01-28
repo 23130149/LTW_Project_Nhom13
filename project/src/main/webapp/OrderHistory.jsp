@@ -55,9 +55,9 @@
         <div class="container nav-only-container">
             <nav class="nav__links">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/Home">Trang chủ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Products">Sản phẩm</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Blog">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
                     <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
             </nav>

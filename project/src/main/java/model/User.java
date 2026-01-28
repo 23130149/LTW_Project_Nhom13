@@ -107,7 +107,7 @@ public class User {
         this.role = role;
     }
 
-      public String getCustomerType() {
+    public String getCustomerType() {
         if (totalSpend.doubleValue() >= 10000000) return "vip";
         if (totalSpend.doubleValue() >= 3000000) return "regular";
         return "new";

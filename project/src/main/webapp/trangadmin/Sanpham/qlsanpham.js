@@ -1,92 +1,81 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("productModal");
-    const productForm = document.getElementById("productForm");
+document.addEventListener('DOMContentLoaded', () => {
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
 
-    const prodIdInput = document.getElementById("prodId");
-    const prodNameInput = document.getElementById("prodName");
-    const prodPriceInput = document.getElementById("prodPrice");
-    const prodStockInput = document.getElementById("prodStock");
-    const prodCategoryInput = document.getElementById("prodCategory");
-    const prodDescriptionInput = document.getElementById("prodDescription");
-    const actionInput = document.getElementById("modalAction");
+    const modal = $('#productModal');
+    const imageInput = $('#imageInput');
+    const imgPreview = $('#imgPreview');
+    const placeholderIcon = $('#placeholderIcon');
+    const productForm = $('#productForm');
 
-    const imageInput = document.getElementById("imageInput");
-    const imgPreview = document.getElementById("imgPreview");
-    const placeholderIcon = document.getElementById("placeholderIcon");
+    window.openAddModal = function() {
+        productForm.reset();
+        $('#modalAction').value = "add";
+        $('#prodId').value = "";
+        $('.modal-header h3').innerText = "Thêm sản phẩm mới";
 
-    window.openEditModal = function (btn) {
-        modal.querySelector(".modal-header h3").innerText = "Chỉnh sửa sản phẩm";
-        actionInput.value = "update";
-
-        const id = btn.getAttribute("data-id");
-        const name = btn.getAttribute("data-name");
-        const price = btn.getAttribute("data-price");
-        const stock = btn.getAttribute("data-stock");
-        const catId = btn.getAttribute("data-category");
-        const desc = btn.getAttribute("data-description");
-        const img = btn.getAttribute("data-image");
-
-        prodIdInput.value = id;
-        prodNameInput.value = name;
-        prodPriceInput.value = price;
-        prodStockInput.value = stock;
-        prodCategoryInput.value = catId;
-        prodDescriptionInput.value = (desc && desc !== 'null') ? desc : "";
-
-        if (img && img !== 'null' && img !== '') {
-            const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
-            imgPreview.src = img.startsWith('http') ? img : contextPath + "/images/" + img;
-            imgPreview.style.display = "block";
-            placeholderIcon.style.display = "none";
-        } else {
-            resetImagePreview();
-        }
-
-        modal.style.display = "block";
-    };
-
-    const addBtn = document.querySelector(".view-all-btn");
-    if (addBtn) {
-        addBtn.addEventListener("click", () => {
-            modal.querySelector(".modal-header h3").innerText = "Thêm sản phẩm mới";
-            actionInput.value = "add";
-            productForm.reset();
-            prodIdInput.value = "";
-            resetImagePreview();
-            modal.style.display = "block";
-        });
-    }
-
-    if (imageInput) {
-        imageInput.addEventListener("change", function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    imgPreview.src = e.target.result;
-                    imgPreview.style.display = "block";
-                    placeholderIcon.style.display = "none";
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-
-    document.querySelectorAll(".close-btn, .btn-cancel").forEach(btn => {
-        btn.onclick = () => {
-            modal.style.display = "none";
-        };
-    });
-
-    window.onclick = (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
-
-    function resetImagePreview() {
         imgPreview.src = "";
         imgPreview.style.display = "none";
         placeholderIcon.style.display = "block";
+
+        modal.style.display = "flex";
+    };
+
+    window.openEditModal = function(btn) {
+        $('#modalAction').value = "edit";
+        $('.modal-header h3').innerText = "Chỉnh sửa sản phẩm";
+
+        $('#prodId').value = btn.dataset.id || "";
+        $('#prodName').value = btn.dataset.name || "";
+        $('#prodPrice').value = btn.dataset.price || "";
+        $('#prodStock').value = btn.dataset.stock || "";
+        $('#prodCategory').value = btn.dataset.category || "1";
+        $('#prodDescription').value = btn.dataset.description || "";
+
+        const imgUrl = btn.dataset.image;
+        if (imgUrl && imgUrl !== 'null' && imgUrl !== '') {
+            imgPreview.src = imgUrl.startsWith('http') ? imgUrl : `${window.location.origin}${window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1))}/images/${imgUrl}`;
+            imgPreview.style.display = "block";
+            placeholderIcon.style.display = "none";
+        } else {
+            imgPreview.style.display = "none";
+            placeholderIcon.style.display = "block";
+        }
+
+        modal.style.display = "flex";
+    };
+
+    window.closeModal = function() {
+        modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+        if (e.target === modal) closeModal();
+    };
+
+    if (imageInput) {
+        imageInput.onchange = function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgPreview.src = e.target.result;
+                    imgPreview.style.display = "block";
+                    placeholderIcon.style.display = "none";
+                }
+                reader.readAsDataURL(file);
+            }
+        };
+    }
+
+    const searchInp = $('.search-review-box input');
+    if (searchInp) {
+        searchInp.oninput = (e) => {
+            const val = e.target.value.toLowerCase();
+            $$('.data-table tbody tr').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(val) ? "" : "none";
+            });
+        };
     }
 });

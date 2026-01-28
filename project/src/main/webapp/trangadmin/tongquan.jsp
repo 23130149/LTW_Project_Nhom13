@@ -22,19 +22,9 @@
             <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/reviews">
-                    <i class="bx bx-star"></i> Đánh giá
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/contacts">
-                    <i class="bx bx-envelope"></i> Liên hệ
-                </a>
-            </li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i> Đánh giá</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
 
         </ul>
     </nav>
@@ -107,6 +97,9 @@
                 <div class="bar-chart-container">
                     <c:forEach items="${revenueChart}" var="item">
                         <div class="bar-chart" style="height: ${item.value}%">
+            <span class="revenue-label">
+                <fmt:formatNumber value="${item.originalValue}" type="number" groupingUsed="true"/>đ
+            </span>
                             <p>${item.key}</p>
                         </div>
                     </c:forEach>

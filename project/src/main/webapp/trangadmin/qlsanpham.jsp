@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/Sanpham/qlsanpham.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/trangadmin/Sanpham/qlsanpham.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý sản phẩm</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -17,23 +16,13 @@
     </div>
     <nav class="slidebar-nav">
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard"><i class="bx bx-chart"></i>Tổng quan</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/admin/products"><i class="bx bx-package"></i>Sản phẩm</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="bx bx-receipt"></i>Đơn hàng</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/danhgia.jsp"><i class="bx bx-star"></i>Đánh giá</a></li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/khachhang.jsp"><i class="bx bx-group"></i>Khách hàng</a></li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/reviews">
-                    <i class="bx bx-star"></i>Đánh giá
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/admin/contacts">
-                    <i class="bx bx-envelope"></i> Liên hệ
-                </a>
-            </li>
-            <li><a href="${pageContext.request.contextPath}/trangadmin/caidat.jsp"><i class="bx bx-cog"></i>Cài đặt</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/reviews"><i class="bx bx-star"></i>Đánh giá</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/contacts"><i class="bx bx-envelope"></i> Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/setting"><i class="bx bx-cog"></i>Cài đặt</a></li>
         </ul>
     </nav>
     <div class="logout">
@@ -105,7 +94,7 @@
             <input type="text" placeholder="Tìm kiếm sản phẩm...">
         </div>
         <button class="filter-button-icon"><i class="bx bx-filter"></i>Lọc</button>
-        <button class="view-all-btn"><i class="bx bx-plus"></i>Thêm sản phẩm</button>
+        <button type="button" class="view-all-btn" onclick="openAddModal()"><i class="bx bx-plus"></i>Thêm sản phẩm</button>
     </div>
     <div class="order-table-container">
         <table class="data-table">
@@ -185,10 +174,11 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3>Thêm sản phẩm mới</h3>
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
         </div>
 
         <form action="${pageContext.request.contextPath}/admin/products" method="post" id="productForm" enctype="multipart/form-data">
+
             <input type="hidden" name="action" id="modalAction" value="add">
             <input type="hidden" name="productId" id="prodId">
 
@@ -226,7 +216,7 @@
                 <label>Hình ảnh sản phẩm</label>
                 <div class="custom-file-upload">
                     <div class="preview-box">
-                        <img id="imgPreview" src="" alt="Preview" style="display:none;">
+                        <img id="imgPreview" src="" alt="Preview" style="display:none; max-width: 100%; height: auto;">
                         <i class='bx bx-image-add' id="placeholderIcon"></i>
                     </div>
                     <div class="upload-controls">
@@ -244,7 +234,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn-cancel close-btn">Hủy bỏ</button>
+                <button type="button" class="btn-cancel" onclick="closeModal()">Hủy bỏ</button>
                 <button type="submit" class="btn-submit">Xác nhận Lưu</button>
             </div>
         </form>

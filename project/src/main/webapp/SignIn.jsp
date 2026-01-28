@@ -57,7 +57,7 @@
         <div class="register-link">
             <p>
                 Bạn chưa có tài khoản?
-                <a href="${pageContext.request.contextPath}/Register.jsp">Đăng Ký</a>
+                <a href="${pageContext.request.contextPath}/Register">Đăng Ký</a>
             </p>
         </div>
     </form>

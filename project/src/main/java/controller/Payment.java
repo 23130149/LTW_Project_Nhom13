@@ -52,32 +52,41 @@ public class  Payment extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("user");
         Cart cart = (Cart) session.getAttribute("cart");
-        int addressId = Integer.parseInt(request.getParameter("addressId"));
-        UserAddress addr = addressDao.findById(addressId);
-        
+
         if (user == null || cart == null || cart.getList().isEmpty()) {
             response.sendRedirect("cart");
             return;
         }
 
+        int addressId = Integer.parseInt(request.getParameter("addressId"));
+        UserAddress addr = addressDao.findById(addressId);
+
+        if (addr == null) {
+            response.sendRedirect("payment");
+            return;
+        }
+
         Order order = new Order();
         order.setUserId(user.getUserId());
-        order.setUserAddressId(Integer.parseInt(request.getParameter("addressId")));
+        order.setUserAddressId(addressId);
         order.setNote(request.getParameter("note"));
         order.setStatus("PENDING");
         order.setTotalPrice(cart.getTotalPrice());
         order.setOrderCode("DH" + System.currentTimeMillis());
-        order.setUserAddressId(addressId);
-        order.setShipAddress(
-                addr.getStreet() + ", " +
-                        addr.getDistrict() + ", " +
-                        addr.getProvince() + ", " +
-                        addr.getCountry()
+
+        String shipAddress = String.join(", ",
+                addr.getStreet(),
+                addr.getDistrict(),
+                addr.getProvince(),
+                addr.getCountry()
         );
+        order.setShipAddress(shipAddress);
 
         OrderDao orderDao = new OrderDao();
         int orderId = orderDao.insertAndReturnId(order);

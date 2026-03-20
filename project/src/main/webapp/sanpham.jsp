@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <jsp:useBean id="cart" class="cart.Cart" scope="session"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sanpham.css">
     <meta charset="UTF-8">
@@ -16,6 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<c:if test="${not empty sessionScope.cartMessage}">
+    <div class="cart-toast">
+            ${sessionScope.cartMessage}
+    </div>
+    <c:remove var="cartMessage" scope="session"/>
+</c:if>
+
 <header class="header">
     <div class="header-top-container">
         <div class="header-content">
@@ -31,6 +37,9 @@
             <div class="icons">
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
+                    <c:if test="${sessionScope.cart != null}">
+                        (${sessionScope.cart.totalQuantity})
+                    </c:if>
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
@@ -92,8 +101,8 @@
                                 <div class="add-to-cart-btn"><a
                                         href="${pageContext.request.contextPath}/add-cart?id=${p.productId}&q=1"><i
                                         class="bx bx-shopping-bag"></i>Thêm vào giỏ</a></div>
-
                             </div>
+
                             <div class="product-info">
                                 <a href="${pageContext.request.contextPath}/product?categoryId=${p.categoryId}"
                                    class="product-cat">${p.categoryName}</a>

@@ -13,7 +13,6 @@
 <body>
 <div class="wrapper">
 
-    <%-- HIỂN THỊ LỖI LOGIN --%>
     <% if (request.getAttribute("error") != null) { %>
     <p style="color:red; text-align:center; margin-bottom: 10px;">
         <%= request.getAttribute("error") %>

@@ -29,7 +29,7 @@
         </ul>
     </nav>
     <div class="logout">
-        <a href="${pageContext.request.contextPath}/home"><i class="bx bx-log-out"></i>Đăng xuất</a>
+        <a href="${pageContext.request.contextPath}/home"><i class="bx bx-log-out"></i>Trang chủ</a>
     </div>
 </aside>
 <main class="main-content">

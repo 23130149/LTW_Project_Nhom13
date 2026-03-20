@@ -10,10 +10,8 @@
     <meta charset="UTF-8">
     <title>${product.productName}</title>
 
-    <!-- HEADER / FOOTER CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/Header_Footer/Styles.css">
 
-    <!-- PAGE CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/chitietsp.css">
 
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -36,6 +34,7 @@
             <div class="icons">
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
                     <i class='bx  bx-cart'></i>
+                    (${sessionScope.cart.totalQuantity})
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
@@ -49,7 +48,7 @@
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
                     <li><a href="${pageContext.request.contextPath}/product">Sản phẩm</a></li>
-                    <li><a href="${pageContext.request.contextPath}/blog.jsp">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Blog.jsp">Blog</a></li>
                     <li><a href="${pageContext.request.contextPath}/Contact">Liên hệ</a></li>
                 </ul>
             </nav>
@@ -121,9 +120,6 @@
                        href="${pageContext.request.contextPath}/add-cart?id=${product.productId}&q=1&buyNow=1">
                         Mua ngay
                     </a>
-
-
-
                 </div>
             </div>
         </div>
@@ -266,4 +262,5 @@
 <script src="${pageContext.request.contextPath}/js/chitietsp.js"></script>
 
 </body>
+
 </html>

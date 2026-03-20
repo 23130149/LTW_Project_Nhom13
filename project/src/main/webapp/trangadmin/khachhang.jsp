@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.css">
+          href="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.css">
     <meta charset="UTF-8">
     <title>Admin - Quản lý khách hàng</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -160,6 +160,6 @@
         </form>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/trangadmin/khachhang/khachhang.js"></script>
+<script src="${pageContext.request.contextPath}/trangadmin/Khachhang/khachhang.js"></script>
 </body>
 </html>

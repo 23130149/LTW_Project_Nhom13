@@ -99,7 +99,7 @@ public class Dashboard extends HttpServlet {
         request.setAttribute("totalUsers", totalUsers);
         request.setAttribute("totalRevenue", totalRevenue);
         request.setAttribute("range", range);
-        request.setAttribute("revenueChart", revenueChart);  // giờ là List<Map>
+        request.setAttribute("revenueChart", revenueChart);
         request.setAttribute("notificationCount", notificationCount);
         request.setAttribute("adminName", adminName);
         request.setAttribute("adminRole", adminRole);

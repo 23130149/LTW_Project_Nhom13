@@ -139,16 +139,27 @@ public class OrderDao extends BaseDao {
         );
     }
     public int insertAndReturnId(Order order) {
+
         String sql = """
         INSERT INTO orders (
-            User_Id, User_Address_Id, Note,
-            Status, Create_At, Total_Price,
-             Order_Code
+            User_Id,
+            User_Address_Id,
+            Ship_Address,
+            Note,
+            Status,
+            Create_At,
+            Total_Price,
+            Order_Code
         )
         VALUES (
-            :userId, :userAddressId, :note,
-            :status, NOW(), :totalPrice,
-             :orderCode
+            :userId,
+            :userAddressId,
+            :shipAddress,
+            :note,
+            :status,
+            NOW(),
+            :totalPrice,
+            :orderCode
         )
     """;
 
@@ -160,17 +171,20 @@ public class OrderDao extends BaseDao {
                         .one()
         );
     }
+
     public Order getOrderByIdAndUser(int orderId, int userId) {
 
         String sql = """
         SELECT
-            Order_Id       AS orderId,
-            User_Id        AS userId,
-            Create_At      AS createAt,
-            Total_Price    AS totalPrice,
-            Status         AS status,
-            Order_Code     AS orderCode,
-            Note           AS note
+            Order_Id        AS orderId,
+            User_Id         AS userId,
+            User_Address_Id AS userAddressId,
+            Ship_Address    AS shipAddress,
+            Create_At       AS createAt,
+            Total_Price     AS totalPrice,
+            Status          AS status,
+            Order_Code      AS orderCode,
+            Note            AS note
         FROM orders
         WHERE Order_Id = :orderId
           AND User_Id = :userId

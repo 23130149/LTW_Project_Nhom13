@@ -77,28 +77,54 @@
                     <tbody>
                     <c:forEach var="order" items="${orderList}">
                         <tr>
+                            <!-- MÃ ĐƠN -->
                             <td>
                                 <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
-                                   style="color:#11998e; font-weight:600;">
+                                   style="color:#11998e;font-weight:600">
                                         ${order.orderCode}
                                 </a>
                             </td>
+
+                            <!-- NGÀY -->
                             <td>${order.createAtFormatted}</td>
+
+                            <!-- TỔNG TIỀN -->
                             <td>${order.totalPriceFormatted}</td>
+
+                            <!-- TRẠNG THÁI -->
                             <td>
             <span class="status-${order.status}">
                 <c:choose>
-                    <c:when test="${order.status == 'delivered'}">✔ Đã giao</c:when>
-                    <c:when test="${order.status == 'processing'}">⏳ Đang xử lý</c:when>
-                    <c:otherwise>✖ Chờ xác nhận</c:otherwise>
+                    <c:when test="${order.status == 'PENDING'}">⏳ Đang xử lý</c:when>
+                    <c:when test="${order.status == 'SHIPPED'}">🚚 Đã giao</c:when>
+                    <c:when test="${order.status == 'COMPLETED'}">✅ Đã nhận hàng</c:when>
+                    <c:otherwise>❓ Không xác định</c:otherwise>
                 </c:choose>
-
             </span>
                             </td>
+
+                            <!-- HÀNH ĐỘNG -->
                             <td>
                                 <a href="${pageContext.request.contextPath}/OrderDetail?orderId=${order.orderId}"
                                    class="view-all-orders">
+                                    Chi tiết
                                 </a>
+                                <c:if test="${order.status == 'SHIPPED'}">
+                                    <form action="${pageContext.request.contextPath}/ConfirmOrder"
+                                          method="post"
+                                    style="margin-top:6px">
+
+                                        <input type="hidden" name="orderId"
+                                               value="${order.orderId}"/>
+
+                                        <button type="submit"
+                                                style="background:#11998e;color:#fff;
+                                   border:none;padding:6px 10px;
+                                   border-radius:6px;cursor:pointer">
+                                            Tôi đã nhận hàng
+                                        </button>
+                                    </form>
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

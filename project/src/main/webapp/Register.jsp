@@ -81,7 +81,6 @@
 <body>
 <div class="wrapper">
 
-  <!-- ===== FORM ĐĂNG KÝ ===== -->
   <c:if test="${empty step}">
     <form action="${pageContext.request.contextPath}/Register"
           method="post"
@@ -177,7 +176,6 @@
 </div>
 
 <script>
-  // ===== VALIDATE ĐĂNG KÝ =====
   const form = document.getElementById("registerForm");
   if (form) {
     const fullName = form.fullName;
@@ -235,7 +233,6 @@
     });
   }
 
-  // ===== OTP TIMER =====
   let timeLeft = 120;
   let resendLeft = 30;
 

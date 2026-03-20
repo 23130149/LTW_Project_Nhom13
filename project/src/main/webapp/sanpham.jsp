@@ -30,7 +30,7 @@
             </form>
             <div class="icons">
                 <a href="${pageContext.request.contextPath}/cart" class="icon-btn" id="cartBtn">
-                    <i class='bx  bx-cart'></i>
+                    <i class='bx  bx-cart'></i> (${sessionScope.cart.totalQuantity})
                 </a>
                 <a href="${pageContext.request.contextPath}/Account" class="icon-btn" id="userBtn">
                     <i class='bx  bx-user'></i>
